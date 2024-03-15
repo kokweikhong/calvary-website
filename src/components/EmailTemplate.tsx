@@ -9,23 +9,27 @@ interface EmailTemplateProps {
 
 export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
   name, email, contact, comments
-}) => (
-  <div>
-    <h1>Calvary Carpentry Sdn. Bhd.</h1>
-    <p>
-      Enquiry from Calvary Carpentry Website (Malaysia)
-    </p>
-    <p>
-      <strong>Name:</strong> {name}
-    </p>
-    <p>
-      <strong>Email:</strong> {email}
-    </p>
-    <p>
-      <strong>Contact:</strong> {contact}
-    </p>
-    <p>
-      <strong>Message:</strong> {comments}
-    </p>
-  </div>
-);
+}) => {
+
+  const country = process.env.NEXT_PUBLIC_COUNTRY || 'Singapore';
+  return (
+    <div>
+      <h1>{`Calvary Carpentry ${country === "Malaysia" ? 'Sdn Bhd' : 'Pte Ltd'}`}</h1>
+      <p>
+        {`Enquiry from ${country} website`}
+      </p>
+      <p>
+        <strong>Name:</strong> {name}
+      </p>
+      <p>
+        <strong>Email:</strong> {email}
+      </p>
+      <p>
+        <strong>Contact:</strong> {contact}
+      </p>
+      <p>
+        <strong>Message:</strong> {comments}
+      </p>
+    </div>
+  );
+}
