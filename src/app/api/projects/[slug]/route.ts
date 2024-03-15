@@ -1,0 +1,16 @@
+import { NextResponse, NextRequest } from "next/server";
+import { promises as fs } from "fs";
+import { Project } from "@/interfaces/project";
+
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { slug: string } }
+) {
+  const file = await fs.readFile(process.cwd() + "/src/data/projects.json", "utf-8");
+  const data: Project[] = JSON.parse(file);
+  const project = data.find((project) => project.id === params.slug);
+  if (!project) {
+    return NextResponse.error()
+  }
+  return NextResponse.json(project);
+}
