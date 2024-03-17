@@ -28,9 +28,11 @@ const ProjectReferenceCard = ({ project }: { project: Project }) => {
           <Image
             loader={projectImageLoader}
             // src={`${doSpaceEndpoint}/${thumbnail}`}
-            src={thumbnail}
+            src={thumbnail.replaceAll(" ", "%20")}
             alt={project.name}
-            priority
+            placeholder="blur"
+            blurDataURL={"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNcWA8AAccBIgbXS5wAAAAASUVORK5CYII="}
+            // priority
             width={300}
             height={300}
             sizes="(max-width: 767px) 100vw, (max-width: 991px) 50vw, 33vw"

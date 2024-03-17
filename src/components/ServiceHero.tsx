@@ -63,6 +63,7 @@ const ServiceHero = ({ service }: { service: string }) => {
             alt={`${service} hero`}
             width={500}
             height={500}
+            priority
             className="w-full h-full object-cover"
           />
         </div>
