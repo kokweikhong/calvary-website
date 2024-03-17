@@ -3,11 +3,7 @@
 import { Project } from "@/interfaces/project";
 import ProjectReferenceCard from "./ProjectReferenceCard";
 import { cn } from "@/lib/utils";
-import useSupabaseBrowser from "@/utils/supabase-browser";
-import { TypedSupabaseClient } from "@/utils/types";
 import { useQuery } from "@tanstack/react-query";
-import { axiosLocalHostInstance } from "@/utils/axios";
-import { z } from "zod";
 
 type ServiceProjectsProps = {
   service: string;

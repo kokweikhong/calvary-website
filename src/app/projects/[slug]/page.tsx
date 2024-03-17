@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { axiosLocalHostInstance } from "@/utils/axios";
 import { Project } from "@/interfaces/project";
 import { useQuery } from "@tanstack/react-query";
 import myImageLoader from "@/lib/imageLoader";
