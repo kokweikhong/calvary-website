@@ -15,7 +15,7 @@ const ProductCard: FC<ProductCardProps> = ({
 }) => {
   return (
     <Link
-      href={"/"}
+      href={data.href}
       className="h-full mb-[30px] group hover:pb-[10px] transition-all ease-in-out duration-300"
     >
       <div className="w-full h-[228px] relative overflow-hidden">

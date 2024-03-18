@@ -20,7 +20,7 @@ type Feature = {
 
 const features: Feature[] = [
   {
-    title: "Archidex 2023",
+    title: "Malaysia Archidex 2023",
     description: "2 min read. Awardee of Booth Display Star Award",
     period: "26 July - 29 July 2023",
     image: feature1,
@@ -39,7 +39,7 @@ const features: Feature[] = [
   },
   {
     title:
-      "Reconstituted Bamboo Timber vs. Hardwood vs. Composite: A Comprehensive Guide",
+      "Comprehensive Guide to Reconstituted Bamboo",
     description: "2 min read. Featuring Bamboo, Composite and Teak.",
     period: "7 October 2023",
     image: feature4,
@@ -88,7 +88,7 @@ const Features = () => {
                 <h5 className="text-[16px] font-bold mb-1">{feature.title}</h5>
                 <p className="text-[14px]">{feature.period}</p>
                 <div className="flex justify-between items-center text-white absolute bottom-0 pb-6 pr-4">
-                  <p className="text-[12px] mr-4">{feature.description}</p>
+                  <p className="text-[12px] mr-4 opacity-0 md:opacity-100">{feature.description}</p>
                   <span className="w-0 h-0 border-t-[20px] border-t-transparent border-l-[35px] border-l-white border-b-[20px] border-b-transparent"></span>
                 </div>
               </div>

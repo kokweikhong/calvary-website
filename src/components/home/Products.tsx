@@ -17,7 +17,6 @@ const Products = () => {
     }
   });
 
-  console.log(products.data);
   return (
     <section className="section white">
       <div className="row">

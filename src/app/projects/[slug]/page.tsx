@@ -24,14 +24,6 @@ export default function Page({ params }: { params: { slug: string } }) {
   if (!project) {
     return <div>Loading...</div>;
   }
-  // const doSpacesEndpoint = process.env.DO_SPACES_ENDPOINT;
-  // const { data: project } = await axiosLocalHostInstance.get<Project>(
-  //   `/api/projects/${params.slug}`
-  // );
-  // const imagePathEncoded = encodeURIComponent(project.image_path!);
-  // const { data: images } = await axiosLocalHostInstance.get<string[]>(
-  //   `/api/projects/folder/${imagePathEncoded}`
-  // );
 
   return (
     <div className="pt-[80px] mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -84,12 +76,15 @@ export default function Page({ params }: { params: { slug: string } }) {
               <div className="relative h-full w-full">
                 <Image
                   loader={myImageLoader}
-                  src={image}
+                  src={image.replaceAll(" ", "%20")}
                   alt={project.name + "-" + index ?? index}
                   width={300}
                   height={300}
                   sizes="(max-width: 767px) 100vw, (max-width: 991px) 50vw, 33vw"
-                  priority
+                  placeholder="blur"
+                  blurDataURL={
+                    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNcWA8AAccBIgbXS5wAAAAASUVORK5CYII="
+                  }
                   className="w-full h-full object-cover"
                 />
                 <div className="bg-black/50 absolute inset-0 flex items-center justify-center"></div>

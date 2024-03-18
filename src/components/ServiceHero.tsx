@@ -50,7 +50,6 @@ const serviceHeroContent: ServiceHeroProps = {
 };
 
 const ServiceHero = ({ service }: { service: string }) => {
-  const doSpaceEndpoint = process.env.DO_SPACES_ENDPOINT + "/websites";
   const serviceContent = serviceHeroContent[service as keyof ServiceHeroProps];
 
   return (

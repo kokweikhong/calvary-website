@@ -15,6 +15,7 @@ export default function Page() {
   const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<string[]>([]);
   const [filteredSectors, setFilteredSectors] = useState<string[]>([]);
+  const [numberToShow, setNumberToShow] = useState(6);
 
   const projects = useQuery({
     queryKey: ["projects"],
@@ -150,13 +151,21 @@ export default function Page() {
 
         {/* Project Reference Card */}
         <div className="grid grid-cols-1 gap-4 mt-8 md:grid-cols-2 lg:grid-cols-3">
-          {filteredProjects.map((project) => {
+          {filteredProjects.slice(0, numberToShow).map((project) => {
             return (
               <div key={project.id} className="flex flex-col gap-2">
                 <ProjectReferenceCard project={project} />
               </div>
             );
           })}
+        </div>
+        <div className="flex justify-center items-center mt-8">
+          <button
+            onClick={() => setNumberToShow((prev) => prev + 6)}
+            className="bg-black text-white px-4 py-2"
+          >
+            Load More
+          </button>
         </div>
       </div>
     </div>

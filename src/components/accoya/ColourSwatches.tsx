@@ -133,11 +133,18 @@ const ColourSwatches = () => {
               className={cn("text-center cursor-pointer relative")}
             >
               {colourSwatch.active && (
-                <div className="absolute top-0 left-0 z-20 w-full h-full backdrop-blur-[1px] bg-white/30"></div>
+                <>
+                  <div className="absolute top-0 left-0 z-20 w-full h-full backdrop-blur-[1px] bg-white/30"></div>
+                  <div className="absolute top-0 left-0 z-30 w-full h-full flex items-center justify-center">
+                    <span className="text-white uppercase font-semibold">
+                      selected
+                    </span>
+                  </div>
+                </>
               )}
               <AspectRatio
                 ratio={1}
-                // className="w-full h-48 relative"
+              // className="w-full h-48 relative"
               >
                 <Image
                   src={colourSwatch.image}

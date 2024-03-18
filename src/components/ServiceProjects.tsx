@@ -4,29 +4,11 @@ import { Project } from "@/interfaces/project";
 import ProjectReferenceCard from "./ProjectReferenceCard";
 import { cn } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
 type ServiceProjectsProps = {
   service: string;
 };
-
-// async function getProjectsByService(
-//   client: TypedSupabaseClient,
-//   service: string
-// ) {
-//   return await client
-//     .from("calvary_projects")
-//     .select("*")
-//     .contains("services", [service])
-//     .order("year", { ascending: false })
-//     .limit(10);
-// }
-
-// async function getProjectsByService(service: string): Promise<Project[]> {
-//   const res = await fetch(
-//     `http://localhost:3000/api/projects/services/${service}`
-//   );
-//   return res.json();
-// }
 
 async function getProjectsByService(service: string) {
   const res = await fetch(`/api/projects/`);
@@ -38,13 +20,7 @@ async function getProjectsByService(service: string) {
 }
 
 const ServiceProjects = ({ service }: ServiceProjectsProps) => {
-  // const { data: projects, status } = await axiosLocalHostInstance.get<
-  //   Project[]
-  // >(`/api/projects/services/${service}?limit=10`);
-  //
-  // if (status !== 200) {
-  //   return <div>Error loading projects</div>;
-  // }
+  const [numberToShow, setNumberToShow] = useState(7);
 
   const { data: projects, isLoading } = useQuery({
     queryKey: ["projects", service],
@@ -76,7 +52,7 @@ const ServiceProjects = ({ service }: ServiceProjectsProps) => {
       </div>
       <div className="grid grid-cols-1 gap-1 mt-8 md:grid-cols-3">
         {projects && projects.length > 0 ? (
-          projects?.map((project, index) => {
+          projects?.slice(0, numberToShow).map((project, index) => {
             return (
               <div
                 key={`${project.name}-${index}`}
@@ -94,6 +70,14 @@ const ServiceProjects = ({ service }: ServiceProjectsProps) => {
         ) : (
           <div className="text-center italic">No projects found</div>
         )}
+      </div>
+      <div className="flex justify-center items-center mt-8">
+        <button
+          onClick={() => setNumberToShow((prev) => prev + 6)}
+          className="bg-black text-white px-4 py-2"
+        >
+          Load More
+        </button>
       </div>
     </div>
   );

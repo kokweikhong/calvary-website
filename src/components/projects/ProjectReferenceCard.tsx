@@ -16,16 +16,6 @@ async function getAllFilesFromFolder(folder: string) {
 }
 
 const ProjectReferenceCard = ({ project }: { project: Project }) => {
-  // const files = useQuery({
-  //   queryKey: ["projectFiles", project.image_path],
-  //   queryFn: () => getAllFilesFromFolder(`${project.image_path}`),
-  // });
-  //
-  // if (files.isLoading) {
-  //   return <div>Loading...</div>;
-  // }
-
-  // const thumbnail = files?.data?.at(1);
   const thumbnail = project.images?.[0];
   return (
     <div>
@@ -34,10 +24,12 @@ const ProjectReferenceCard = ({ project }: { project: Project }) => {
           {thumbnail && (
             <Image
               loader={myImageLoader}
-              src={thumbnail}
+              src={thumbnail.replaceAll(" ", "%20")}
               alt={project.name}
               width={300}
               height={300}
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3C/svg%3E`}
               sizes="(max-width: 300px) 100vw, 300px"
               className="h-full w-full object-cover object-center sm:h-full sm:w-full"
             />
