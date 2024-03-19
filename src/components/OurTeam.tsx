@@ -17,25 +17,25 @@ const teams: Team[] = [
     name: "Sheng Chuan",
     position: "Project QA/QC",
     image: "websites/teams/teams-sc.jpg",
-    youtube: "https://www.youtube.com/watch?v=7JYJQ3yUA7c",
+    youtube: "https://www.youtube.com/watch?v=xpVh__FMt18&t=35s",
   },
   {
     name: "Irene",
     position: "Sales Manager",
     image: "websites/teams/teams-irene.jpg",
-    youtube: "https://www.youtube.com/watch?v=7JYJQ3yUA7c",
+    youtube: "https://www.youtube.com/watch?v=86V7rBG1O2g",
   },
   {
     name: "Raziq",
     position: "Project Manager",
     image: "websites/teams/teams-raziq.jpg",
-    youtube: "https://www.youtube.com/watch?v=7JYJQ3yUA7c",
+    youtube: "https://www.youtube.com/watch?v=lQiJsOi7etQ&t=106s",
   },
   {
     name: "Uncle Ho",
     position: "Project Manager",
     image: "websites/teams/teams-uncleho.jpg",
-    youtube: "https://www.youtube.com/watch?v=7JYJQ3yUA7c",
+    youtube: "https://www.youtube.com/watch?v=5n321uCH400",
   },
 ];
 

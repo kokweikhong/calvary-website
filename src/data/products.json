@@ -118,5 +118,19 @@
     "thumbnail": "websites/products/thumbnails/Timber%20Decking.jpg",
     "logo": "websites/products/logos/logo-timber-decking.svg",
     "description": "Discover Unrivalled Woodwork and High-Performance Timbers. Endless Possibilities: Trellis, Benches, Cladding, Ceilings, Screens."
+  },
+  {
+    "name": "dasso ctech",
+    "title": "Dasso® CTECH Bamboo",
+    "href": "/products/dasso-ctech",
+    "countries": [
+      "sg"
+    ],
+    "services": [
+      "exterior"
+    ],
+    "thumbnail": "websites/products/thumbnails/dasso.jpg",
+    "logo": "websites/products/logos/icon-dasso.svg",
+    "description": "Sustainable Class 0 fire-rated bamboo : Dasso CTECH: highly durable and resistant to weather, mould, soft rot, and insects. "
   }
 ]
