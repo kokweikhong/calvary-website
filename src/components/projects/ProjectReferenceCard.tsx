@@ -49,12 +49,12 @@ const ProjectReferenceCard = ({ project }: { project: Project }) => {
             {`${project.year} - ${project.sectors.join(", ")}`}
           </p>
           <div className="flex flex-1 flex-wrap gap-2 justify-start">
-            {project.tags?.map((tag, index) => (
+            {project.applications?.map((application, index) => (
               <p
                 key={index}
                 className="text-base font-medium text-gray-900 border border-gray-300 rounded-md p-1"
               >
-                {tag}
+                {application}
               </p>
             ))}
           </div>
