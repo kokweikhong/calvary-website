@@ -6,7 +6,7 @@ import AboutApplications from "@/components/dasso/AboutApplications";
 
 export default function Page() {
   return (
-    <main className="pt-[80px]">
+    <main className="pt-[80px] space-y-8">
       <Hero />
       <Introduction />
       <Features />

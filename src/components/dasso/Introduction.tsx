@@ -14,7 +14,7 @@ const certImages = [
 const Introduction = () => {
   return (
     <section id="dasso-introduction">
-      <div className="container-cp">
+      <div className="container-cp space-y-4">
         <h2 className="text-4xl font-medium text-center">
           What is dassoCTECH?
         </h2>
@@ -36,7 +36,7 @@ const Introduction = () => {
           {`Dasso CTECH offers a sustainable and long-lasting decking option made from bamboo, a renewable and eco-friendly resource. The material is created through a compression molding process that fuses the bamboo fibers together, resulting in a weather-resistant and attractive wood-like appearance. Installation and maintenance are easy, and the product is available in a variety of colors and finishes to match any design style. Additionally, using bamboo has a low environmental impact, making Dasso CTECH a smart choice for those looking to support a healthier planet.`}
         </p>
 
-        <div className="flex flex-col gap-y-4 items-center md:flex-row md:gap-x-4 md:justify-between">
+        <div className="flex flex-nowrap items-center justify-between">
           {certImages.map((cert, index) => (
             <div key={index}>
               <Image
@@ -45,7 +45,7 @@ const Introduction = () => {
                 width={100}
                 height={100}
                 priority
-                className="w-24 h-24"
+                className="w-16 h-16"
               />
             </div>
           ))}

@@ -79,4 +79,52 @@ export const dassoApplications: DassoApplication[] = [
       },
     ],
   },
+  {
+    name: "Cladding",
+    icon: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/cladding/icon-cladding.svg",
+    description: "DassoCTECH Fused Bamboo Cladding is the great choice in commercial exterior siding, where it ages naturally like wood.",
+    applicationImage: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/cladding/bg-cladding.jpg",
+    patterns: [
+      {
+        name: "",
+        image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/cladding/dassoCTECH%20Cladding1.jpeg",
+      },
+      {
+        name: "",
+        image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/cladding/dassoCTECH%20Cladding2.jpeg",
+      },
+      {
+        name: "",
+        image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/cladding/dassoCTECH%20Cladding.jpeg",
+      },
+      {
+        name: "",
+        image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/cladding/dassoCTECH%20Cladding3.jpeg",
+      },
+      {
+        name: "",
+        image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/cladding/dassoCTECH%20Cladding4.jpeg",
+      },
+    ],
+    projects: [
+      {
+        name: "NanXun Urban Exhibition Center",
+        image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/cladding/NanXun%20Urban%20Planning%20Exhibition%20Center.jpeg",
+      },
+      {
+        name: "Four Season Courtyard Hotel",
+        image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/cladding/Four%20Season%20Ocean%20Courtyard%20Hotel.jpeg",
+      },
+      {
+        name: "Qingpu Pinghe School",
+        image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/cladding/Qingpu%20Pinghe%20School.jpeg",
+      },
+    ],
+    specs: [
+      {
+        description: "DassoCTECH Outdoor cladding with groove on length sides, oiled",
+        size: "L1860 x 100 x 12"
+      },
+    ],
+  },
 ]

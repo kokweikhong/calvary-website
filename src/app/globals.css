@@ -76,10 +76,16 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   h1 {
     @apply font-garamond;
   }
+}
+
+.dasso-swiper .swiper-pagination-bullet-active {
+  background: black !important;
 }
