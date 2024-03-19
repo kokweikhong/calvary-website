@@ -1,62 +1,16 @@
 import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { timberMenuLinks } from "@/constants/timber-menu-links";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-type TimberLink = {
-  name: string;
-  children: {
-    title: string;
-    subTitle: string;
-    href: string;
-  }[];
-};
-
-const timberLinks: TimberLink[] = [
-  {
-    name: "Interior",
-    children: [
-      {
-        title: "Engineered Flooring",
-        subTitle: "KANDINSKY® | KANDINSKY Lite TimberWise®",
-        href: "#",
-      },
-      {
-        title: "Solid Timber Flooring",
-        subTitle: "Wood and Timber",
-        href: "#",
-      },
-    ],
-  },
-  {
-    name: "Exterior",
-    children: [
-      {
-        title: "Decking and Outdoor",
-        subTitle: "Calvary Composite | Ez-Rail® ",
-        href: "#",
-      },
-      {
-        title: "Decking, Screen, Cladding, Soffit",
-        subTitle: "Wood and Timber | Accoya®",
-        href: "/products/accoya",
-      },
-      {
-        title: "Decking, Screen, Cladding, Soffit",
-        subTitle: "MOSO® | Reconstituted Bamboo",
-        href: "#",
-      },
-    ],
-  },
-];
-
 const TimberMenu = () => {
   return (
     <div>
       <h3 className="hidden lg:block font-semibold text-lg mb-6">Timber</h3>
-      {timberLinks.map((link) => (
+      {timberMenuLinks.map((link) => (
         <Disclosure as="div" key={link.name} className="-mx-3">
           {({ open }) => (
             <>

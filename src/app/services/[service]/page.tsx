@@ -47,7 +47,7 @@ export default function Page({ params }: { params: { service: string } }) {
 
       <ClientsSlider backgroundColor="white" iconColor="black" />
 
-      <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 mt-8">
         <div className="grid grid-cols-12 gap-6">
           {products.map((product) => {
             return (

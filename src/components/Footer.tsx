@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import horiLogo from "../../public/white_horzontional_logo.png";
 
@@ -13,7 +14,12 @@ import email from "../../public/images/footer/email.svg";
 import phoneNumber from "../../public/images/footer/phone_number.svg";
 import EnquiryForm from "./EnquiryForm";
 
-import { Toaster } from "sonner"
+import {
+  footerCompanyDescription,
+  footerCopyrightContent,
+} from "@/constants/misc";
+
+import { Toaster } from "sonner";
 
 type Contact = {
   href: string;
@@ -54,7 +60,6 @@ const contacts: Contact[] = [
   },
 ];
 
-
 const Footer = () => {
   return (
     <footer className="bg-[#1F2126] py-[70px] mt-[30px] sm:px-6 lg:px-8">
@@ -70,11 +75,7 @@ const Footer = () => {
               className="w-full h-full object-cover"
             />
           </div>
-          <p>
-            {`Welcome to Calvary Carpentry Sdn. Bhd., where exceptional
-            craftsmanship meets unwavering trust. With a legacy of excellence
-            established by prestigious brands in Singapore, we've wood for you.`}
-          </p>
+          <p>{footerCompanyDescription}</p>
         </div>
 
         <div className="mt-[30px] lg:col-span-1">
@@ -185,7 +186,7 @@ const Footer = () => {
           <div className="mt-4">
             <ul className="grid grid-cols-2">
               <li>
-                <a href="#">Privacy Policy</a>
+                <Link href="/privacy-policy">Privacy Policy</Link>
               </li>
               <li>
                 <a href="#">Maintenance</a>
@@ -201,7 +202,7 @@ const Footer = () => {
         </div>
 
         <div className="w-full text-center text-sm mt-8 lg:col-span-full">
-          <p>©2023 Calvary Carpentry Sdn. Bhd. All Rights Reserved.</p>
+          <p>{footerCopyrightContent}</p>
         </div>
       </div>
     </footer>

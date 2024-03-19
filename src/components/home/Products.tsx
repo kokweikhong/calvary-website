@@ -4,7 +4,7 @@ import ProductCard from "../ProductCard";
 import { useQuery } from "@tanstack/react-query";
 import { Product } from "@/interfaces/product";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
-
+import { deckingAndOutdoorDescription } from "@/constants/misc";
 
 const Products = () => {
   const products = useQuery({
@@ -12,9 +12,11 @@ const Products = () => {
     queryFn: async () => {
       const res = await fetch("/api/products");
       const data: Product[] = await res.json();
-      const filteredData = data.filter((product) => !product.services.includes("maintenance"));
+      const filteredData = data.filter(
+        (product) => !product.services.includes("maintenance")
+      );
       return filteredData;
-    }
+    },
   });
 
   return (
@@ -43,7 +45,7 @@ const Products = () => {
                 <ArrowLongRightIcon className="w-4 h-4" />
                 <h4>Decking and Outdoor</h4>
               </div>
-              <p className="pl-6">Calvary Composite, MOSO, Accoya, Timber</p>
+              <p className="pl-6">{deckingAndOutdoorDescription}</p>
             </div>
           </div>
         </div>

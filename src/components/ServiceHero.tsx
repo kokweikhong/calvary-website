@@ -3,54 +3,11 @@
 import myImageLoader from "@/lib/imageLoader";
 import Image from "next/image";
 import { Exterior, Interior, Maintenance } from "./svg/services";
-
-type ServiceHeroContent = {
-  title: string;
-  description: string;
-  image: string;
-  icon: React.ReactNode;
-  buttonText: string;
-  buttonSubText: string;
-};
-
-type ServiceHeroProps = {
-  interior: ServiceHeroContent;
-  exterior: ServiceHeroContent;
-  maintenance: ServiceHeroContent;
-};
-
-const serviceHeroContent: ServiceHeroProps = {
-  interior: {
-    title: "Interior",
-    description:
-      "Explore our range of premium engineered flooring and timber, ideal for exceptional interior design and structure.",
-    image: "websites/services/interior-hero.jpg",
-    icon: <Interior />,
-    buttonText: "Explore Interior",
-    buttonSubText: "Engineered Wood | Solid Wood",
-  },
-  exterior: {
-    title: "Exterior",
-    description:
-      "Explore our industry-grade sustainable materials: Accoya® and Bamboo, perfect for diverse architectural needs.",
-    image: "websites/services/exterior-hero.jpg",
-    icon: <Exterior />,
-    buttonText: "Explore Exterior",
-    buttonSubText: "Accoya® | MOSO® | Timber",
-  },
-  maintenance: {
-    title: "Maintenance",
-    description:
-      "Revitalise your timber: Discover treatments, restoration, and dedicated wood experts for lasting transformations.",
-    image: "websites/services/maintenance-hero.jpg",
-    icon: <Maintenance />,
-    buttonText: "Explore Maintenance",
-    buttonSubText: "OSMO® | Silverwood ",
-  },
-};
+import { serviceHeroContent } from "@/constants/service-hero-contents";
 
 const ServiceHero = ({ service }: { service: string }) => {
-  const serviceContent = serviceHeroContent[service as keyof ServiceHeroProps];
+  const serviceContent =
+    serviceHeroContent[service as keyof typeof serviceHeroContent];
 
   return (
     <div className="h-screen relative">
@@ -71,7 +28,15 @@ const ServiceHero = ({ service }: { service: string }) => {
       </div>
 
       <div className="h-full absolute top-0 left-1/2 -translate-x-1/2 text-white flex flex-col items-center justify-center w-1/2 sm:w-1/2 mx-auto z-10 text-center">
-        <div>{serviceContent.icon}</div>
+        <div>
+          {service.toLowerCase() === "interior" ? (
+            <Interior />
+          ) : service.toLowerCase() === "exterior" ? (
+            <Exterior />
+          ) : (
+            <Maintenance />
+          )}
+        </div>
         <h1 className="text-4xl mt-4">{serviceContent.title}</h1>
         <p className="my-[30px]">{serviceContent.description}</p>
         <div className="flex flex-col">
