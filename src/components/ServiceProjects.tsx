@@ -13,9 +13,11 @@ type ServiceProjectsProps = {
 async function getProjectsByService(service: string) {
   const res = await fetch(`/api/projects/`);
   const data: Project[] = await res.json();
+  console.log(data);
   const filteredData = data.filter((project) =>
     project.services?.includes(service)
   );
+  console.log(filteredData);
   return filteredData;
 }
 

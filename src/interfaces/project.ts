@@ -9,7 +9,8 @@ export type Project = {
   country: string;
   products: string[];
   sectors: string[];
-  tags?: string[];
+  countries: string[];
+  applications?: string[];
   services?: string[];
   description?: string;
   images?: string[];
