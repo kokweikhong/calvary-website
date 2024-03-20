@@ -11,16 +11,116 @@ export type DassoApplication = {
     name: string;
     image: string;
   }[];
-  // benefits: {
-  //   name: string;
-  //   description: string;
-  //   image: string;
-  // }[];
+  benefits: DassoBenefit[];
   specs: {
     description: string;
     size: string;
   }[];
 };
+
+
+export type DassoBenefit = {
+  name: string;
+  description: string;
+  image: string;
+};
+
+const END_MATCHED: DassoBenefit = {
+  name: "End Matched",
+  description: "Installation on or off joist",
+  image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/benefits/2-Side%20Grooved.svg",
+}
+const REVERSIBLE_FACES: DassoBenefit = {
+  name: "Reversible Faces",
+  description: "Customer choice for SMOOTH or REEDED surface",
+  image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/benefits/Reversible%20Faces.svg",
+}
+const TWO_SIDE_GROOVED: DassoBenefit = {
+  name: "2-Side Grooved",
+  description: "Customer choice for SMOOTH or REEDED surface",
+  image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/benefits/2-Side%20Grooved.svg",
+}
+const TERMITE_RESISTANCE: DassoBenefit = {
+  name: "Termite Resistance",
+  description: "Reticulitermes santonensis DC D(durable) [EN117]",
+  image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/benefits/Termite%20Resistance.svg",
+}
+const HARD_DURABLE: DassoBenefit = {
+  name: "Hard & Durable",
+  description: "Harder than any other hardwood [EN 1534]; Durability: Class 1",
+  image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/benefits/Hard%20&%20Durable.svg",
+}
+const FIRE_RESISTANCE: DassoBenefit = {
+  name: "Fire Resistance",
+  description: "Class A / Bf1-s1; can be easily applied in public projects",
+  image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/benefits/Fire%20Resistance.svg",
+}
+const MOULD_RESISTANCE: DassoBenefit = {
+  name: "Mould Resistance",
+  description: "Class 0 [DIN EN ISO 846:1997-10] [DIN EN 152:2011]",
+  image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/benefits/Mould%20Resistance.svg",
+}
+const STABLE_PRECISE: DassoBenefit = {
+  name: "Stable & Precise",
+  description: "No head side gap between boards with T&G end match",
+  image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/benefits/Biological%20durability.svg",
+}
+const ENVIRONMENT_FRIENDLY: DassoBenefit = {
+  name: "Environment Friendly",
+  description: "Bamboo ready for harvest after 4-6 years [compared to up to 100 years for hardwood species] - no deforestation",
+  image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/benefits/Carbon%20footprint.svg",
+}
+const BEAUTIFUL: DassoBenefit = {
+  name: "Beautiful",
+  description: "Classy IPE Color and wooden texture",
+  image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/benefits/Beautiful.svg",
+}
+const MATCH_INSTALLATION_CLADDING: DassoBenefit = {
+  name: "Match Installation",
+  description: "Available in Sheathing or Batten installation",
+  image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/benefits/Cladding-%20Match%20Installation.svg",
+}
+const MATCH_INSTALLATION_SOFFIT: DassoBenefit = {
+  name: "Match Installation",
+  description: "Available in Sheathing or Batten installation",
+  image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/benefits/Soffit-%20Match%20Installation.svg",
+}
+
+export const dassoDeckingBenefits: DassoBenefit[] = [
+  END_MATCHED,
+  REVERSIBLE_FACES,
+  TWO_SIDE_GROOVED,
+  TERMITE_RESISTANCE,
+  HARD_DURABLE,
+  FIRE_RESISTANCE,
+  MOULD_RESISTANCE,
+  STABLE_PRECISE,
+  ENVIRONMENT_FRIENDLY,
+];
+
+export const dassoCladdingBenefits: DassoBenefit[] = [
+  END_MATCHED,
+  MATCH_INSTALLATION_CLADDING,
+  BEAUTIFUL,
+  TERMITE_RESISTANCE,
+  HARD_DURABLE,
+  FIRE_RESISTANCE,
+  MOULD_RESISTANCE,
+  STABLE_PRECISE,
+  ENVIRONMENT_FRIENDLY,
+];
+
+export const dassoSoffitBenefits: DassoBenefit[] = [
+  END_MATCHED,
+  MATCH_INSTALLATION_SOFFIT,
+  BEAUTIFUL,
+  TERMITE_RESISTANCE,
+  HARD_DURABLE,
+  FIRE_RESISTANCE,
+  MOULD_RESISTANCE,
+  STABLE_PRECISE,
+  ENVIRONMENT_FRIENDLY,
+];
 
 export const dassoApplications: DassoApplication[] = [
   {
@@ -54,6 +154,7 @@ export const dassoApplications: DassoApplication[] = [
         image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/decking/dassoCTECH%20Decking2.jpeg",
       },
     ],
+    benefits: dassoDeckingBenefits,
     projects: [
       {
         name: "Star Terrace @ Star Vista",
@@ -74,8 +175,12 @@ export const dassoApplications: DassoApplication[] = [
     ],
     specs: [
       {
-        description: "DassoCTECH outdoor oiled Soffit, T&G end match， T-12",
+        description: "DassoCTECH outdoor oiled Soffit, T&G end match，T-12",
         size: "L1829 x W100 x T12"
+      },
+      {
+        description: "dassoCTECH outdoor oiled decking, Smooth & V-grooved, T-20",
+        size: "L1850 x W137 x T20"
       },
     ],
   },
@@ -106,6 +211,7 @@ export const dassoApplications: DassoApplication[] = [
         image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/cladding/dassoCTECH%20Cladding4.jpeg",
       },
     ],
+    benefits: dassoCladdingBenefits,
     projects: [
       {
         name: "NanXun Urban Exhibition Center",
@@ -124,6 +230,51 @@ export const dassoApplications: DassoApplication[] = [
       {
         description: "DassoCTECH Outdoor cladding with groove on length sides, oiled",
         size: "L1860 x 100 x 12"
+      },
+    ],
+  },
+  {
+    name: "Soffit",
+    icon: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/soffit/icon-soffit.svg",
+    description: "DassoCTECH Soffit, Deck Skirting and Wainscoting are Pre-primed and specifically designed for interior and exterior use with no leaching and zero VOC.",
+    applicationImage: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/soffit/bg-soffit.jpg",
+    patterns: [
+      {
+        name: "",
+        image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/soffit/dassoCTECH%20Soffit.jpeg",
+      },
+      {
+        name: "",
+        image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/soffit/dassoCTECH%20Soffit2.jpeg",
+      },
+      {
+        name: "",
+        image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/soffit/dassoCTECH%20Soffit3.jpeg",
+      },
+      {
+        name: "",
+        image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/soffit/dassoCTECH%20Soffit4.jpeg",
+      },
+    ],
+    benefits: dassoSoffitBenefits,
+    projects: [
+      {
+        name: "Surfers View",
+        image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/soffit/Surfers%20View.jpeg",
+      },
+      {
+        name: "Nashville Subway Police (LEED Silver)",
+        image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/soffit/Nashville%20Subway%20Police,%20Davison%20County%20(LEED%20Silver%20).jpeg",
+      },
+      {
+        name: "National University of Singapore",
+        image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/soffit/NUS.jpg",
+      },
+    ],
+    specs: [
+      {
+        description: "DassoCTECH outdoor oiled Soffit, T&G end match，T-12",
+        size: "L1829 x W100 x T12"
       },
     ],
   },

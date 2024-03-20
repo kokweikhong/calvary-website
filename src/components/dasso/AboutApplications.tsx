@@ -2,6 +2,7 @@ import { dassoApplications } from "@/constants/dasso-about-applications";
 import ImageSlider from "./ImageSlider";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import Benefits from "./Benefits";
 
 
 const AboutApplications = () => {
@@ -80,7 +81,12 @@ const AboutApplications = () => {
 
           <hr className="w-full h-1 my-4" />
 
-          <div className="container-cp">
+          <div className="w-full">
+            <h3 className="text-center font-medium text-lg mb-4">Benefits</h3>
+            <Benefits data={app.benefits} />
+          </div>
+
+          <div className="container-cp mt-4">
             <table className="w-full">
               <thead>
                 <tr className="align-top">
