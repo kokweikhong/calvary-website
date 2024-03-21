@@ -40,9 +40,6 @@ const Benefits = (props: BenefitsProps) => {
               alt={item.name || "Image"}
               width={24}
               height={24}
-              placeholder="blur"
-              blurDataURL={`data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3C/svg%3E`}
-              // sizes="(max-width: 300px) 100vw, 300px"
               className="w-full h-full object-cover"
             />
           </div>

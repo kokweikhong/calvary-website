@@ -44,7 +44,7 @@ const FeatureWeathering = () => {
           <h2 className="text-xl font-medium text-center">
             Weathering
           </h2>
-          <div className="grid grid-cols-3 gap-x-4 py-4">
+          <div className="grid grid-cols-3 gap-x-4 py-4 container-cp">
             <div>
               <div>
                 <Image

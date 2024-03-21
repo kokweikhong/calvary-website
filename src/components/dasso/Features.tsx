@@ -154,9 +154,9 @@ const Features = () => {
         </div>
       </div>
 
-      <div className="container-cp flex flex-col gap-4 py-4">
+      <div className="container-cp flex flex-col gap-4 py-4 lg:grid lg:grid-cols-3">
         {applications.map((application, index) => (
-          <div key={index} className="gap-x-2 grid grid-cols-[1fr_1fr]">
+          <div key={index} className="gap-x-2 grid grid-cols-[1fr_1fr] lg:grid-cols-1">
             <div className="h-auto w-full">
               <Image
                 src={application.image}

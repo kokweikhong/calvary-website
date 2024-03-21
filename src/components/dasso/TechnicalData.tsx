@@ -171,7 +171,7 @@ const TechnicalData = () => {
       </div>
       <div className="container-cp py-4">
         <div>
-          <ul className="space-y-4">
+          <ul className="space-y-4 lg:grid lg:grid-cols-2">
             {technicalData.map((data, index) => (
               <li key={index} className="py-2">
                 <h3 className="text-lg font-medium">{data.title}</h3>

@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import ProjectReferenceCard from "@/components/projects/ProjectReferenceCard";
 import { useEffect, useState } from "react";
 import { Project } from "@/interfaces/project";
+import { cn } from "@/lib/utils";
 
 async function getProjects() {
   const res = await fetch("/api/projects");
@@ -162,7 +163,10 @@ export default function Page() {
         <div className="flex justify-center items-center mt-8">
           <button
             onClick={() => setNumberToShow((prev) => prev + 6)}
-            className="bg-black text-white px-4 py-2"
+            className={cn(
+              "text-white px-4 py-2",
+              numberToShow >= filteredProjects.length ? "bg-gray-400" : "bg-black"
+            )}
           >
             Load More
           </button>

@@ -486,7 +486,10 @@
     "products": [
       "Kandinsky"
     ],
-    "images": []
+    "images": [
+      "projects/singtel-shop-comcentre/Singtel-Hello-Shop- (1).jpeg",
+      "projects/singtel-shop-comcentre/Singtel.jpg"
+    ]
   },
   {
     "id": "14",
@@ -597,7 +600,7 @@
     "location": "Singapore Management University",
     "completion": "Completed",
     "size": "",
-    "imagePath": "#N/A",
+    "imagePath": "projects/singapore-management-university",
     "countries": [
       "sg",
       "my"
@@ -618,7 +621,17 @@
     "products": [
       "Accoya"
     ],
-    "images": null
+    "images": [
+      "projects/singapore-management-university/Photo from ergodomus.jpg",
+      "projects/singapore-management-university/Photo from streetdirectory.jpg",
+      "projects/singapore-management-university/SMU Cladding.jpg",
+      "projects/singapore-management-university/SMU Connexion .jpeg",
+      "projects/singapore-management-university/SMU Connexion 1.jpg",
+      "projects/singapore-management-university/SMU Connexion 2.jpg",
+      "projects/singapore-management-university/photo from chi-athenaeum.org.jpg",
+      "projects/singapore-management-university/photo from issuu #2.jpeg",
+      "projects/singapore-management-university/photo from issuu #3.jpeg"
+    ]
   },
   {
     "id": "18",
@@ -627,7 +640,7 @@
     "location": "Marina Bay Sands",
     "completion": "Completed",
     "size": "",
-    "imagePath": "#N/A",
+    "imagePath": "projects/rise-restaurant",
     "countries": [
       "sg",
       "my"
@@ -646,7 +659,19 @@
     "products": [
       "Wood and Timber"
     ],
-    "images": null
+    "images": [
+      "projects/rise-restaurant/0ccb7084-8ea9-4603-9d57-5d7b00418777-2.jpg",
+      "projects/rise-restaurant/2.JPG",
+      "projects/rise-restaurant/IMG_0671.jpg",
+      "projects/rise-restaurant/IMG_0677.jpg",
+      "projects/rise-restaurant/IMG_0702.jpg",
+      "projects/rise-restaurant/IMG_0707-2.jpg",
+      "projects/rise-restaurant/IMG_0711-2.jpg",
+      "projects/rise-restaurant/IMG_0711-3.jpg",
+      "projects/rise-restaurant/IMG_0718.jpg",
+      "projects/rise-restaurant/b270e11b-2769-499e-a715-d8c1484887e3-2.jpg",
+      "projects/rise-restaurant/e2a7a54e-480d-4051-899b-4f853167c50d-2.jpg"
+    ]
   },
   {
     "id": "19",
@@ -655,7 +680,7 @@
     "location": "NYSI",
     "completion": "Completed",
     "size": "",
-    "imagePath": "#N/A",
+    "imagePath": "projects/national-youth-sports-institute",
     "countries": [
       "sg",
       "my"
@@ -675,7 +700,14 @@
     "products": [
       "Calvary Composite"
     ],
-    "images": null
+    "images": [
+      "projects/national-youth-sports-institute/NYSI 1.jpeg",
+      "projects/national-youth-sports-institute/NYSI 2.jpeg",
+      "projects/national-youth-sports-institute/NYSI 3.jpeg",
+      "projects/national-youth-sports-institute/NYSI 4.jpeg",
+      "projects/national-youth-sports-institute/NYSI 5.jpeg",
+      "projects/national-youth-sports-institute/NYSI 6.jpeg"
+    ]
   },
   {
     "id": "20",
@@ -717,7 +749,7 @@
     "location": "Cloudbreak",
     "completion": "Completed",
     "size": "",
-    "imagePath": "#N/A",
+    "imagePath": "projects/cloudbreak",
     "countries": [
       "sg",
       "my"
@@ -736,7 +768,16 @@
     "products": [
       "Sand \u0026 Vanish"
     ],
-    "images": null
+    "images": [
+      "projects/cloudbreak/464227b4-09a8-4a40-9a08-0fa552fc60a1.jpg",
+      "projects/cloudbreak/b028509a-d002-4c4e-bd73-78f594d6d626.jpg",
+      "projects/cloudbreak/ba324625-c790-42c7-aa21-d8386544a63e.jpg",
+      "projects/cloudbreak/cloud break.jpg",
+      "projects/cloudbreak/cloudbreak 2.jpg",
+      "projects/cloudbreak/d95a342b-9e4f-4bd5-be9a-e1d6f12ad43b.jpg",
+      "projects/cloudbreak/ea65a431-c3ac-4531-abe7-54588cefb779.jpg",
+      "projects/cloudbreak/fd9f8d9b-5bbf-42cf-81bf-1c41e9a79fce.jpg"
+    ]
   },
   {
     "id": "22",
@@ -1408,10 +1449,19 @@
       "Kandinsky"
     ],
     "images": [
-      "projects/shiseido/PUB Waterhub.jpg",
-      "projects/shiseido/PUB Waterhub1.jpeg",
-      "projects/shiseido/PUB Waterhub2.jpeg",
-      "projects/shiseido/PUB Waterhub3.jpeg"
+      "projects/shiseido/071f7477688515.5c8f6ce18e712.jpg",
+      "projects/shiseido/Shiseido_HQ_HASSELL_EK_Yap_01_Reception.jpeg",
+      "projects/shiseido/Shiseido_HQ_HASSELL_EK_Yap_02_Collaboration_area.jpeg",
+      "projects/shiseido/Shiseido_HQ_HASSELL_EK_Yap_03_Gathering_area.jpeg",
+      "projects/shiseido/Shiseido_HQ_HASSELL_EK_Yap_06_Life_Quality_Center.jpeg",
+      "projects/shiseido/Shiseido_HQ_HASSELL_EK_Yap_07_Office.jpeg",
+      "projects/shiseido/Shiseido_HQ_HASSELL_EK_Yap_08_Asia_Learning_Center.jpeg",
+      "projects/shiseido/WhatsApp Image 2018-10-04 at 17.39.00.jpeg",
+      "projects/shiseido/WhatsApp Image 2018-10-04 at 17.39.01.jpeg",
+      "projects/shiseido/WhatsApp Image 2018-12-15 at 11.56.21 (1).jpeg",
+      "projects/shiseido/WhatsApp Image 2018-12-15 at 11.56.22 (1).jpeg",
+      "projects/shiseido/WhatsApp Image 2018-12-15 at 11.56.22.jpeg",
+      "projects/shiseido/WhatsApp Image 2018-12-15 at 11.56.24 (1).jpeg"
     ]
   },
   {
@@ -2055,10 +2105,9 @@
       "Calvary Composite"
     ],
     "images": [
-      "projects/lyf-funan/Lyf@one north.jpg",
-      "projects/lyf-funan/photo by WOHA #2.jpg",
-      "projects/lyf-funan/photo by WOHA #3.jpg",
-      "projects/lyf-funan/photo by WOHA.jpg"
+      "projects/lyf-funan/Lyf@funan.jpg",
+      "projects/lyf-funan/photo from HOTEL HOBBY.jpg",
+      "projects/lyf-funan/photo from buro247.sg.jpeg"
     ]
   },
   {
@@ -2333,10 +2382,12 @@
       "Calvary Composite"
     ],
     "images": [
-      "projects/onalu-cafe/CIAP 3.jpeg",
-      "projects/onalu-cafe/CIAP_1.jpeg",
-      "projects/onalu-cafe/CIAP_2.jpeg",
-      "projects/onalu-cafe/CIAP_4.jpeg"
+      "projects/onalu-cafe/Onalu Cafe 2021 (1).jpeg",
+      "projects/onalu-cafe/Onalu Cafe 2021 (2).jpeg",
+      "projects/onalu-cafe/Onalu Cafe 2021 (3).jpeg",
+      "projects/onalu-cafe/Onalu Cafe 2021 (4).jpeg",
+      "projects/onalu-cafe/Onalu Cafe 2021 (5).jpeg",
+      "projects/onalu-cafe/Onalu Cafe 2021 (6).jpeg"
     ]
   },
   {
@@ -2410,7 +2461,7 @@
     "location": "Changi",
     "completion": "Completed",
     "size": "",
-    "imagePath": "#N/A",
+    "imagePath": "projects/civil-service-club",
     "countries": [
       "sg",
       "my"
@@ -2429,7 +2480,10 @@
     "products": [
       "Calvary Composite"
     ],
-    "images": null
+    "images": [
+      "projects/civil-service-club/WhatsApp Image 2023-08-15 at 7.01.16 PM.jpeg",
+      "projects/civil-service-club/landscape_Changi Civil Club.jpg"
+    ]
   },
   {
     "id": "67",

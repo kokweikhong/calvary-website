@@ -76,7 +76,10 @@ const ServiceProjects = ({ service }: ServiceProjectsProps) => {
       <div className="flex justify-center items-center mt-8">
         <button
           onClick={() => setNumberToShow((prev) => prev + 6)}
-          className="bg-black text-white px-4 py-2"
+          className={cn(
+            "text-white px-4 py-2",
+            numberToShow >= projects.length ? "bg-gray-400" : "bg-black"
+          )}
         >
           Load More
         </button>

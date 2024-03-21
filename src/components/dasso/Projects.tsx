@@ -5,6 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 import myImageLoader from "@/lib/imageLoader";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 async function getProjects(): Promise<Project[]> {
   const response = await fetch(`/api/projects`);
@@ -15,6 +17,8 @@ async function getProjects(): Promise<Project[]> {
 }
 
 const Projects = () => {
+  const [numberToLoad, setNumberToLoad] = useState(6);
+
   const { data: projects } = useQuery<Project[]>({
     queryKey: ["projects"],
     queryFn: getProjects,
@@ -29,8 +33,8 @@ const Projects = () => {
           </span>
         </h2>
       </div>
-      <div className="container-cp">
-        {projects?.map((project, index) => (
+      <div className="container-cp lg:grid lg:grid-cols-3">
+        {projects?.slice(0, numberToLoad).map((project, index) => (
           <div key={`project-${index}`}>
             <div className="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white">
               <div className="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-96">
@@ -79,7 +83,15 @@ const Projects = () => {
       </div>
 
       <div className="container-cp py-8 text-center">
-        <button className="bg-dasso text-white uppercase font-medium rounded-md py-2 px-4">
+        <button
+          disabled={!projects?.length ? true : numberToLoad >= projects?.length}
+          className={cn(
+            "text-white uppercase font-medium rounded-md py-2 px-4",
+            !projects?.length ? "bg-gray-300" : "bg-dasso",
+            numberToLoad >= projects?.length! ? "bg-gray-300" : "bg-dasso"
+          )}
+
+        >
           Load More
         </button>
       </div>
