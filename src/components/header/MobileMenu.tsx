@@ -4,6 +4,8 @@ import AboutUsMenu from "./AboutUsMenu";
 import ContactUsMenu from "./ContactUsMenu";
 import MaintenanceMenu from "./MaintenanceMenu";
 import TimberMenu from "./TimberMenu";
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+import Image from "next/image";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -28,11 +30,40 @@ const mobileLinks = [
   },
 ];
 
+const country = process.env.NEXT_PUBLIC_COUNTRY;
+import myLogo from "@/../public/svgs/malaysia-round-icon.svg";
+import sgLogo from "@/../public/svgs/singapore-round-icon.svg";
+
 const MobileMenu = () => {
   return (
     <div className="mt-6 flow-root">
       <div className="-my-6 divide-y divide-gray-500/10">
         <div className="space-y-2 py-6">
+
+          <Popover>
+            <PopoverTrigger>
+              <Image
+                src={country === "Malaysia" ? myLogo : sgLogo}
+                alt="Malaysia"
+                width={24}
+                height={24}
+              />
+            </PopoverTrigger>
+            <PopoverContent className="w-auto h-auto">
+              <a
+                href={country === "Malaysia" ? "htts://calvarycarpentry.com" : "https://calvarycarpentry.com.my"}
+                className="block px-4 py-2 text-sm text-gray-700"
+              >
+
+                <Image
+                  src={country === "Malaysia" ? sgLogo : myLogo}
+                  alt="Malaysia"
+                  width={24}
+                  height={24}
+                />
+              </a>
+            </PopoverContent>
+          </Popover>
           {mobileLinks.map((link) => (
             <Disclosure as="div" key={link.name} className="-mx-3">
               {({ open }) => (

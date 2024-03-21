@@ -5,12 +5,13 @@ import Image from "next/image";
 import { useState } from "react";
 import MobileMenu from "./header/MobileMenu";
 import PopupMenu from "./header/PopupMenu";
+import { Popover as PO, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 import calvaryLogo from "@/../public/black_horzontional_logo.png";
+import myLogo from "@/../public/svgs/malaysia-round-icon.svg";
+import sgLogo from "@/../public/svgs/singapore-round-icon.svg";
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
+const country = process.env.NEXT_PUBLIC_COUNTRY;
 
 const expandableLinks: string[] = [
   "Timber",
@@ -65,6 +66,35 @@ export default function Header() {
           >
             Blog
           </a>
+          <PO>
+            <PopoverTrigger>
+              <Image
+                src={country === "Malaysia" ? myLogo : sgLogo}
+                alt="Malaysia"
+                width={24}
+                height={24}
+              />
+            </PopoverTrigger>
+            <PopoverContent className="w-auto h-auto">
+              <a
+                href={country === "Malaysia" ? "htts://calvarycarpentry.com" : "https://calvarycarpentry.com.my"}
+                className="block px-4 py-2 text-sm text-gray-700"
+              >
+
+                <Image
+                  src={country === "Malaysia" ? sgLogo : myLogo}
+                  alt="Malaysia"
+                  width={24}
+                  height={24}
+                />
+              </a>
+            </PopoverContent>
+          </PO>
+          <button
+            type="button"
+            className="hidden lg:flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
+          >
+          </button>
         </Popover.Group>
       </nav>
       <Dialog
