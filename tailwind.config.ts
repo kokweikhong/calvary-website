@@ -19,7 +19,7 @@ const config = {
     },
     extend: {
       fontFamily: {
-        montserrat: ["var(--font-monserrat)", "sans-serif"],
+        montserrat: ["var(--font-montserrat)", "sans-serif"],
         garamond: ["var(--font-garamond)", "serif"],
       },
       backgroundImage: {

@@ -41,7 +41,7 @@ const Hero = () => {
         </p>
         <a
           href="#home-services"
-          className="text-white border border-white py-2 px-6 rounded-full font-semibold transition duration-300 hover:bg-gray-300 hover:text-headingDark"
+          className="max-w-3xl mx-auto text-white border border-white py-2 px-6 rounded-full font-semibold transition duration-300 hover:bg-gray-300 hover:text-headingDark"
         >
           Explore Timber
         </a>

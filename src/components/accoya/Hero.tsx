@@ -28,18 +28,17 @@ const Hero = () => {
             />
             <h2 className="text-4xl">Accoya</h2>
           </div>
-          <p className="text-xl text-center font-light">
-            Accoya® is acetylated pine timber. Durable, non-toxic, insect
-            barrier and dimensionally stable with 25 year warranty.
+          <p className="max-w-3xl mx-auto text-xl text-center font-light">
+            {` Accoya® is acetylated pine timber. Durable, non-toxic, insect barrier and dimensionally stable with 25 year warranty.`}
           </p>
           <div className="flex flex-col gap-y-2 justify-center items-center">
             <a
               href="#accoya-features"
               className="text-white border border-white px-4 py-2 group hover:border-black/70 hover:bg-black/70 transition-all duration-300 ease-in-out"
 
-              // onClick={() => {
-              //   document.getElementById("#acetylated-timber")?.scrollIntoView();
-              // }}
+            // onClick={() => {
+            //   document.getElementById("#acetylated-timber")?.scrollIntoView();
+            // }}
             >
               <span className="group-hover:hidden group-hover:opacity-0">
                 Explore Accoya

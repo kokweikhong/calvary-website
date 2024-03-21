@@ -34,7 +34,7 @@ const Hero = () => {
             />
             <h2 className="text-4xl">dasso CTECH</h2>
           </div>
-          <p className="text-xl text-center font-light">
+          <p className="text-xl text-center font-light max-w-3xl mx-auto">
             {`Sustainable Class 0 fire-rated bamboo : Dasso CTECH: highly durable and resistant to weather, mould, soft rot, and insects.`}
           </p>
           <div className="flex flex-col gap-y-2 justify-center items-center">

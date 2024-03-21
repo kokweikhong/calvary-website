@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <QueryProvider>
         <body
-          className={`${montserrat.variable} ${garamond.variable} font-montserrat`}
+          className={`${montserrat.variable} ${garamond.variable}`}
         >
           <ScrollToTop />
           <Header />
