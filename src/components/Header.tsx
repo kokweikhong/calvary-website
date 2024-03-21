@@ -77,7 +77,7 @@ export default function Header() {
             </PopoverTrigger>
             <PopoverContent className="w-auto h-auto">
               <a
-                href={country === "Malaysia" ? "htts://calvarycarpentry.com" : "https://calvarycarpentry.com.my"}
+                href={country === "Malaysia" ? "https://calvarycarpentry.com" : "https://calvarycarpentry.com.my"}
                 className="block px-4 py-2 text-sm text-gray-700"
               >
 

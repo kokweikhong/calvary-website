@@ -36,7 +36,7 @@ export const timberMenuLinks: TimberMenuLink[] = [
       {
         title: "Decking, Screen, Cladding, Soffit",
         subTitle: "Wood and Timber | Accoya®",
-        href: "/products/accoya",
+        href: "/accoya",
       },
       {
         title: "Decking, Screen, Cladding, Soffit",
@@ -45,7 +45,7 @@ export const timberMenuLinks: TimberMenuLink[] = [
             ? "dassoCTECH® | Reconstituted Bamboo"
             : "MOSO® | Reconstituted Bamboo",
         href:
-          country === "Singapore" ? "/products/dasso-ctech" : "/products/moso",
+          country === "Singapore" ? "/dasso-ctech" : "/moso",
       },
     ],
   },
