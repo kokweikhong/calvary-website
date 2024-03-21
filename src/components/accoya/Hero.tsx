@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import hero from "@/../public/accoya/ACCOYA HEADER.jpg";
 import accoyaLogo from "@/../public/accoya/Accoya Logo.svg";
@@ -33,11 +33,13 @@ const Hero = () => {
             barrier and dimensionally stable with 25 year warranty.
           </p>
           <div className="flex flex-col gap-y-2 justify-center items-center">
-            <button
+            <a
+              href="#accoya-features"
               className="text-white border border-white px-4 py-2 group hover:border-black/70 hover:bg-black/70 transition-all duration-300 ease-in-out"
-              onClick={() => {
-                document.getElementById("#acetylated-timber")?.scrollIntoView();
-              }}
+
+              // onClick={() => {
+              //   document.getElementById("#acetylated-timber")?.scrollIntoView();
+              // }}
             >
               <span className="group-hover:hidden group-hover:opacity-0">
                 Explore Accoya
@@ -45,7 +47,7 @@ const Hero = () => {
               <span className="hidden opacity-0 group-hover:block group-hover:opacity-100">
                 With Calvary
               </span>
-            </button>
+            </a>
             <span className="text-xs">Banyan Mandai, SMU, Jypsy</span>
           </div>
         </div>

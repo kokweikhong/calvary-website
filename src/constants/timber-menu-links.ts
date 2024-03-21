@@ -16,12 +16,12 @@ export const timberMenuLinks: TimberMenuLink[] = [
       {
         title: "Engineered Flooring",
         subTitle: "KANDINSKY® | KANDINSKY Lite TimberWise®",
-        href: "#",
+        href: "https://k-floors.com",
       },
       {
         title: "Solid Timber Flooring",
         subTitle: "Wood and Timber",
-        href: "#",
+        href: "timber-decking",
       },
     ],
   },
@@ -31,7 +31,7 @@ export const timberMenuLinks: TimberMenuLink[] = [
       {
         title: "Decking and Outdoor",
         subTitle: "Calvary Composite | Ez-Rail® ",
-        href: "#",
+        href: "/composite-decking",
       },
       {
         title: "Decking, Screen, Cladding, Soffit",

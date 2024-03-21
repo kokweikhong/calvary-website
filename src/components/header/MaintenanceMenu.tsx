@@ -19,11 +19,11 @@ const maintLinks: MaintLink[] = [
     children: [
       {
         title: "Osmo®",
-        href: "#",
+        href: "/osmo",
       },
       {
         title: "Silverwood",
-        href: "#",
+        href: "/silverwood",
       },
     ],
   },
@@ -32,11 +32,11 @@ const maintLinks: MaintLink[] = [
     children: [
       {
         title: "Sand & Vanish",
-        href: "#",
+        href: "/sand-and-vanish",
       },
       {
         title: "Restoration",
-        href: "#",
+        href: "/restoration",
       },
     ],
   },

@@ -5,7 +5,7 @@ import { services } from "@/constants/services";
 
 const Services = () => {
   return (
-    <section className="container mx-auto sm:px-6 lg:px-8">
+    <section id="home-services" className="container mx-auto sm:px-6 lg:px-8">
       <div className="relative z-3 my-[50px]">
         <div className="grid grid-cols-12 auto-rows-fr gap-6">
           {services.map((service) => (

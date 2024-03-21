@@ -55,7 +55,7 @@ const features: { name: string; image: string }[] = [
 
 const Features = () => {
   return (
-    <div className="bg-[#FAF8F0] py-4">
+    <div id="accoya-features" className="bg-[#FAF8F0] py-4">
       <div className="bg-accoya font-medium text-white py-4 text-center tracking-wider">
         <h2>ACCOYA® WOOD KEY FEATURES</h2>
       </div>

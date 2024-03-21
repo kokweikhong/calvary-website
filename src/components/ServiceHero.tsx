@@ -41,7 +41,7 @@ const ServiceHero = ({ service }: { service: string }) => {
         <p className="my-[30px]">{serviceContent.description}</p>
         <div className="flex flex-col">
           <a
-            href=""
+            href="#service-products"
             className="text-white border border-white px-4 py-2 mt-4 hover:bg-white hover:text-black transition-all"
           >
             {serviceContent.buttonText}
