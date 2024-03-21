@@ -2,6 +2,8 @@ import Hero from "@/components/dasso/Hero";
 import Introduction from "@/components/dasso/Introduction";
 import Features from "@/components/dasso/Features";
 import AboutApplications from "@/components/dasso/AboutApplications";
+import TechnicalData from "@/components/dasso/TechnicalData";
+import Projects from "@/components/dasso/Projects";
 
 
 export default function Page() {
@@ -10,7 +12,9 @@ export default function Page() {
       <Hero />
       <Introduction />
       <Features />
+      <TechnicalData />
       <AboutApplications />
+      <Projects />
     </main>
   );
 }

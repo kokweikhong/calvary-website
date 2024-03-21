@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import FeatureWeathering from "./FeatureWeathering";
 
 type Feature = {
   title: string;
@@ -87,7 +88,7 @@ const Features = () => {
   return (
     <section>
       <div className="w-full py-4 bg-dasso text-white mb-4">
-        <h2 className="uppercase text-center w-full text-3xl font-medium">
+        <h2 className="uppercase text-center w-full text-2xl font-medium">
           dasso ctech KEY FEATURES
         </h2>
       </div>
@@ -185,6 +186,9 @@ const Features = () => {
           </div>
         ))}
       </div>
+
+      <FeatureWeathering />
+
 
     </section>
   );
