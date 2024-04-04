@@ -103,7 +103,6 @@ export default function Page() {
       if (filteredProjects) {
         setFilteredProjects(filteredProjects);
       }
-      console.log(filteredProjects);
     };
 
     getProjectsByFilters();

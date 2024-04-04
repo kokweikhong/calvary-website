@@ -1,9 +1,16 @@
 "use client";
 
-import Image from "next/image";
 import { Project } from "@/interfaces/project";
-import { useQuery } from "@tanstack/react-query";
 import myImageLoader from "@/lib/imageLoader";
+import { useQuery } from "@tanstack/react-query";
+import { Metadata } from "next";
+import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Projects | Calvary Carpentry",
+  description:
+    "Explore our portfolio of residential and commercial projects. Discover our bespoke timber solutions for interior and outdoor projects. Connect with skilled artisans for custom timber floors, decking, and more.",
+};
 
 async function getProject(slug: string) {
   const res = await fetch(`/api/projects/${slug}`);

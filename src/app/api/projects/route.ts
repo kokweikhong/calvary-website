@@ -13,6 +13,5 @@ export async function GET() {
   const filteredData = data.filter((project) =>
     project.countries.includes(country === "Singapore" ? "sg" : "my")
   );
-  console.log(filteredData);
   return NextResponse.json(filteredData);
 }
