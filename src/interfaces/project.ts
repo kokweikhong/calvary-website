@@ -14,4 +14,5 @@ export type Project = {
   services?: string[];
   description?: string;
   images?: string[];
+  url: string;
 };

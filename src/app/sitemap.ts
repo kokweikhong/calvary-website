@@ -1,4 +1,5 @@
 import { Product } from "@/interfaces/product";
+import { Project } from "@/interfaces/project";
 import { MetadataRoute } from "next";
 
 const COUNTRY = process.env.NEXT_PUBLIC_COUNTRY;
@@ -11,6 +12,11 @@ const BASE_URL =
 async function getProducts() {
   const res = await fetch(`${BASE_URL}/api/products`);
   return (await res.json()) as Product[];
+}
+
+async function getProjects() {
+  const res = await fetch(`${BASE_URL}/api/projects`);
+  return (await res.json()) as Project[];
 }
 
 export default async function sitemap({
@@ -30,13 +36,16 @@ export default async function sitemap({
         lastModified: new Date(),
       };
     });
+  const projects = await getProjects();
+  const projectSitemaps = projects.map((project) => {
+    return {
+      url: `${BASE_URL}/projects/${project.url}`,
+      lastModified: new Date(),
+    };
+  });
   return [
     {
       url: `${BASE_URL}/`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${BASE_URL}/projects`,
       lastModified: new Date(),
     },
     {
@@ -51,6 +60,11 @@ export default async function sitemap({
       url: `${BASE_URL}/services/maintenance`,
       lastModified: new Date(),
     },
+    {
+      url: `${BASE_URL}/projects`,
+      lastModified: new Date(),
+    },
+    ...projectSitemaps,
     ...productSitemaps,
   ];
 }

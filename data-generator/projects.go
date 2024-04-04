@@ -23,7 +23,10 @@ type Project struct {
 	Description  string   `json:"description"`
 	Products     []string `json:"products"`
 	Images       []string `json:"images"`
+	URL          string   `json:"url"`
 }
+
+const PROJECT_FOLDER_PREFIX = "projects"
 
 func GenerateProjectsJSON(csvData [][]string, output string) error {
 	var projects []*Project
@@ -86,6 +89,7 @@ func GenerateProjectsJSON(csvData [][]string, output string) error {
 				project.Products = products
 			}
 		}
+		project.ImagePath = filepath.Join(PROJECT_FOLDER_PREFIX, project.ImagePath)
 		images, err := ListObjects(project.ImagePath)
 		if err != nil {
 			return err
@@ -97,6 +101,7 @@ func GenerateProjectsJSON(csvData [][]string, output string) error {
 			}
 		}
 		project.Images = images
+		project.URL = strings.ToLower(strings.ReplaceAll(project.Name, " ", "-"))
 		projects = append(projects, project)
 	}
 
