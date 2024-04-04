@@ -1,6 +1,6 @@
 import Image from "next/image";
-import specification from "../../../public/accoya/Accoya Specification.jpg";
-import acetylated from "../../../public/accoya/AcetylationProcessDiagram.jpg";
+import specification from "@/../../public/accoya/Accoya Specification.jpg";
+import acetylated from "@/../../public/accoya/AcetylationProcessDiagram.jpg";
 
 const About = () => {
   return (

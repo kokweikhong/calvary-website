@@ -1,17 +1,16 @@
-import Hero from "@/components/dasso/Hero";
-import Introduction from "@/components/dasso/Introduction";
-import Features from "@/components/dasso/Features";
-import AboutApplications from "@/components/dasso/AboutApplications";
-import TechnicalData from "@/components/dasso/TechnicalData";
-import Projects from "@/components/dasso/Projects";
+import Hero from "./_components/Hero";
+import Introduction from "./_components/Introduction";
+import Features from "./_components/Features";
+import AboutApplications from "./_components/AboutApplications";
+import TechnicalData from "./_components/TechnicalData";
+import Projects from "./_components/Projects";
 import { redirect } from "next/navigation";
 
 const country = process.env.NEXT_PUBLIC_COUNTRY;
 
-
 export default function Page() {
   if (country !== "Singapore") {
-    redirect("/404")
+    redirect("/404");
   }
   return (
     <main className="pt-[80px] space-y-8">

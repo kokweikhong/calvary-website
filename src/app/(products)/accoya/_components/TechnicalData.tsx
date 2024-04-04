@@ -1,9 +1,9 @@
-import downloadPDF from "@/../public/accoya/PDF icon.svg";
-import specTable1080 from "@/../public/accoya/STANDARD DIMENSIONS _ GRADES/1080 PX Accoya chart.svg";
-import specTable1280 from "@/../public/accoya/STANDARD DIMENSIONS _ GRADES/1280 PX Accoya chart.svg";
-import specTable390 from "@/../public/accoya/STANDARD DIMENSIONS _ GRADES/390PX Accoya chart.svg";
-import specTable768 from "@/../public/accoya/STANDARD DIMENSIONS _ GRADES/768 PX Accoya chart.svg";
-import thermalGain from "@/../public/accoya/Thermal Gain on Decks.jpg";
+import downloadPDF from "@/../../public/accoya/PDF icon.svg";
+import specTable1080 from "@/../../public/accoya/STANDARD DIMENSIONS _ GRADES/1080 PX Accoya chart.svg";
+import specTable1280 from "@/../../public/accoya/STANDARD DIMENSIONS _ GRADES/1280 PX Accoya chart.svg";
+import specTable390 from "@/../../public/accoya/STANDARD DIMENSIONS _ GRADES/390PX Accoya chart.svg";
+import specTable768 from "@/../../public/accoya/STANDARD DIMENSIONS _ GRADES/768 PX Accoya chart.svg";
+import thermalGain from "@/../../public/accoya/Thermal Gain on Decks.jpg";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 

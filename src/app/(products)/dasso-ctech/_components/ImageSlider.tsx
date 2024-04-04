@@ -27,7 +27,12 @@ const ImageSlider = (props: ImageSliderProps) => {
     >
       {props.data.map((item, index) => (
         <SwiperSlide key={index} className="text-center mb-10">
-          <div className={cn("text-center w-full flex flex-col justify-start", props.className)}>
+          <div
+            className={cn(
+              "text-center w-full flex flex-col justify-start",
+              props.className
+            )}
+          >
             <Image
               src={item.image}
               alt={item.name || "Image"}
@@ -39,11 +44,13 @@ const ImageSlider = (props: ImageSliderProps) => {
               className="w-full h-full object-cover"
             />
           </div>
-          {item.name && <span className="text-sm text-center">{item.name}</span>}
+          {item.name && (
+            <span className="text-sm text-center">{item.name}</span>
+          )}
         </SwiperSlide>
       ))}
     </Swiper>
   );
-}
+};
 
 export default ImageSlider;

@@ -1,7 +1,7 @@
 // "use client";
 
 import hero from "@/../public/accoya/ACCOYA HEADER.jpg";
-import accoyaLogo from "@/../public/accoya/Accoya Logo.svg";
+import accoyaLogo from "@/../../public/accoya/Accoya Logo.svg";
 import Image from "next/image";
 
 const Hero = () => {
@@ -36,9 +36,9 @@ const Hero = () => {
               href="#accoya-features"
               className="text-white border border-white px-4 py-2 group hover:border-black/70 hover:bg-black/70 transition-all duration-300 ease-in-out"
 
-            // onClick={() => {
-            //   document.getElementById("#acetylated-timber")?.scrollIntoView();
-            // }}
+              // onClick={() => {
+              //   document.getElementById("#acetylated-timber")?.scrollIntoView();
+              // }}
             >
               <span className="group-hover:hidden group-hover:opacity-0">
                 Explore Accoya
