@@ -1,11 +1,16 @@
 import Image from "next/image";
 
-const airportBeforeImage = "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/weathering/%20Madrid%20Barajas%20Airport1.jpeg"
-const airportAfterImage = "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/weathering/%20Madrid%20Barajas%20Airportafter.jpeg"
+const airportBeforeImage =
+  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/weathering/%20Madrid%20Barajas%20Airport1.jpeg";
+const airportAfterImage =
+  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/weathering/%20Madrid%20Barajas%20Airportafter.jpeg";
 
-const newImage = "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/weathering/New.jpg"
-const fadingImage = "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/weathering/Fading.jpg"
-const afterMaintenanceImage = "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/weathering/After%20maintance.jpg"
+const newImage =
+  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/weathering/New.jpg";
+const fadingImage =
+  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/weathering/Fading.jpg";
+const afterMaintenanceImage =
+  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/weathering/After%20maintance.jpg";
 
 const FeatureWeathering = () => {
   return (
@@ -41,9 +46,7 @@ const FeatureWeathering = () => {
         </div>
 
         <div className="bg-gray-300 py-6">
-          <h2 className="text-xl font-medium text-center">
-            Weathering
-          </h2>
+          <h2 className="text-xl font-medium text-center">Weathering</h2>
           <div className="grid grid-cols-3 gap-x-4 py-4 container-cp">
             <div>
               <div>
@@ -89,10 +92,9 @@ const FeatureWeathering = () => {
             </div>
           </div>
         </div>
-
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default FeatureWeathering;

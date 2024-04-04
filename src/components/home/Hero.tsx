@@ -2,9 +2,9 @@
 
 const Hero = () => {
   const heroBgPortrait =
-    "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/videos/homepage_portrait.mp4";
+    "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/videos/homepage_portrait.mp4";
   const heroBgLandscape =
-    "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/videos/homepage_landscape.mp4";
+    "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/videos/homepage_landscape.mp4";
 
   return (
     <section className="relative h-screen">

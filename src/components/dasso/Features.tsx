@@ -11,50 +11,44 @@ type Feature = {
 const features: Feature[] = [
   {
     title: "Termite Resistance",
-    description: [
-      "DC D (EN117)",
-      "Class 1 (AS 5604)",
-    ],
-    image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/benefits/Termite%20Resistance.svg",
+    description: ["DC D (EN117)", "Class 1 (AS 5604)"],
+    image:
+      "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/benefits/Termite%20Resistance.svg",
   },
   {
     title: "Biological Durability",
-    description: [
-      "Class 1 (EN 350:2016)",
-    ],
-    image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/benefits/Biological%20durability.svg",
+    description: ["Class 1 (EN 350:2016)"],
+    image:
+      "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/benefits/Biological%20durability.svg",
   },
   {
     title: "Carbon Footprint",
-    description: [
-      "-2.1 KG CO2 EQ",
-    ],
-    image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/benefits/Carbon%20footprint.svg",
+    description: ["-2.1 KG CO2 EQ"],
+    image:
+      "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/benefits/Carbon%20footprint.svg",
   },
   {
     title: "Fire Resistance",
-    description: [
-      "B, s1, d0 (EN 13501-1)",
-    ],
-    image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/benefits/Fire%20Resistance.svg",
+    description: ["B, s1, d0 (EN 13501-1)"],
+    image:
+      "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/benefits/Fire%20Resistance.svg",
   },
   {
     title: "Mould Resistance",
-    description: [
-      "Class 0 (EN ISO 846)",
-    ],
-    image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/benefits/Mould%20Resistance.svg",
+    description: ["Class 0 (EN ISO 846)"],
+    image:
+      "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/benefits/Mould%20Resistance.svg",
   },
   {
     title: "Release of Formaldehyde",
-    description: [
-      "E1 (0.17mg/L) (GB/T17657-2013)",
-    ],
-    image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/benefits/Release%20of%20formaldehyde.svg",
+    description: ["E1 (0.17mg/L) (GB/T17657-2013)"],
+    image:
+      "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/benefits/Release%20of%20formaldehyde.svg",
   },
 ];
 
-const warrantySvg = "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/warrantry.svg"
+const warrantySvg =
+  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/warrantry.svg";
 
 type Application = {
   name: string;
@@ -67,20 +61,23 @@ const applications: Application[] = [
   {
     name: "Decking",
     description: "Superior choice for all exterior decking applications",
-    icon: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/decking/icon-decking.svg",
-    image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/decking/bg-decking2.jpg",
+    icon: "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/decking/icon-decking.svg",
+    image:
+      "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/decking/bg-decking2.jpg",
   },
   {
     name: "Cladding",
     description: "Best for commercial exterior cladding",
-    icon: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/cladding/icon-cladding.svg",
-    image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/cladding/bg-cladding2.jpg",
+    icon: "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/cladding/icon-cladding.svg",
+    image:
+      "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/cladding/bg-cladding2.jpg",
   },
   {
     name: "Soffit",
     description: "Designed for interior and exterior use",
-    icon: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/soffit/icon-soffit.svg",
-    image: "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/soffit/bg-soffit2.jpg",
+    icon: "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/soffit/icon-soffit.svg",
+    image:
+      "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/soffit/bg-soffit2.jpg",
   },
 ];
 
@@ -99,10 +96,15 @@ const Features = () => {
         </p>
 
         <div className="flex flex-col items-center justify-center gap-y-1">
-          <Link href={"#"} className="bg-dasso text-white uppercase font-medium rounded-md py-2 px-4">
+          <Link
+            href={"#"}
+            className="bg-dasso text-white uppercase font-medium rounded-md py-2 px-4"
+          >
             Check out dasso ctech
           </Link>
-          <span className="text-sm text-dasso uppercase">dasso ctech products</span>
+          <span className="text-sm text-dasso uppercase">
+            dasso ctech products
+          </span>
         </div>
 
         <div className="grid grid-cols-3 gap-4 text-center">
@@ -114,20 +116,25 @@ const Features = () => {
                   alt={feature.title}
                   width={96}
                   height={96}
-                  className="w-24 h-24" />
+                  className="w-24 h-24"
+                />
               </div>
               <div className="flex flex-col items-center gap-y-2">
                 <h4 className="text-base font-medium">{feature.title}</h4>
                 <ul className="flex flex-col gap-y-1 list-disc">
                   {feature.description.map((desc, index) => (
-                    <li key={index} className="text-sm text-gray-700 list-inside">{desc}</li>
+                    <li
+                      key={index}
+                      className="text-sm text-gray-700 list-inside"
+                    >
+                      {desc}
+                    </li>
                   ))}
                 </ul>
               </div>
             </div>
           ))}
         </div>
-
       </div>
 
       <div className="bg-dasso text-white py-8 mt-4">
@@ -139,13 +146,12 @@ const Features = () => {
                 alt={"warranty"}
                 width={96}
                 height={96}
-                className="w-24 h-24" />
+                className="w-24 h-24"
+              />
             </div>
             <div className="flex flex-col gap-y-2">
-              <h3 className="text-2xl font-medium">
-                Warranty
-              </h3>
-              <p>25 years for  Commercial and residential</p>
+              <h3 className="text-2xl font-medium">Warranty</h3>
+              <p>25 years for Commercial and residential</p>
             </div>
           </div>
           <p>
@@ -156,7 +162,10 @@ const Features = () => {
 
       <div className="container-cp flex flex-col gap-4 py-4 lg:grid lg:grid-cols-3">
         {applications.map((application, index) => (
-          <div key={index} className="gap-x-2 grid grid-cols-[1fr_1fr] lg:grid-cols-1">
+          <div
+            key={index}
+            className="gap-x-2 grid grid-cols-[1fr_1fr] lg:grid-cols-1"
+          >
             <div className="h-auto w-full">
               <Image
                 src={application.image}
@@ -188,8 +197,6 @@ const Features = () => {
       </div>
 
       <FeatureWeathering />
-
-
     </section>
   );
 };

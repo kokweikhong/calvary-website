@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 const logo =
-  "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/icon-dasso.svg";
+  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/icon-dasso.svg";
 
 const heroBackgroundImage =
-  "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com/websites/products/dasso/hero-background.jpg";
+  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/hero-background.jpg";
 
 const Hero = () => {
   return (

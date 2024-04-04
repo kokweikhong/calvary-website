@@ -2,7 +2,7 @@ import { ImageLoaderProps } from "next/image";
 
 const imageURL =
   // process.env.NEXT_PUBLIC_IMAGE_URL ||
-  "https://calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com";
+  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com";
 
 export default function myImageLoader({
   src,

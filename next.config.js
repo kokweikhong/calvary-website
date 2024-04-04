@@ -4,7 +4,8 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "calvarycarpentry-cloud-storage.sgp1.digitaloceanspaces.com",
+        hostname:
+          "calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com",
         port: "",
       },
     ],
