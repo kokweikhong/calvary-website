@@ -101,7 +101,12 @@ func GenerateProjectsJSON(csvData [][]string, output string) error {
 			}
 		}
 		project.Images = images
-		project.URL = strings.ToLower(strings.ReplaceAll(project.Name, " ", "-"))
+		urlRestrictedChars := []string{",", ".", "(", ")", "'", "\"", ":", ";", "!", "?", "&", "#", "%", "+", "=", "~", "`", "^", "*", "<", ">", "{", "}", "[", "]", "\\", "|", "/", "@", "$"}
+		project.URL = strings.ToLower(project.Name)
+		for _, char := range urlRestrictedChars {
+			project.URL = strings.ReplaceAll(project.URL, char, "")
+		}
+		project.URL = strings.ReplaceAll(project.URL, " ", "-")
 		projects = append(projects, project)
 	}
 

@@ -1,6 +1,8 @@
-import { Product } from "@/interfaces/product";
-import { Project } from "@/interfaces/project";
+import type { Product } from "@/interfaces/product";
+import type { Project } from "@/interfaces/project";
 import { MetadataRoute } from "next";
+
+export const revalidate = 0;
 
 const COUNTRY = process.env.NEXT_PUBLIC_COUNTRY;
 
@@ -16,18 +18,19 @@ async function getProducts() {
 
 async function getProjects() {
   const res = await fetch(`${BASE_URL}/api/projects`);
-  return (await res.json()) as Project[];
+  const data = await res.json();
+  return data as Project[];
 }
 
-export default async function sitemap({
-  id,
-}: {
-  id: number;
-}): Promise<MetadataRoute.Sitemap> {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Google's limit is 50,000 URLs per sitemap
   // const start = id * 50000;
   // const end = start + 50000;
-  const products = await getProducts();
+  // const products = await getProducts();
+  const [products, projects] = await Promise.all([
+    getProducts(),
+    getProjects(),
+  ]);
   const productSitemaps = products
     .filter((product) => !product.href.startsWith("http"))
     .map((product) => {
@@ -36,8 +39,8 @@ export default async function sitemap({
         lastModified: new Date(),
       };
     });
-  const projects = await getProjects();
-  const projectSitemaps = projects.map((project) => {
+
+  const projectSitemaps = projects.map((project: Project) => {
     return {
       url: `${BASE_URL}/projects/${project.url}`,
       lastModified: new Date(),
