@@ -6,10 +6,10 @@ const COUNTRY = process.env.NEXT_PUBLIC_COUNTRY;
 const BASE_URL =
   COUNTRY === "Singapore"
     ? "https://calvarycarpentry.com"
-    : "https://calvarycarpentry.com";
+    : "https://calvarycarpentry.com.my";
 
 async function getProducts() {
-  const res = await fetch("http://localhost:3000/api/products");
+  const res = await fetch(`${BASE_URL}/api/products`);
   return (await res.json()) as Product[];
 }
 
