@@ -36,7 +36,10 @@ export default function RootLayout({
           <Footer />
         </body>
       </QueryProvider>
-      <GoogleAnalytics gaId="G-QDLKKH2CZT" />
+      {/* Google Analytics */}
+      {process.env.GOOGLE_ANALYTICS_ID && (
+        <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
+      )}
     </html>
   );
 }
