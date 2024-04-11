@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 async function getProjects(): Promise<Project[]> {
-  const response = await fetch(`http://localhost:3000/api/projects`);
+  const response = await fetch(`/api/projects`);
   const data = await response.json() as Project[];
   const filteredData = data.filter((project) => project.products.includes("Calvary Composite"));
 
