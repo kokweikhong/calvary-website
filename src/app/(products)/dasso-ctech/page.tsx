@@ -20,7 +20,7 @@ export default function Page() {
     redirect("/404");
   }
   return (
-    <main className="pt-[80px] space-y-8">
+    <main className="space-y-8">
       <Hero />
       <Introduction />
       <Features />

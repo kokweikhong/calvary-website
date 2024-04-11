@@ -14,13 +14,13 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <main className="pt-[80px]">
+    <div>
       <Hero />
       <About />
       <Features />
       <Features2 />
       <ColourSwatches />
       <TechnicalData />
-    </main>
+    </div>
   );
 }

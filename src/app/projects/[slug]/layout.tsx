@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 
 export default function ProjectLayout({ children }: { children: ReactNode }) {
   return (
-    { children }
+    <>
+      {children}
+    </>
   );
 }

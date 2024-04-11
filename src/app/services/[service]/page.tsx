@@ -40,7 +40,7 @@ export default function Page({ params }: { params: { service: string } }) {
   }
 
   return (
-    <main className="pt-[80px]">
+    <div>
       <ServiceHero service={params.service} />
 
       <ServiceProductSlider products={categories} />
@@ -69,6 +69,6 @@ export default function Page({ params }: { params: { service: string } }) {
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
         <OurTeam />
       </div>
-    </main>
+    </div>
   );
 }

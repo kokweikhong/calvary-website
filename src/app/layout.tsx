@@ -32,7 +32,9 @@ export default function RootLayout({
         >
           <ScrollToTop />
           <Header />
-          {children}
+          <main className="pt-[80px]">
+            {children}
+          </main>
           <Footer />
         </body>
       </QueryProvider>

@@ -35,7 +35,7 @@ function getPostBySlug(slug: string) {
 export default function Page({ params }: { params: { slug: string } }) {
   const { data, content } = getPostBySlug(params.slug);
   return (
-    <div className="pt-[80px]">
+    <div>
       <article className="prose prose-sm md:prose-base lg:prose-lg prose-slate !prose-invert mx-auto">
         <h1>{data.title}</h1>
         <MDXRemote source={content}></MDXRemote>

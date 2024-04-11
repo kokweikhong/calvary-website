@@ -109,7 +109,7 @@ export default function Page() {
   }, [filteredProducts, filteredSectors, filteredApplications, projects.data]);
 
   return (
-    <div className="pt-[80px]">
+    <div>
       <div className="container mx-auto sm:px-6 lg:px-8 flex flex-col items-center mt-8">
         <h2 className="uppercase py-1 text-2xl font-medium mb-4 border-y border-y-black">
           Project References

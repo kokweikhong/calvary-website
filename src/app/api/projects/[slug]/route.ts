@@ -17,7 +17,8 @@ export async function GET(
     .filter((project) =>
       project.countries.includes(country === "Singapore" ? "sg" : "my")
     )
-    .find((project) => project.url === params.slug);
+    .find((project) => project.url.includes(params.slug));
+  console.log(project);
   if (!project) {
     return NextResponse.error();
   }
