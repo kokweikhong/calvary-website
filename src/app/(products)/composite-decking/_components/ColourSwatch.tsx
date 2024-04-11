@@ -12,6 +12,38 @@ const swatches: { name: string; imgURL: string; }[] = [
   { name: "Havana", imgURL: `${ASSETS_URL}/websites/composite-decking/colour-swatches/Havana.jpg` },
 ]
 
+const sideProfiles: { name: string; imgURL: string; iconURL: string; dimension: string; description: string; }[] = [
+  {
+    name: "Fascia",
+    imgURL: `${ASSETS_URL}/websites/composite-decking/side-profiles/fascia.png`,
+    iconURL: `${ASSETS_URL}/websites/composite-decking/side-profiles/fascia-icon.svg`,
+    dimension: "10MM X 120MM X 2200MM",
+    description: "Our FASCIA boards are installed as riser for stirs or end termination."
+  },
+  {
+    name: "Grooved Edge Board",
+    imgURL: `${ASSETS_URL}/websites/composite-decking/side-profiles/grooved-edge-board.png`,
+    iconURL: `${ASSETS_URL}/websites/composite-decking/side-profiles/grooved-edge-board.svg`,
+    dimension: "21MM X 140MM X 2400MM",
+    description: "Our grooved edge boards are installed with our Ez-Rail Fastening System beneath the deck surface, leaving a tidy finish free of screw holes."
+  },
+  {
+    name: "Square Edge Board",
+    imgURL: `${ASSETS_URL}/websites/composite-decking/side-profiles/square-edge-board.png`,
+    iconURL: `${ASSETS_URL}/websites/composite-decking/side-profiles/square-edge-board.svg`,
+    dimension: "21MM X 140MM X 2400MM",
+    description: "Our square edge boards are installed traditionally like wood - with decking screws."
+  },
+]
+
+
+// fascia-icon.svg
+// square-edge-board.svg
+// grooved-edge-board.svg
+// fascia.png
+// square-edge-board.png
+// grooved-edge-board.png
+
 
 const ColourSwatch = () => {
   const [selectedSwatch, setSelectedSwatch] = useState<{ name: string; imgURL: string; }>(swatches[0]);
@@ -59,7 +91,7 @@ const ColourSwatch = () => {
 
                 {selectedSwatch.name === swatch.name && (
                   <div className="absolute top-0 left-0 w-full h-full bg-white/50 flex justify-center items-center">
-                    <p className="text-black/50 font-medium text-sm text-center">Currently Selected</p>
+                    <p className="text-black/50 font-medium text-xs text-center">Currently Selected</p>
                   </div>
                 )}
 
@@ -73,6 +105,43 @@ const ColourSwatch = () => {
 
         <div className="container mx-auto sm:px-6 lg:px-8">
           <h3 className="font-medium text-center">Profiles</h3>
+
+          <div className="space-y-4 md:grid md:grid-cols-3 md:space-y-0 md:space-x-2 mt-4">
+            {sideProfiles.map((profile, index) => (
+              <div key={index} className="flex flex-col gap-2 items-center justify-center border border-black p-4">
+                <div>
+                  <Image
+                    src={profile.imgURL}
+                    alt={profile.name}
+                    width={500}
+                    height={500}
+                    priority
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="w-1/2 h-auto">
+                  <Image
+                    src={profile.iconURL}
+                    alt={profile.name}
+                    width={500}
+                    height={500}
+                    priority
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <p className="font-medium my-4">{profile.name}</p>
+
+                <div className="space-y-4 md:text-sm">
+                  <div>
+                    <p>{`Actual Dimensions:`}</p>
+                    <p>{profile.dimension}</p>
+                  </div>
+                  <p>{profile.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
 
         </div>
 

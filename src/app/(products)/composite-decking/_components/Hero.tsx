@@ -42,11 +42,11 @@ const Hero = () => {
         </h1>
 
         <div className="flex flex-col gap-1 text-center items-center justify-center">
-          <button
+          <a href="#explore"
             className="font-medium border border-white px-4 py-2 bg-transparent hover:bg-white hover:text-black transition duration-300 ease-in-out"
           >
             Explore Composite
-          </button>
+          </a>
           <span className="text-sm">Waterbay, National Gallery</span>
         </div>
       </div>

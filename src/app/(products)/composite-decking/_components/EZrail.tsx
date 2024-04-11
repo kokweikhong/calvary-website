@@ -32,7 +32,7 @@ const profiles: { name: string; iconURL: string; }[] = [
 
 const EZRail = () => {
   return (
-    <div className="space-y-4 mt-4">
+    <div id="explore" className="space-y-4 mt-4">
 
       <div className="container mx-auto sm:px-6 lg:px-8 space-y-4">
         <h2 className="text-lg font-medium text-center">#1 Removable Decking in Singapore</h2>
@@ -83,19 +83,19 @@ const EZRail = () => {
                   />
                 </div>
                 {feature.name.includes("EZRAIL") ? (
-                  <div>
+                  <div className="w-auto h-full">
                     <Image
                       src={ezrailCompatibleURL}
                       alt={feature.name}
                       width={50}
                       height={50}
                       priority
-                      className="w-full h-full object-cover"
+                      className="w-3/4 h-full object-cover mx-auto"
                     />
-                    <span className="text-sm justify-self-start">Compatible</span>
+                    <span className="text-xs justify-self-start md:text-sm">Compatible</span>
                   </div>
                 ) : (
-                  <span className="text-sm justify-self-start">{feature.name}</span>
+                  <span className="text-xs justify-self-start md:text-sm">{feature.name}</span>
                 )}
               </div>
             ))}
@@ -104,9 +104,9 @@ const EZRail = () => {
       </div>
 
       <div className="bg-calvaryComposite py-8">
-        <div className="space-y-4 text-white grid grid-cols-[1fr_2fr] md:grid-rows-2 container mx-auto sm:px-6 lg:px-8">
+        <div className="space-y-4 text-white md:grid md:grid-cols-2 md:grid-rows-2 container mx-auto sm:px-6 lg:px-8">
 
-          <div className="md:row-span-full">
+          <div className="w-1/2 mx-auto md:h-full md:w-auto md:row-span-full">
             <Image
               src={ezrailBlueIconURL}
               alt="EZ-rail® Removable Decking Clip System"
@@ -126,15 +126,15 @@ const EZRail = () => {
             <p>Click to check them out:</p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-2 col-span-full md:col-span-1">
+          <div className="flex flex-wrap items-center justify-center gap-2 col-span-full md:col-span-1 text-center md:justify-start">
             <h4 className="bg-white rounded-full p-2">
-              <span className="text-calvaryComposite uppercase font-medium text-base">Accoya Decking</span>
+              <span className="text-calvaryComposite uppercase font-medium text-sm">Accoya Decking</span>
             </h4>
             <h4 className="bg-white rounded-full p-2">
-              <span className="text-calvaryComposite uppercase font-medium text-base">Calvary Composite Decking</span>
+              <span className="text-calvaryComposite uppercase font-medium text-sm">Calvary Composite Decking</span>
             </h4>
             <h4 className="bg-white rounded-full p-2">
-              <span className="text-calvaryComposite uppercase font-medium text-base">Reconstituted Composite decking</span>
+              <span className="text-calvaryComposite uppercase font-medium text-sm">Reconstituted Composite decking</span>
             </h4>
           </div>
         </div>
@@ -143,7 +143,7 @@ const EZRail = () => {
 
       <div className="space-y-4">
         <div className="space-y-4 container mx-auto sm:px-6 lg:px-8">
-          <div>
+          <div className="max-w-3xl mx-auto h-auto">
             <Image
               src={ezrailCompositeDissectionURL}
               alt="EZ-rail® Removable Decking Clip System"
@@ -155,7 +155,7 @@ const EZRail = () => {
           </div>
           <h3 className="font-medium text-xl uppercase">
             <span
-              className="border-b-2 border-black pb-2"
+              className="border-b-2 border-black pb-2 leading-10"
             >
               {`Ensured Flushed design for the smallest* drop`}
             </span>
