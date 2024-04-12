@@ -93,7 +93,7 @@ const EnquiryForm = () => {
         <div className="w-full text-center">
           <button
             type="submit"
-            className="mt-2 mx-auto rounded-md bg-[#137765] px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-[#137765] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#137765]"
+            className="mt-2 mx-auto rounded-md bg-[#137765] px-4 py-2 font-medium text-white shadow-sm hover:bg-[#137765] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#137765]"
           >
             Send
           </button>

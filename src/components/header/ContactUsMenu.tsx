@@ -10,11 +10,11 @@ type ContactUsLink = {
 const contactUsLinks: ContactUsLink[] = [
   {
     title: "Locations",
-    href: "#",
+    href: "/contact-us",
   },
   {
     title: "Contact Form",
-    href: "#",
+    href: "/contact-us",
   },
 ];
 
