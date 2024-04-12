@@ -102,9 +102,9 @@ const KeyFeatures = () => {
               src={compositeLay1URL}
               alt="Calvary Composite Decking"
               width={500}
-              height={500}
+              height={300}
               priority
-              className="w-full h-full object-cover"
+              className="w-full h-auto object-cover"
             />
           </div>
           <div>

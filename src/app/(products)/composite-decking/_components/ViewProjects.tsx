@@ -49,6 +49,7 @@ const ViewProjects = () => {
                     alt={project.name}
                     width={300}
                     height={200}
+                    priority
                     className="rounded-lg w-full h-full object-cover"
                   />
                 </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 
 const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
@@ -38,15 +39,15 @@ const EZRail = () => {
         <h2 className="text-lg font-medium text-center">#1 Removable Decking in Singapore</h2>
 
         <div className="flex flex-col items-center justify-center space-y-2">
-          <div>
-            <Image
-              src={ezrailBannerURL}
-              alt="EZ-rail® Removable Decking Clip System"
-              width={1920}
-              height={1080}
-              priority
-              className="w-full h-full object-cover"
-            />
+          <div className="w-full h-full">
+            <iframe
+              className="w-full aspect-video object-cover"
+              src="https://www.youtube.com/embed/OdwhJsE-Nqo?si=BFu99M8B56jRkIjR"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
           </div>
           <span className="capitalize text-sm">patented technology by calvary Carpentry</span>
         </div>
@@ -79,6 +80,7 @@ const EZRail = () => {
                     alt={feature.name}
                     width={50}
                     height={50}
+                    className="w-full h-full object-cover"
                     priority
                   />
                 </div>
@@ -128,7 +130,7 @@ const EZRail = () => {
 
           <div className="flex flex-wrap items-center justify-center gap-2 col-span-full md:col-span-1 text-center md:justify-start">
             <h4 className="bg-white rounded-full p-2">
-              <span className="text-calvaryComposite uppercase font-medium text-sm">Accoya Decking</span>
+              <Link href={"/accoya"} className="text-calvaryComposite uppercase font-medium text-sm">Accoya Decking</Link>
             </h4>
             <h4 className="bg-white rounded-full p-2">
               <span className="text-calvaryComposite uppercase font-medium text-sm">Calvary Composite Decking</span>

@@ -21,10 +21,13 @@ const Downloads = () => {
       <div className="container mx-auto sm:px-6 lg:px-8">
         <div className="">
           <div className='flex space-x-2 border-b border-black'>
-            <a href={compositeBrochureLink} target="_blank" rel="noreferrer" className="block bg-white py-4">
+            <a
+              href={compositeBrochureLink}
+              target="_blank"
+              rel="noreferrer"
+              className="flex space-x-2 items-center bg-white py-4"
+            >
               <h3 className="font-medium uppercase">{`Calvary Composite® brochure`}</h3>
-            </a>
-            <div className="flex items-center justify-center">
               <Image
                 src={downloadIconURL}
                 alt="Download Icon"
@@ -32,14 +35,16 @@ const Downloads = () => {
                 height={30}
                 priority
               />
-            </div>
+            </a>
           </div>
 
           <div className='flex space-x-2 border-b border-black'>
-            <a href={compositeResdentialLink} target="_blank" rel="noreferrer" className="block bg-white py-4">
+            <a
+              href={compositeResdentialLink}
+              target="_blank" rel="noreferrer"
+              className="flex space-x-2 items-center bg-white py-4"
+            >
               <h3 className="font-medium uppercase">{`Calvary Composite® residential`}</h3>
-            </a>
-            <div className="flex items-center justify-center">
               <Image
                 src={downloadIconURL}
                 alt="Download Icon"
@@ -47,14 +52,17 @@ const Downloads = () => {
                 height={30}
                 priority
               />
-            </div>
+            </a>
           </div>
 
           <div className='flex space-x-2 border-b border-black'>
-            <a href={compositeProjectLink} target="_blank" rel="noreferrer" className="block bg-white py-4">
+            <a
+              href={compositeProjectLink}
+              target="_blank"
+              rel="noreferrer"
+              className="flex space-x-2 items-center bg-white py-4"
+            >
               <h3 className="font-medium uppercase">{`Calvary Composite® Project reference`}</h3>
-            </a>
-            <div className="flex items-center justify-center">
               <Image
                 src={downloadIconURL}
                 alt="Download Icon"
@@ -62,7 +70,7 @@ const Downloads = () => {
                 height={30}
                 priority
               />
-            </div>
+            </a>
           </div>
 
         </div>
@@ -70,7 +78,7 @@ const Downloads = () => {
 
 
 
-    </div>
+    </div >
   );
 }
 
