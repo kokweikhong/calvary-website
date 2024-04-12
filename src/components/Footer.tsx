@@ -62,7 +62,7 @@ const contacts: Contact[] = [
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1F2126] py-[70px] mt-[30px] sm:px-6 lg:px-8">
+    <footer className="bg-[#1F2126] py-[70px] sm:px-6 lg:px-8">
       <Toaster />
       <div className="text-white my-6 lg:grid lg:grid-cols-3 lg:gap-4 mx-auto max-w-7xl sm:px-6 lg:px-8 container">
         <div className="space-y-[30px] lg:col-span-full">
@@ -102,7 +102,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-[30px] lg:col-span-2">
+        <div id="contact-us-footer" className="mt-[30px] lg:col-span-2">
           <div className="text-center py-4 border-b border-b-white">
             <h3 className="font-medium text-lg uppercase">Enquiry Form</h3>
           </div>
