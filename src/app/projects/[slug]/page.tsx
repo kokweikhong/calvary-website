@@ -15,14 +15,28 @@ export default function Page({ params }: { params: { slug: string } }) {
   const { data: project, isLoading } = useQuery({
     queryKey: ["project", params.slug],
     queryFn: () => getProject(params.slug),
+    retry: 1,
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="h-screen flex flex-col items-center justify-center">
+        <h2 className="text-center text-2xl font-bold font-montserrat">
+          Loading...
+        </h2>
+      </div>
+    )
   }
 
+
   if (!project) {
-    return <div>Loading...</div>;
+    return (
+      <div className="h-screen flex flex-col items-center justify-center">
+        <h2 className="text-center text-2xl font-bold font-montserrat">
+          No Project Found!
+        </h2>
+      </div>
+    )
   }
 
   return (
