@@ -10,12 +10,19 @@ import "./globals.css";
 const country = process.env.NEXT_PUBLIC_COUNTRY || "Singapore";
 
 export const metadata: Metadata = {
-  title: country === "Malaysia" ? "Calvary Carpentry Sdn Bhd" : "Calvary Carpentry Pte Ltd",
+  title:
+    country === "Malaysia"
+      ? "Calvary Carpentry Sdn Bhd"
+      : "Calvary Carpentry Pte Ltd",
   description:
-    "Crafting Excellence in Timber: Discover Calvary Carpentry's Expert Woodworkers in " + country,
+    "Crafting Excellence in Timber: Discover Calvary Carpentry's Expert Woodworkers in " +
+    country,
   icons: {
     icon: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
+  },
+  verification: {
+    google: "Vwy7YvF3taaayqVhgiszvxDvq7FxQKyu9CzxccoMhds",
   },
 };
 
@@ -27,14 +34,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <QueryProvider>
-        <body
-          className={`${montserrat.variable} ${garamond.variable}`}
-        >
+        <body className={`${montserrat.variable} ${garamond.variable}`}>
           <ScrollToTop />
           <Header />
-          <main className="pt-[80px]">
-            {children}
-          </main>
+          <main className="pt-[80px]">{children}</main>
           <Footer />
         </body>
       </QueryProvider>
