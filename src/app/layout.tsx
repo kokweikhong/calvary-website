@@ -1,6 +1,7 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+// import Header from "@/components/Header";
+import Header from "@/components/header/Header";
 import ScrollToTop from "@/components/ScrollToTop";
 import { garamond, montserrat } from "@/lib/fonts";
 import type { Metadata } from "next";
@@ -37,7 +38,7 @@ export default function RootLayout({
         <body className={`${montserrat.variable} ${garamond.variable}`}>
           <ScrollToTop />
           <Header />
-          <main className="pt-[80px]">{children}</main>
+          <main>{children}</main>
           <Footer />
         </body>
       </QueryProvider>
