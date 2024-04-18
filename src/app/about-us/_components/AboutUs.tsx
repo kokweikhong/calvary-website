@@ -41,7 +41,10 @@ const ArrowRightWithTail = ({ className }: { className: string }) => {
 
 const AboutUs = () => {
   return (
-    <div className="container-cp flex flex-col items-center justify-center space-y-8">
+    <div
+      id="about-us"
+      className="container-cp flex flex-col items-center justify-center space-y-8"
+    >
       <div className="text-center border-y border-black py-2">
         <h2 className="uppercase text-2xl font-montserrat tracking-wider">
           About Us

@@ -27,7 +27,7 @@ const Hero = () => {
 
         <div className="flex flex-col space-y-1 items-center justify-center">
           <a
-            href="#contact"
+            href="#about-us"
             className="bg-transparent border-2 border-white text-white py-2 px-4 hover:bg-white hover:text-black transition-all duration-300"
           >
             Explore Timber
