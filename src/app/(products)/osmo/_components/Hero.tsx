@@ -1,13 +1,13 @@
-import Image from "next/image"
+import Image from "next/image";
 
-const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL
-const heroImageURL = `${ASSETS_URL}/websites/osmo/hero.jpg`
-const osmoLogoURL = `${ASSETS_URL}/websites/osmo/osmo-logo-white.svg`
+const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
+const heroImageURL = `${ASSETS_URL}/websites/osmo/hero.jpg`;
+const osmoLogoURL = `${ASSETS_URL}/websites/osmo/osmo-logo-white.svg`;
 
 const Hero = () => {
   return (
-    <div className="relative">
-      <div className="relative">
+    <div className="relative h-screen">
+      <div className="absolute top-0 left-0 w-full h-full">
         <Image
           src={heroImageURL}
           alt="Hero image"
@@ -46,11 +46,13 @@ const Hero = () => {
           >
             Explore OSMO
           </a>
-          <p className="mt-4 text-sm">Jewel Changi Airport, SMU, Banyan Mandai</p>
+          <p className="mt-4 text-sm">
+            Jewel Changi Airport, SMU, Banyan Mandai
+          </p>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
