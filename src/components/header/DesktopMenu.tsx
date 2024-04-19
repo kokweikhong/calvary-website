@@ -40,9 +40,15 @@ const DesktopMenu = () => {
                 <Popover.Panel className="absolute inset-x-0 top-0 -z-10 bg-white pt-14 shadow-lg ring-1 ring-gray-900/5">
                   <div className="mx-auto grid max-w-7xl grid-cols-4 gap-x-4 px-6 py-10 lg:px-8 xl:gap-x-8">
                     <div>
-                      <h3 className="hidden lg:block font-semibold text-lg mb-6 p-2">
-                        Interior
-                      </h3>
+                      <Link
+                        href={"/services/interior"}
+                        onClick={() => close()}
+                        className="flex items-center hover:text-gray-800 hover:bg-gray-200 focus:outline-none"
+                      >
+                        <h3 className="hidden lg:block font-semibold text-lg mb-6 p-2">
+                          Interior
+                        </h3>
+                      </Link>
                       <div>
                         <ul className="space-y-4 [&_h4]:text-[#805C00]">
                           <LinkItem>
@@ -72,9 +78,15 @@ const DesktopMenu = () => {
                     </div>
 
                     <div>
-                      <h3 className="hidden lg:block font-semibold text-lg mb-6 p-2">
-                        Exterior
-                      </h3>
+                      <Link
+                        href={"/services/exterior"}
+                        onClick={() => close()}
+                        className="flex items-center hover:text-gray-800 hover:bg-gray-200 focus:outline-none"
+                      >
+                        <h3 className="hidden lg:block font-semibold text-lg mb-6 p-2">
+                          Exterior
+                        </h3>
+                      </Link>
                       <div>
                         <ul className="space-y-4 [&_h4]:text-[#805C00]">
                           <LinkItem>
@@ -117,9 +129,15 @@ const DesktopMenu = () => {
                     </div>
 
                     <div>
-                      <h3 className="hidden lg:block font-semibold text-lg mb-6 p-2">
-                        Maintenance
-                      </h3>
+                      <Link
+                        href={"/services/maintenance"}
+                        onClick={() => close()}
+                        className="flex items-center hover:text-gray-800 hover:bg-gray-200 focus:outline-none"
+                      >
+                        <h3 className="hidden lg:block font-semibold text-lg mb-6 p-2">
+                          Maintenance
+                        </h3>
+                      </Link>
                       <div>
                         <ul className="space-y-4 [&_h4]:text-[#805C00]">
                           <LinkItem>

@@ -189,13 +189,13 @@ const Footer = () => {
                 <Link href="/privacy-policy">Privacy Policy</Link>
               </li>
               <li>
-                <a href="#">Maintenance</a>
+                <Link href="/services/maintenance">Maintenance</Link>
               </li>
               <li>
                 <a href="#">Blog</a>
               </li>
               <li>
-                <a href="#">Projects</a>
+                <Link href="/projects">Projects</Link>
               </li>
             </ul>
           </div>

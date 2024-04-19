@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   env: {
     NEXT_PUBLIC_WEBSITE_ASSETS_URL: process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL,
   },
@@ -15,4 +16,8 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+const withMDX = require("@next/mdx")({
+  extension: /\.mdx?$/,
+});
+
+module.exports = withMDX(nextConfig);

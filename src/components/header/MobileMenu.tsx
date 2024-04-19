@@ -54,13 +54,23 @@ const MobileMenu = (props: MobileMenuProps) => {
                       <ChevronDownIcon
                         className={cn(
                           open ? "rotate-180" : "",
-                          "h-5 w-5 flex-none"
+                          "h-5 w-5 flex-none",
                         )}
                         aria-hidden="true"
                       />
                     </Disclosure.Button>
                     <Disclosure.Panel className="mt-2 space-y-2">
                       <ul className="space-y-4 [&_h4]:text-[#805C00]">
+                        <LinkItem>
+                          <Link
+                            href={"/services/interior"}
+                            onClick={() => props.setMobileMenuOpen(false)}
+                          >
+                            <h4 className="font-semibold text-base mb-1">
+                              Interior
+                            </h4>
+                          </Link>
+                        </LinkItem>
                         <LinkItem>
                           <Link
                             href={navLinks.kandinsky}
@@ -97,13 +107,23 @@ const MobileMenu = (props: MobileMenuProps) => {
                       <ChevronDownIcon
                         className={cn(
                           open ? "rotate-180" : "",
-                          "h-5 w-5 flex-none"
+                          "h-5 w-5 flex-none",
                         )}
                         aria-hidden="true"
                       />
                     </Disclosure.Button>
                     <Disclosure.Panel className="mt-2 space-y-2">
                       <ul className="space-y-4 [&_h4]:text-[#805C00]">
+                        <LinkItem>
+                          <Link
+                            href={"/services/enterior"}
+                            onClick={() => props.setMobileMenuOpen(false)}
+                          >
+                            <h4 className="font-semibold text-base mb-1">
+                              Exterior
+                            </h4>
+                          </Link>
+                        </LinkItem>
                         <LinkItem>
                           <Link
                             href={navLinks.calvaryComposite}
@@ -153,13 +173,23 @@ const MobileMenu = (props: MobileMenuProps) => {
                       <ChevronDownIcon
                         className={cn(
                           open ? "rotate-180" : "",
-                          "h-5 w-5 flex-none"
+                          "h-5 w-5 flex-none",
                         )}
                         aria-hidden="true"
                       />
                     </Disclosure.Button>
                     <Disclosure.Panel className="mt-2 space-y-2">
                       <ul className="space-y-4 [&_h4]:text-[#805C00]">
+                        <LinkItem>
+                          <Link
+                            href={"/services/mainenance"}
+                            onClick={() => props.setMobileMenuOpen(false)}
+                          >
+                            <h4 className="font-semibold text-base mb-1">
+                              Maintenance
+                            </h4>
+                          </Link>
+                        </LinkItem>
                         <LinkItem>
                           <Link
                             href={navLinks.osmo}
