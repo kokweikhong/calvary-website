@@ -3,7 +3,7 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { Fragment } from "react";
 import { CountrySwitch, LinkItem } from "./Menu";
-import { navLinks } from "./Menu";
+import { navLinks } from "@/constants/nav-links";
 
 const popoverButtonNames = ["Products", "About Us", "Blog", "Projects"];
 
@@ -41,7 +41,7 @@ const DesktopMenu = () => {
                   <div className="mx-auto grid max-w-7xl grid-cols-4 gap-x-4 px-6 py-10 lg:px-8 xl:gap-x-8">
                     <div>
                       <Link
-                        href={"/services/interior"}
+                        href={navLinks.interior}
                         onClick={() => close()}
                         className="flex items-center hover:text-gray-800 hover:bg-gray-200 focus:outline-none"
                       >
@@ -79,7 +79,7 @@ const DesktopMenu = () => {
 
                     <div>
                       <Link
-                        href={"/services/exterior"}
+                        href={navLinks.exterior}
                         onClick={() => close()}
                         className="flex items-center hover:text-gray-800 hover:bg-gray-200 focus:outline-none"
                       >
@@ -130,7 +130,7 @@ const DesktopMenu = () => {
 
                     <div>
                       <Link
-                        href={"/services/maintenance"}
+                        href={navLinks.maintenance}
                         onClick={() => close()}
                         className="flex items-center hover:text-gray-800 hover:bg-gray-200 focus:outline-none"
                       >

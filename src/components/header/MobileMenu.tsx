@@ -4,8 +4,8 @@ import Image from "next/image";
 import calvaryLogo from "@/../public/black_horzontional_logo.png";
 import { ChevronDownIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { CountrySwitch, LinkItem } from "./Menu";
-import { navLinks } from "./Menu";
 import { cn } from "@/lib/utils";
+import { navLinks } from "@/constants/nav-links";
 
 const COUNTRY = process.env.NEXT_PUBLIC_COUNTRY || "Singapore";
 
@@ -63,7 +63,7 @@ const MobileMenu = (props: MobileMenuProps) => {
                       <ul className="space-y-4 [&_h4]:text-[#805C00]">
                         <LinkItem>
                           <Link
-                            href={"/services/interior"}
+                            href={navLinks.interior}
                             onClick={() => props.setMobileMenuOpen(false)}
                           >
                             <h4 className="font-semibold text-base mb-1">
@@ -116,7 +116,7 @@ const MobileMenu = (props: MobileMenuProps) => {
                       <ul className="space-y-4 [&_h4]:text-[#805C00]">
                         <LinkItem>
                           <Link
-                            href={"/services/enterior"}
+                            href={navLinks.exterior}
                             onClick={() => props.setMobileMenuOpen(false)}
                           >
                             <h4 className="font-semibold text-base mb-1">
@@ -182,7 +182,7 @@ const MobileMenu = (props: MobileMenuProps) => {
                       <ul className="space-y-4 [&_h4]:text-[#805C00]">
                         <LinkItem>
                           <Link
-                            href={"/services/mainenance"}
+                            href={navLinks.maintenance}
                             onClick={() => props.setMobileMenuOpen(false)}
                           >
                             <h4 className="font-semibold text-base mb-1">

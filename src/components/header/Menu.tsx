@@ -10,20 +10,6 @@ import sgLogo from "@/../public/svgs/singapore-round-icon.svg";
 
 const COUNTRY = process.env.NEXT_PUBLIC_COUNTRY || "Singapore";
 
-export const navLinks = {
-  kandinsky: "https://k-floors.com",
-  woodAndTimber: "/wood-and-timber",
-  calvaryComposite: "/calvary-composite",
-  accoya: "/accoya",
-  dasso: "/dasso",
-  osmo: "/osmo",
-  sandAndVanish: "/sand-and-vanish",
-  aboutUs: "/about-us",
-  blog: "/blog",
-  projects: "/projects",
-  contactUs: "/contact-us",
-};
-
 export const LinkItem = ({ children }: { children: ReactNode }) => {
   return (
     <li className="hover:bg-gray-100 hover:font-bold transition-all duration-300 ease-in-out p-2 rounded-md">
