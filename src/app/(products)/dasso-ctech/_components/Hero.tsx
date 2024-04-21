@@ -1,10 +1,8 @@
 import Image from "next/image";
 
-const logo =
-  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/icon-dasso.svg";
-
-const heroBackgroundImage =
-  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/hero-background.jpg";
+const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
+const logo = `${ASSETS_URL}/websites/products/dasso/icon-dasso.svg`;
+const heroBackgroundImage = `${ASSETS_URL}/websites/products/dasso/hero-background.jpg`;
 
 const Hero = () => {
   return (
