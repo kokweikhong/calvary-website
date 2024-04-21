@@ -1,11 +1,11 @@
 "use client";
 
-const Hero = () => {
-  const heroBgPortrait =
-    "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/videos/homepage_portrait.mp4";
-  const heroBgLandscape =
-    "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/videos/homepage_landscape.mp4";
+const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
 
+const heroBgPortrait = `${ASSETS_URL}/websites/videos/homepage_portrait.MP4`;
+const heroBgLandscape = `${ASSETS_URL}/websites/videos/homepage_landscape.MP4`;
+
+const Hero = () => {
   return (
     <section className="relative h-screen">
       {/* Video Background */}
