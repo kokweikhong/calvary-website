@@ -64,7 +64,7 @@ const DesktopMenu = () => {
                           </LinkItem>
                           <LinkItem>
                             <Link
-                              href={navLinks.calvaryComposite}
+                              href={navLinks.woodAndTimber}
                               onClick={() => close()}
                             >
                               <h4 className="font-semibold text-base mb-1">

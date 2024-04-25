@@ -7,7 +7,7 @@ import { Bars3Icon } from "@heroicons/react/24/outline";
 import MobileMenu from "./MobileMenu";
 import DesktopMenu from "./DesktopMenu";
 
-import calvaryLogo from "@/../public/black_horzontional_logo.png";
+import calvaryLogo from "@/../public/black_horizontal_logo.svg";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

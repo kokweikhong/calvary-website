@@ -1,7 +1,7 @@
 import { Dialog, Disclosure } from "@headlessui/react";
 import Link from "next/link";
 import Image from "next/image";
-import calvaryLogo from "@/../public/black_horzontional_logo.png";
+import calvaryLogo from "@/../public/black_horizontal_logo.svg";
 import { ChevronDownIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { CountrySwitch, LinkItem } from "./Menu";
 import { cn } from "@/lib/utils";
@@ -84,7 +84,7 @@ const MobileMenu = (props: MobileMenuProps) => {
                         </LinkItem>
                         <LinkItem>
                           <Link
-                            href={navLinks.calvaryComposite}
+                            href={navLinks.woodAndTimber}
                             onClick={() => props.setMobileMenuOpen(false)}
                           >
                             <h4 className="font-semibold text-base mb-1">
