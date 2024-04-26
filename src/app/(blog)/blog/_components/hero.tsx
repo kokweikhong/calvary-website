@@ -1,3 +1,9 @@
+import Image from "next/image";
+
+const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
+
+const heroImg = `${ASSETS_URL}/websites/blog/hero.jpg`;
+
 const slidingWords = Array(5)
   .fill([
     "Engineered Flooring",
@@ -18,11 +24,21 @@ const slidingWords = Array(5)
 const Hero = () => {
   return (
     <>
-      <div className="h-screen flex items-center justify-center bg-black/50">
+      <div className="h-screen flex items-center justify-center bg-black/50 relative">
         {/* background image */}
-        <div></div>
+        <div className="w-full h-full absolute top-0 left-0 inset-0 z-0">
+          <Image
+            src={heroImg}
+            alt="Hero Image"
+            width={1920}
+            height={1080}
+            priority
+            className="object-cover w-full h-full"
+          />
+          <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50" />
+        </div>
 
-        <div className="text-white flex flex-col gap-y-4 items-center">
+        <div className="text-white flex flex-col gap-y-4 items-center z-10">
           <h1 className="text-4xl font-bold">Blog</h1>
 
           <div className="text-center max-w-3xl">

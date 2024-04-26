@@ -4,9 +4,11 @@ import path from "path";
 
 export type Post = {
   title: string;
+  subTitle: string;
   slug: string;
   date: string;
   description: string;
+  minToRead: number;
   coverImage: string;
   body: string;
 };
@@ -23,7 +25,7 @@ export async function getPosts() {
         const { data, content } = matter(fileContent);
 
         return { ...data, body: content } as Post;
-      })
+      }),
   );
 }
 

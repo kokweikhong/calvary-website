@@ -7,10 +7,10 @@ import Link from "next/link";
 export default async function Page() {
   const posts = await getPosts();
   return (
-    <div>
+    <div className="space-y-8">
       <Hero />
       <FeatureArticles />
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 container-cp py-4 mt-4">
         {posts
           .sort(
             (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
@@ -30,7 +30,10 @@ export default async function Page() {
                   </h1>
                   <p className="text-sm text-gray-100">{post.date}</p>
                 </div>
-                <p className="text-gray-200">{post.description}</p>
+                <div>
+                  <p className="text-gray-200">{post.subTitle}</p>
+                  <p className="text-gray-300 text-xs">{`${post.minToRead} mins read.`}</p>
+                </div>
               </Link>
 
               {post.coverImage && (

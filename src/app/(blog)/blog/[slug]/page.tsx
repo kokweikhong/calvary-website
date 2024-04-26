@@ -14,7 +14,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
   if (!post) return notFound();
 
   return (
-    <div className="container-cp mx-auto mt-8 max-w-3xl px-4">
+    <div className="container-cp mx-auto mt-8 max-w-3xl px-4 py-8">
       <div className="flex flex-col items-center justify center space-y-4">
         <div className="py-8 text-center border-y border-gray-300">
           <h1 className="text-4xl font-bold text-center">{post.title}</h1>
