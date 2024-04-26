@@ -25,9 +25,8 @@ export default function Page({ params }: { params: { slug: string } }) {
           Loading...
         </h2>
       </div>
-    )
+    );
   }
-
 
   if (!project) {
     return (
@@ -36,11 +35,11 @@ export default function Page({ params }: { params: { slug: string } }) {
           No Project Found!
         </h2>
       </div>
-    )
+    );
   }
 
   return (
-    <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 py-8">
       <div className="container mx-auto sm:px-6 lg:px-8 mt-12">
         <h1 className="font-bold text-lg uppercase text-center flex items-center justify-center mb-4">
           <span className="py-2 border-y border-y-black">{project.name}</span>
