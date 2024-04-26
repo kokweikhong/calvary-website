@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
 
@@ -38,7 +39,6 @@ const novaWoodCertifications: string[] = [
   `${ASSETS_URL}/websites/wood-and-timber/novawood-certifications/web-novawood-3.jpg`,
   `${ASSETS_URL}/websites/wood-and-timber/novawood-certifications/web-novawood-4.jpg`,
   `${ASSETS_URL}/websites/wood-and-timber/novawood-certifications/web-novawood-5.jpg`,
-  `${ASSETS_URL}/websites/wood-and-timber/novawood-certifications/web-novawood-6.jpg`,
   `${ASSETS_URL}/websites/wood-and-timber/novawood-certifications/web-novawood-7.jpg`,
   `${ASSETS_URL}/websites/wood-and-timber/novawood-certifications/web-novawood-8.jpg`,
   `${ASSETS_URL}/websites/wood-and-timber/novawood-certifications/web-novawood-9.jpg`,
@@ -81,12 +81,12 @@ const Discover = () => {
           `}</p>
         </div>
         <div className="flex flex-col items-center justify-center text-center space-y-1">
-          <a
-            href="#"
+          <Link
+            href="/contact-us/#contact-form"
             className="bg-[#A9862B] text-white py-2 px-4 rounded-md uppercase hover:bg-white hover:text-[#A9862B] transition-all"
           >
             Discover more about teak
-          </a>
+          </Link>
           <a
             href="https://www.linkedin.com/pulse/finding-right-wood-singapores-humid-weather-calvary-carpentry/?trackingId=Gzz1q35G4CQtbEAJWlsUrA%3D%3D"
             className="underline"
@@ -132,12 +132,12 @@ const Discover = () => {
           `}</p>
         </div>
         <div className="flex flex-col items-center justify-center text-center space-y-1">
-          <a
-            href="#"
+          <Link
+            href="/contact-us/#contact-form"
             className="bg-[#A9862B] text-white py-2 px-4 rounded-md uppercase hover:bg-white hover:text-[#A9862B] transition-all"
           >
             Discover more about merbau
-          </a>
+          </Link>
           <a
             href="https://www.linkedin.com/pulse/reconstituted-bamboo-timber-vs-hardwood-composite-comprehensive/?trackingId=zb1%2BBTS3WFKUFBmEwfEanQ%3D%3D"
             className="underline"
@@ -177,12 +177,12 @@ const Discover = () => {
         </div>
 
         <div className="flex flex-col items-center justify-center text-center space-y-1">
-          <a
-            href="#"
+          <Link
+            href="/contact-us/#contact-form"
             className="bg-[#A9862B] text-white py-2 px-4 rounded-md uppercase hover:bg-white hover:text-[#A9862B] transition-all"
           >
             Discover more about chengal
-          </a>
+          </Link>
           <a
             href="https://www.linkedin.com/pulse/reconstituted-bamboo-timber-vs-hardwood-composite-comprehensive/?trackingId=zb1%2BBTS3WFKUFBmEwfEanQ%3D%3D"
             className="underline"

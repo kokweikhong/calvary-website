@@ -109,19 +109,30 @@ const Introduction = () => {
         </div>
 
         <div className="flex flex-wrap gap-2 justify-center items-center md:col-span-full">
-          {[
-            "Accoya decking",
-            "Reconstituted Composite timber",
-            "Nova thermowood",
-            "dassoCTECH",
-          ].map((item, index) => (
-            <span
-              key={index}
-              className="block text-sm tracking-wider bg-black text-white rounded-full px-4 py-2 text-center uppercase"
-            >
-              {item}
-            </span>
-          ))}
+          <Link
+            href={`/accoya`}
+            className="block text-sm tracking-wider bg-black text-white rounded-full px-4 py-2 text-center uppercase"
+          >
+            Accoya decking
+          </Link>
+          <Link
+            href={`#`}
+            className="block text-sm tracking-wider bg-black text-white rounded-full px-4 py-2 text-center uppercase"
+          >
+            Reconstituted Composite timber
+          </Link>
+          <Link
+            href={`#novawood`}
+            className="block text-sm tracking-wider bg-black text-white rounded-full px-4 py-2 text-center uppercase"
+          >
+            Nova thermowood
+          </Link>
+          <Link
+            href={`/dasso-ctech`}
+            className="block text-sm tracking-wider bg-black text-white rounded-full px-4 py-2 text-center uppercase"
+          >
+            dassoCTECH
+          </Link>
         </div>
       </div>
     </div>
