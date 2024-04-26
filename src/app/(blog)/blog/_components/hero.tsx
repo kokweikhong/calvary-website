@@ -38,7 +38,7 @@ const Hero = () => {
           <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50" />
         </div>
 
-        <div className="text-white flex flex-col gap-y-4 items-center z-10">
+        <div className="text-white flex flex-col gap-y-4 items-center z-10 max-w-3xl">
           <h1 className="text-4xl font-bold">Blog</h1>
 
           <div className="text-center max-w-3xl">
