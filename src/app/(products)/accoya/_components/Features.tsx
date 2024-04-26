@@ -2,54 +2,56 @@
 
 import Image from "next/image";
 
+const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
+
 const features: { name: string; image: string }[] = [
   {
     name: "Barefoot friendly",
-    image: "/accoya/Key feature/Accoya-_Barefoot friendly .svg",
+    image: `${ASSETS_URL}/websites/accoya/key-features/Accoya-_Barefoot%20friendly%20.svg`,
   },
   {
     name: "Consistant quality throughout",
-    image: "/accoya/Key feature/Accoya-_Consistant quality throughout.svg",
+    image: `${ASSETS_URL}/websites/accoya/key-features/Accoya-_Consistant%20quality%20throughout.svg`,
   },
   {
     name: "Dimensionally stable",
-    image: "/accoya/Key feature/Accoya-_Dimensionally stable .svg",
+    image: `${ASSETS_URL}/websites/accoya/key-features/Accoya-_Dimensionally%20stable%20.svg`,
   },
   {
     name: "Excellent machinability",
-    image: "/accoya/Key feature/Accoya-_Excellent machinability-27.svg",
+    image: `${ASSETS_URL}/websites/accoya/key-features/Accoya-_Excellent%20machinability-27.svg`,
   },
   {
     name: "From sustainable sources",
-    image: "/accoya/Key feature/Accoya-_From sustainable sources.svg",
+    image: `${ASSETS_URL}/websites/accoya/key-features/Accoya-_From%20sustainable%20sources.svg`,
   },
   {
     name: "Insect barrier",
-    image: "/accoya/Key feature/Accoya-_Insect barrier.svg",
+    image: `${ASSETS_URL}/websites/accoya/key-features/Accoya-_Insect%20barrier.svg`,
   },
   {
     name: "Naturally Beautiful wood",
-    image: "/accoya/Key feature/Accoya-_Naturally Beautiful wood.svg",
+    image: `${ASSETS_URL}/websites/accoya/key-features/Accoya-_Naturally%20Beautiful%20wood.svg`,
   },
   {
     name: "Naturally insulating",
-    image: "/accoya/Key feature/Accoya-_Naturally insulating .svg",
+    image: `${ASSETS_URL}/websites/accoya/key-features/Accoya-_Naturally%20Beautiful%20wood.svg`,
   },
   {
     name: "Non-toxic and recyclable",
-    image: "/accoya/Key feature/Accoya-_Non-toxic and recyclable.svg",
+    image: `${ASSETS_URL}/websites/accoya/key-features/Accoya-_Non-toxic%20and%20recyclable.svg`,
   },
   {
     name: "Outstanding durability",
-    image: "/accoya/Key feature/Accoya-_Outstanding durability.svg",
+    image: `${ASSETS_URL}/websites/accoya/key-features/Accoya-_Outstanding%20durability.svg`,
   },
   {
     name: "Perfect for Coating",
-    image: "/accoya/Key feature/Accoya-_Perfect for Coating.svg",
+    image: `${ASSETS_URL}/websites/accoya/key-features/Accoya-_Perfect%20for%20Coating.svg`,
   },
   {
     name: "Retained strength and hardness",
-    image: "/accoya/Key feature/Accoya-_Retained strength and hardness.svg",
+    image: `${ASSETS_URL}/websites/accoya/key-features/Accoya-_Retained%20strength%20and%20hardness.svg`,
   },
 ];
 

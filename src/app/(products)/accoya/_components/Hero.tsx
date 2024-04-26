@@ -1,8 +1,9 @@
-// "use client";
-
-import hero from "@/../public/accoya/ACCOYA HEADER.jpg";
-import accoyaLogo from "@/../../public/accoya/Accoya Logo.svg";
 import Image from "next/image";
+
+const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
+
+const hero = `${ASSETS_URL}/websites/accoya/ACCOYA%20HEADER.jpg`;
+const accoyaLogo = `${ASSETS_URL}/websites/accoya/Accoya%20Logo.svg`;
 
 const Hero = () => {
   return (
@@ -12,6 +13,8 @@ const Hero = () => {
           <Image
             src={hero}
             alt="Accoya Header"
+            width={1920}
+            height={1080}
             priority
             className="w-full h-full object-cover"
           />
@@ -35,10 +38,6 @@ const Hero = () => {
             <a
               href="#accoya-features"
               className="text-white border border-white px-4 py-2 group hover:border-black/70 hover:bg-black/70 transition-all duration-300 ease-in-out"
-
-              // onClick={() => {
-              //   document.getElementById("#acetylated-timber")?.scrollIntoView();
-              // }}
             >
               <span className="group-hover:hidden group-hover:opacity-0">
                 Explore Accoya

@@ -7,9 +7,12 @@ const Services = () => {
   return (
     <section id="home-services" className="container mx-auto sm:px-6 lg:px-8">
       <div className="relative z-3 my-[50px]">
-        <div className="grid grid-cols-12 auto-rows-fr gap-6">
+        <div className="grid grid-cols-12 auto-rows-fr gap-6 justify-center mx-auto">
           {services.map((service) => (
-            <div key={service.title} className="col-span-full lg:col-span-4">
+            <div
+              key={service.title}
+              className="col-span-full md:col-span-6 lg:col-span-4 mx-auto"
+            >
               <Link href={service.href}>
                 <div className="bg-[#fff] shadow-lg h-full py-[55px] px-[40px] text-center mb-[30px] hover:-mt-[10px] transition-all duration-300 flex flex-col justify-between">
                   <div className="w-[60px] h-[60px] block mb-[30px] mx-auto">

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div>
+    <div className="pb-8">
       <Hero />
       <About />
       <Features />

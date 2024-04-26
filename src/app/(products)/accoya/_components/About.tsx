@@ -1,6 +1,9 @@
 import Image from "next/image";
-import specification from "@/../../public/accoya/Accoya Specification.jpg";
-import acetylated from "@/../../public/accoya/AcetylationProcessDiagram.jpg";
+
+const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
+
+const acetylated = `${ASSETS_URL}/websites/accoya/AcetylationProcessDiagram.jpg`;
+const specification = `${ASSETS_URL}/websites/accoya/Accoya%20Specification.jpg`;
 
 const About = () => {
   return (
@@ -9,7 +12,14 @@ const About = () => {
         What is acetylated timber?
       </h2>
       <div className="mt-4 flex flex-col gap-y-2 justify-center">
-        <Image src={acetylated} alt="Acetylation Process Diagram" priority />
+        <Image
+          src={acetylated}
+          alt="Acetylation Process Diagram"
+          width={1920}
+          height={1080}
+          priority
+          className="w-full h-full object-cover"
+        />
         <span className="text-center text-sm">
           The process behind Acetylation.
         </span>
@@ -25,8 +35,10 @@ const About = () => {
         <Image
           src={specification}
           alt="Accoya Specification"
+          width={1920}
+          height={1080}
           priority
-          className="w-full"
+          className="w-full h-full object-cover"
         />
       </div>
     </section>

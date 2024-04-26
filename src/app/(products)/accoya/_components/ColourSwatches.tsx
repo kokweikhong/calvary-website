@@ -6,6 +6,8 @@ import Image from "next/image";
 import { useState } from "react";
 import SelectedColourSwatch from "./SelectedColourSwatch";
 
+const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
+
 type ColourSwatch = {
   name: string;
   image: string;
@@ -16,91 +18,91 @@ type ColourSwatch = {
 const colourSwatches: ColourSwatch[] = [
   {
     name: "903 Basalt Grey",
-    image: "/accoya/Accoya Color Swatch/Basalt Grey 903.jpg",
+    image: `${ASSETS_URL}/websites/accoya/colour-swatches/Basalt%20Grey%20903.jpg`,
     active: true,
     color: "black",
   },
   {
     name: "Chacoya",
-    image: "/accoya/Accoya Color Swatch/chacoya.jpg",
+    image: `${ASSETS_URL}/websites/accoya/colour-swatches/chacoya.jpg`,
     active: false,
     color: "white",
   },
   {
     name: "712 Ebony",
-    image: "/accoya/Accoya Color Swatch/Ebony712.jpg",
+    image: `${ASSETS_URL}/websites/accoya/colour-swatches/Ebony712.jpg`,
     active: false,
     color: "white",
   },
   {
     name: "Ember",
-    image: "/accoya/Accoya Color Swatch/Ember.jpg",
+    image: `${ASSETS_URL}/websites/accoya/colour-swatches/Ember.jpg`,
     active: false,
     color: "white",
   },
   {
     name: "927 Fir Green",
-    image: "/accoya/Accoya Color Swatch/Fir Green 927.jpg",
+    image: `${ASSETS_URL}/websites/accoya/colour-swatches/Fir%20Green%20927.jpg`,
     active: false,
     color: "white",
   },
   {
     name: "Glazed",
-    image: "/accoya/Accoya Color Swatch/Glazed.jpg",
+    image: `${ASSETS_URL}/websites/accoya/colour-swatches/Glazed.jpg`,
     active: false,
     color: "black",
   },
   {
     name: "703 Mahogany",
-    image: "/accoya/Accoya Color Swatch/Mahogany 703.jpg",
+    image: `${ASSETS_URL}/websites/accoya/colour-swatches/Mahogany%20703.jpg`,
     active: false,
     color: "white",
   },
   {
     name: "Natural",
-    image: "/accoya/Accoya Color Swatch/Natural.jpg",
+    image: `${ASSETS_URL}/websites/accoya/colour-swatches/Natural.jpg`,
     active: false,
     color: "black",
   },
   {
     name: "706 Oak",
-    image: "/accoya/Accoya Color Swatch/Oak 706.jpg",
+    image: `${ASSETS_URL}/websites/accoya/colour-swatches/Oak%20706.jpg`,
     active: false,
     color: "white",
   },
   {
     name: "905 Patina",
-    image: "/accoya/Accoya Color Swatch/Patina 905.jpg",
+    image: `${ASSETS_URL}/websites/accoya/colour-swatches/Patina%20905.jpg`,
     active: false,
     color: "white",
   },
   {
     name: "907 Quartz Grey",
-    image: "/accoya/Accoya Color Swatch/Quartz Grey 907.jpg",
+    image: `${ASSETS_URL}/websites/accoya/colour-swatches/Quartz%20Grey%20907.jpg`,
     active: false,
     color: "white",
   },
   {
     name: "727 Rosewood",
-    image: "/accoya/Accoya Color Swatch/Rosewood 727.jpg",
+    image: `${ASSETS_URL}/websites/accoya/colour-swatches/Rosewood%20727.jpg`,
     active: false,
     color: "white",
   },
   {
     name: "Silverwood",
-    image: "/accoya/Accoya Color Swatch/Silverwood.jpg",
+    image: `${ASSETS_URL}/websites/accoya/colour-swatches/Silverwood.jpg`,
     active: false,
     color: "black",
   },
   {
     name: "708 Teak",
-    image: "/accoya/Accoya Color Swatch/Teak 708.jpg",
+    image: `${ASSETS_URL}/websites/accoya/colour-swatches/Teak%20708.jpg`,
     active: false,
     color: "white",
   },
   {
     name: "707 Walnut",
-    image: "/accoya/Accoya Color Swatch/Walnut 707.jpg",
+    image: `${ASSETS_URL}/websites/accoya/colour-swatches/Walnut%20707.jpg`,
     active: false,
     color: "white",
   },
@@ -144,7 +146,7 @@ const ColourSwatches = () => {
               )}
               <AspectRatio
                 ratio={1}
-              // className="w-full h-48 relative"
+                // className="w-full h-48 relative"
               >
                 <Image
                   src={colourSwatch.image}

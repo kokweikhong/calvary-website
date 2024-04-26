@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
+
 type Features2Props = {
   featureName: string;
   featureImage: string;
@@ -12,10 +14,10 @@ type Features2Props = {
 const features2: Features2Props[] = [
   {
     featureName: "naturally insulating",
-    featureImage: "/accoya/Key feature/Accoya-_Naturally insulating .svg",
-    applicationImage: "/accoya/Area of application/Cladding Application.svg",
+    featureImage: `${ASSETS_URL}/websites/accoya/key-features/Accoya-_Naturally%20insulating%20.svg`,
+    applicationImage: `${ASSETS_URL}/websites/accoya/area-of-applications/Cladding%20Application.svg`,
     applicationName: "cladding",
-    projectImage: "/accoya/Naturally Insulating.jpg",
+    projectImage: `${ASSETS_URL}/websites/accoya/Naturally%20Insulating.jpg`,
     features: [
       "Offers improved insulation in comparison with commonly used hardwood and softwood species",
       "Ideal for applications where energy conservation is important",
@@ -23,11 +25,10 @@ const features2: Features2Props[] = [
   },
   {
     featureName: "retained strength & Hardness",
-    featureImage:
-      "/accoya/Key feature/Accoya-_Retained strength and hardness.svg",
-    applicationImage: "/accoya/Area of application/Cladding Application.svg",
+    featureImage: `${ASSETS_URL}/websites/accoya/key-features/Accoya-_Retained%20strength%20and%20hardness.svg`,
+    applicationImage: `${ASSETS_URL}/websites/accoya/area-of-applications/Cladding%20Application.svg`,
     applicationName: "cladding",
-    projectImage: "/accoya/Retained Strength _ Hardness.jpg",
+    projectImage: `${ASSETS_URL}/websites/accoya/Retained%20Strength%20_%20Hardness.jpg`,
     features: [
       "The process does not compromise the wood’s strength",
       "Hardness is increased",
@@ -36,10 +37,10 @@ const features2: Features2Props[] = [
   },
   {
     featureName: "Barefoot friendly",
-    featureImage: "/accoya/Key feature/Accoya-_Barefoot friendly .svg",
-    applicationImage: "/accoya/Area of application/Decking application.svg",
+    featureImage: `${ASSETS_URL}/websites/accoya/key-features/Accoya-_Barefoot%20friendly%20.svg`,
+    applicationImage: `${ASSETS_URL}/websites/accoya/area-of-applications/Decking%20application.svg`,
     applicationName: "decking",
-    projectImage: "/accoya/Barefoot Friendly.jpg",
+    projectImage: `${ASSETS_URL}/websites/accoya/Barefoot%20Friendly.jpg`,
     features: [
       "Ideal for all decking situations in extreme temperatures",
       "Low thermal gain",
@@ -48,18 +49,18 @@ const features2: Features2Props[] = [
   },
   {
     featureName: "Excellent machinability",
-    featureImage: "/accoya/Key feature/Accoya-_Excellent machinability-27.svg",
-    applicationImage: "/accoya/Area of application/Screen Application.svg",
+    featureImage: `${ASSETS_URL}/websites/accoya/key-features/Accoya-_Excellent%20machinability-27.svg`,
+    applicationImage: `${ASSETS_URL}/websites/accoya/area-of-applications/Screen%20Application.svg`,
     applicationName: "screen",
-    projectImage: "/accoya/Excellent Machinability.jpg",
+    projectImage: `${ASSETS_URL}/websites/accoya/Excellent%20Machinability.jpg`,
     features: ["Easy to machine and process", "No special tools are required"],
   },
   {
     featureName: "Insect barrier",
-    featureImage: "/accoya/Key feature/Accoya-_Insect barrier.svg",
-    applicationImage: "/accoya/Area of application/Cladding Application.svg",
+    featureImage: `${ASSETS_URL}/websites/accoya/key-features/Accoya-_Insect%20barrier.svg`,
+    applicationImage: `${ASSETS_URL}/websites/accoya/area-of-applications/Cladding%20Application.svg`,
     applicationName: "cladding",
-    projectImage: "/accoya/P+A Accoya ceiling.jpg",
+    projectImage: `${ASSETS_URL}/websites/accoya/P+A%20Accoya%20ceiling.jpg`,
     features: [
       "Indigestible to a wide range of insects, including termites",
       "Greatly reduced vulnerability",
@@ -67,10 +68,10 @@ const features2: Features2Props[] = [
   },
   {
     featureName: "sustainable source",
-    featureImage: "/accoya/Key feature/Accoya-_Non-toxic and recyclable.svg",
-    applicationImage: "/accoya/Area of application/Decking application.svg",
+    featureImage: `${ASSETS_URL}/websites/accoya/key-features/Accoya-_From%20sustainable%20sources.svg`,
+    applicationImage: `${ASSETS_URL}/websites/accoya/area-of-applications/Decking%20application.svg`,
     applicationName: "decking",
-    projectImage: "/accoya/Sustainable Source.jpeg",
+    projectImage: `${ASSETS_URL}/websites/accoya/Sustainable%20Source.jpeg`,
     features: [
       "From FSC® and other regionally certified woods",
       "Naturally renewable",

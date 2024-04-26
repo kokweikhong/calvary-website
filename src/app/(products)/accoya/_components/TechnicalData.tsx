@@ -1,11 +1,16 @@
-import downloadPDF from "@/../../public/accoya/PDF icon.svg";
-import specTable1080 from "@/../../public/accoya/STANDARD DIMENSIONS _ GRADES/1080 PX Accoya chart.svg";
-import specTable1280 from "@/../../public/accoya/STANDARD DIMENSIONS _ GRADES/1280 PX Accoya chart.svg";
-import specTable390 from "@/../../public/accoya/STANDARD DIMENSIONS _ GRADES/390PX Accoya chart.svg";
-import specTable768 from "@/../../public/accoya/STANDARD DIMENSIONS _ GRADES/768 PX Accoya chart.svg";
-import thermalGain from "@/../../public/accoya/Thermal Gain on Decks.jpg";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+
+const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
+
+const specTable390 = `${ASSETS_URL}/websites/accoya/standard-dimensions/390PX%20Accoya%20chart.svg`;
+const specTable768 = `${ASSETS_URL}/websites/accoya/standard-dimensions/768%20PX%20Accoya%20chart.svg`;
+const specTable1080 = `${ASSETS_URL}/websites/accoya/standard-dimensions/1080%20PX%20Accoya%20chart.svg`;
+const specTable1280 = `${ASSETS_URL}/websites/accoya/standard-dimensions/1280%20PX%20Accoya%20chart.svg`;
+
+const downloadPDF = `${ASSETS_URL}/websites/accoya/PDF%20icon.svg`;
+
+const thermalGain = `${ASSETS_URL}/websites/accoya/Thermal%20Gain%20on%20Decks.jpg`;
 
 type TechnicalData = {
   name: string;
@@ -15,15 +20,15 @@ type TechnicalData = {
 const technicalPdfs: TechnicalData[] = [
   {
     name: "Accoya® technical data",
-    href: "/accoya/Download/Accoya_Data Sheet_Specification.pdf",
+    href: `${ASSETS_URL}/websites/accoya/downloads/Accoya_Data%20Sheet_Specification.pdf`,
   },
   {
     name: "Accoya® warranty Brochure",
-    href: "/accoya/Download/Accoya-wood-warranty-worldwide-excluding-US-and-Canada.pdf",
+    href: `${ASSETS_URL}/websites/accoya/downloads/Accoya-wood-warranty-worldwide-excluding-US-and-Canada.pdf`,
   },
   {
     name: "Accoya® Accreditations",
-    href: "/accoya/Download/Accoya Performance Testing Summary.pdf",
+    href: `${ASSETS_URL}/websites/accoya/downloads/Accoya%20Performance%20Testing%20Summary.pdf`,
   },
 ];
 
@@ -176,15 +181,18 @@ const TechnicalData = () => {
         </div>
 
         <p>
-          The thermograms indicates Accoya®’s thermal gain is substantially less
-          than the alternatives tested. This makes it truly “barefoot friendly”
-          and resistance to cupping and splintering with prolonged weathering.
+          The thermograms indicates Accoya®’s thermal gain is substantially
+          less than the alternatives tested. This makes it truly “barefoot
+          friendly” and resistance to cupping and splintering with prolonged
+          weathering.
         </p>
 
         <div>
           <Image
             src={thermalGain}
             alt="Thermal Gain on Decks"
+            width={1920}
+            height={1080}
             className="w-full"
           />
         </div>
@@ -206,6 +214,8 @@ const TechnicalData = () => {
               <Image
                 src={downloadPDF}
                 alt="Accoya Technical Data"
+                width={20}
+                height={20}
                 className="w-5 h-5"
               />
             </a>
@@ -272,21 +282,29 @@ const TechnicalData = () => {
           <Image
             src={specTable390}
             alt="Accoya Technical Data"
+            width={390}
+            height={390}
             className="w-full sm:hidden"
           />
           <Image
             src={specTable768}
             alt="Accoya Technical Data"
+            width={768}
+            height={768}
             className="w-full hidden sm:block md:hidden"
           />
           <Image
             src={specTable1080}
             alt="Accoya Technical Data"
+            width={1080}
+            height={1080}
             className="w-full hidden md:block lg:hidden"
           />
           <Image
             src={specTable1280}
             alt="Accoya Technical Data"
+            width={1280}
+            height={1280}
             className="w-full hidden lg:block"
           />
         </div>
@@ -307,7 +325,7 @@ const TechnicalData = () => {
               className={cn(
                 otherContentIdx === otherContents.length - 1 &&
                   "lg:col-span-full",
-                otherContent.isShrinkage && "lg:col-span-full"
+                otherContent.isShrinkage && "lg:col-span-full",
               )}
             >
               <h2 className="mt-4 mb-2 text-center text-xl py-2 uppercase text-white bg-accoya font-medium">
