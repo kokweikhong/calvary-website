@@ -34,7 +34,7 @@ const contacts: Contact[] = [
     alt: "phone",
   },
   {
-    href: "https://wa.me/6597274141",
+    href: "https://wa.me/6590297044",
     image: whatsapp,
     alt: "whatsapp",
   },
