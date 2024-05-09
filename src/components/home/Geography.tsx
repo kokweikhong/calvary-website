@@ -25,7 +25,7 @@ const locations: Location[] = [
   },
   {
     title: "Singapore HQ",
-    description: "54 Senoko Road, Singapore 758118",
+    description: "66 Kampung Bugis, Level 7, Singapore 338987",
     icon: sporeIcon,
   },
   {
