@@ -149,7 +149,7 @@ const Footer = () => {
 
           <div className="space-y-4 mt-8">
             <h4 className="uppercase">Singapore</h4>
-            <p>54 Senoko Road, Singapore 758118, Floor 1</p>
+            <p>66 Kampung Bugis, level 7, Singapore 338987</p>
             <div>
               <div className="flex gap-2 items-center">
                 <div className="h-[20px] w-[20px] relative">

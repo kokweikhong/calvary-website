@@ -1,33 +1,29 @@
-
 type Location = {
   name: string;
   address: string[];
   whatsapp?: string;
   phone?: string;
   email?: string;
-}
+};
 
 const locations: Location[] = [
   {
-    name: 'Showroom',
-    address: [
-      'Marina square #03-207',
-      'Singapore 039594',
-    ],
-    whatsapp: '+65 8893 0429',
-    phone: '+65 6910 6069',
-    email: 'sales@k-floors.com'
+    name: "Showroom",
+    address: ["Marina square #03-207", "Singapore 039594"],
+    whatsapp: "+65 8893 0429",
+    phone: "+65 6910 6069",
+    email: "sales@k-floors.com",
   },
   {
     name: "Singapore HQ",
     address: [
-      "54 Senoko Road",
-      "Singapore 758118",
-      `(Moving to Kampong Bugis Level 7 Soon)`
+      "66 Kampung Bugis, Level 7",
+      "Singapore 338987",
+      `(Moving to Kampong Bugis Level 7 Soon)`,
     ],
-    whatsapp: '+65 8776 7837',
-    phone: '+65 6684 4012',
-    email: 'sales@calvarycarpentry.com'
+    whatsapp: "+65 8776 7837",
+    phone: "+65 6684 4012",
+    email: "sales@calvarycarpentry.com",
   },
   {
     name: "Calvary Carpentry Sdn Bhd",
@@ -37,9 +33,9 @@ const locations: Location[] = [
       "81550 Gelang Patah",
       "Johor, Malaysia",
     ],
-    whatsapp: '+60 16-778 5788',
-    phone: '+60 16-778 5788',
-    email: 'msia@calvarycarpentry.com',
+    whatsapp: "+60 16-778 5788",
+    phone: "+60 16-778 5788",
+    email: "msia@calvarycarpentry.com",
   },
   {
     name: "KLCC Office",
@@ -48,10 +44,9 @@ const locations: Location[] = [
       "6, Jalan Kia Peng, Kuala Lumpur",
       "50450 Kuala Lumpur",
       "Wilayah Persekutuan Kuala Lumpur",
-    ]
-  }
-]
-
+    ],
+  },
+];
 
 const FindUs = () => {
   return (
@@ -66,7 +61,10 @@ const FindUs = () => {
 
       <div className="self-start w-full md:self-center md:mx-auto">
         {locations.map((location, index) => (
-          <div key={index} className="mt-4 md:grid md:grid-cols-[1fr_2fr] md:items-start">
+          <div
+            key={index}
+            className="mt-4 md:grid md:grid-cols-[1fr_2fr] md:items-start"
+          >
             <h3 className="text-lg font-semibold underline">{location.name}</h3>
             <div>
               <div className="mt-2">
@@ -85,6 +83,6 @@ const FindUs = () => {
       </div>
     </div>
   );
-}
+};
 
 export default FindUs;
