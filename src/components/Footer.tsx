@@ -9,6 +9,7 @@ import linkedin from "../../public/images/footer/linkedin.svg";
 import phone from "../../public/images/footer/phone.svg";
 import whatsapp from "../../public/images/footer/whatsapp.svg";
 import youtube from "../../public/images/footer/youtube.svg";
+import instagram from "../../public/images/footer/instagram.svg";
 
 import email from "../../public/images/footer/email.svg";
 import phoneNumber from "../../public/images/footer/phone_number.svg";
@@ -39,17 +40,17 @@ const contacts: Contact[] = [
     alt: "whatsapp",
   },
   {
-    href: "https://www.linkedin.com/company/calvary-carpentry-pte-ltd/",
+    href: "https://www.linkedin.com/company/calvary-carpentry",
     image: linkedin,
     alt: "linkedin",
   },
   {
-    href: "https://g.page/calvary-carpentry-pte-ltd?share",
+    href: "https://maps.app.goo.gl/s7JTUK1tMrvm4nAW6",
     image: gmap,
     alt: "gmap",
   },
   {
-    href: "https://www.youtube.com/channel/UCy0Jb7Y2W1R0JQl6fJg4JzQ",
+    href: "https://www.youtube.com/@calvarycarpentry",
     image: youtube,
     alt: "youtube",
   },
@@ -57,6 +58,11 @@ const contacts: Contact[] = [
     href: "https://www.facebook.com/calvarycarpentry/",
     image: facebook,
     alt: "facebook",
+  },
+  {
+    href: "https://www.instagram.com/calvarycarpentry/",
+    image: instagram,
+    alt: "instagram",
   },
 ];
 
