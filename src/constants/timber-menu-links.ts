@@ -16,7 +16,7 @@ export const timberMenuLinks: TimberMenuLink[] = [
       {
         title: "Engineered Flooring",
         subTitle: "KANDINSKY® | KANDINSKY Lite TimberWise®",
-        href: "https://k-floors.com",
+        href: "/wood-and-timber",
       },
       {
         title: "Solid Timber Flooring",
