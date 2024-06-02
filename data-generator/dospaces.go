@@ -26,11 +26,11 @@ type DOSpaces struct {
 }
 
 func NewDOSpaces() (DOSpacesService, error) {
-	key := "DO00YV7AJWYPTFYTJM32"
-	secret := "+8ncKmZNIrP0jRbUwjl5PGzxejERasB3CLIhQJ2WrWI"
+	key := "DO00VJTLTBLG6DYMR9HU"
+	secret := "k6eN3Zh7AmYST4NUyewuYdEQTJVZP5HNMvPonZ5u4C0"
 	s3Config := &aws.Config{
 		Credentials:      credentials.NewStaticCredentials(key, secret, ""),
-		Endpoint:         aws.String("https://sgp1.digitaloceanspaces.com"),
+		Endpoint:         aws.String("https://.sgp1.digitaloceanspaces.com"),
 		Region:           aws.String("sgp1"),
 		S3ForcePathStyle: aws.Bool(false), // // Configures to use subdomain/virtual calling format. Depending on your version, alternatively use o.UsePathStyle = false
 	}
@@ -62,6 +62,7 @@ func (d *DOSpaces) ListObjects() ([]string, error) {
 
 	result, err := d.client.ListObjectsV2(input)
 	if err != nil {
+		slog.Error(fmt.Sprintf("Error listing objects: %s", err))
 		return nil, err
 	}
 
@@ -170,8 +171,8 @@ func (d *DOSpaces) DownloadDirectory(directory string) error {
 }
 
 func ListObjects(directory string) ([]string, error) {
-	key := "DO00YV7AJWYPTFYTJM32"
-	secret := "+8ncKmZNIrP0jRbUwjl5PGzxejERasB3CLIhQJ2WrWI"
+	key := "DO00KGXT7XRF3HXCEBDG"
+	secret := "5lBIvGRVosiHwfkh//29KWr+j/1ByAfiLmm2tLHtYEA"
 
 	s3Config := &aws.Config{
 		Credentials:      credentials.NewStaticCredentials(key, secret, ""),

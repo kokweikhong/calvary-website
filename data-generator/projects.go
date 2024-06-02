@@ -90,6 +90,7 @@ func GenerateProjectsJSON(csvData [][]string, output string) error {
 			}
 		}
 		project.ImagePath = filepath.Join(PROJECT_FOLDER_PREFIX, project.ImagePath)
+
 		images, err := ListObjects(project.ImagePath)
 		if err != nil {
 			return err

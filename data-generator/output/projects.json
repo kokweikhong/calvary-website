@@ -4,8 +4,8 @@
     "name": "Vivo City",
     "year": "2023",
     "location": "Vivo city",
-    "completion": "",
-    "size": "25,000 m2",
+    "completion": "Completed",
+    "size": "",
     "imagePath": "projects/vivo-city",
     "countries": [
       "sg"
@@ -20,7 +20,7 @@
     "services": [
       "exterior"
     ],
-    "description": "",
+    "description": "Situated at Vivo city singapore, dassoCtech is used for the decking.",
     "products": [
       "dassoCTECH"
     ],
@@ -44,7 +44,7 @@
     "year": "2023",
     "location": "Vivo city",
     "completion": "Completed",
-    "size": "25,000 m2",
+    "size": "",
     "imagePath": "projects/vivo-city",
     "countries": [
       "my"
@@ -2662,5 +2662,195 @@
       "projects/kampung-admiralty/photo from WOHA.jpg"
     ],
     "url": "kampung-admiralty"
+  },
+  {
+    "id": "70",
+    "name": "Cove Drive",
+    "year": "2024",
+    "location": "65 Cove Drive",
+    "completion": "Completed",
+    "size": "",
+    "imagePath": "projects/cove-drive",
+    "countries": [
+      "sg",
+      "my"
+    ],
+    "country": "Singapore ",
+    "applications": [
+      "Stairs",
+      "Flooring"
+    ],
+    "sectors": [
+      "Residential"
+    ],
+    "services": [
+      "interior"
+    ],
+    "description": "All three levels of residential Cove Drive is installed with Creme Oak Kandinsky Engineered timber flooring, perfectly complemented by meticulously sanded and varnished timber stairs.",
+    "products": [
+      "Kandinsky Lite"
+    ],
+    "images": [
+      "projects/cove-drive/Cove Drive_1.jpg",
+      "projects/cove-drive/Cove Drive_2.jpg",
+      "projects/cove-drive/Cove Drive_3.jpg",
+      "projects/cove-drive/Cove Drive_4.jpg",
+      "projects/cove-drive/Cove Drive_5.jpg",
+      "projects/cove-drive/Cove Drive_6.jpg",
+      "projects/cove-drive/Cove Drive_7.jpg",
+      "projects/cove-drive/Cove Drive_8.jpg"
+    ],
+    "url": "cove-drive"
+  },
+  {
+    "id": "71",
+    "name": "Belysa condo",
+    "year": "2018",
+    "location": "Belysa Condo",
+    "completion": "Completed",
+    "size": "",
+    "imagePath": "projects/belysa-condo",
+    "countries": [
+      "sg",
+      "my"
+    ],
+    "country": "Singapore ",
+    "applications": [
+      "Decking"
+    ],
+    "sectors": [
+      "Residential"
+    ],
+    "services": [
+      "exterior"
+    ],
+    "description": "Experience the timeless beauty of Chengal decking, enhanced with our premium 708 OSMO finish. Installed gracefully beside a tranquil pond, this scenic terrace leads seamlessly to the entrance, leaving an unforgettable first impression.",
+    "products": [
+      "Wood and Timber"
+    ],
+    "images": [
+      "projects/belysa-condo/Belysa condo-1.jpeg",
+      "projects/belysa-condo/Belysa condo-2.jpeg",
+      "projects/belysa-condo/Belysa condo-3.jpeg",
+      "projects/belysa-condo/Belysa condo-4.jpeg",
+      "projects/belysa-condo/Belysa condo-5.jpeg",
+      "projects/belysa-condo/Belysa condo-6.jpeg",
+      "projects/belysa-condo/Belysa condo-7.jpeg"
+    ],
+    "url": "belysa-condo"
+  },
+  {
+    "id": "72",
+    "name": "Tanjong Beach Club ",
+    "year": "2019",
+    "location": "Tanjong Beach Club ",
+    "completion": "Completed",
+    "size": "",
+    "imagePath": "projects/tanjong-beach-club",
+    "countries": [
+      "sg",
+      "my"
+    ],
+    "country": "Singapore ",
+    "applications": [
+      "Decking"
+    ],
+    "sectors": [
+      "Commercial"
+    ],
+    "services": [
+      "exterior"
+    ],
+    "description": "A 5 meters wide and 20 meters long, the infinity pool and its surrounding outdoor bar are the epicenter of the glamour that Tanjong Beach Club exudes. Covered cabanas, plush day beds, lounges, and deck chairs line the poolside all the way to the beach. With lounge chairs this comfortable, it is no wonder that guests stay for hours upon hours. As the sun sets, nighttime brings a heavier crowd to the second outdoor bar. Located just beyond the pierced concrete of the entrance to the beach club, the perforations of the white wall allow the glow of evening lights to illuminate the bar area. The soft beams kiss the patrons as they party well into the night.\nPhotography by Darren Soh, Image Courtesy of Takenouchi Webb.",
+    "products": [
+      "Wood and Timber"
+    ],
+    "images": [
+      "projects/tanjong-beach-club/Tanjong-Beach-Club-by-Takenouchi-Webb-Singapore-06.jpg",
+      "projects/tanjong-beach-club/Tanjong-Beach-Club-by-Takenouchi-Webb-Singapore-07-1.jpg",
+      "projects/tanjong-beach-club/Tanjong-Beach-Club-by-Takenouchi-Webb-Singapore-10.jpg",
+      "projects/tanjong-beach-club/TanjongBeachClub_Outdoors_01.jpg"
+    ],
+    "url": "tanjong-beach-club-"
+  },
+  {
+    "id": "73",
+    "name": "The Tembusu",
+    "year": "2024",
+    "location": "The Tembusu",
+    "completion": "Completed",
+    "size": "",
+    "imagePath": "projects/the-tembusu",
+    "countries": [
+      "sg"
+    ],
+    "country": "Singapore",
+    "applications": [
+      "Decking"
+    ],
+    "sectors": [
+      "Residential"
+    ],
+    "services": [
+      "exterior"
+    ],
+    "description": "The roof terrace surrounding the two buildings of Tembusu Condominium are installed with our dassoCTECH decking, extending up to the 13th floor. It harmonizes beautifully with the greenery and white exterior of the building.",
+    "products": [
+      "dassoCTECH"
+    ],
+    "images": [
+      "projects/the-tembusu/the tembusu 2.jpg",
+      "projects/the-tembusu/the tembusu_1.jpg",
+      "projects/the-tembusu/the tembusu_10.jpg",
+      "projects/the-tembusu/the tembusu_11.jpg",
+      "projects/the-tembusu/the tembusu_12.jpg",
+      "projects/the-tembusu/the tembusu_13.jpg",
+      "projects/the-tembusu/the tembusu_14.jpg",
+      "projects/the-tembusu/the tembusu_15.jpg",
+      "projects/the-tembusu/the tembusu_16.jpg",
+      "projects/the-tembusu/the tembusu_17.jpg",
+      "projects/the-tembusu/the tembusu_3.jpg",
+      "projects/the-tembusu/the tembusu_4.jpg",
+      "projects/the-tembusu/the tembusu_5.jpg",
+      "projects/the-tembusu/the tembusu_6.jpg",
+      "projects/the-tembusu/the tembusu_7.jpg",
+      "projects/the-tembusu/the tembusu_8.jpg",
+      "projects/the-tembusu/the tembusu_9.jpg"
+    ],
+    "url": "the-tembusu"
+  },
+  {
+    "id": "74",
+    "name": "Marina Bay Sands",
+    "year": "2024",
+    "location": "Marina Bay Sands",
+    "completion": "Completed",
+    "size": "",
+    "imagePath": "projects/marina-bay-sands",
+    "countries": [
+      "sg",
+      "my"
+    ],
+    "country": "Singapore",
+    "applications": [
+      "Decking"
+    ],
+    "sectors": [
+      "Commercial"
+    ],
+    "services": [
+      "exterior"
+    ],
+    "description": "Spot Calvary Reconstituted Timber decked in Marina Bay Sands installed with Ez-rail removable decking system. Embrace its natural charm, featuring the stunning, unfinished allure of rotary-cut timber, creating a captivating ambiance along Singapore's most popular waterfront.",
+    "products": [
+      "Calvary Reconstituted Timber"
+    ],
+    "images": [
+      "projects/marina-bay-sands/Marina Bay Sands_2024-03-26 2.jpg",
+      "projects/marina-bay-sands/Marina Bay Sands_2024-03-26_2.jpg",
+      "projects/marina-bay-sands/Marina Bay Sands_2024-03-26_3.jpg",
+      "projects/marina-bay-sands/marina bay sands - thumbnail.jpg"
+    ],
+    "url": "marina-bay-sands"
   }
 ]

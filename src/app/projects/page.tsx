@@ -16,7 +16,10 @@ export default function Page() {
   const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<string[]>([]);
   const [filteredSectors, setFilteredSectors] = useState<string[]>([]);
-  const [filteredApplications, setFilteredApplications] = useState<string[]>([]);
+  const [filteredApplications, setFilteredApplications] = useState<string[]>(
+    [],
+  );
+  const [filteredProjectName, setFilteredProjectName] = useState<string>("");
   const [numberToShow, setNumberToShow] = useState(6);
 
   const projects = useQuery({
@@ -35,11 +38,11 @@ export default function Page() {
       });
       return acc;
     },
-    [] as string[]
+    [] as string[],
   );
 
-  const distinctApplications = projects.data?.reduce(
-    (acc: string[], project: Project) => {
+  const distinctApplications = projects.data
+    ?.reduce((acc: string[], project: Project) => {
       project?.applications?.forEach((application) => {
         if (!acc.includes(application) && application !== "") {
           // Corrected the condition here
@@ -47,16 +50,15 @@ export default function Page() {
         }
       });
       return acc;
-    },
-    [] as string[]
-  ).filter(app => !app.includes(" "));
+    }, [] as string[])
+    .filter((app) => !app.includes(" "));
 
   function handleSectorChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.currentTarget.checked) {
       setFilteredSectors([...filteredSectors, e.currentTarget.value]);
     } else {
       setFilteredSectors(
-        filteredSectors.filter((p) => p !== e.currentTarget.value)
+        filteredSectors.filter((p) => p !== e.currentTarget.value),
       );
     }
   }
@@ -66,7 +68,7 @@ export default function Page() {
       setFilteredProducts([...filteredProducts, e.currentTarget.value]);
     } else {
       setFilteredProducts(
-        filteredProducts.filter((p) => p !== e.currentTarget.value)
+        filteredProducts.filter((p) => p !== e.currentTarget.value),
       );
     }
   }
@@ -76,29 +78,37 @@ export default function Page() {
       setFilteredApplications([...filteredApplications, e.currentTarget.value]);
     } else {
       setFilteredApplications(
-        filteredApplications.filter((p) => p !== e.currentTarget.value)
+        filteredApplications.filter((p) => p !== e.currentTarget.value),
       );
     }
   }
 
   useEffect(() => {
     const getProjectsByFilters = () => {
-      if (filteredProducts.length === 0 && filteredSectors.length === 0 && filteredApplications.length === 0) {
+      if (
+        filteredProducts.length === 0 &&
+        filteredSectors.length === 0 &&
+        filteredApplications.length === 0 &&
+        filteredProjectName === ""
+      ) {
         setFilteredProjects(projects.data || []);
         return;
       }
       const filteredProjects = projects.data?.filter((project) => {
         const hasProducts = filteredProducts.every((product) =>
-          project.products.includes(product)
+          project.products.includes(product),
         );
         const hasSectors = filteredSectors.every((sector) =>
-          project.sectors.includes(sector)
+          project.sectors.includes(sector),
         );
         const hasApplications = filteredApplications.every((app) =>
-          project.applications?.includes(app)
+          project.applications?.includes(app),
         );
+        const hasProjectName = project.name
+          .toLowerCase()
+          .includes(filteredProjectName.toLowerCase());
 
-        return hasProducts && hasSectors && hasApplications;
+        return hasProducts && hasSectors && hasApplications && hasProjectName;
       });
       if (filteredProjects) {
         setFilteredProjects(filteredProjects);
@@ -106,10 +116,16 @@ export default function Page() {
     };
 
     getProjectsByFilters();
-  }, [filteredProducts, filteredSectors, filteredApplications, projects.data]);
+  }, [
+    filteredProducts,
+    filteredSectors,
+    filteredApplications,
+    projects.data,
+    filteredProjectName,
+  ]);
 
   return (
-    <div>
+    <div className="py-8">
       <div className="container mx-auto sm:px-6 lg:px-8 flex flex-col items-center mt-8">
         <h2 className="uppercase py-1 text-2xl font-medium mb-4 border-y border-y-black">
           Project References
@@ -122,9 +138,17 @@ export default function Page() {
       </div>
 
       <div className="container mx-auto sm:px-6 lg:px-8 mt-8">
+        <input
+          type="text"
+          placeholder="Search by project name"
+          className="block w-full px-4 py-2 mt-8 border border-black"
+          onChange={(e) => setFilteredProjectName(e.target.value)}
+        />
+      </div>
+
+      <div className="container mx-auto sm:px-6 lg:px-8 mt-8">
         <h3 className="font-medium uppercase mb-4">Filter</h3>
         <div className="space-y-2 lg:grid lg:grid-cols-3 lg:gap-x-2 lg:space-y-0">
-
           <div className="p-4 border border-black">
             <h4 className="font-medium uppercase mb-2">Sector of services</h4>
             <ul className="space-y-1">
@@ -162,7 +186,10 @@ export default function Page() {
               {distinctProducts?.map((product: string) => {
                 return (
                   <li key={product}>
-                    <label className="flex items-center gap-2" htmlFor={product}>
+                    <label
+                      className="flex items-center gap-2"
+                      htmlFor={product}
+                    >
                       <input
                         id={product}
                         type="checkbox"
@@ -177,7 +204,6 @@ export default function Page() {
               })}
             </ul>
           </div>
-
 
           <div className="p-4 border border-black">
             <h4 className="font-medium uppercase mb-2">Applications</h4>
@@ -218,7 +244,9 @@ export default function Page() {
             onClick={() => setNumberToShow((prev) => prev + 6)}
             className={cn(
               "text-white px-4 py-2",
-              numberToShow >= filteredProjects.length ? "bg-gray-400" : "bg-black"
+              numberToShow >= filteredProjects.length
+                ? "bg-gray-400"
+                : "bg-black",
             )}
           >
             Load More
