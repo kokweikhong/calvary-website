@@ -10,8 +10,10 @@ import { cn } from "@/lib/utils";
 
 async function getProjects(): Promise<Project[]> {
   const response = await fetch(`/api/projects`);
-  const data = await response.json() as Project[];
-  const filteredData = data.filter((project) => project.products.includes("dassoCTECH"));
+  const data = (await response.json()) as Project[];
+  const filteredData = data.filter((project) =>
+    project.products.includes("dassoCTECH"),
+  );
 
   return filteredData;
 }
@@ -33,7 +35,7 @@ const Projects = () => {
           </span>
         </h2>
       </div>
-      <div className="container-cp lg:grid lg:grid-cols-3">
+      <div className="container-cp space-y-4 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-4">
         {projects?.slice(0, numberToLoad).map((project, index) => (
           <div key={`project-${index}`}>
             <div className="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white">
@@ -54,7 +56,7 @@ const Projects = () => {
               </div>
               <div className="flex flex-1 flex-col space-y-2 p-4">
                 <h3 className="text-sm font-medium text-gray-900">
-                  <Link href={`/projects/${project.id}`}>
+                  <Link href={`/projects/${project.url}`}>
                     <span aria-hidden="true" className="absolute inset-0" />
                     {project.name}
                   </Link>
@@ -79,7 +81,6 @@ const Projects = () => {
             </div>
           </div>
         ))}
-
       </div>
 
       <div className="container-cp py-8 text-center">
@@ -88,15 +89,14 @@ const Projects = () => {
           className={cn(
             "text-white uppercase font-medium rounded-md py-2 px-4",
             !projects?.length ? "bg-gray-300" : "bg-dasso",
-            numberToLoad >= projects?.length! ? "bg-gray-300" : "bg-dasso"
+            numberToLoad >= projects?.length! ? "bg-gray-300" : "bg-dasso",
           )}
-
         >
           Load More
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Projects;
