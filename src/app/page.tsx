@@ -28,7 +28,9 @@ export default function Home() {
         <OurTeam />
       </div>
       <Testimonials />
-      <Geography />
+      <div className="pb-8">
+        <Geography />
+      </div>
     </main>
   );
 }

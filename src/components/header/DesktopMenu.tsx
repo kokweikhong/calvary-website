@@ -211,13 +211,17 @@ const DesktopMenu = () => {
         </Popover>
       </Popover.Group>
 
-      <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+      <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center">
         <Link
           href={"/contact-us"}
           className="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-800 focus:outline-none bg-gray-100 rounded-lg px-4 py-2"
         >
           Contact Us
         </Link>
+
+        <div className="p-2 flex items-center ml-2">
+          <CountrySwitch />
+        </div>
       </div>
     </>
   );
