@@ -22,7 +22,7 @@ const Header = () => {
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Calvary Carpentry Sdn Bhd</span>
             <Image
-              className="h-8 w-auto"
+              className="h-12 w-auto"
               src={calvaryLogo}
               alt="Calvary Carpentry Sdn Bhd"
               priority
