@@ -13,7 +13,7 @@ const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
 const COUNTRY_URL = process.env.NEXT_PUBLIC_COUNTRY_URL;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(`https://${COUNTRY_URL}`),
+  metadataBase: new URL(`${COUNTRY_URL}`),
   title: "Premium Sustainable Timber & Decking Solutions | Calvary Carpentry",
   description:
     "Explore sustainable timber solutions for interior and outdoor projects. Discover award-winning materials like Accoya®, and Silverwood®. Connect with skilled artisans for bespoke timber floors and more.",

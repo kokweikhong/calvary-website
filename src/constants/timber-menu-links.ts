@@ -44,8 +44,7 @@ export const timberMenuLinks: TimberMenuLink[] = [
           country === "Singapore"
             ? "dassoCTECH® | Reconstituted Bamboo"
             : "MOSO® | Reconstituted Bamboo",
-        href:
-          country === "Singapore" ? "/dasso-ctech" : "/moso",
+        href: country === "Singapore" ? "/dasso-ctech" : "/moso",
       },
     ],
   },

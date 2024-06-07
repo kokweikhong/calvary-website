@@ -24,7 +24,11 @@ export const CountrySwitch = () => {
       <PopoverTrigger>
         <Image
           src={COUNTRY === "Malaysia" ? myLogo : sgLogo}
-          alt="Malaysia"
+          alt={
+            COUNTRY === "Malaysia"
+              ? "Calvary Carpentry Sdn Bhd"
+              : "Calvary Carpentry Pte Ltd"
+          }
           width={24}
           height={24}
         />
@@ -33,14 +37,18 @@ export const CountrySwitch = () => {
         <a
           href={
             COUNTRY === "Malaysia"
-              ? "https://calvarycarpentry.com"
+              ? "https://calvarycarpentry.sg"
               : "https://calvarycarpentry.com.my"
           }
           className="block px-4 py-2 text-sm text-gray-700"
         >
           <Image
             src={COUNTRY === "Malaysia" ? sgLogo : myLogo}
-            alt="Malaysia"
+            alt={
+              COUNTRY === "Malaysia"
+                ? "Calvary Carpentry Sdn Bhd"
+                : "Calvary Carpentry Pte Ltd"
+            }
             width={24}
             height={24}
           />
