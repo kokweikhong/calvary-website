@@ -31,6 +31,7 @@ const config = {
         osmo: "#33A949",
         calvaryComposite: "#577ABA",
         dasso: "#899F3E",
+        moso: "#4CA829",
         headingDark: "#1F2128",
         textDark: "#606060",
         accoya: "#33A949",
@@ -101,7 +102,7 @@ const config = {
     require("tailwindcss-animate"),
     require("@tailwindcss/forms"),
     require("@tailwindcss/typography"),
-    // require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/aspect-ratio"),
   ],
 } satisfies Config;
 
