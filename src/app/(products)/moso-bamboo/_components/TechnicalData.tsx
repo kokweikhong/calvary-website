@@ -95,10 +95,10 @@ const TechnicalData = () => {
               </div>
             </div>
             <p className="text-center md:col-span-full">
-              Maintaining MOSO® Bamboo X-treme® Decking is similar to caring for
-              other tropical woods. Water-based finish oils provide excellent
-              protection. Exposure to weather elements may lead to surface
-              weathering, causing greying and the appearance of
+              Maintaining MOSO® Bamboo X-treme® Decking is similar to caring
+              for other tropical woods. Water-based finish oils provide
+              excellent protection. Exposure to weather elements may lead to
+              surface weathering, causing greying and the appearance of
               cracks/splinters. Regular maintenance with decking finish helps
               minimise these effects.
             </p>
@@ -130,11 +130,11 @@ const TechnicalData = () => {
                 the fibres.
               </p>
               <p>As it dries, the color lightens again.</p>
-              <p>
+              <p>{`
                 This variation is typical for bamboo and wood products and is
                 not a flaw. It's a normal and expected feature of MOSO® Bamboo
                 X-treme® and similar materials.
-              </p>
+              `}</p>
             </div>
           </div>
         </div>
