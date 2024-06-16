@@ -1,4 +1,6 @@
 import { ArrowRightIcon } from "lucide-react";
+import MosoDecking from "./MosoDecking";
+import MosoCladding from "./MosoCladding";
 
 const products: { title: string; description: string }[] = [
   {
@@ -47,19 +49,22 @@ const Products = () => {
         </div>
         <div className="flex flex-col items-center space-y-4 py-8">
           <a
-            href="#"
+            href="#moso-decking"
             className="bg-moso text-white py-2 px-4 rounded-lg uppercase"
           >
             Explore Decking
           </a>
           <a
-            href="#"
+            href="#moso-cladding"
             className="bg-moso text-white py-2 px-4 rounded-lg uppercase"
           >
             Explore Cladding
           </a>
         </div>
       </div>
+
+      <MosoDecking />
+      <MosoCladding />
     </div>
   );
 };
