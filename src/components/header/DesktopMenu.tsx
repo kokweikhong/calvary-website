@@ -124,6 +124,19 @@ const DesktopMenu = () => {
                               </Link>
                             </LinkItem>
                           )}
+                          {COUNTRY === "Malaysia" && (
+                            <LinkItem>
+                              <Link
+                                href={navLinks.moso}
+                                onClick={() => close()}
+                              >
+                                <h4 className="font-semibold text-base mb-1">
+                                  {`Decking, Screen, Cladding, Soffit`}
+                                </h4>
+                                <span>{`MOSO® | Reconstituted Bamboo `}</span>
+                              </Link>
+                            </LinkItem>
+                          )}
                         </ul>
                       </div>
                     </div>
