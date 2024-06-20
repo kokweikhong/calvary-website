@@ -37,7 +37,7 @@ export const CountrySwitch = () => {
         <a
           href={
             COUNTRY === "Malaysia"
-              ? "https://calvarycarpentry.sg"
+              ? "https://calvarycarpentry.com"
               : "https://calvarycarpentry.com.my"
           }
           className="block px-4 py-2 text-sm text-gray-700"

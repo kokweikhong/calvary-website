@@ -54,7 +54,7 @@ const MobileMenu = (props: MobileMenuProps) => {
                       <ChevronDownIcon
                         className={cn(
                           open ? "rotate-180" : "",
-                          "h-5 w-5 flex-none",
+                          "h-5 w-5 flex-none"
                         )}
                         aria-hidden="true"
                       />
@@ -107,7 +107,7 @@ const MobileMenu = (props: MobileMenuProps) => {
                       <ChevronDownIcon
                         className={cn(
                           open ? "rotate-180" : "",
-                          "h-5 w-5 flex-none",
+                          "h-5 w-5 flex-none"
                         )}
                         aria-hidden="true"
                       />
@@ -159,6 +159,19 @@ const MobileMenu = (props: MobileMenuProps) => {
                             </Link>
                           </LinkItem>
                         )}
+                        {COUNTRY === "Malaysia" && (
+                          <LinkItem>
+                            <Link
+                              href={navLinks.moso}
+                              onClick={() => props.setMobileMenuOpen(false)}
+                            >
+                              <h4 className="font-semibold text-base mb-1">
+                                {`Decking, Screen, Cladding, Soffit`}
+                              </h4>
+                              <span>{`MOSO® | Reconstituted Bamboo `}</span>
+                            </Link>
+                          </LinkItem>
+                        )}
                       </ul>
                     </Disclosure.Panel>
                   </>
@@ -173,7 +186,7 @@ const MobileMenu = (props: MobileMenuProps) => {
                       <ChevronDownIcon
                         className={cn(
                           open ? "rotate-180" : "",
-                          "h-5 w-5 flex-none",
+                          "h-5 w-5 flex-none"
                         )}
                         aria-hidden="true"
                       />
