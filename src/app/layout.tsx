@@ -7,6 +7,7 @@ import { garamond, montserrat } from "@/lib/fonts";
 import type { Metadata } from "next";
 import QueryProvider from "@/components/QueryProvider";
 import "./globals.css";
+import Script from "next/script";
 
 const country = process.env.NEXT_PUBLIC_COUNTRY || "Singapore";
 
@@ -34,18 +35,35 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      {/* <Script
+        strategy="afterInteractive"
+        id="GTM-W623VHBX"
+        dangerouslySetInnerHTML={{
+          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W623VHBX');`,
+        }}
+      /> */}
       <QueryProvider>
         <body className={`${montserrat.variable} ${garamond.variable}`}>
           <ScrollToTop />
           <Header />
           <main>{children}</main>
           <Footer />
+          <noscript
+            dangerouslySetInnerHTML={{
+              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W623VHBX" height="0" width="0" style="display:none;visibility:hidden" />`,
+            }}
+          />
         </body>
       </QueryProvider>
       {/* Google Analytics */}
       {process.env.GOOGLE_ANALYTICS_ID && (
         <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
       )}
+      <GoogleAnalytics gaId={"GTM-W623VHBX"} />
     </html>
   );
 }
