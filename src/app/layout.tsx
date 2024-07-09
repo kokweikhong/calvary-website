@@ -8,6 +8,7 @@ import type { Metadata } from "next";
 import QueryProvider from "@/components/QueryProvider";
 import "./globals.css";
 import Script from "next/script";
+import GtmScript from "@/components/gtm-script";
 
 const country = process.env.NEXT_PUBLIC_COUNTRY || "Singapore";
 
@@ -52,11 +53,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <Header />
           <main>{children}</main>
           <Footer />
-          <noscript
+          <GtmScript />
+          {/* <noscript
             dangerouslySetInnerHTML={{
               __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W623VHBX" height="0" width="0" style="display:none;visibility:hidden" />`,
             }}
-          />
+          /> */}
         </body>
       </QueryProvider>
       {/* Google Analytics */}
