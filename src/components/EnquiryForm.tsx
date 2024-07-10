@@ -1,7 +1,8 @@
 "use client";
 
-import { useForm } from 'react-hook-form';
-import { toast } from 'sonner';
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 type EnquiryFormProps = {
   name: string;
@@ -22,17 +23,22 @@ async function sendEmail(data: EnquiryFormProps) {
 }
 
 const EnquiryForm = () => {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<EnquiryFormProps>();
-
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<EnquiryFormProps>();
+  const router = useRouter();
   function onSubmit(data: EnquiryFormProps) {
-    toast.promise(sendEmail(data), {
-      loading: "Sending...",
-      success() {
-        reset();
-        return "Your enquiry has been sent successfully";
-      },
-      error: "An error occurred while sending your enquiry",
-    });
+    try {
+      sendEmail(data);
+      toast.success("Email sent successfully");
+      reset();
+      router.push("/thank-you");
+    } catch (error) {
+      toast.error("Failed to send email");
+    }
   }
 
   return (
@@ -47,7 +53,7 @@ const EnquiryForm = () => {
             id="name"
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             placeholder="Your name"
-            {...register('name', { required: true })}
+            {...register("name", { required: true })}
           />
           {errors.name && <span>This field is required</span>}
         </div>
@@ -60,7 +66,7 @@ const EnquiryForm = () => {
             id="email"
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             placeholder="Your email"
-            {...register('email', { required: true })}
+            {...register("email", { required: true })}
           />
           {errors.email && <span>This field is required</span>}
         </div>
@@ -74,7 +80,7 @@ const EnquiryForm = () => {
             id="contact"
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             placeholder="Your contact number"
-            {...register('contact', { required: true })}
+            {...register("contact", { required: true })}
           />
           {errors.contact && <span>This field is required</span>}
         </div>
@@ -86,7 +92,7 @@ const EnquiryForm = () => {
             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             defaultValue={""}
             placeholder="Leave your enquiry here..."
-            {...register('comments', { required: true })}
+            {...register("comments", { required: true })}
           />
           {errors.comments && <span>This field is required</span>}
         </div>
@@ -101,7 +107,6 @@ const EnquiryForm = () => {
       </div>
     </form>
   );
-
-}
+};
 
 export default EnquiryForm;
