@@ -50,7 +50,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       /> */}
       <QueryProvider>
         <body className={`${montserrat.variable} ${garamond.variable}`}>
-          <ScrollToTop />
           <Header />
           <main>{children}</main>
           <Footer />
