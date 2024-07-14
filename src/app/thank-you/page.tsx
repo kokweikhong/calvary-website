@@ -18,7 +18,7 @@ export default function Page() {
     }
 
     return () => clearInterval(timer);
-  }, [count]);
+  }, [count, router]);
 
   return (
     <div className="container mx-auto text-center p-4">

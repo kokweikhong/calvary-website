@@ -11,3 +11,6 @@ export const footerCopyrightContent = `©2024 Calvary Carpentry ${
 export const footerCompanyDescription = `Welcome to Calvary Carpentry ${
   country === "Singapore" ? "Pte Ltd" : "Sdn. Bhd."
 }, where exceptional craftsmanship meets unwavering trust. With a legacy of excellence established by prestigious brands in Singapore, we've wood for you.`;
+
+export const whatsappNumber =
+  country === "Singapore" ? "6590297044" : "60133001091";

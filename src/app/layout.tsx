@@ -9,6 +9,7 @@ import QueryProvider from "@/components/QueryProvider";
 import "./globals.css";
 import Script from "next/script";
 import GtmScript from "@/components/gtm-script";
+import WhatsappFloating from "@/components/WhatsappFloating";
 
 const country = process.env.NEXT_PUBLIC_COUNTRY || "Singapore";
 
@@ -59,6 +60,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W623VHBX" height="0" width="0" style="display:none;visibility:hidden" />`,
             }}
           /> */}
+          <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-2">
+            <WhatsappFloating />
+            <ScrollToTop />
+          </div>
         </body>
       </QueryProvider>
       {/* Google Analytics */}
