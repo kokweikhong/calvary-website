@@ -66,10 +66,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </body>
       </QueryProvider>
       {/* Google Analytics */}
+      {/*
       {process.env.GOOGLE_ANALYTICS_ID && (
         <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
       )}
-      <GoogleAnalytics gaId={"GTM-W623VHBX"} />
+      */}
+      {/* <GoogleAnalytics gaId={"GTM-W623VHBX"} /> */}
+      {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
+      )}
     </html>
   );
 }
