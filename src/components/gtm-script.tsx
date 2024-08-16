@@ -16,9 +16,6 @@ const GtmScript = () => {
     gtag("config", GTM_ID);
   }, []);
 
-  if (COUNTRY !== "Singapore") {
-    return null;
-  }
   return (
     <>
       <Script
