@@ -28,10 +28,10 @@ const locations: Location[] = [
   {
     name: "Calvary Carpentry Sdn Bhd",
     address: [
-      "No. 26, Jalan Laman Setia 7/6",
-      "Taman Laman Setia",
-      "81550 Gelang Patah",
-      "Johor, Malaysia",
+      "8, Jalan TS 6/9",
+      "Taman Perindustrian Subang",
+      "47510 Subang Jaya",
+      "Selangor, Malaysia",
     ],
     whatsapp: "+60 16-778 5788",
     phone: "+60 16-778 5788",

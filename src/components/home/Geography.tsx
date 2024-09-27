@@ -20,7 +20,7 @@ const locations: Location[] = [
   {
     title: "Warehouse",
     description:
-      "No. 26, Jalan Laman Setia 7/6, Taman Laman Setia, 81550 Gelang Patah, Johor, Malaysia",
+      "8, Jalan TS 6/9, Taman Perindustrian Subang, 47510 Subang Jaya, Selangor, Malaysia",
     icon: msiaIcon,
   },
   {
