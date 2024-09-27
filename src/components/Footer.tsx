@@ -121,12 +121,8 @@ const Footer = () => {
           </div>
           <div className="space-y-4 mt-4">
             <h4 className="uppercase">Malaysia</h4>
-            <p>
-              {`
-              8, Jalan TS 6/9, Taman Perindustrian Subang, 
-              47510 Subang Jaya, Selangor, Malaysia
-              `}
-            </p>
+            <p> 8, Jalan TS 6/9, Taman Perindustrian Subang,</p>
+            <p>47510 Subang Jaya, Selangor, Malaysia</p>
             <div>
               <div className="flex gap-2 items-center">
                 <div className="h-[20px] w-[20px] relative">
