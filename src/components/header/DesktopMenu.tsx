@@ -53,6 +53,17 @@ const DesktopMenu = () => {
                         <ul className="space-y-4 [&_h4]:text-[#805C00]">
                           <LinkItem>
                             <Link
+                              href={navLinks.champaca}
+                              onClick={() => close()}
+                            >
+                              <h4 className="font-semibold text-base mb-1">
+                                Compound Wood
+                              </h4>
+                              <span>{`Champaca Wood`}</span>
+                            </Link>
+                          </LinkItem>
+                          <LinkItem>
+                            <Link
                               href={navLinks.kandinsky}
                               onClick={() => close()}
                             >

@@ -73,6 +73,17 @@ const MobileMenu = (props: MobileMenuProps) => {
                         </LinkItem>
                         <LinkItem>
                           <Link
+                            href={navLinks.champaca}
+                            onClick={() => close()}
+                          >
+                            <h4 className="font-semibold text-base mb-1">
+                              Compound Wood
+                            </h4>
+                            <span>{`Champaca Wood`}</span>
+                          </Link>
+                        </LinkItem>
+                        <LinkItem>
+                          <Link
                             href={navLinks.kandinsky}
                             onClick={() => props.setMobileMenuOpen(false)}
                           >

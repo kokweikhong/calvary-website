@@ -9,6 +9,7 @@ export const navLinks = {
   dasso: "/dasso-ctech",
   osmo: "/osmo",
   moso: "/moso-bamboo",
+  champaca: "/champaca-wood",
   sandAndVanish: "/sand-and-vanish",
   aboutUs: "/about-us",
   blog: "/blog",

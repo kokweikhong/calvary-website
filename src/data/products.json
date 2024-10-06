@@ -87,6 +87,16 @@
     "services": ["exterior"],
     "thumbnail": "websites/products/thumbnails/dasso.jpg",
     "logo": "websites/products/logos/icon-dasso.svg",
-    "description": "Sustainable Class 0 fire-rated bamboo : Dasso CTECH: highly durable and resistant to weather, mould, soft rot, and insects. "
+    "description": "Sustainable Class 0 fire-rated bamboo : Dasso CTECH: highly durable and resistant to weather, mould, soft rot, and insects."
+  },
+  {
+    "name": "champaca",
+    "title": "Champaca Wood",
+    "href": "/champaca-wood",
+    "countries": ["sg","my"],
+    "services": ["interior"],
+    "thumbnail": "websites/products/thumbnails/champaca.jpg",
+    "logo": "websites/products/logos/logo-champaca.svg",
+    "description": "Champaca Compound Timber Flooring - Sustainable, Insect-Resistant, and Dimensionally Stable Hardwood for Interiors."
   }
 ]
