@@ -1,4 +1,3 @@
-import { GoogleAnalytics } from "@next/third-parties/google";
 import Footer from "@/components/Footer";
 // import Header from "@/components/Header";
 import Header from "@/components/header/Header";
@@ -11,6 +10,8 @@ import Script from "next/script";
 import GtmScript from "@/components/gtm-script";
 import WhatsappFloating from "@/components/WhatsappFloating";
 import CookieBanner from "@/components/CookieBanner";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+
 
 const country = process.env.NEXT_PUBLIC_COUNTRY || "Singapore";
 
@@ -67,15 +68,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <CookieBanner />
         </body>
       </QueryProvider>
-      {/* Google Analytics */}
-      {process.env.GOOGLE_ANALYTICS_ID && (
-        <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
-      )}
-      {/* <GoogleAnalytics gaId={"GTM-W623VHBX"} /> */}
-      {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && (
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
-      )}
-
+      <GoogleAnalytics />
     </html>
   );
 }
