@@ -10,6 +10,7 @@ import "./globals.css";
 import Script from "next/script";
 import GtmScript from "@/components/gtm-script";
 import WhatsappFloating from "@/components/WhatsappFloating";
+import CookieBanner from "@/components/CookieBanner";
 
 const country = process.env.NEXT_PUBLIC_COUNTRY || "Singapore";
 
@@ -63,6 +64,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <WhatsappFloating />
             <ScrollToTop />
           </div>
+          <CookieBanner />
         </body>
       </QueryProvider>
       {/* Google Analytics */}
@@ -73,6 +75,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && (
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID} />
       )}
+
     </html>
   );
 }

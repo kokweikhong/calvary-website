@@ -2,11 +2,21 @@
 
 import { useEffect } from "react";
 import Script from "next/script";
+import { usePathname, useSearchParams } from "next/navigation";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
 const COUNTRY = process.env.NEXT_PUBLIC_COUNTRY;
 
+declare global {
+  interface Window {
+    gtag: any;
+  }
+}
+
 const GtmScript = () => {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   useEffect(() => {
     window.dataLayer = window.dataLayer || [];
     function gtag(p0: string, p1: any) {
@@ -14,10 +24,21 @@ const GtmScript = () => {
     }
     gtag("js", new Date());
     gtag("config", GTM_ID);
-  }, []);
+
+    const url = pathname + searchParams.toString();
+
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("config", GTM_ID, {
+        page_path: url,
+      });
+    }
+  }, [pathname, searchParams]);
 
   return (
     <>
+      <Script strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GTM_ID}&l=dataLayer`}
+      />
       <Script
         id="gtm-script"
         strategy="afterInteractive"
