@@ -12,8 +12,8 @@ import WhatsappFloating from "@/components/WhatsappFloating";
 import CookieBanner from "@/components/CookieBanner";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 
-
 const country = process.env.NEXT_PUBLIC_COUNTRY || "Singapore";
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || "";
 
 export const metadata: Metadata = {
   title:
@@ -55,7 +55,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <Header />
           <main>{children}</main>
           <Footer />
-          <GtmScript />
+          {/* <GtmScript /> */}
           {/* <noscript
             dangerouslySetInnerHTML={{
               __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W623VHBX" height="0" width="0" style="display:none;visibility:hidden" />`,
@@ -68,7 +68,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <CookieBanner />
         </body>
       </QueryProvider>
-      <GoogleAnalytics />
+      <GoogleAnalytics GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} />
     </html>
   );
 }
