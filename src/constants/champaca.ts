@@ -96,8 +96,8 @@ const champacaComparisons: ChampacaComparison[] = [
                     description: "Thin layer of Hardwood glued on plywood."
                 },
                 {
-                    title: "Birch",
-                    description: "9 Layers of high-quality of birch plywood."
+                    title: "Birch Plywood",
+                    description: "High-quality, multi-layered birch plywood."
                 }
             ]
         }
