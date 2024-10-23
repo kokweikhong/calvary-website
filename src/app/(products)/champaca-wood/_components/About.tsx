@@ -96,7 +96,7 @@ export default function About() {
                     width={400}
                     height={400}
                     priority
-                    className="w-auto h-64 object-cover"
+                    className="w-auto h-64 object-fill"
                   />
                 </div>
                 <div className="flex gap-x-2 bg-[#FFFCF0] p-4 flex-1">
