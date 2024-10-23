@@ -93,6 +93,9 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         "infinite-scroll": "infinite-scroll 70s linear infinite",
       },
+      screens: {
+        "450px": "450px",
+      },
     },
   },
   // corePlugins: {
