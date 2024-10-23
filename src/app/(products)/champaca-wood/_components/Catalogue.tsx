@@ -126,7 +126,7 @@ export default function Catalogue() {
         <div className="p-4">
           <div className="w-full">
             <h3 className="text-[#A16448] font-semibold uppercase text-xl my-2">
-              Available Colours:
+              {`Available Wood & Colours:`}
             </h3>
             {/* horizontal line */}
             <span className="block w-full h-0.5 bg-[#A16448] my-2"></span>
