@@ -390,7 +390,7 @@ const champacaFeatures: ChampacaFeature[] = [
     },
     {
         title: "Termite Resistance",
-        img: `${CHAMPACA_ASSETS_URL}/benefits/termite-resistance.jpg`,
+        img: `${CHAMPACA_ASSETS_URL}/benefits/termite-resistance-updated.jpg`,
         icon: `${champacaBenefitIconURL}/termite-resistance.png`,
         contents: [
             "Champaca Compound Solid has been treated with ACQ H3 - Termite Resistance (Alkaline Copper Quaternary).",
