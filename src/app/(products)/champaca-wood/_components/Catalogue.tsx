@@ -31,7 +31,7 @@ export default function Catalogue() {
                 <h3 className="text-[#A16448] font-medium text-center uppercase text-lg my-2">
                   {pattern.title}
                 </h3>
-                <div className="flex flex-wrap items-start gap-2">
+                <div className="flex flex-wrap items-start gap-2 max-w-sm">
                   {pattern.items.map((item, index) => (
                     <div
                       key={index}
@@ -63,7 +63,7 @@ export default function Catalogue() {
             {/* horizontal line */}
             <span className="block w-full h-0.5 bg-[#A16448] my-2"></span>
           </div>
-          <div className="flex flex-wrap items-start justify-start gap-4">
+          <div className="flex flex-wrap items-start justify-start gap-2 max-w-sm">
             {Champaca.catalogue.collections.map((collection, index) => (
               <div
                 key={index}
@@ -97,7 +97,7 @@ export default function Catalogue() {
             {/* horizontal line */}
             <span className="block w-full h-0.5 bg-[#A16448] my-2"></span>
           </div>
-          <div className="flex flex-wrap items-start justify-start gap-4">
+          <div className="flex flex-wrap items-start justify-start gap-2 max-w-sm">
             {Champaca.catalogue.textures.map((texture, index) => (
               <div
                 key={index}
@@ -141,7 +141,7 @@ export default function Catalogue() {
                 <h3 className="text-[#A16448] font-medium text-center uppercase text-lg my-2">
                   {colour.title}
                 </h3>
-                <div className="flex flex-wrap items-start gap-2">
+                <div className="flex flex-wrap items-start gap-2 max-w-sm">
                   {colour.items.map((item, index) => (
                     <div
                       key={index}
