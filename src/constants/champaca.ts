@@ -273,10 +273,10 @@ const champacaColourTeaks: CatalogueItem[] = [
         title: "Brandy",
         img: `${CHAMPACA_ASSETS_URL}/colours/teak/brandy.jpg`,
     },
-    {
-        title: "Ivory",
-        img: `${CHAMPACA_ASSETS_URL}/colours/teak/ivory.jpg`,
-    },
+    // {
+    //     title: "Ivory",
+    //     img: `${CHAMPACA_ASSETS_URL}/colours/teak/ivory.jpg`,
+    // },
 ]
 
 const champacaColourRareFinds: CatalogueItem[] = [
