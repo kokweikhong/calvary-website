@@ -37,7 +37,6 @@ export default function Hero() {
             >
               Explore Champaca
             </a>
-            <span className="text-xs">Dior, One Fullerton, LV</span>
           </div>
         </div>
       </div>
