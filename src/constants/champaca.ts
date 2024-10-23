@@ -70,7 +70,7 @@ const champacaComparisons: ChampacaComparison[] = [
                     description: "Strong matt lacquer coating which provides protection against wear and tear as well as spillage of liquids. Easy to maintain & clean and contains no harmful solvent."
                 },
                 {
-                    title: "Lamella",
+                    title: "Hardwood Wear Layer",
                     description: "3mm/4mm Thick high-quality hardwood. If required, this layercan be sanded down at least 1-2 times."
                 },
                 {
@@ -92,7 +92,7 @@ const champacaComparisons: ChampacaComparison[] = [
                     description: "Strong matt lacquer coating which provides protection against wear and tear as well as spillage of liquids. Easy to maintain & clean and contains no harmful solvent."
                 },
                 {
-                    title: "Hardwood Ply",
+                    title: "Hardwood Wear Layer",
                     description: "Thin layer of Hardwood glued on plywood."
                 },
                 {
