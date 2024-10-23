@@ -47,7 +47,7 @@ export default function About() {
             </span>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-wrap items-center justify-center md:grid md:grid-rows-2 md:grid-cols-3 gap-4">
             {Champaca.about.benefits.map((benefit, index) => (
               <div
                 key={index}
