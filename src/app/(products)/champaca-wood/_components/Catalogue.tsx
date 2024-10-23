@@ -88,40 +88,6 @@ export default function Catalogue() {
           </div>
         </div>
 
-        {/* textures */}
-        <div className="p-4">
-          <div className="w-full">
-            <h3 className="text-[#A16448] font-semibold uppercase text-xl my-2">
-              Available Textures:
-            </h3>
-            {/* horizontal line */}
-            <span className="block w-full h-0.5 bg-[#A16448] my-2"></span>
-          </div>
-          <div className="flex flex-wrap items-start justify-start gap-2 max-w-sm">
-            {Champaca.catalogue.textures.map((texture, index) => (
-              <div
-                key={index}
-                className="flex flex-wrap items-start gap-2 mt-4"
-              >
-                <div
-                  key={index}
-                  className="flex flex-col items-center justify-center gap-y-2 w-20"
-                >
-                  <Image
-                    src={texture.img}
-                    alt="Main Image"
-                    width={80}
-                    height={80}
-                    priority
-                    className="w-full h-full"
-                  />
-                  <p className="text-center text-xs">{texture.title}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* colours */}
         <div className="p-4">
           <div className="w-full">

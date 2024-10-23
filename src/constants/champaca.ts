@@ -183,24 +183,6 @@ const champacaPatternDesignPalaces: CatalogueItem[] = [
   },
 ]
 
-const champacaCollections: CatalogueItem[] = [
-  {
-    title: "Versailles",
-    img: `${CHAMPACA_ASSETS_URL}/collections/versailles.jpg`,
-  },
-  {
-    title: "Riverstones",
-    img: `${CHAMPACA_ASSETS_URL}/collections/riverstones.jpg`,
-  },
-  {
-    title: "End Grains",
-    img: `${CHAMPACA_ASSETS_URL}/collections/end-grains.jpg`,
-  },
-  {
-    title: "Terroir",
-    img: `${CHAMPACA_ASSETS_URL}/collections/terroir.jpg`,
-  },
-]
 
 const champacaTextures: CatalogueItem[] = [
   {
@@ -219,6 +201,26 @@ const champacaTextures: CatalogueItem[] = [
     title: "Freeform",
     img: `${CHAMPACA_ASSETS_URL}/texture/freeform.jpg`,
   },
+]
+
+const champacaCollections: CatalogueItem[] = [
+  {
+    title: "Versailles",
+    img: `${CHAMPACA_ASSETS_URL}/collections/versailles.jpg`,
+  },
+  {
+    title: "Riverstones",
+    img: `${CHAMPACA_ASSETS_URL}/collections/riverstones.jpg`,
+  },
+  {
+    title: "End Grains",
+    img: `${CHAMPACA_ASSETS_URL}/collections/end-grains.jpg`,
+  },
+  {
+    title: "Terroir",
+    img: `${CHAMPACA_ASSETS_URL}/collections/terroir.jpg`,
+  },
+  ...champacaTextures,
 ]
 
 const champacaColourOaks: CatalogueItem[] = [
