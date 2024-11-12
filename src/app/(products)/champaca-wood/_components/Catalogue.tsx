@@ -2,6 +2,14 @@ import { Champaca } from "@/constants/champaca";
 import Image from "next/image";
 import Download from "./Download";
 import { cn } from "@/lib/utils";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function Catalogue() {
   return (
@@ -87,27 +95,43 @@ export default function Catalogue() {
           </div>
           <div className="flex flex-wrap items-start justify-start gap-2 min-[450px]:grid min-[450px]:grid-cols-4">
             {Champaca.catalogue.collections.map((collection, index) => (
-              <div
-                key={index}
-                className="flex flex-wrap items-start gap-2 mt-4 min-[450px]:w-full h-full"
-              >
-                <div
-                  key={index}
-                  className="flex flex-col items-center justify-center gap-y-2 w-20 min-[450px]:w-full min-[450px]:h-full"
-                >
-                  <Image
-                    src={collection.img}
-                    alt="Main Image"
-                    width={400}
-                    height={400}
-                    priority
-                    className="w-full h-full object-cover"
-                  />
-                  <p className="text-center text-xs md:text-sm">
-                    {collection.title}
-                  </p>
-                </div>
-              </div>
+              <Dialog key={index}>
+                <DialogTrigger>
+                  <div
+                    key={index}
+                    className="flex flex-wrap items-start gap-2 mt-4 min-[450px]:w-full h-full"
+                  >
+                    <div className="flex flex-col items-center justify-center gap-y-2 w-20 min-[450px]:w-full min-[450px]:h-full">
+                      <Image
+                        src={collection.img}
+                        alt="Main Image"
+                        width={400}
+                        height={400}
+                        priority
+                        className="w-full h-full object-cover"
+                      />
+                      <p className="text-center text-xs md:text-sm">
+                        {collection.title}
+                      </p>
+                    </div>
+                  </div>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>{collection.title}</DialogTitle>
+                    <DialogDescription>
+                      <Image
+                        src={collection.img}
+                        alt="Main Image"
+                        width={800}
+                        height={800}
+                        priority
+                        className="w-full h-full object-cover"
+                      />
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             ))}
           </div>
         </div>
@@ -133,22 +157,38 @@ export default function Catalogue() {
                 </h3>
                 <div className="flex flex-wrap items-start gap-2 450px:grid 450px:grid-cols-4">
                   {colour.items.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex flex-col items-center justify-center gap-y-2 w-20 450px:w-full h-full"
-                    >
-                      <Image
-                        src={item.img}
-                        alt="Main Image"
-                        width={400}
-                        height={400}
-                        priority
-                        className="w-full h-full object-cover"
-                      />
-                      <p className="text-center text-xs md:text-sm">
-                        {item.title}
-                      </p>
-                    </div>
+                    <Dialog key={index}>
+                      <DialogTrigger>
+                        <div className="flex flex-col items-center justify-center gap-y-2 w-20 450px:w-full h-full">
+                          <Image
+                            src={item.img}
+                            alt="Main Image"
+                            width={400}
+                            height={400}
+                            priority
+                            className="w-full h-full object-cover"
+                          />
+                          <p className="text-center text-xs md:text-sm">
+                            {item.title}
+                          </p>
+                        </div>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>{item.title}</DialogTitle>
+                          <DialogDescription>
+                            <Image
+                              src={item.img}
+                              alt="Main Image"
+                              width={800}
+                              height={800}
+                              priority
+                              className="w-full h-full object-cover"
+                            />
+                          </DialogDescription>
+                        </DialogHeader>
+                      </DialogContent>
+                    </Dialog>
                   ))}
                 </div>
               </div>
@@ -167,27 +207,43 @@ export default function Catalogue() {
           </div>
           <div className="flex flex-wrap items-start justify-start gap-4 450px:grid 450px:grid-cols-4">
             {Champaca.catalogue.grades.map((grade, index) => (
-              <div
-                key={index}
-                className="flex flex-wrap items-start gap-2 mt-4"
-              >
-                <div
-                  key={index}
-                  className="flex flex-col items-center justify-center gap-y-2 w-20 450px:w-full h-full"
-                >
-                  <Image
-                    src={grade.img}
-                    alt="Main Image"
-                    width={400}
-                    height={400}
-                    priority
-                    className="w-full h-full object-cover"
-                  />
-                  <p className="text-center text-xs md:text-sm">
-                    {grade.title}
-                  </p>
-                </div>
-              </div>
+              <Dialog key={index}>
+                <DialogTrigger>
+                  <div className="flex flex-wrap items-start gap-2 mt-4">
+                    <div
+                      key={index}
+                      className="flex flex-col items-center justify-center gap-y-2 w-20 450px:w-full h-full"
+                    >
+                      <Image
+                        src={grade.img}
+                        alt="Main Image"
+                        width={400}
+                        height={400}
+                        priority
+                        className="w-full h-full object-cover"
+                      />
+                      <p className="text-center text-xs md:text-sm">
+                        {grade.title}
+                      </p>
+                    </div>
+                  </div>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>{grade.title}</DialogTitle>
+                    <DialogDescription>
+                      <Image
+                        src={grade.img}
+                        alt="Main Image"
+                        width={800}
+                        height={800}
+                        priority
+                        className="w-full h-full object-cover"
+                      />
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             ))}
           </div>
         </div>
