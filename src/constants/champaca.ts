@@ -3,7 +3,6 @@ import { features } from "process";
 const WEBSITE_ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
 const CHAMPACA_ASSETS_URL = `${WEBSITE_ASSETS_URL}/websites/champaca`;
 
-
 type ChampacaBenefit = {
   title: string;
   img: string;
@@ -39,7 +38,7 @@ const champacaBenefits: ChampacaBenefit[] = [
   {
     title: "Boundless Designs and Craftsmanship",
     img: `${champacaBenefitIconURL}/boundless-designs-and-craftsmanship.png`,
-  }
+  },
 ];
 
 const accrediationURL = `${CHAMPACA_ASSETS_URL}/accrediation`;
@@ -67,18 +66,21 @@ const champacaComparisons: ChampacaComparison[] = [
       contents: [
         {
           title: "Lacquer Coating",
-          description: "Strong matt lacquer coating which provides protection against wear and tear as well as spillage of liquids. Easy to maintain & clean and contains no harmful solvent."
+          description:
+            "Strong matt lacquer coating which provides protection against wear and tear as well as spillage of liquids. Easy to maintain & clean and contains no harmful solvent.",
         },
         {
           title: "Hardwood Wear Layer",
-          description: "3mm/4mm Thick high-quality hardwood. If required, this layercan be sanded down at least 1-2 times."
+          description:
+            "3mm/4mm Thick high-quality hardwood. If required, this layercan be sanded down at least 1-2 times.",
         },
         {
           title: "Strength from the core",
-          description: "Our third and fourth layers are constructed from high-quality teak; cross-laminated to provide high stability. The layers are impregnated with eco-friendly anti-termite and anti-molding solutions."
-        }
-      ]
-    }
+          description:
+            "Our third and fourth layers are constructed from high-quality teak; cross-laminated to provide high stability. The layers are impregnated with eco-friendly anti-termite and anti-molding solutions.",
+        },
+      ],
+    },
   },
   {
     title: "Engineered Wood",
@@ -89,24 +91,26 @@ const champacaComparisons: ChampacaComparison[] = [
       contents: [
         {
           title: "Lacquer Coating",
-          description: "Strong matt lacquer coating which provides protection against wear and tear as well as spillage of liquids. Easy to maintain & clean and contains no harmful solvent."
+          description:
+            "Strong matt lacquer coating which provides protection against wear and tear as well as spillage of liquids. Easy to maintain & clean and contains no harmful solvent.",
         },
         {
           title: "Hardwood Wear Layer",
-          description: "Thin layer of Hardwood glued on plywood."
+          description: "Thin layer of Hardwood glued on plywood.",
         },
         {
           title: "Birch Plywood",
-          description: "High-quality, multi-layered birch plywood."
-        }
-      ]
-    }
+          description: "High-quality, multi-layered birch plywood.",
+        },
+      ],
+    },
   },
-]
+];
 
 type CatalogueItem = {
   title: string;
   img: string;
+  activeImg?: string;
 };
 
 const champacaPatternPlanks: CatalogueItem[] = [
@@ -117,21 +121,25 @@ const champacaPatternPlanks: CatalogueItem[] = [
   {
     title: "Random Width",
     img: `${CHAMPACA_ASSETS_URL}/patterns/planks-patterns/svg/random-width.svg`,
+    activeImg: `${CHAMPACA_ASSETS_URL}/patterns/planks-patterns/active-random-width.png`,
   },
   {
     title: "Herringbone",
     img: `${CHAMPACA_ASSETS_URL}/patterns/planks-patterns/svg/herringbone.svg`,
+    activeImg: `${CHAMPACA_ASSETS_URL}/patterns/planks-patterns/active-herringbone.png`,
   },
   {
     title: "Chevron",
     img: `${CHAMPACA_ASSETS_URL}/patterns/planks-patterns/svg/chervon.svg`,
+    activeImg: `${CHAMPACA_ASSETS_URL}/patterns/planks-patterns/active-chervon.png`,
   },
-]
+];
 
 const champacaPatternDesignParquets: CatalogueItem[] = [
   {
     title: "Mansion Weave",
     img: `${CHAMPACA_ASSETS_URL}/patterns/design-parquet/svg/mansion-weave.svg`,
+    activeImg: `${CHAMPACA_ASSETS_URL}/patterns/design-parquet/active-mansion-weave.png`,
   },
   {
     title: "Hexagon Weave",
@@ -140,18 +148,22 @@ const champacaPatternDesignParquets: CatalogueItem[] = [
   {
     title: "Hexagon",
     img: `${CHAMPACA_ASSETS_URL}/patterns/design-parquet/svg/hexagon.svg`,
+    activeImg: `${CHAMPACA_ASSETS_URL}/patterns/design-parquet/active-hexagon.png`,
   },
   {
     title: "Freeform Modular",
     img: `${CHAMPACA_ASSETS_URL}/patterns/design-parquet/svg/freeform-modular.svg`,
+    activeImg: `${CHAMPACA_ASSETS_URL}/patterns/design-parquet/active-freeform-modular.png`,
   },
   {
     title: "Waldorf",
     img: `${CHAMPACA_ASSETS_URL}/patterns/design-parquet/svg/waldorf.svg`,
+    activeImg: `${CHAMPACA_ASSETS_URL}/patterns/design-parquet/active-waldorf.png`,
   },
   {
     title: "Triangle",
     img: `${CHAMPACA_ASSETS_URL}/patterns/design-parquet/svg/triangle.svg`,
+    activeImg: `${CHAMPACA_ASSETS_URL}/patterns/design-parquet/active-triangle.png`,
   },
   {
     title: "Golden Ratio",
@@ -161,28 +173,30 @@ const champacaPatternDesignParquets: CatalogueItem[] = [
     title: "Sakura",
     img: `${CHAMPACA_ASSETS_URL}/patterns/design-parquet/svg/sakura.svg`,
   },
-
 ];
 
 const champacaPatternDesignPalaces: CatalogueItem[] = [
   {
     title: "Versailles",
     img: `${CHAMPACA_ASSETS_URL}/patterns/design-palace/svg/versailles.svg`,
+    activeImg: `${CHAMPACA_ASSETS_URL}/patterns/design-palace/active-versailles.png`,
   },
   {
     title: "Buckingham",
     img: `${CHAMPACA_ASSETS_URL}/patterns/design-palace/svg/buckingham.svg`,
+    activeImg: `${CHAMPACA_ASSETS_URL}/patterns/design-palace/active-buckingham.png`,
   },
   {
     title: "Windsor",
     img: `${CHAMPACA_ASSETS_URL}/patterns/design-palace/svg/windsor.svg`,
+    activeImg: `${CHAMPACA_ASSETS_URL}/patterns/design-palace/active-windsor.png`,
   },
   {
     title: "Amber",
     img: `${CHAMPACA_ASSETS_URL}/patterns/design-palace/svg/amber.svg`,
+    activeImg: `${CHAMPACA_ASSETS_URL}/patterns/design-palace/active-amber.png`,
   },
-]
-
+];
 
 const champacaTextures: CatalogueItem[] = [
   {
@@ -201,7 +215,7 @@ const champacaTextures: CatalogueItem[] = [
     title: "Freeform",
     img: `${CHAMPACA_ASSETS_URL}/texture/freeform.jpg`,
   },
-]
+];
 
 const champacaCollections: CatalogueItem[] = [
   {
@@ -221,7 +235,7 @@ const champacaCollections: CatalogueItem[] = [
     img: `${CHAMPACA_ASSETS_URL}/collections/terroir.jpg`,
   },
   ...champacaTextures,
-]
+];
 
 const champacaColourOaks: CatalogueItem[] = [
   {
@@ -256,7 +270,7 @@ const champacaColourOaks: CatalogueItem[] = [
     title: "Graphite",
     img: `${CHAMPACA_ASSETS_URL}/colours/oak/graphite.jpg`,
   },
-]
+];
 
 const champacaColourTeaks: CatalogueItem[] = [
   {
@@ -279,7 +293,7 @@ const champacaColourTeaks: CatalogueItem[] = [
   //     title: "Ivory",
   //     img: `${CHAMPACA_ASSETS_URL}/colours/teak/ivory.jpg`,
   // },
-]
+];
 
 const champacaColourRareFinds: CatalogueItem[] = [
   {
@@ -314,7 +328,7 @@ const champacaColourRareFinds: CatalogueItem[] = [
     title: "American Walnut",
     img: `${CHAMPACA_ASSETS_URL}/colours/rare-finds/american-walnut.jpg`,
   },
-]
+];
 
 const champacaGrades: CatalogueItem[] = [
   {
@@ -329,7 +343,7 @@ const champacaGrades: CatalogueItem[] = [
     title: "Rustic (CD)",
     img: `${CHAMPACA_ASSETS_URL}/grades/rustic-cd.jpg`,
   },
-]
+];
 
 const champacaDownloads: CatalogueItem[] = [
   {
@@ -360,15 +374,14 @@ const champacaDownloads: CatalogueItem[] = [
     title: "Champaca Warranty Brochure",
     img: `${CHAMPACA_ASSETS_URL}/downloads/champaca-warranty-supply-and-Install.pdf`,
   },
-]
+];
 
 type ChampacaFeature = {
-  title: string
-  img: string
-  icon: string
-  contents: string[]
-}
-
+  title: string;
+  img: string;
+  icon: string;
+  contents: string[];
+};
 
 const champacaFeatures: ChampacaFeature[] = [
   {
@@ -378,8 +391,8 @@ const champacaFeatures: ChampacaFeature[] = [
     contents: [
       "Prevents cupping, warping, shrinkage, and molding",
       "Features a Teak wood center core balancer for superior performance against termites and humidity",
-      "Allows minimal expansion—only 0.3-0.4mm in response to humidity, unlike solid timber"
-    ]
+      "Allows minimal expansion—only 0.3-0.4mm in response to humidity, unlike solid timber",
+    ],
   },
   {
     title: "Boundless Designs and Craftsmanship",
@@ -388,15 +401,13 @@ const champacaFeatures: ChampacaFeature[] = [
     contents: [
       "We work closely with our customers from the design stage to bring their dream projects to life.",
       "With incredible flexibility and a wide range of timber patterns and designs, we offer exceptional craftsmanship in timber solutions.",
-    ]
+    ],
   },
   {
     title: "Formaldehyde Free",
     img: `${CHAMPACA_ASSETS_URL}/benefits/formaldehyde-free.jpg`,
     icon: `${champacaBenefitIconURL}/formaldehyde-free.png`,
-    contents: [
-      "F**** Formaldehyde standards / Low VOC (JIS A 1460 : 2015)",
-    ]
+    contents: ["F**** Formaldehyde standards / Low VOC (JIS A 1460 : 2015)"],
   },
   {
     title: "Termite Resistance",
@@ -404,7 +415,7 @@ const champacaFeatures: ChampacaFeature[] = [
     icon: `${champacaBenefitIconURL}/termite-resistance.png`,
     contents: [
       "Champaca Compound Solid has been treated with ACQ H3 - Termite Resistance (Alkaline Copper Quaternary).",
-    ]
+    ],
   },
   {
     title: "Sourcing & Milling",
@@ -413,7 +424,7 @@ const champacaFeatures: ChampacaFeature[] = [
     contents: [
       "Raw materials sourced from sustainably managed forestry",
       "Mill our lumber with minimal waste possible",
-    ]
+    ],
   },
   {
     title: "Maximising Wood’s Full Potential",
@@ -422,10 +433,9 @@ const champacaFeatures: ChampacaFeature[] = [
     contents: [
       "We utilize every offcut to create our cross-laminated Teak Finger Joint ‘Compound Solid Wood Structure.",
       "Teak, whether in small or large pieces, excels in resisting moisture and termites.",
-    ]
+    ],
   },
-]
-
+];
 
 export const Champaca = {
   logoWhite: `${CHAMPACA_ASSETS_URL}/champaca-logo-white.svg`,
@@ -472,12 +482,10 @@ export const Champaca = {
       {
         title: "Rare Finds",
         items: champacaColourRareFinds,
-      }
+      },
     ],
     grades: champacaGrades,
     downloads: champacaDownloads,
   },
   features: champacaFeatures,
 };
-
-

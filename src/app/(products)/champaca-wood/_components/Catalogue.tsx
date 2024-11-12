@@ -1,6 +1,7 @@
 import { Champaca } from "@/constants/champaca";
 import Image from "next/image";
 import Download from "./Download";
+import { cn } from "@/lib/utils";
 
 export default function Catalogue() {
   return (
@@ -35,17 +36,38 @@ export default function Catalogue() {
                   {pattern.items.map((item, index) => (
                     <div
                       key={index}
-                      className="flex flex-col items-center justify-center gap-y-2 w-20 450px:w-full h-full"
+                      className={cn(
+                        "flex flex-col items-center justify-center gap-y-2 w-20 450px:w-full h-full cursor-pointer",
+                        item.activeImg && "group"
+                      )}
                     >
-                      <Image
-                        src={item.img}
-                        alt="Main Image"
-                        width={400}
-                        height={400}
-                        priority
-                        className="w-full h-full object-cover"
-                      />
-                      <p className="text-center text-xs md:text-sm">{item.title}</p>
+                      <div className="w-full h-full relative">
+                        <Image
+                          src={item.img}
+                          alt="Main Image"
+                          width={400}
+                          height={400}
+                          priority
+                          className={cn(
+                            "w-full h-full object-cover",
+                            item.activeImg &&
+                              "group-hover:opacity-0 transition-opacity"
+                          )}
+                        />
+                        {item.activeImg && (
+                          <Image
+                            src={item.activeImg}
+                            alt="Main Image"
+                            width={400}
+                            height={400}
+                            priority
+                            className="w-full h-full object-cover absolute top-0 left-0 opacity-0 transition-opacity group-hover:opacity-100"
+                          />
+                        )}
+                      </div>
+                      <p className="text-center text-xs md:text-sm">
+                        {item.title}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -81,7 +103,9 @@ export default function Catalogue() {
                     priority
                     className="w-full h-full object-cover"
                   />
-                  <p className="text-center text-xs md:text-sm">{collection.title}</p>
+                  <p className="text-center text-xs md:text-sm">
+                    {collection.title}
+                  </p>
                 </div>
               </div>
             ))}
@@ -121,7 +145,9 @@ export default function Catalogue() {
                         priority
                         className="w-full h-full object-cover"
                       />
-                      <p className="text-center text-xs md:text-sm">{item.title}</p>
+                      <p className="text-center text-xs md:text-sm">
+                        {item.title}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -157,7 +183,9 @@ export default function Catalogue() {
                     priority
                     className="w-full h-full object-cover"
                   />
-                  <p className="text-center text-xs md:text-sm">{grade.title}</p>
+                  <p className="text-center text-xs md:text-sm">
+                    {grade.title}
+                  </p>
                 </div>
               </div>
             ))}
