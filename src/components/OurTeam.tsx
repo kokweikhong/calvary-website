@@ -26,6 +26,12 @@ const teams: Team[] = [
   //   youtube: "https://www.youtube.com/watch?v=86V7rBG1O2g",
   // },
   {
+    name: "Kelvin Hiils",
+    position: "MET Consultant",
+    image: "websites/teams/teams-kelvin.jpg",
+    // youtube: "https://www.youtube.com/watch?v=lQiJsOi7etQ&t=106s",
+  },
+  {
     name: "Raziq",
     position: "Project Manager",
     image: "websites/teams/teams-raziq.jpg",
@@ -76,6 +82,7 @@ const OurTeam = () => {
                   <span className="uppercase text-textDark tracking-[0.52px] mb-[10px] pr-2">
                     {team.position}
                   </span>
+                  {team.youtube && (
                   <ul className="social overflow-x-hidden">
                     <li>
                       <a
@@ -97,6 +104,7 @@ const OurTeam = () => {
                     <!-- <li><a href="#"><i class="fa fa-linkedin"></i></a></li> -->
                     <!-- <li><a href="#"><i class="fa fa-github"></i></a></li> --> */}
                   </ul>
+                  )}
                 </div>
               </div>
             </div>
