@@ -26,7 +26,7 @@ const teams: Team[] = [
   //   youtube: "https://www.youtube.com/watch?v=86V7rBG1O2g",
   // },
   {
-    name: "Kevin Hiil",
+    name: "Kevin Hill",
     position: "MET Consultant",
     image: "websites/teams/teams-kelvin.jpg",
     // youtube: "https://www.youtube.com/watch?v=lQiJsOi7etQ&t=106s",
