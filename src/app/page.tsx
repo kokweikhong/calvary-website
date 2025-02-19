@@ -1,5 +1,6 @@
 import ClientsSlider from "@/components/ClientsSlider";
 import Accdrediations from "@/components/home/Accdrediations";
+import Distributor from "@/components/home/Distributor";
 import Features from "@/components/home/Features";
 import Geography from "@/components/home/Geography";
 import Hero from "@/components/home/Hero";
@@ -49,6 +50,7 @@ export default function Home() {
       <Hero />
       <ClientsSlider backgroundColor="black" iconColor="white" />
       <Features />
+      <Distributor />
       <Services />
       <Products />
       <Accdrediations />
