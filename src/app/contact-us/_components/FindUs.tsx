@@ -7,13 +7,13 @@ type Location = {
 };
 
 const locations: Location[] = [
-  {
-    name: "Showroom",
-    address: ["Marina square #03-207", "Singapore 039594"],
-    whatsapp: "+65 8893 0429",
-    phone: "+65 6910 6069",
-    email: "sales@k-floors.com",
-  },
+  // {
+  //   name: "Showroom",
+  //   address: ["Marina square #03-207", "Singapore 039594"],
+  //   whatsapp: "+65 8893 0429",
+  //   phone: "+65 6910 6069",
+  //   email: "sales@k-floors.com",
+  // },
   {
     name: "Singapore HQ",
     address: [
@@ -28,7 +28,7 @@ const locations: Location[] = [
   {
     name: "Calvary Carpentry Sdn Bhd",
     address: [
-      "8, Jalan TS 6/9",
+      "Level 2, 8, Jalan TS 6/9",
       "Taman Perindustrian Subang",
       "47510 Subang Jaya",
       "Selangor, Malaysia",
@@ -37,15 +37,15 @@ const locations: Location[] = [
     phone: "+60 16-778 5788",
     email: "msia@calvarycarpentry.com",
   },
-  {
-    name: "KLCC Office",
-    address: [
-      "Colony Vipod KLCC",
-      "6, Jalan Kia Peng, Kuala Lumpur",
-      "50450 Kuala Lumpur",
-      "Wilayah Persekutuan Kuala Lumpur",
-    ],
-  },
+  // {
+  //   name: "KLCC Office",
+  //   address: [
+  //     "Colony Vipod KLCC",
+  //     "6, Jalan Kia Peng, Kuala Lumpur",
+  //     "50450 Kuala Lumpur",
+  //     "Wilayah Persekutuan Kuala Lumpur",
+  //   ],
+  // },
 ];
 
 const FindUs = () => {
