@@ -154,7 +154,6 @@ export default function Page() {
 
   useEffect(() => {
     const filteredProjects = filterProjects();
-    console.log(filteredProjects);
     setProjectsToShow(filteredProjects || []);
   }, [filterItem, projects.data]);
 
