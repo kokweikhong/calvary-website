@@ -2,7 +2,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import ProjectReferenceCard from "@/components/projects/ProjectReferenceCard";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { Project } from "@/interfaces/project";
 import { cn } from "@/lib/utils";
 
@@ -12,14 +12,37 @@ async function getProjects() {
   return data;
 }
 
+// debounce function for search
+function debounce(func: any, timeout = 300) {
+  let timer: any;
+  return (...args: any) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func(...args);
+    }, timeout);
+  };
+}
+
+// input will be the function to be debounced
+const debouncedSearch = debounce((input: string) => {
+  console.log(input);
+});
+
+type FilterItem = {
+  products: string[];
+  sectors: string[];
+  applications: string[];
+  projectName: string;
+};
+
 export default function Page() {
-  const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
-  const [filteredProducts, setFilteredProducts] = useState<string[]>([]);
-  const [filteredSectors, setFilteredSectors] = useState<string[]>([]);
-  const [filteredApplications, setFilteredApplications] = useState<string[]>(
-    [],
-  );
-  const [filteredProjectName, setFilteredProjectName] = useState<string>("");
+  const [filterItem, setFilterItem] = useState<FilterItem>({
+    products: [],
+    sectors: [],
+    applications: [],
+    projectName: "",
+  });
+  const [projectsToShow, setProjectsToShow] = useState<Project[]>([]);
   const [numberToShow, setNumberToShow] = useState(6);
 
   const projects = useQuery({
@@ -38,7 +61,7 @@ export default function Page() {
       });
       return acc;
     },
-    [] as string[],
+    [] as string[]
   );
 
   const distinctApplications = projects.data
@@ -53,76 +76,100 @@ export default function Page() {
     }, [] as string[])
     .filter((app) => !app.includes(" "));
 
-  function handleSectorChange(e: React.ChangeEvent<HTMLInputElement>) {
-    if (e.currentTarget.checked) {
-      setFilteredSectors([...filteredSectors, e.currentTarget.value]);
-    } else {
-      setFilteredSectors(
-        filteredSectors.filter((p) => p !== e.currentTarget.value),
-      );
+  // handle filterItem change
+  const handle = (e: any) => {
+    const { name, value, checked } = e.target;
+    if (name === "product") {
+      if (checked) {
+        setFilterItem((prev) => ({
+          ...prev,
+          products: [...prev.products, value],
+        }));
+      } else {
+        setFilterItem((prev) => ({
+          ...prev,
+          products: prev.products.filter((product) => product !== value),
+        }));
+      }
+    } else if (name === "sector") {
+      if (checked) {
+        setFilterItem((prev) => ({
+          ...prev,
+          sectors: [...prev.sectors, value],
+        }));
+      } else {
+        setFilterItem((prev) => ({
+          ...prev,
+          sectors: prev.sectors.filter((sector) => sector !== value),
+        }));
+      }
+    } else if (name === "application") {
+      if (checked) {
+        setFilterItem((prev) => ({
+          ...prev,
+          applications: [...prev.applications, value],
+        }));
+      } else {
+        setFilterItem((prev) => ({
+          ...prev,
+          applications: prev.applications.filter(
+            (application) => application !== value
+          ),
+        }));
+      }
+    } else if (name === "projectName") {
+      setFilterItem((prev) => ({
+        ...prev,
+        projectName: value,
+      }));
     }
-  }
+  };
 
-  function handleProductChange(e: React.ChangeEvent<HTMLInputElement>) {
-    if (e.currentTarget.checked) {
-      setFilteredProducts([...filteredProducts, e.currentTarget.value]);
-    } else {
-      setFilteredProducts(
-        filteredProducts.filter((p) => p !== e.currentTarget.value),
-      );
-    }
-  }
+  // filter projects based on filterItem
+  function filterProjects() {
+    return projects.data?.filter((project: Project) => {
+      const { products, sectors, applications, projectName } = filterItem;
 
-  function handleApplicationChange(e: React.ChangeEvent<HTMLInputElement>) {
-    if (e.currentTarget.checked) {
-      setFilteredApplications([...filteredApplications, e.currentTarget.value]);
-    } else {
-      setFilteredApplications(
-        filteredApplications.filter((p) => p !== e.currentTarget.value),
-      );
-    }
+      const hasProduct = products.length
+        ? products.some((product) => project.products.includes(product))
+        : true;
+
+      const hasSector = sectors.length
+        ? sectors.some((sector) => project.sectors.includes(sector))
+        : true;
+
+      const hasApplication = applications.length
+        ? applications.some((application) =>
+            project.applications?.includes(application)
+          )
+        : true;
+
+      const hasProjectName = projectName
+        ? project.name.toLowerCase().includes(projectName.toLowerCase())
+        : true;
+
+      return hasProduct && hasSector && hasApplication && hasProjectName;
+    });
   }
 
   useEffect(() => {
-    const getProjectsByFilters = () => {
-      if (
-        filteredProducts.length === 0 &&
-        filteredSectors.length === 0 &&
-        filteredApplications.length === 0 &&
-        filteredProjectName === ""
-      ) {
-        setFilteredProjects(projects.data || []);
-        return;
-      }
-      const filteredProjects = projects.data?.filter((project) => {
-        const hasProducts = filteredProducts.every((product) =>
-          project.products.includes(product),
-        );
-        const hasSectors = filteredSectors.every((sector) =>
-          project.sectors.includes(sector),
-        );
-        const hasApplications = filteredApplications.every((app) =>
-          project.applications?.includes(app),
-        );
-        const hasProjectName = project.name
-          .toLowerCase()
-          .includes(filteredProjectName.toLowerCase());
+    const filteredProjects = filterProjects();
+    console.log(filteredProjects);
+    setProjectsToShow(filteredProjects || []);
+  }, [filterItem, projects.data]);
 
-        return hasProducts && hasSectors && hasApplications && hasProjectName;
-      });
-      if (filteredProjects) {
-        setFilteredProjects(filteredProjects);
-      }
-    };
+  // useEffect to call debouncedSearch
+  useEffect(() => {
+    debouncedSearch(filterItem.projectName);
+  }, [filterItem.projectName]);
 
-    getProjectsByFilters();
-  }, [
-    filteredProducts,
-    filteredSectors,
-    filteredApplications,
-    projects.data,
-    filteredProjectName,
-  ]);
+  if (projects.isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (projects.isError) {
+    return <div>Error: {projects.error.message}</div>;
+  }
 
   return (
     <div className="py-8">
@@ -142,7 +189,8 @@ export default function Page() {
           type="text"
           placeholder="Search by project name"
           className="block w-full px-4 py-2 mt-8 border border-black"
-          onChange={(e) => setFilteredProjectName(e.target.value)}
+          onChange={handle}
+          name="projectName"
         />
       </div>
 
@@ -156,23 +204,19 @@ export default function Page() {
                 <input
                   type="checkbox"
                   value={"Residential"}
-                  onChange={handleSectorChange}
+                  onChange={handle}
                 />
                 <span>Residential</span>
               </li>
               <li className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  value={"Commercial"}
-                  onChange={handleSectorChange}
-                />
+                <input type="checkbox" value={"Commercial"} onChange={handle} />
                 <span>Commercial</span>
               </li>
               <li className="flex items-center gap-2">
                 <input
                   type="checkbox"
                   value={"Governmental"}
-                  onChange={handleSectorChange}
+                  onChange={handle}
                 />
                 <span>Governmental</span>
               </li>
@@ -195,7 +239,7 @@ export default function Page() {
                         type="checkbox"
                         name="product"
                         value={product}
-                        onChange={handleProductChange}
+                        onChange={handle}
                       />
                       <span>{product}</span>
                     </label>
@@ -218,7 +262,7 @@ export default function Page() {
                         type="checkbox"
                         name="application"
                         value={app}
-                        onChange={handleApplicationChange}
+                        onChange={handle}
                       />
                       <span>{app}</span>
                     </label>
@@ -231,22 +275,18 @@ export default function Page() {
 
         {/* Project Reference Card */}
         <div className="grid grid-cols-1 gap-4 mt-8 md:grid-cols-2 lg:grid-cols-3">
-          {filteredProjects.slice(0, numberToShow).map((project) => {
-            return (
-              <div key={project.id} className="flex flex-col gap-2">
-                <ProjectReferenceCard project={project} />
-              </div>
-            );
-          })}
+          {projectsToShow
+            ?.slice(0, numberToShow)
+            .map((project: Project, index) => {
+              return <ProjectReferenceCard key={index} project={project} />;
+            })}
         </div>
         <div className="flex justify-center items-center mt-8">
           <button
             onClick={() => setNumberToShow((prev) => prev + 6)}
             className={cn(
               "text-white px-4 py-2",
-              numberToShow >= filteredProjects.length
-                ? "bg-gray-400"
-                : "bg-black",
+              numberToShow >= projectsToShow.length ? "bg-gray-400" : "bg-black"
             )}
           >
             Load More
