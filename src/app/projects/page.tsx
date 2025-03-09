@@ -130,7 +130,6 @@ export default function Page() {
       }
     } else if (name === "year") {
       if (checked) {
-        console.log(value);
         setFilterItem((prev) => ({
           ...prev,
           years: [...prev.years, value],
@@ -155,8 +154,6 @@ export default function Page() {
       const { products, sectors, applications, years, projectName } =
         filterItem;
 
-      console.log(years);
-
       const hasProduct = products.length
         ? products.some((product) => project.products.includes(product))
         : true;
@@ -170,8 +167,6 @@ export default function Page() {
             project.applications?.includes(application)
           )
         : true;
-
-      // console.log(years, project.year);
 
       const hasYear = years.length
         ? years.includes(project.year.toString())
