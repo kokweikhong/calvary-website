@@ -11,6 +11,16 @@ import GtmScript from "@/components/gtm-script";
 import WhatsappFloating from "@/components/WhatsappFloating";
 import CookieBanner from "@/components/CookieBanner";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+// import type { Metadata } from 'next'
+
+// export const metadata:Metadata = {
+//   robots: {
+//     index: true,
+//     googleBot: {
+//       index: true,
+//     },
+//   },
+// };
 
 const country = process.env.NEXT_PUBLIC_COUNTRY || "Singapore";
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || "";
@@ -29,6 +39,12 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "Vwy7YvF3taaayqVhgiszvxDvq7FxQKyu9CzxccoMhds",
+  },
+  robots: {
+    index: true,
+    googleBot: {
+      index: true,
+    },
   },
 };
 
