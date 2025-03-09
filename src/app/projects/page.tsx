@@ -32,6 +32,7 @@ type FilterItem = {
   products: string[];
   sectors: string[];
   applications: string[];
+  years: string[];
   projectName: string;
 };
 
@@ -40,6 +41,7 @@ export default function Page() {
     products: [],
     sectors: [],
     applications: [],
+    years: [],
     projectName: "",
   });
   const [projectsToShow, setProjectsToShow] = useState<Project[]>([]);
@@ -75,6 +77,15 @@ export default function Page() {
       return acc;
     }, [] as string[])
     .filter((app) => !app.includes(" "));
+
+  // distinctYears array from projects.data
+  // remove blank year and sort in descending order
+  // remove duplicates
+  const distinctYears = projects.data
+    ?.map((project) => project.year)
+    // .filter((year) => year !== "")
+    .sort((a, b) => b - a)
+    .filter((year, index, self) => self.indexOf(year) === index);
 
   // handle filterItem change
   const handle = (e: any) => {
@@ -117,6 +128,19 @@ export default function Page() {
           ),
         }));
       }
+    } else if (name === "year") {
+      if (checked) {
+        console.log(value);
+        setFilterItem((prev) => ({
+          ...prev,
+          years: [...prev.years, value],
+        }));
+      } else {
+        setFilterItem((prev) => ({
+          ...prev,
+          years: prev.years.filter((year) => year !== value),
+        }));
+      }
     } else if (name === "projectName") {
       setFilterItem((prev) => ({
         ...prev,
@@ -128,7 +152,10 @@ export default function Page() {
   // filter projects based on filterItem
   function filterProjects() {
     return projects.data?.filter((project: Project) => {
-      const { products, sectors, applications, projectName } = filterItem;
+      const { products, sectors, applications, years, projectName } =
+        filterItem;
+
+      console.log(years);
 
       const hasProduct = products.length
         ? products.some((product) => project.products.includes(product))
@@ -144,16 +171,26 @@ export default function Page() {
           )
         : true;
 
+      // console.log(years, project.year);
+
+      const hasYear = years.length
+        ? years.includes(project.year.toString())
+        : true;
+
       const hasProjectName = projectName
         ? project.name.toLowerCase().includes(projectName.toLowerCase())
         : true;
 
-      return hasProduct && hasSector && hasApplication && hasProjectName;
+      return (
+        hasProduct && hasSector && hasApplication && hasYear && hasProjectName
+      );
     });
   }
 
   useEffect(() => {
     const filteredProjects = filterProjects();
+    // sort filteredProjects by year
+    filteredProjects?.sort((a, b) => b.year - a.year);
     setProjectsToShow(filteredProjects || []);
   }, [filterItem, projects.data]);
 
@@ -195,7 +232,7 @@ export default function Page() {
 
       <div className="container mx-auto sm:px-6 lg:px-8 mt-8">
         <h3 className="font-medium uppercase mb-4">Filter</h3>
-        <div className="space-y-2 lg:grid lg:grid-cols-3 lg:gap-x-2 lg:space-y-0">
+        <div className="space-y-2 lg:grid lg:grid-cols-4 lg:gap-x-2 lg:space-y-0">
           <div className="p-4 border border-black">
             <h4 className="font-medium uppercase mb-2">Sector of services</h4>
             <ul className="space-y-1">
@@ -264,6 +301,31 @@ export default function Page() {
                         onChange={handle}
                       />
                       <span>{app}</span>
+                    </label>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          <div className="p-4 border border-black">
+            <h4 className="font-medium uppercase mb-2">Years</h4>
+            <ul className="space-y-1">
+              {distinctYears?.map((year: number) => {
+                return (
+                  <li key={year}>
+                    <label
+                      className="flex items-center gap-2"
+                      htmlFor={year.toString()}
+                    >
+                      <input
+                        id={year.toString()}
+                        type="checkbox"
+                        name="year"
+                        value={year.toString()}
+                        onChange={handle}
+                      />
+                      <span>{year}</span>
                     </label>
                   </li>
                 );
