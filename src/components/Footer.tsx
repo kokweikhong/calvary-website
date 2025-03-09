@@ -121,7 +121,8 @@ const Footer = () => {
           </div>
           <div className="space-y-4 mt-4">
             <h4 className="uppercase">Malaysia</h4>
-            <p> 8, Jalan TS 6/9, Taman Perindustrian Subang,</p>
+            <p>Level 2</p>
+            <p>8, Jalan TS 6/9, Taman Perindustrian Subang,</p>
             <p>47510 Subang Jaya, Selangor, Malaysia</p>
             <div>
               <div className="flex gap-2 items-center">
@@ -146,12 +147,12 @@ const Footer = () => {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <p>+60 16-778 5788</p>
+                <p>+60 13-300 1091</p>
               </div>
             </div>
           </div>
 
-          <div className="space-y-4 mt-8">
+          <div className="space-y-4 mt-8 lg:mt-4">
             <h4 className="uppercase">Singapore</h4>
             <p>66 Kampung Bugis, level 7, Singapore 338987</p>
             <div>

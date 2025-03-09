@@ -16,11 +16,7 @@ const locations: Location[] = [
   // },
   {
     name: "Singapore HQ",
-    address: [
-      "66 Kampung Bugis, Level 7",
-      "Singapore 338987",
-      `(Moving to Kampong Bugis Level 7 Soon)`,
-    ],
+    address: ["66 Kampung Bugis, Level 7", "Singapore 338987"],
     whatsapp: "+65 8776 7837",
     phone: "+65 6684 4012",
     email: "sales@calvarycarpentry.com",
@@ -33,8 +29,8 @@ const locations: Location[] = [
       "47510 Subang Jaya",
       "Selangor, Malaysia",
     ],
-    whatsapp: "+60 16-778 5788",
-    phone: "+60 16-778 5788",
+    whatsapp: "+60 13-300 1091",
+    phone: "+60 13-300 1091",
     email: "msia@calvarycarpentry.com",
   },
   // {
