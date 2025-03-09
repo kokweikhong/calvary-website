@@ -3120,41 +3120,6 @@
     "url": "one-fullerton"
   },
   {
-    "id": "74",
-    "name": "Marina Bay Sands - CRT",
-    "year": "2024",
-    "location": "Marina Bay Sands",
-    "completion": "Completed",
-    "size": "",
-    "imagePath": "projects/marina-bay-sands-update-24",
-    "countries": [
-      "sg",
-      "my"
-    ],
-    "country": "Singapore",
-    "applications": [
-      "Decking"
-    ],
-    "sectors": [
-      "Commercial"
-    ],
-    "services": [
-      "exterior"
-    ],
-    "description": "Spot Calvary Reconstituted Timber decked in Marina Bay Sands installed with Ez-rail removable decking system. Embrace its natural charm, featuring the stunning, unfinished allure of rotary-cut timber, creating a captivating ambiance along Singapore's most popular waterfront.",
-    "products": [
-      "Calvary Reconstituted Timber"
-    ],
-    "images": [
-      "projects/marina-bay-sands-update-24/Marina Bay Sands_1.jpg",
-      "projects/marina-bay-sands-update-24/Marina Bay Sands_2.jpg",
-      "projects/marina-bay-sands-update-24/Marina Bay Sands_3.jpg",
-      "projects/marina-bay-sands-update-24/Marina Bay Sands_4.jpg",
-      "projects/marina-bay-sands-update-24/Marina Bay Sands_thumbnail.jpg"
-    ],
-    "url": "marina-bay-sands---crt"
-  },
-  {
     "id": "77",
     "name": "Hotel Jen",
     "year": "2024",
