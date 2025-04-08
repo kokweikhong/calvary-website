@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
+const COUNTRY = process.env.NEXT_PUBLIC_COUNTRY;
 
 const interiorImg = `${ASSETS_URL}/websites/wood-and-timber/interior.svg`;
 const exteriorImg = `${ASSETS_URL}/websites/wood-and-timber/exterior.svg`;
@@ -127,12 +128,22 @@ const Introduction = () => {
           >
             Nova thermowood
           </Link>
-          <Link
-            href={`/dasso-ctech`}
-            className="block text-sm tracking-wider bg-black text-white rounded-full px-4 py-2 text-center uppercase"
-          >
-            dassoCTECH
-          </Link>
+          {COUNTRY === "Singapore" && (
+            <Link
+              href={`/dasso-ctech`}
+              className="block text-sm tracking-wider bg-black text-white rounded-full px-4 py-2 text-center uppercase"
+            >
+              dassoCTECH
+            </Link>
+          )}
+          {COUNTRY === "Malaysia" && (
+            <Link
+              href={`/moso-bamboo`}
+              className="block text-sm tracking-wider bg-black text-white rounded-full px-4 py-2 text-center uppercase"
+            >
+              Moso bamboo
+            </Link>
+          )}
         </div>
       </div>
     </div>
