@@ -3155,5 +3155,222 @@
       "projects/hotel-jen/Hotel Jen Calvary Carpentry dassoCTECH.jpg"
     ],
     "url": "hotel-jen"
+  },
+  {
+    "id": "78",
+    "name": "PS Cafe One Fullerton",
+    "year": "2022",
+    "location": "One Fullerton",
+    "completion": "Completed",
+    "size": "",
+    "imagePath": "projects/ps-cafe-one-fullerton",
+    "countries": [
+      "sg",
+      "my"
+    ],
+    "country": "Singapore",
+    "applications": [
+      "Flooring"
+    ],
+    "sectors": [
+      "Commercial"
+    ],
+    "services": [
+      "interior"
+    ],
+    "description": "Known for its durability and natural elegance, the teak wood withstands the bustling foot traffic while maintaining a timeless appeal. The warm tones and intricate herringbone pattern complement the cafe's inviting ambiance, enhancing the overall dining experience.",
+    "products": [
+      "Champaca"
+    ],
+    "images": [
+      "projects/ps-cafe-one-fullerton/cover.jpg",
+      "projects/ps-cafe-one-fullerton/01.jpg",
+      "projects/ps-cafe-one-fullerton/02.jpg",
+      "projects/ps-cafe-one-fullerton/03.jpg"
+    ],
+    "url": "ps-cafe-one-fullerton"
+  },
+  {
+    "id": "79",
+    "name": "Dior Ion Orchard",
+    "year": "2023",
+    "location": "Ion Orchard",
+    "completion": "Completed",
+    "size": "",
+    "imagePath": "projects/dior-ion-orchard",
+    "countries": [
+      "sg",
+      "my"
+    ],
+    "country": "Singapore",
+    "applications": [
+      "Flooring"
+    ],
+    "sectors": [
+      "Commercial"
+    ],
+    "services": [
+      "interior"
+    ],
+    "description": "Crafted in a unique Dior color from the Versailles collection, this flooring enhances the luxurious ambiance at Dior ION Orchard. Its intricate pattern and exceptional craftsmanship offer timeless appeal and durability, perfectly complementing Dior's prestigious brand image.",
+    "products": [
+      "Champaca"
+    ],
+    "images": [
+      "projects/dior-ion-orchard/cover.jpeg",
+      "projects/dior-ion-orchard/01.jpeg",
+      "projects/dior-ion-orchard/02.jpeg"
+    ],
+    "url": "dior-ion-orchard"
+  },
+  {
+    "id": "80",
+    "name": "Dior Marina Bay Sands",
+    "year": "2022",
+    "location": "Marina Bay Sands",
+    "completion": "Completed",
+    "size": "",
+    "imagePath": "projects/dior-marina-bay-sands",
+    "countries": [
+      "sg",
+      "my"
+    ],
+    "country": "Singapore",
+    "applications": [
+      "Flooring"
+    ],
+    "sectors": [
+      "Commercial"
+    ],
+    "services": [
+      "interior"
+    ],
+    "description": "Designed in a custom Dior color from the Versailles collection, the flooring at Dior Marina Bay Sands exudes elegance and sophistication. Its intricate pattern and superior craftsmanship create a refined, timeless foundation that enhances the luxurious ambiance and aligns seamlessly with Dior's iconic brand identity.",
+    "products": [
+      "Champaca"
+    ],
+    "images": [
+      "projects/dior-marina-bay-sands/cover.jpg",
+      "projects/dior-marina-bay-sands/01.jpg",
+      "projects/dior-marina-bay-sands/02.jpg",
+      "projects/dior-marina-bay-sands/03.jpg"
+    ],
+    "url": "dior-marina-bay-sands"
+  },
+  {
+    "id": "81",
+    "name": "LV Ion Orchard",
+    "year": "2022",
+    "location": "LV Ion Orchard",
+    "completion": "Completed",
+    "size": "",
+    "imagePath": "projects/lv-ion-orchard",
+    "countries": [
+      "sg",
+      "my"
+    ],
+    "country": "Singapore",
+    "applications": [
+      "Flooring"
+    ],
+    "sectors": [
+      "Commercial"
+    ],
+    "services": [
+      "interior"
+    ],
+    "description": "The Chevron Oak flooring in a custom Dior color from the Versailles collection brings elegance and sophistication to the Louis Vuitton store at ION Orchard. This beautifully crafted floor creates a serene, refined ambiance, perfectly complementing the store’s luxurious aesthetic. The intricate chevron pattern adds depth and texture, enhancing the store’s interior design while ensuring durability and timeless appeal, aligned seamlessly with Louis Vuitton's iconic brand identity.",
+    "products": [
+      "Champaca"
+    ],
+    "images": [
+      "projects/lv-ion-orchard/cover.jpeg",
+      "projects/lv-ion-orchard/01.jpeg",
+      "projects/lv-ion-orchard/02.jpeg"
+    ],
+    "url": "lv-ion-orchard"
+  },
+  {
+    "id": "82",
+    "name": "Undefeated Midvalley",
+    "year": "2024",
+    "location": "Mid Valley Megamall",
+    "completion": "Completed",
+    "size": "",
+    "imagePath": "projects/undefeated-midvalley",
+    "countries": [
+      "sg",
+      "my"
+    ],
+    "country": "Malaysia",
+    "applications": [
+      "Wall"
+    ],
+    "sectors": [
+      "Commercial"
+    ],
+    "services": [
+      "interior"
+    ],
+    "description": "The Zerno premium timber wall by Kandinsky Engineered Timber brings elegance and luxury to Undefeated at Mid Valley Megamall in Kuala Lumpur. Thoughtfully designed, this wall cladding enhances the boutique's fashion display with its rich tones, refined texture, and timeless appeal.",
+    "products": [
+      "Kandinsky"
+    ],
+    "images": [
+      "projects/undefeated-midvalley/cover.jpg",
+      "projects/undefeated-midvalley/01.jpg",
+      "projects/undefeated-midvalley/02.jpg",
+      "projects/undefeated-midvalley/03.jpg"
+    ],
+    "url": "undefeated-midvalley"
+  },
+  {
+    "id": "83",
+    "name": "Mandai Rainforest Resort",
+    "year": "2024",
+    "location": "Mandai Wildlife Reserve",
+    "completion": "Completed",
+    "size": "",
+    "imagePath": "projects/mandai-rainforest-resort",
+    "countries": [
+      "sg",
+      "my"
+    ],
+    "country": "Singapore",
+    "applications": [
+      "Ceiling",
+      "Wall Cladding",
+      "Louvers",
+      "Sunscreen"
+    ],
+    "sectors": [
+      "Commercial"
+    ],
+    "services": [
+      "Exterior"
+    ],
+    "description": "Mandai Rainforest Resort – Singapore’s First SLE Resort, Calvary Carpentry crafted the iconic seedpods at Mandai Rainforest Resort using Accoya, a high-performance, sustainable timber. Prioritising non-toxic, green-certified materials, great durability while minimising environmental impact. This project showcases our commitment to eco-friendly innovation and regenerative design. Sustainability with Conservation.",
+    "products": [
+      "Accoya",
+      "OneWood",
+      "Osmo"
+    ],
+    "images": [
+      "projects/mandai-rainforest-resort/cover.jpg",
+      "projects/mandai-rainforest-resort/01.jpg",
+      "projects/mandai-rainforest-resort/02.jpg",
+      "projects/mandai-rainforest-resort/03.jpg",
+      "projects/mandai-rainforest-resort/04.jpg",
+      "projects/mandai-rainforest-resort/05.jpg",
+      "projects/mandai-rainforest-resort/06.jpg",
+      "projects/mandai-rainforest-resort/07.jpg",
+      "projects/mandai-rainforest-resort/08,jpg",
+      "projects/mandai-rainforest-resort/09.jpg",
+      "projects/mandai-rainforest-resort/10.jpg",
+      "projects/mandai-rainforest-resort/11.jpg",
+      "projects/mandai-rainforest-resort/12.jpg",
+      "projects/mandai-rainforest-resort/13.jpg"
+    ],
+    "url": "mandai-rainforest-resort"
   }
 ]
