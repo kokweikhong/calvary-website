@@ -74,27 +74,27 @@ const About = () => {
                 <h2 className="text-3xl font-bold uppercase">Why Choose One Wood</h2>
             </div>
             <div className="mb-8">
-                <img src={WhyChooseOneWoodImg} alt="Why Choose One Wood" className="w-full h-auto max-w-4xl rounded-lg shadow-lg" />
+                <img src={WhyChooseOneWoodImg} alt="Why Choose One Wood" className="w-full h-auto max-w-4xl" />
             </div>
-            <div>
-                <h3 className="text-2xl font-semibold mb-4 text-[#A16448]">
+            <div className="container mx-auto px-4 flex flex-col items-center">
+                <h3 className="text-2xl font-semibold mb-4 text-[#A16448] text-center">
                     Homogeneous Reconstituted Timber
                 </h3>
-            </div>
-            <p className="text-lg text-center max-w-2xl mb-8">
-                ONEWOOD is a sustainable
-                <span className="font-semibold">Homogeneous Reconstituted Timber (HRT)</span> made from plantation wood fibre and eco-binders. Crafted into lumber with natural wood grain patterns, it offers the durability, consistency, and beauty of real timber—ideal for high-performance architectural and structural applications.
-            </p>
+                <p className="text-lg text-center max-w-2xl mb-8">
+                    ONEWOOD is a sustainable
+                    <span className="font-semibold">Homogeneous Reconstituted Timber (HRT)</span> made from plantation wood fibre and eco-binders. Crafted into lumber with natural wood grain patterns, it offers the durability, consistency, and beauty of real timber—ideal for high-performance architectural and structural applications.
+                </p>
 
-            <div className="flex flex-col items-center gap-4 mb-8 uppercase">
-                <a href={OneWoodCatalogueFile}
-                    download="onewood_catalogue_2025.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-[#397E00] text-white px-6 py-3 text-lg font-semibold hover:bg-[#397E00] transition-colors rounded-lg">
-                    Onewood Catalogue
-                </a>
-                <span>discover Possibilities</span>
+                <div className="flex flex-col items-center gap-4 mb-8 uppercase">
+                    <a href={OneWoodCatalogueFile}
+                        download="onewood_catalogue_2025.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-[#397E00] text-white px-6 py-3 text-lg font-semibold hover:bg-[#397E00] transition-colors rounded-lg">
+                        Onewood Catalogue
+                    </a>
+                    <span>discover Possibilities</span>
+                </div>
             </div>
 
             <div className="flex flex-wrap justify-center gap-4 max-w-6xl mx-auto">
