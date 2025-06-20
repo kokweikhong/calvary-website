@@ -2,7 +2,7 @@ export const navLinks = {
   interior: "/services/interior",
   exterior: "/services/exterior",
   maintenance: "/services/maintenance",
-  kandinsky: "/champaca-wood",
+  kandinsky: "https://k-floors.com",
   woodAndTimber: "/wood-and-timber",
   calvaryComposite: "/composite-decking",
   accoya: "/accoya",
