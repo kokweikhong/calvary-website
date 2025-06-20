@@ -44,9 +44,9 @@ const Features = () => {
                 </h2>
             </div>
             <div className="container mx-auto px-4 py-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     {keyFeatures.map((feature, index) => (
-                        <div key={index} className="bg-white dark:bg-gray-800 p-6 grid grid-cols-2 gap-x-2">
+                        <div key={index} className="bg-white p-6 grid grid-cols-1 md:grid-cols-2 gap-x-2">
                             <div>
                                 <img src={feature.imageUrl} alt={feature.title} className="h-full w-full object-cover" />
                             </div>
