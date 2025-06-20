@@ -57,9 +57,20 @@ const DesktopMenu = () => {
                               onClick={() => close()}
                             >
                               <h4 className="font-semibold text-base mb-1">
+                                Interior Flooring
+                              </h4>
+                              <span>{`Champaca Wood`}</span>
+                            </Link>
+                          </LinkItem>
+                          <LinkItem>
+                            <Link
+                              href={navLinks.kandinsky}
+                              onClick={() => close()}
+                            >
+                              <h4 className="font-semibold text-base mb-1">
                                 Engineered Flooring
                               </h4>
-                              <span>{`Champaca | KANDINSKY®`}</span>
+                              <span>{`KANDINSKY®`}</span>
                             </Link>
                           </LinkItem>
                           <LinkItem>
