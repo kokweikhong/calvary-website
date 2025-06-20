@@ -11,7 +11,12 @@ const nextConfig = {
         hostname:
           "calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com",
         port: "",
-      }
+      },
+      {
+        protocol: "https",
+        hostname: "assets.calvarycarpentry.com",
+        port: "",
+      },
     ],
   },
 };
