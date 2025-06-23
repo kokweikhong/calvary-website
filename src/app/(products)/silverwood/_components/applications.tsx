@@ -22,7 +22,7 @@ const Applications = () => {
                             alt="Applications of Silverwood"
                             width={800}
                             height={600}
-                            className="mx-auto max-w-96 h-auto object-cover"
+                            className="mx-auto max-w-96 w-full h-auto object-cover"
                         />
                     </div>
                 </div>
