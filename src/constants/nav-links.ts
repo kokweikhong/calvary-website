@@ -1,3 +1,5 @@
+import { Silverwood } from "@/components/svg/products";
+
 export const navLinks = {
   interior: "/services/interior",
   exterior: "/services/exterior",
@@ -10,7 +12,9 @@ export const navLinks = {
   osmo: "/osmo",
   moso: "/moso-bamboo",
   champaca: "/champaca-wood",
+  onewood: "/onewood",
   sandAndVanish: "/sand-and-vanish",
+  silverwood: "/silverwood",
   aboutUs: "/about-us",
   blog: "/blog",
   projects: "/projects",

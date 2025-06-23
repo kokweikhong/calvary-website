@@ -152,9 +152,31 @@ const MobileMenu = (props: MobileMenuProps) => {
                             onClick={() => props.setMobileMenuOpen(false)}
                           >
                             <h4 className="font-semibold text-base mb-1">
-                              {`Decking, Screen, Cladding, Soffit`}
+                              {`Acetylated Timber`}
                             </h4>
-                            <span>{`Wood and Timber | Accoya®`}</span>
+                            <span>{`Accoya®`}</span>
+                          </Link>
+                        </LinkItem>
+                        <LinkItem>
+                          <Link
+                            href={navLinks.woodAndTimber}
+                            onClick={() => props.setMobileMenuOpen(false)}
+                          >
+                            <h4 className="font-semibold text-base mb-1">
+                              {`Solid Wood`}
+                            </h4>
+                            <span>{`Wood and Timber`}</span>
+                          </Link>
+                        </LinkItem>
+                        <LinkItem>
+                          <Link
+                            href={navLinks.onewood}
+                            onClick={() => props.setMobileMenuOpen(false)}
+                          >
+                            <h4 className="font-semibold text-base mb-1">
+                              {`Reconstituted Timber`}
+                            </h4>
+                            <span>{`OneWood`}</span>
                           </Link>
                         </LinkItem>
                         {COUNTRY === "Singapore" && (
@@ -164,9 +186,9 @@ const MobileMenu = (props: MobileMenuProps) => {
                               onClick={() => props.setMobileMenuOpen(false)}
                             >
                               <h4 className="font-semibold text-base mb-1">
-                                {`Decking, Screen, Cladding, Soffit`}
+                                {`Reconstituted Bamboo`}
                               </h4>
-                              <span>{`dassoCTECH® | Reconstituted Bamboo `}</span>
+                              <span>{`dassoCTECH®`}</span>
                             </Link>
                           </LinkItem>
                         )}
@@ -177,9 +199,9 @@ const MobileMenu = (props: MobileMenuProps) => {
                               onClick={() => props.setMobileMenuOpen(false)}
                             >
                               <h4 className="font-semibold text-base mb-1">
-                                {`Decking, Screen, Cladding, Soffit`}
+                                {`Reconstituted Bamboo`}
                               </h4>
-                              <span>{`MOSO® | Reconstituted Bamboo `}</span>
+                              <span>{`MOSO®`}</span>
                             </Link>
                           </LinkItem>
                         )}
@@ -222,7 +244,18 @@ const MobileMenu = (props: MobileMenuProps) => {
                             <h4 className="font-semibold text-base mb-1">
                               Coating
                             </h4>
-                            <span>{`OSMO® | Silverwood`}</span>
+                            <span>{`OSMO®`}</span>
+                          </Link>
+                        </LinkItem>
+                        <LinkItem>
+                          <Link
+                            href={navLinks.silverwood}
+                            onClick={() => props.setMobileMenuOpen(false)}
+                          >
+                            <h4 className="font-semibold text-base mb-1">
+                              {`Revitalisation Coating`}
+                            </h4>
+                            <span>{`Silverwood`}</span>
                           </Link>
                         </LinkItem>
                         <LinkItem>

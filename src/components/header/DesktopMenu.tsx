@@ -117,11 +117,34 @@ const DesktopMenu = () => {
                               onClick={() => close()}
                             >
                               <h4 className="font-semibold text-base mb-1">
-                                {`Decking, Screen, Cladding, Soffit`}
+                                {`Acetylated Timber`}
                               </h4>
-                              <span>{`Wood and Timber | Accoya®`}</span>
+                              <span>{`Accoya®`}</span>
                             </Link>
                           </LinkItem>
+                          <LinkItem>
+                            <Link
+                              href={navLinks.woodAndTimber}
+                              onClick={() => close()}
+                            >
+                              <h4 className="font-semibold text-base mb-1">
+                                {`Solid Wood`}
+                              </h4>
+                              <span>{`Wood and Timber`}</span>
+                            </Link>
+                          </LinkItem>
+                          <LinkItem>
+                            <Link
+                              href={navLinks.onewood}
+                              onClick={() => close()}
+                            >
+                              <h4 className="font-semibold text-base mb-1">
+                                {`Reconstituted Timber`}
+                              </h4>
+                              <span>{`OneWood`}</span>
+                            </Link>
+                          </LinkItem>
+
                           {COUNTRY === "Singapore" && (
                             <LinkItem>
                               <Link
@@ -129,9 +152,9 @@ const DesktopMenu = () => {
                                 onClick={() => close()}
                               >
                                 <h4 className="font-semibold text-base mb-1">
-                                  {`Decking, Screen, Cladding, Soffit`}
+                                  {`Reconstituted Bamboo`}
                                 </h4>
-                                <span>{`dassoCTECH® | Reconstituted Bamboo `}</span>
+                                <span>{`dassoCTECH®`}</span>
                               </Link>
                             </LinkItem>
                           )}
@@ -142,9 +165,9 @@ const DesktopMenu = () => {
                                 onClick={() => close()}
                               >
                                 <h4 className="font-semibold text-base mb-1">
-                                  {`Decking, Screen, Cladding, Soffit`}
+                                  {`Reconstituted Bamboo`}
                                 </h4>
-                                <span>{`MOSO® | Reconstituted Bamboo `}</span>
+                                <span>{`MOSO®`}</span>
                               </Link>
                             </LinkItem>
                           )}
@@ -169,7 +192,15 @@ const DesktopMenu = () => {
                               <h4 className="font-semibold text-base mb-1">
                                 Coating
                               </h4>
-                              <span>{`OSMO® | Silverwood`}</span>
+                              <span>{`OSMO®`}</span>
+                            </Link>
+                          </LinkItem>
+                          <LinkItem>
+                            <Link href={navLinks.silverwood} onClick={() => close()}>
+                              <h4 className="font-semibold text-base mb-1">
+                                {`Revitalisation Coating`}
+                              </h4>
+                              <span>{`Silverwood`}</span>
                             </Link>
                           </LinkItem>
                           <LinkItem>
