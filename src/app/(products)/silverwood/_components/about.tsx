@@ -41,7 +41,7 @@ const About = () => {
                     All natural Wood surfaces Finishing
                 </p>
                 <p className="text-lg max-w-2xl text-center">
-                    Silverwood is natural wood conservative, that doesn't contain any biocides. It's permanent as natural silicates are fossilizing wood cells and after polymerization inside the cell, it is a permanent reaction.
+                    {`Silverwood is natural wood conservative, that doesn't contain any biocides. It's permanent as natural silicates are fossilizing wood cells and after polymerization inside the cell, it is a permanent reaction.`}
                 </p>
             </div>
 
