@@ -20,20 +20,20 @@ const About = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 text-[#32606A]">
                 <div className="flex flex-col items-center">
-                    <Image src={bareFootFriendly} alt="Barefoot Friendly" width={100} height={100} className="mb-2" />
-                    <p className="text-lg">Barefoot Friendly</p>
+                    <Image src={bareFootFriendly} alt="Barefoot Friendly" width={60} height={60} className="mb-2" />
+                    <p className="text-sm">Barefoot Friendly</p>
                 </div>
                 <div className="flex flex-col items-center">
-                    <Image src={naturalSources} alt="Natural Sources" width={100} height={100} className="mb-2" />
-                    <p className="text-lg">Natural Sources</p>
+                    <Image src={naturalSources} alt="Natural Sources" width={60} height={60} className="mb-2" />
+                    <p className="text-sm">Natural Sources</p>
                 </div>
                 <div className="flex flex-col items-center">
-                    <Image src={biocideFree} alt="Biocide Free" width={100} height={100} className="mb-2" />
-                    <p className="text-lg">Biocide Free</p>
+                    <Image src={biocideFree} alt="Biocide Free" width={60} height={60} className="mb-2" />
+                    <p className="text-sm">Biocide Free</p>
                 </div>
                 <div className="flex flex-col items-center">
-                    <Image src={nonToxic} alt="Non Toxic" width={100} height={100} className="mb-2" />
-                    <p className="text-lg">Non Toxic</p>
+                    <Image src={nonToxic} alt="Non Toxic" width={60} height={60} className="mb-2" />
+                    <p className="text-sm">Non Toxic</p>
                 </div>
             </div>
             <div className="text-center max-w-3xl mx-auto">
@@ -45,7 +45,7 @@ const About = () => {
                 </p>
             </div>
 
-            <div className="flex items-center justify-center gap-8 mt-8 text-[#32606A]">
+            <div className="flex flex-wrap items-center justify-center gap-8 mt-8 text-[#32606A]">
                 <div className="flex flex-col items-center">
                     <Image src={eco} alt="Eco Friendly" width={50} height={50} className="mb-2" />
                     <p className="text-sm">Eco Friendly</p>
