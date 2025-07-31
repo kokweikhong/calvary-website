@@ -62,7 +62,7 @@ const MosoCladding = () => {
           </div>
 
           <a
-            href="#"
+            href="https://assets.calvarycarpentry.com/websites/moso/downloads/MOSO%20cladding%20xtreme-data%20sheet.jpg"
             className="bg-[#805C00] text-white py-2 px-4 rounded-lg flex space-x-2 items-center"
           >
             <span>Technical Data</span>

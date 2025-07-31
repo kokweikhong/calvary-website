@@ -8,9 +8,9 @@ const mosoWeathering = getMosoImageUrl("moso-weathering.jpg");
 const mosoDryAndWetCond = getMosoImageUrl("dry-and-wet-condition.jpg");
 
 const downloads = [
-  { title: "MOSO® Maintenance guide", url: "#" },
-  { title: "MOSO® warranty Brochure", url: "#" },
-  { title: "MOSO® Accreditations", url: "#" },
+  { title: "MOSO® Maintenance guide", url: "https://assets.calvarycarpentry.com/websites/moso/downloads/MOSO%20Maintanance-sikken.pdf" },
+  { title: "MOSO® warranty Brochure", url: "https://assets.calvarycarpentry.com/websites/moso/downloads/EN_Bamboo_Decking_warranty_LQ.pdf" },
+  { title: "MOSO® Accreditations", url: "https://assets.calvarycarpentry.com/websites/moso/downloads/MOSO%20Xtreme%20decking-test%20result.pdf" },
 ];
 
 const bimFiles = [
@@ -254,13 +254,17 @@ const TechnicalData = () => {
 
       <div className="flex flex-col justify-center items-center space-y-4">
         <a
-          href="#"
+          href="https://assets.calvarycarpentry.com/websites/moso/downloads/MOSO%20Booklet_Bamboo_Deck_CC.pdf"
+          target="_blank"
+          rel="noreferrer"
           className="text-center py-2 px-4 rounded-lg bg-moso text-white font-medium flex items-center justify-between"
         >
           Explore Decking
         </a>
         <a
-          href="#"
+          href="https://assets.calvarycarpentry.com/websites/moso/downloads/MOSO%20Booklet-Cladding_CC.pdf"
+          target="_blank"
+          rel="noreferrer"
           className="text-center py-2 px-4 rounded-lg bg-moso text-white font-medium flex items-center justify-between"
         >
           <span>Explore Cladding</span>
