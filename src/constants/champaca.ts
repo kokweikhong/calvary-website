@@ -366,14 +366,6 @@ const champacaDownloads: CatalogueItem[] = [
     title: "Champaca Technical Data Engineered Wood Flooring",
     img: `${CHAMPACA_ASSETS_URL}/downloads/champaca-technical-data-engineered-wood-flooring.pdf`,
   },
-  // {
-  //   title: "Champaca Technical Data",
-  //   img: `${CHAMPACA_ASSETS_URL}/downloads/champaca-technical-data.pdf`,
-  // },
-  {
-    title: "Champaca Warranty Brochure",
-    img: `${CHAMPACA_ASSETS_URL}/downloads/champaca-warranty-supply-and-Install.pdf`,
-  },
 ];
 
 type ChampacaFeature = {
