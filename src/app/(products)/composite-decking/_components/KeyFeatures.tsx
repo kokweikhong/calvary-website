@@ -10,7 +10,7 @@ const features: { name: string; imgURL: string; }[] = [
   { name: "Easy to Maintain", imgURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/easy-to-maintain.svg` },
   { name: "EZ RAIL Compatible", imgURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/compatible.svg` },
   { name: "Hidden Joist", imgURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/hidden-joist.svg` },
-  { name: "15 Years Limited Warrantry", imgURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/10-years-limited-warranty.svg` },
+  { name: "10 Years Warrantry", imgURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/10_years_limited_warranty.svg` },
 ]
 
 const springLoadedClipsURL = `${ASSETS_URL}/websites/composite-decking/5-spring-loaded-clips.jpg`;

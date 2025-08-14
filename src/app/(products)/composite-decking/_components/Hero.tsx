@@ -51,6 +51,10 @@ const Hero = () => {
         </div>
       </div>
 
+      <div className="absolute bottom-1/4 md:bottom-1/3 right-4 md:right-7 lg:right-1/4 transform -translate-x-1/2">
+        <span className="text-white">One Fullerton</span>
+      </div>
+
     </div>
   )
 }

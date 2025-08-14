@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
-const compositeBrochureLink = `${ASSETS_URL}/websites/composite-decking/downloads/calvary-composite-brochure.pdf`;
+const compositeBrochureLink = `${ASSETS_URL}/websites/composite-decking/downloads/calvary_composite_brochure_20250721.pdf`;
 const compositeResdentialLink = `${ASSETS_URL}/websites/composite-decking/downloads/calvary-composite-residential.pdf`;
 const compositeProjectLink = `${ASSETS_URL}/websites/composite-decking/downloads/calvary-composite-project-reference.pdf`;
 const downloadIconURL = `${ASSETS_URL}/websites/composite-decking/download-icon.svg`;

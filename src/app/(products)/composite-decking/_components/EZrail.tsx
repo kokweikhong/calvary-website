@@ -14,9 +14,9 @@ const features: { name: string; iconURL: string; }[] = [
   { name: "Replaceable", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/replaceable.svg` },
   { name: "EZRAIL Compatible", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/compatible.svg` },
   { name: "Easy Removal", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/removal.svg` },
-  { name: "10 Years Limited Warrantry", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/10-years-limited-warranty.svg` },
+  { name: "10 Years Warrantry", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/10_years_limited_warranty.svg` },
   { name: "STATS", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/stats.svg` },
-  { name: "SGBC Certified (3 ticks)", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/sgbc-certified-3-ticks.svg` },
+  { name: "SGBC Certified", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/sgbc_2_ticks.svg` },
 ]
 
 const ezrailCompatibleURL = `${ASSETS_URL}/websites/composite-decking/feature-icons/ezrail-compatible.svg`;
@@ -137,6 +137,9 @@ const EZRail = () => {
             </h4>
             <h4 className="bg-white rounded-full p-2">
               <span className="text-calvaryComposite uppercase font-medium text-sm">Reconstituted Composite decking</span>
+            </h4>
+            <h4 className="bg-white rounded-full p-2">
+              <Link href={"/onewood"} className="text-calvaryComposite uppercase font-medium text-sm">OneWood decking</Link>
             </h4>
           </div>
         </div>
