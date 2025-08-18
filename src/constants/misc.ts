@@ -13,4 +13,5 @@ export const footerCompanyDescription = `Welcome to Calvary Carpentry ${
 }, where exceptional craftsmanship meets unwavering trust. With a legacy of excellence established by prestigious brands in Singapore, we've wood for you.`;
 
 export const whatsappNumber =
-  country === "Singapore" ? "6590297044" : "60133001091";
+  country === "Singapore" ? "6594533233" : "60133001091";
+// country === "Singapore" ? "6590297044" : "60133001091";

@@ -59,10 +59,10 @@ type ChampacaComparison = {
 const champacaComparisons: ChampacaComparison[] = [
   {
     title: "Compound Solid Wood",
-    mainImg: `${CHAMPACA_ASSETS_URL}/structure-cross-section-compound-wood.jpg`,
+    mainImg: `${CHAMPACA_ASSETS_URL}/structure_cross_section_compound_wood.jpg`,
     secondImg: `${CHAMPACA_ASSETS_URL}/structure-desection-compound-timber.png`,
     description: {
-      title: "The structure behind compound wood.",
+      title: "The structure behind engineered wood.",
       contents: [
         {
           title: "Lacquer Coating",
@@ -70,9 +70,8 @@ const champacaComparisons: ChampacaComparison[] = [
             "Strong matt lacquer coating which provides protection against wear and tear as well as spillage of liquids. Easy to maintain & clean and contains no harmful solvent.",
         },
         {
-          title: "Hardwood Wear Layer",
-          description:
-            "3mm/4mm Thick high-quality hardwood. If required, this layercan be sanded down at least 1-2 times.",
+          title: "Hardwood",
+          description: "3 mm thick high-quality hardwood.",
         },
         {
           title: "Strength from the core",
@@ -84,10 +83,10 @@ const champacaComparisons: ChampacaComparison[] = [
   },
   {
     title: "Engineered Wood",
-    mainImg: `${CHAMPACA_ASSETS_URL}/structure-cross-section-engineering-floor.jpg`,
+    mainImg: `${CHAMPACA_ASSETS_URL}/structure_cross_section_engineering_floor.jpg`,
     secondImg: `${CHAMPACA_ASSETS_URL}/structure-desection-engineering.png`,
     description: {
-      title: "The structure behind compound wood.",
+      title: "The structure behind engineered wood.",
       contents: [
         {
           title: "Lacquer Coating",
@@ -95,8 +94,8 @@ const champacaComparisons: ChampacaComparison[] = [
             "Strong matt lacquer coating which provides protection against wear and tear as well as spillage of liquids. Easy to maintain & clean and contains no harmful solvent.",
         },
         {
-          title: "Hardwood Wear Layer",
-          description: "Thin layer of Hardwood glued on plywood.",
+          title: "Hardwood",
+          description: "3 mm thick high-quality hardwood.",
         },
         {
           title: "Birch Plywood",

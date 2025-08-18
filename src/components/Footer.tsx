@@ -11,6 +11,8 @@ import whatsapp from "../../public/images/footer/whatsapp.svg";
 import youtube from "../../public/images/footer/youtube.svg";
 import instagram from "../../public/images/footer/instagram.svg";
 
+import { whatsappNumber } from "@/constants/misc";
+
 import email from "../../public/images/footer/email.svg";
 import phoneNumber from "../../public/images/footer/phone_number.svg";
 import EnquiryForm from "./EnquiryForm";
@@ -35,7 +37,7 @@ const contacts: Contact[] = [
     alt: "phone",
   },
   {
-    href: "https://wa.me/6590297044",
+    href: `https://wa.me/${whatsappNumber}`,
     image: whatsapp,
     alt: "whatsapp",
   },
