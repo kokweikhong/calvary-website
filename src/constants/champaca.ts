@@ -62,7 +62,7 @@ const champacaComparisons: ChampacaComparison[] = [
     mainImg: `${CHAMPACA_ASSETS_URL}/structure_cross_section_compound_wood.jpg`,
     secondImg: `${CHAMPACA_ASSETS_URL}/structure-desection-compound-timber.png`,
     description: {
-      title: "The structure behind engineered wood.",
+      title: "The structure behind compound wood.",
       contents: [
         {
           title: "Lacquer Coating",
