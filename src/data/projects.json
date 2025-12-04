@@ -1343,12 +1343,15 @@
     "description": "Accoya coated with OSMO Glazed cladded residential with sliding screen and cladding",
     "products": ["Accoya"],
     "images": [
-      "projects/swiss-club/(1)Timber Cladding_2f Swiss club.jpg",
-      "projects/swiss-club/(2) Timber Cladding_2f Swiss club.jpg",
-      "projects/swiss-club/Swiss club 2-2.jpg",
-      "projects/swiss-club/Swiss club 2.jpg",
-      "projects/swiss-club/Swiss club.jpg",
-      "projects/swiss-club/Timber Cladding_2f Swiss club.jpg"
+      "projects/swiss-club/001.jpg",
+      "projects/swiss-club/002.jpg",
+      "projects/swiss-club/003.jpg",
+      "projects/swiss-club/004.jpg",
+      "projects/swiss-club/005.jpg",
+      "projects/swiss-club/006.jpg",
+      "projects/swiss-club/007.JPG",
+      "projects/swiss-club/008.JPG",
+      "projects/swiss-club/009.JPG"
     ],
     "url": "swiss-club"
   },
@@ -2584,10 +2587,19 @@
     "description": "At NUS Kent Vale and UTown Residences, composite decking in the colour Havana is used across multiple outdoor zones, from the swimming pool deck and rooftop deck to various communal areas and benches. Enshrouded in greenery, these spaces share a warm, cohesive timber aesthetic that blends naturally with the surrounding landscape.",
     "products": ["Calvary Composite"],
     "images": [
-      "projects/nus-kent-vale/01.jpg",
-      "projects/nus-kent-vale/02.jpg",
-      "projects/nus-kent-vale/03.jpg",
-      "projects/nus-kent-vale/04.jpg"
+      "projects/nus-kent-vale/001.jpg",
+      "projects/nus-kent-vale/002.jpg",
+      "projects/nus-kent-vale/003.jpg",
+      "projects/nus-kent-vale/004.jpg",
+      "projects/nus-kent-vale/005.jpg",
+      "projects/nus-kent-vale/006.jpg",
+      "projects/nus-kent-vale/007.jpg",
+      "projects/nus-kent-vale/008.jpg",
+      "projects/nus-kent-vale/009.jpg",
+      "projects/nus-kent-vale/010.jpg",
+      "projects/nus-kent-vale/011.jpg",
+      "projects/nus-kent-vale/012.jpg",
+      "projects/nus-kent-vale/013.jpg"
     ],
     "url": "nus-kent-vale"
   },
