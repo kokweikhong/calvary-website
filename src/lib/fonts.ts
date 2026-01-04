@@ -2,6 +2,8 @@ import localFont from "next/font/local";
 
 export const garamond = localFont({
   variable: "--font-garamond",
+  display: "swap",
+  preload: true,
   style: "normal",
   src: [
     {
@@ -29,6 +31,8 @@ export const garamond = localFont({
 
 export const montserrat = localFont({
   variable: "--font-montserrat",
+  display: "swap",
+  preload: true,
   style: "normal",
   src: [
     {

@@ -7,7 +7,7 @@ import { XMarkIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 import { navLinks } from "@/constants/nav-links";
 import { CountrySwitch } from "./CountrySwitch";
-import { getCountry } from "@/lib/env";
+import { getCountryEnv } from "@/lib/env";
 
 type MobileMenuProps = {
   mobileMenuOpen: boolean;
@@ -16,7 +16,7 @@ type MobileMenuProps = {
 
 const MobileMenu = (props: MobileMenuProps) => {
   const [openSection, setOpenSection] = useState<string | null>(null);
-  const country = getCountry();
+  const country = getCountryEnv();
 
   // Prevent body scroll when menu is open
   useEffect(() => {
@@ -103,7 +103,7 @@ const MobileMenu = (props: MobileMenuProps) => {
                 <div
                   className={`overflow-hidden transition-all duration-300 ${
                     openSection === "products"
-                      ? "max-h-[1000px] opacity-100"
+                      ? "max-h-250 opacity-100"
                       : "max-h-0 opacity-0"
                   }`}
                 >

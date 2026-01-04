@@ -5,14 +5,28 @@ import ProjectReferenceCard from "@/components/projects/ProjectReferenceCard";
 import { use, useEffect, useState } from "react";
 import { Project } from "@/interfaces/project";
 import { cn } from "@/lib/utils";
+import { getCountryEnv } from "@/lib/env";
 // import { getProjects } from "@/lib/project";
-import data from "@/data/projects.json";
+// import data from "@/data/projects.json";
 
-// async function getProjects() {
-//   const res = await fetch("/api/projects");
-//   const data: Project[] = await res.json();
-//   return data;
-// }
+async function getProjects(
+  limit?: number,
+  offset?: number
+): Promise<{
+  data: Project[];
+  length: number;
+}> {
+  const country = getCountryEnv();
+  const countryShort = country === "Malaysia" ? "my" : "sg";
+  const res = await fetch(
+    "/api/projects?country=" +
+      countryShort +
+      (limit ? "&limit=" + limit : "") +
+      (offset ? "&offset=" + offset : "")
+  );
+  const data = await res.json();
+  return data;
+}
 
 // debounce function for search
 function debounce(func: any, timeout = 300) {
@@ -39,6 +53,8 @@ type FilterItem = {
 };
 
 export default function Page() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [totalCount, setTotalCount] = useState(0);
   const [filterItem, setFilterItem] = useState<FilterItem>({
     products: [],
     sectors: [],
@@ -49,7 +65,8 @@ export default function Page() {
   const [projectsToShow, setProjectsToShow] = useState<Project[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [filtersCollapsed, setFiltersCollapsed] = useState(false);
-  const itemsPerPage = 6;
+  const [isLoading, setIsLoading] = useState(false);
+  const itemsPerPage = 9;
 
   // Calculate active filters count
   const activeFiltersCount =
@@ -70,6 +87,24 @@ export default function Page() {
     });
     setCurrentPage(1);
   };
+
+  useEffect(() => {
+    async function fetchData() {
+      setIsLoading(true);
+      try {
+        // Fetch all projects for filtering (no limit)
+        const res = await getProjects();
+        setProjects(res.data);
+        setTotalCount(res.length);
+        setProjectsToShow(res.data);
+      } catch (error) {
+        console.error("Failed to fetch projects:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
 
   // Load filters and page from localStorage on mount (client-side only)
   useEffect(() => {
@@ -97,7 +132,7 @@ export default function Page() {
   //   queryFn: getProjects,
   // });
 
-  const projects: Project[] = data as unknown as Project[];
+  // const projects: Project[] = data as unknown as Project[];
 
   const services = ["Residential", "Commercial", "Governmental"];
 
@@ -346,10 +381,11 @@ export default function Page() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+        {/* Filter Header */}
         <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 sm:gap-4">
             <svg
-              className="w-6 h-6 text-black-600"
+              className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -361,21 +397,23 @@ export default function Page() {
                 d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
               />
             </svg>
-            <h3 className="text-2xl font-bold text-gray-900">Filters</h3>
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+              Filters
+            </h3>
             {activeFiltersCount > 0 && (
-              <span className="inline-flex items-center justify-center px-3 py-1 text-xs font-bold leading-none text-white bg-gradient-to-r from-gray-700 to-gray-900 rounded-full">
+              <span className="inline-flex items-center justify-center px-2.5 py-0.5 sm:px-3 sm:py-1 text-xs font-bold leading-none text-white bg-gradient-to-r from-gray-700 to-gray-900 rounded-full">
                 {activeFiltersCount}
               </span>
             )}
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3l">
             {activeFiltersCount > 0 && (
               <button
                 onClick={clearAllFilters}
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-600 bg-red-50 border-2 border-red-200 rounded-lg hover:bg-red-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="flex items-center gap-1.5 sm:gap-2 px-3 py-2 sm:px-4 text-xs sm:text-sm font-medium text-red-600 bg-red-50 border-2 border-red-200 rounded-lg hover:bg-red-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-500"
               >
                 <svg
-                  className="w-4 h-4"
+                  className="w-3.5 h-3.5 sm:w-4 sm:h-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -387,12 +425,13 @@ export default function Page() {
                     d="M6 18L18 6M6 6l12 12"
                   />
                 </svg>
-                <span>Clear All</span>
+                <span className="hidden sm:inline">Clear All</span>
+                <span className="sm:hidden">Clear</span>
               </button>
             )}
             <button
               onClick={() => setFiltersCollapsed(!filtersCollapsed)}
-              className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black-500"
+              className="flex items-center gap-1.5 sm:gap-2 px-3 py-2 sm:px-4 text-xs sm:text-sm font-medium text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500"
               aria-expanded={!filtersCollapsed}
               aria-label={
                 filtersCollapsed ? "Expand filters" : "Collapse filters"
@@ -401,7 +440,7 @@ export default function Page() {
               {filtersCollapsed ? (
                 <>
                   <svg
-                    className="w-4 h-4"
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -413,12 +452,13 @@ export default function Page() {
                       d="M19 9l-7 7-7-7"
                     />
                   </svg>
-                  <span>Show Filters</span>
+                  <span className="hidden sm:inline">Show Filters</span>
+                  <span className="sm:hidden">Show</span>
                 </>
               ) : (
                 <>
                   <svg
-                    className="w-4 h-4"
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -430,18 +470,23 @@ export default function Page() {
                       d="M5 15l7-7 7 7"
                     />
                   </svg>
-                  <span>Hide Filters</span>
+                  <span className="hidden sm:inline">Hide Filters</span>
+                  <span className="sm:hidden">Hide</span>
                 </>
               )}
             </button>
           </div>
-          {!filtersCollapsed && (
-            <div className="space-y-4 lg:grid lg:grid-cols-4 lg:gap-4 lg:space-y-0 transition-all duration-300">
-              <div className="p-5 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
-                <h4 className="font-semibold text-sm uppercase mb-4 text-gray-700 tracking-wide border-b border-gray-200 pb-2">
+        </div>
+
+        {/* Filter Panels */}
+        {!filtersCollapsed && (
+          <div className="mb-6 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <div className="p-4 sm:p-5 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
+                <h4 className="font-semibold text-xs sm:text-sm uppercase mb-3 sm:mb-4 text-gray-700 tracking-wide border-b border-gray-200 pb-2">
                   Sector of Services
                 </h4>
-                <ul className="space-y-2.5">
+                <ul className="flex flex-col gap-3">
                   {services.map((sector: string) => {
                     return (
                       <li key={sector}>
@@ -468,12 +513,12 @@ export default function Page() {
                 </ul>
               </div>
 
-              <div className="p-5 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
-                <h4 className="font-semibold text-sm uppercase mb-4 text-gray-700 tracking-wide border-b border-gray-200 pb-2">
+              <div className="p-4 sm:p-5 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
+                <h4 className="font-semibold text-xs sm:text-sm uppercase mb-3 sm:mb-4 text-gray-700 tracking-wide border-b border-gray-200 pb-2">
                   Products
                 </h4>
 
-                <ul className="space-y-2.5">
+                <ul className="flex flex-col gap-3">
                   {distinctProducts?.map((product: string) => {
                     return (
                       <li key={product}>
@@ -500,12 +545,12 @@ export default function Page() {
                 </ul>
               </div>
 
-              <div className="p-5 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
-                <h4 className="font-semibold text-sm uppercase mb-4 text-gray-700 tracking-wide border-b border-gray-200 pb-2">
+              <div className="p-4 sm:p-5 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
+                <h4 className="font-semibold text-xs sm:text-sm uppercase mb-3 sm:mb-4 text-gray-700 tracking-wide border-b border-gray-200 pb-2">
                   Applications
                 </h4>
 
-                <ul className="space-y-2.5">
+                <ul className="flex flex-col gap-3">
                   {distinctApplications?.map((app: string) => {
                     return (
                       <li key={app}>
@@ -532,11 +577,11 @@ export default function Page() {
                 </ul>
               </div>
 
-              <div className="p-5 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
-                <h4 className="font-semibold text-sm uppercase mb-4 text-gray-700 tracking-wide border-b border-gray-200 pb-2">
+              <div className="p-4 sm:p-5 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
+                <h4 className="font-semibold text-xs sm:text-sm uppercase mb-3 sm:mb-4 text-gray-700 tracking-wide border-b border-gray-200 pb-2">
                   Years
                 </h4>
-                <ul className="space-y-2.5">
+                <ul className="flex flex-col gap-3">
                   {distinctYears?.map((year: string) => {
                     return (
                       <li key={year}>
@@ -563,21 +608,23 @@ export default function Page() {
                 </ul>
               </div>
             </div>
-          )}
+          </div>
+        )}
 
-          {/* Active Filters Tags */}
-          {activeFiltersCount > 0 && (
-            <div className="mt-6 p-4 bg-gray-50 rounded-xl border border-gray-200">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-sm font-semibold text-gray-700">
+        {/* Active Filters Tags */}
+        {activeFiltersCount > 0 && (
+          <div className="mb-6">
+            <div className="p-3 sm:p-4 bg-gray-50 rounded-xl border border-gray-200">
+              <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                <span className="text-xs sm:text-sm font-semibold text-gray-700">
                   Active Filters:
                 </span>
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {filterItem.projectName && (
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-purple-300 text-purple-700 text-sm rounded-lg shadow-sm">
+                  <span className="inline-flex items-center gap-1.5 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 bg-white border border-purple-300 text-purple-700 text-xs sm:text-sm rounded-lg shadow-sm">
                     <svg
-                      className="w-4 h-4"
+                      className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -616,10 +663,10 @@ export default function Page() {
                 {filterItem.sectors.map((sector) => (
                   <span
                     key={sector}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-blue-300 text-blue-700 text-sm rounded-lg shadow-sm"
+                    className="inline-flex items-center gap-1.5 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 bg-white border border-blue-300 text-blue-700 text-xs sm:text-sm rounded-lg shadow-sm"
                   >
                     <svg
-                      className="w-4 h-4"
+                      className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -663,10 +710,10 @@ export default function Page() {
                 {filterItem.products.map((product) => (
                   <span
                     key={product}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-green-300 text-green-700 text-sm rounded-lg shadow-sm"
+                    className="inline-flex items-center gap-1.5 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 bg-white border border-green-300 text-green-700 text-xs sm:text-sm rounded-lg shadow-sm"
                   >
                     <svg
-                      className="w-4 h-4"
+                      className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -710,10 +757,10 @@ export default function Page() {
                 {filterItem.applications.map((application) => (
                   <span
                     key={application}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-yellow-300 text-yellow-700 text-sm rounded-lg shadow-sm"
+                    className="inline-flex items-center gap-1.5 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 bg-white border border-yellow-300 text-yellow-700 text-xs sm:text-sm rounded-lg shadow-sm"
                   >
                     <svg
-                      className="w-4 h-4"
+                      className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -757,10 +804,10 @@ export default function Page() {
                 {filterItem.years.map((year) => (
                   <span
                     key={year}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-red-300 text-red-700 text-sm rounded-lg shadow-sm"
+                    className="inline-flex items-center gap-1.5 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 bg-white border border-red-300 text-red-700 text-xs sm:text-sm rounded-lg shadow-sm"
                   >
                     <svg
-                      className="w-4 h-4"
+                      className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -801,151 +848,166 @@ export default function Page() {
                 ))}
               </div>
             </div>
-          )}
-
-          {/* Results Count Display */}
-          <div className="flex items-center justify-between mt-8 pt-6 border-t-2 border-gray-200">
-            <div className="flex items-center gap-3">
-              <svg
-                className="w-5 h-5 text-gray-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-                />
-              </svg>
-              <p className="text-lg font-semibold text-gray-900">
-                {projectsToShow.length === 0 ? (
-                  <span className="text-red-600">No projects found</span>
-                ) : projectsToShow.length === 1 ? (
-                  <span>
-                    <span className="text-black-600">
-                      {projectsToShow.length}
-                    </span>{" "}
-                    project found
-                  </span>
-                ) : (
-                  <span>
-                    <span className="text-black-600">
-                      {projectsToShow.length}
-                    </span>{" "}
-                    projects found
-                  </span>
-                )}
-              </p>
-            </div>
-            {projectsToShow.length > 0 && (
-              <p className="text-sm text-gray-500">
-                Showing {startIndex + 1}-
-                {Math.min(endIndex, projectsToShow.length)} of{" "}
-                {projectsToShow.length}
-              </p>
-            )}
           </div>
+        )}
 
-          {/* Project Reference Card */}
-          <div className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 lg:grid-cols-3">
-            {currentProjects.map((project: Project, index) => {
-              return <ProjectReferenceCard key={index} project={project} />;
-            })}
+        {/* Results Count Display */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 py-4 sm:py-6 border-t-2 border-gray-200">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <svg
+              className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 flex-shrink-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+              />
+            </svg>
+            <p className="text-base sm:text-lg font-semibold text-gray-900">
+              {isLoading ? (
+                <span className="text-gray-500">Loading projects...</span>
+              ) : projectsToShow.length === 0 ? (
+                <span className="text-red-600">No projects found</span>
+              ) : projectsToShow.length === 1 ? (
+                <span>
+                  <span className="text-black-600">
+                    {projectsToShow.length}
+                  </span>{" "}
+                  project found
+                </span>
+              ) : (
+                <span>
+                  <span className="text-gray-900 font-bold">
+                    {projectsToShow.length}
+                  </span>{" "}
+                  projects found
+                </span>
+              )}
+            </p>
           </div>
-
-          {/* Pagination Controls */}
-          {totalPages > 1 && (
-            <div className="flex flex-col items-center gap-4 mt-12">
-              <div className="flex items-center gap-2">
-                {/* Previous Button */}
-                <button
-                  onClick={() =>
-                    setCurrentPage((prev) => Math.max(1, prev - 1))
-                  }
-                  disabled={currentPage === 1}
-                  className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
-                  aria-label="Previous page"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 19l-7-7 7-7"
-                    />
-                  </svg>
-                </button>
-
-                {/* Page Numbers */}
-                <div className="flex items-center gap-1">
-                  {getPageNumbers().map((page, index) => {
-                    if (page === "...") {
-                      return (
-                        <span
-                          key={`ellipsis-${index}`}
-                          className="px-3 py-2 text-gray-500"
-                        >
-                          ...
-                        </span>
-                      );
-                    }
-                    return (
-                      <button
-                        key={page}
-                        onClick={() => setCurrentPage(page as number)}
-                        className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                          currentPage === page
-                            ? "bg-gradient-to-r from-gray-700 to-gray-900 text-white shadow-lg"
-                            : "text-gray-700 bg-white border-2 border-gray-300 hover:bg-gray-50"
-                        }`}
-                        aria-label={`Page ${page}`}
-                        aria-current={currentPage === page ? "page" : undefined}
-                      >
-                        {page}
-                      </button>
-                    );
-                  })}
-                </div>
-
-                {/* Next Button */}
-                <button
-                  onClick={() =>
-                    setCurrentPage((prev) => Math.min(totalPages, prev + 1))
-                  }
-                  disabled={currentPage === totalPages}
-                  className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
-                  aria-label="Next page"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              {/* Page Info Text */}
-              <p className="text-sm text-gray-500">
-                Page {currentPage} of {totalPages}
-              </p>
-            </div>
+          {projectsToShow.length > 0 && (
+            <p className="text-xs sm:text-sm text-gray-500">
+              Showing {startIndex + 1}-
+              {Math.min(endIndex, projectsToShow.length)} of{" "}
+              {projectsToShow.length}
+            </p>
           )}
         </div>
+
+        {/* Project Reference Card */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8 w-full">
+          {isLoading
+            ? // Loading skeleton
+              Array.from({ length: 9 }).map((_, index) => (
+                <div
+                  key={index}
+                  className="h-full w-full bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 animate-pulse"
+                >
+                  <div className="w-full aspect-[4/3] sm:aspect-[3/4] bg-gray-200"></div>
+                  <div className="p-4 sm:p-6 space-y-3">
+                    <div className="h-6 bg-gray-200 rounded"></div>
+                    <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+                    <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                  </div>
+                </div>
+              ))
+            : currentProjects.map((project: Project, index) => {
+                return <ProjectReferenceCard key={index} project={project} />;
+              })}
+        </div>
+
+        {/* Pagination Controls */}
+        {totalPages > 1 && (
+          <div className="flex flex-col items-center gap-3 sm:gap-4 mt-8 sm:mt-12">
+            <div className="flex items-center gap-1 sm:gap-2">
+              {/* Previous Button */}
+              <button
+                onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
+                disabled={currentPage === 1}
+                className="p-2 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-all duration-200"
+                aria-label="Previous page"
+              >
+                <svg
+                  className="w-4 h-4 sm:w-5 sm:h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+
+              {/* Page Numbers */}
+              <div className="flex items-center gap-0.5 sm:gap-1">
+                {getPageNumbers().map((page, index) => {
+                  if (page === "...") {
+                    return (
+                      <span
+                        key={`ellipsis-${index}`}
+                        className="px-1 sm:px-3 py-2 text-gray-500 text-xs sm:text-sm"
+                      >
+                        ...
+                      </span>
+                    );
+                  }
+                  return (
+                    <button
+                      key={page}
+                      onClick={() => setCurrentPage(page as number)}
+                      className={`px-2.5 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-lg cursor-pointer transition-all duration-200 ${
+                        currentPage === page
+                          ? "bg-gradient-to-r from-gray-700 to-gray-900 text-white shadow-lg"
+                          : "text-gray-700 bg-white border-2 border-gray-300 hover:bg-gray-50"
+                      }`}
+                      aria-label={`Page ${page}`}
+                      aria-current={currentPage === page ? "page" : undefined}
+                    >
+                      {page}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Next Button */}
+              <button
+                onClick={() =>
+                  setCurrentPage((prev) => Math.min(totalPages, prev + 1))
+                }
+                disabled={currentPage === totalPages}
+                className="p-2 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-all duration-200"
+                aria-label="Next page"
+              >
+                <svg
+                  className="w-4 h-4 sm:w-5 sm:h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            {/* Page Info Text */}
+            <p className="text-xs sm:text-sm text-gray-500">
+              Page {currentPage} of {totalPages}
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

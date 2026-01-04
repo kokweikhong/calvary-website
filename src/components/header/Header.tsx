@@ -30,9 +30,9 @@ const Header = () => {
             <Image
               src={calvaryLogo}
               alt="Calvary Carpentry Sdn Bhd"
-              width={200}
-              height={48}
-              className="w-auto h-full"
+              // width={200}
+              // height={48}
+              className="w-auto h-12"
             />
           </Link>
         </div>

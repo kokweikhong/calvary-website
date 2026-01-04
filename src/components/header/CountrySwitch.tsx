@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getCountry } from "@/lib/env";
+import { getCountryEnv } from "@/lib/env";
 
 import myLogo from "@/../public/svgs/malaysia-round-icon.svg";
 import sgLogo from "@/../public/svgs/singapore-round-icon.svg";
@@ -9,7 +9,7 @@ import sgLogo from "@/../public/svgs/singapore-round-icon.svg";
 export const CountrySwitch = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const country = getCountry();
+  const country = getCountryEnv();
 
   // Close dropdown when clicking outside
   useEffect(() => {

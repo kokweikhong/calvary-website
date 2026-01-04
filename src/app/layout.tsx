@@ -55,7 +55,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${montserrat.variable} ${garamond.variable}`}>
       {/* <Script
         strategy="afterInteractive"
         id="GTM-W623VHBX"
@@ -68,7 +68,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         }}
       /> */}
       <QueryProvider>
-        <body>
+        <body className={montserrat.className}>
           <Header />
           <main>{children}</main>
           <Footer />

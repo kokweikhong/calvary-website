@@ -5,12 +5,12 @@ import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { navLinks } from "@/constants/nav-links";
 import { CountrySwitch } from "./CountrySwitch";
-import { getCountry } from "@/lib/env";
+import { getCountryEnv } from "@/lib/env";
 
 const DesktopMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const country = getCountry();
+  const country = getCountryEnv();
 
   // Close menu when clicking outside
   useEffect(() => {
