@@ -4,6 +4,7 @@ import { Project } from "@/interfaces/project";
 import myImageLoader from "@/lib/imageLoader";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
+import { use } from "react";
 
 async function getProject(slug: string) {
   const res = await fetch(`/api/projects/${slug}`);
@@ -11,10 +12,15 @@ async function getProject(slug: string) {
   return data;
 }
 
-export default function Page({ params }: { params: { slug: string } }) {
+export default function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = use(params);
   const { data: project, isLoading } = useQuery({
-    queryKey: ["project", params.slug],
-    queryFn: () => getProject(params.slug),
+    queryKey: ["project", slug],
+    queryFn: () => getProject(slug),
     retry: 1,
   });
 
@@ -90,7 +96,7 @@ export default function Page({ params }: { params: { slug: string } }) {
                 <Image
                   loader={myImageLoader}
                   src={image.replaceAll(" ", "%20")}
-                  alt={project.name + "-" + index ?? index}
+                  alt={project.name ? `${project.name}-${index}` : `${index}`}
                   width={300}
                   height={300}
                   sizes="(max-width: 767px) 100vw, (max-width: 991px) 50vw, 33vw"

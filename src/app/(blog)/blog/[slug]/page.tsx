@@ -9,7 +9,10 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page(props: {
+  params: Promise<{ slug: string }>;
+}) {
+  const params = await props.params;
   const post = await getPost(params.slug);
   if (!post) return notFound();
 
@@ -28,7 +31,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
       <div
         className={cn(
           "prose lg:prose-xl prose-headings:mt-8 prose-headings:font-semibold prose-headings:text-black prose-h1:text-5xl prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-lg",
-          "mx-auto",
+          "mx-auto"
         )}
       >
         <Post>{post.body}</Post>

@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from "lucide-react";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import MosoDecking from "./MosoDecking";
 import MosoCladding from "./MosoCladding";
 
@@ -40,7 +40,7 @@ const Products = () => {
               className="p-4 rounded-lg flex flex-col items-start space-y-2"
             >
               <h3 className="text-[#805C00] font-bold uppercase flex items-center">
-                <ArrowRightIcon size={16} />
+                <ArrowRightIcon className="h-4 w-4" />
                 <span className="ml-4">{product.title}</span>
               </h3>
               <p className="text-sm ml-8">{product.description}</p>

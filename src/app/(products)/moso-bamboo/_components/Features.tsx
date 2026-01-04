@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { getMosoImageUrl } from "../_lib/utils";
-import { ArrowRightIcon } from "lucide-react";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
 const mosoXtremeLogo = getMosoImageUrl("moso-xtreme-logo.png");
 
@@ -77,7 +77,7 @@ const Features = () => {
           <ul className="space-y-2">
             {features.map((feature, index) => (
               <li key={index} className="flex items-center space-x-2">
-                <ArrowRightIcon size={16} />
+                <ArrowRightIcon className="h-4 w-4 text-[#805C00]" />
                 <span className="text-[#805C00]">{feature}</span>
               </li>
             ))}

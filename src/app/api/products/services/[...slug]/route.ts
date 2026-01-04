@@ -6,13 +6,19 @@ const country = process.env.NEXT_PUBLIC_COUNTRY || "Singapore";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string[] } }
+  { params }: { params: Promise<{ slug: string[] }> }
 ) {
-  const file = await fs.readFile(process.cwd() + "/src/data/products.json", "utf-8");
+  const { slug } = await params;
+  const file = await fs.readFile(
+    process.cwd() + "/src/data/products.json",
+    "utf-8"
+  );
   const data: Product[] = JSON.parse(file);
-  const products = data.filter((product) => product.services.some((service) => params.slug.includes(service)));
-  const filteredProducts = products.filter((product) => product.countries.includes(
-    country === "Malaysia" ? "my" : "sg"
-  ));
+  const products = data.filter((product) =>
+    product.services.some((service) => slug.includes(service))
+  );
+  const filteredProducts = products.filter((product) =>
+    product.countries.includes(country === "Malaysia" ? "my" : "sg")
+  );
   return NextResponse.json(filteredProducts);
 }

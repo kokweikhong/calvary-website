@@ -1,6 +1,5 @@
 "use client";
 
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
@@ -144,10 +143,8 @@ const ColourSwatches = () => {
                   </div>
                 </>
               )}
-              <AspectRatio
-                ratio={1}
-                // className="w-full h-48 relative"
-              >
+              {/* need square image */}
+              <div className="w-full relative rounded-lg border border-gray-300 overflow-hidden mb-2 aspect-square">
                 <Image
                   src={colourSwatch.image}
                   alt={colourSwatch.name}
@@ -155,7 +152,7 @@ const ColourSwatches = () => {
                   sizes="(max-width: 768px) 100vw, 768px"
                   className="w-full h-full object-cover"
                 />
-              </AspectRatio>
+              </div>
               <span className="text-[10px] text-center">
                 {colourSwatch.name}
               </span>

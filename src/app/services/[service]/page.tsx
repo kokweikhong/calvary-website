@@ -8,6 +8,7 @@ import ServiceProductSlider from "@/components/ServiceProductSlider";
 import ServiceProjects from "@/components/ServiceProjects";
 import { Product } from "@/interfaces/product";
 import { useQuery } from "@tanstack/react-query";
+import { use } from "react";
 
 async function getProductsByService(service: string) {
   const res = await fetch(`/api/products/services/${service}`);
@@ -21,15 +22,20 @@ const serviceCategories = {
   maintenance: ["OSMO®", "Timber coating", "Sand and Vanish", "Silverwood"],
 };
 
-export default function Page({ params }: { params: { service: string } }) {
+export default function Page({
+  params,
+}: {
+  params: Promise<{ service: string }>;
+}) {
+  const { service } = use(params);
   const { data: products, isLoading } = useQuery({
-    queryKey: ["service", params.service],
-    queryFn: () => getProductsByService(params.service),
-    enabled: !!params.service,
+    queryKey: ["service", service],
+    queryFn: () => getProductsByService(service),
+    enabled: !!service,
   });
 
   const categories =
-    serviceCategories[params.service as keyof typeof serviceCategories];
+    serviceCategories[service as keyof typeof serviceCategories];
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -41,13 +47,16 @@ export default function Page({ params }: { params: { service: string } }) {
 
   return (
     <div>
-      <ServiceHero service={params.service} />
+      <ServiceHero service={service} />
 
       <ServiceProductSlider products={categories} />
 
       <ClientsSlider backgroundColor="white" iconColor="black" />
 
-      <div id="service-products" className="mx-auto max-w-7xl sm:px-6 lg:px-8 mt-8">
+      <div
+        id="service-products"
+        className="mx-auto max-w-7xl sm:px-6 lg:px-8 mt-8"
+      >
         <div className="grid grid-cols-12 gap-6">
           {products.map((product) => {
             return (
@@ -63,7 +72,7 @@ export default function Page({ params }: { params: { service: string } }) {
       </div>
 
       <div className="mt-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <ServiceProjects service={params.service} />
+        <ServiceProjects service={service} />
       </div>
 
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">

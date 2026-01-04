@@ -1,18 +1,18 @@
-import { EmailTemplate } from '@/components/EmailTemplate';
-import { Resend } from 'resend';
+import { EmailTemplate } from "@/components/EmailTemplate";
+import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY as string)
-const country = process.env.NEXT_PUBLIC_COUNTRY || 'Singapore';
+const resend = new Resend(process.env.RESEND_API_KEY as string);
+const country = process.env.NEXT_PUBLIC_COUNTRY || "Singapore";
 
-export async function POST(req: Request, res: Response) {
+export async function POST(req: Request) {
   const body = await req.json();
   try {
     const data = await resend.emails.send({
-      from: 'Calvary Carpentry <enquiry@calvarycarpentry.org>',
+      from: "Calvary Carpentry <enquiry@calvarycarpentry.org>",
       to: ["sales@calvarycarpentry.com", "kokwei@calvarycarpentry.com"],
       // to: ["kokweikhong@gmail.com"],
       // to: ["kokwei@calvarycarpentry.com"],
-      subject: country + ' Enquiry from Calvary Carpentry Website',
+      subject: country + " Enquiry from Calvary Carpentry Website",
       react: EmailTemplate({ ...body }),
     } as any);
 

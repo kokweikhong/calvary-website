@@ -11,6 +11,7 @@ import GtmScript from "@/components/gtm-script";
 import WhatsappFloating from "@/components/WhatsappFloating";
 import CookieBanner from "@/components/CookieBanner";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { Suspense } from "react";
 // import type { Metadata } from 'next'
 
 // export const metadata:Metadata = {
@@ -84,7 +85,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <CookieBanner />
         </body>
       </QueryProvider>
-      <GoogleAnalytics GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} />
+      <Suspense fallback={null}>
+        <GoogleAnalytics GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} />
+      </Suspense>
     </html>
   );
 }

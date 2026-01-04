@@ -6,8 +6,9 @@ const country = process.env.NEXT_PUBLIC_COUNTRY || "Singapore";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
+  const { slug } = await params;
   const file = await fs.readFile(
     process.cwd() + "/src/data/projects.json",
     "utf-8"
@@ -17,7 +18,7 @@ export async function GET(
     .filter((project) =>
       project.countries.includes(country === "Singapore" ? "sg" : "my")
     )
-    .find((project) => project.url.includes(params.slug));
+    .find((project) => project.url.includes(slug));
   console.log(project);
   if (!project) {
     return NextResponse.error();
