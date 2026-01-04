@@ -5,12 +5,14 @@ import ProjectReferenceCard from "@/components/projects/ProjectReferenceCard";
 import { use, useEffect, useState } from "react";
 import { Project } from "@/interfaces/project";
 import { cn } from "@/lib/utils";
+// import { getProjects } from "@/lib/project";
+import data from "@/data/projects.json";
 
-async function getProjects() {
-  const res = await fetch("/api/projects");
-  const data: Project[] = await res.json();
-  return data;
-}
+// async function getProjects() {
+//   const res = await fetch("/api/projects");
+//   const data: Project[] = await res.json();
+//   return data;
+// }
 
 // debounce function for search
 function debounce(func: any, timeout = 300) {
@@ -45,30 +47,76 @@ export default function Page() {
     projectName: "",
   });
   const [projectsToShow, setProjectsToShow] = useState<Project[]>([]);
-  const [numberToShow, setNumberToShow] = useState(6);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [filtersCollapsed, setFiltersCollapsed] = useState(false);
+  const itemsPerPage = 6;
 
-  const projects = useQuery({
-    queryKey: ["projects"],
-    queryFn: getProjects,
-  });
+  // Calculate active filters count
+  const activeFiltersCount =
+    filterItem.products.length +
+    filterItem.sectors.length +
+    filterItem.applications.length +
+    filterItem.years.length +
+    (filterItem.projectName ? 1 : 0);
 
-  // create distinctProducts array from projects.data
-  const distinctProducts = projects.data?.reduce(
-    (acc: string[], project: Project) => {
+  // Clear all filters function
+  const clearAllFilters = () => {
+    setFilterItem({
+      products: [],
+      sectors: [],
+      applications: [],
+      years: [],
+      projectName: "",
+    });
+    setCurrentPage(1);
+  };
+
+  // Load filters and page from localStorage on mount (client-side only)
+  useEffect(() => {
+    const savedFilters = localStorage.getItem("projectFilters");
+    if (savedFilters) {
+      try {
+        setFilterItem(JSON.parse(savedFilters));
+      } catch (e) {
+        console.error("Failed to parse saved filters:", e);
+      }
+    }
+
+    const savedPage = localStorage.getItem("projectsCurrentPage");
+    if (savedPage) {
+      try {
+        setCurrentPage(parseInt(savedPage, 10));
+      } catch (e) {
+        console.error("Failed to parse saved page:", e);
+      }
+    }
+  }, []);
+
+  // const projects = useQuery({
+  //   queryKey: ["projects"],
+  //   queryFn: getProjects,
+  // });
+
+  const projects: Project[] = data as unknown as Project[];
+
+  const services = ["Residential", "Commercial", "Governmental"];
+
+  // create distinctProducts array from projects and sort alphabetically
+  const distinctProducts = projects
+    ?.reduce((acc: string[], project: Project) => {
       project.products.forEach((product) => {
-        if (!acc.includes(product) && product !== "") {
-          // Corrected the condition here
+        if (!acc.includes(product)) {
           acc.push(product);
         }
       });
       return acc;
-    },
-    [] as string[]
-  );
+    }, [] as string[])
+    ?.sort((a, b) => a.localeCompare(b));
 
-  const distinctApplications = projects.data
+  // create distinctApplications array from projects and ignore blank applications and sort alphabetically
+  const distinctApplications = projects
     ?.reduce((acc: string[], project: Project) => {
-      project?.applications?.forEach((application) => {
+      project.applications?.forEach((application) => {
         if (!acc.includes(application) && application !== "") {
           // Corrected the condition here
           acc.push(application);
@@ -76,16 +124,17 @@ export default function Page() {
       });
       return acc;
     }, [] as string[])
-    .filter((app) => !app.includes(" "));
+    ?.sort((a, b) => a.localeCompare(b));
 
-  // distinctYears array from projects.data
-  // remove blank year and sort in descending order
-  // remove duplicates
-  const distinctYears = projects.data
-    ?.map((project) => project.year)
-    // .filter((year) => year !== "")
-    .sort((a, b) => b - a)
-    .filter((year, index, self) => self.indexOf(year) === index);
+  // create distinctYears array from projects and ignore blank years and sort descending
+  const distinctYears = projects
+    ?.reduce((acc: string[], project: Project) => {
+      if (project.year && !acc.includes(project.year.toString())) {
+        acc.push(project.year.toString());
+      }
+      return acc;
+    }, [] as string[])
+    .sort((a, b) => parseInt(b) - parseInt(a));
 
   // handle filterItem change
   const handle = (e: any) => {
@@ -148,205 +197,754 @@ export default function Page() {
     }
   };
 
-  // filter projects based on filterItem
-  function filterProjects() {
-    return projects.data?.filter((project: Project) => {
-      const { products, sectors, applications, years, projectName } =
-        filterItem;
+  // Save filters to localStorage whenever they change
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("projectFilters", JSON.stringify(filterItem));
+    }
+  }, [filterItem]);
 
-      const hasProduct = products.length
-        ? products.some((product) => project.products.includes(product))
-        : true;
+  // Save current page to localStorage whenever it changes
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("projectsCurrentPage", currentPage.toString());
+    }
+  }, [currentPage]);
 
-      const hasSector = sectors.length
-        ? sectors.some((sector) => project.sectors.includes(sector))
-        : true;
+  // Filter projects based on filterItem
+  useEffect(() => {
+    let filtered = projects;
 
-      const hasApplication = applications.length
-        ? applications.some((application) =>
-            project.applications?.includes(application)
-          )
-        : true;
-
-      const hasYear = years.length
-        ? years.includes(project.year.toString())
-        : true;
-
-      const hasProjectName = projectName
-        ? project.name.toLowerCase().includes(projectName.toLowerCase())
-        : true;
-
-      return (
-        hasProduct && hasSector && hasApplication && hasYear && hasProjectName
+    // Filter by sectors
+    if (filterItem.sectors.length > 0) {
+      filtered = filtered.filter((project) =>
+        project.sectors?.some((sector) => filterItem.sectors.includes(sector))
       );
-    });
-  }
+    }
 
-  useEffect(() => {
-    const filteredProjects = filterProjects();
-    // sort filteredProjects by year
-    filteredProjects?.sort((a, b) => b.year - a.year);
-    setProjectsToShow(filteredProjects || []);
-  }, [filterItem, projects.data]);
+    // Filter by products
+    if (filterItem.products.length > 0) {
+      filtered = filtered.filter((project) =>
+        project.products.some((product) =>
+          filterItem.products.includes(product)
+        )
+      );
+    }
 
-  // useEffect to call debouncedSearch
-  useEffect(() => {
-    debouncedSearch(filterItem.projectName);
-  }, [filterItem.projectName]);
+    // Filter by applications
+    if (filterItem.applications.length > 0) {
+      filtered = filtered.filter((project) =>
+        project.applications?.some((application) =>
+          filterItem.applications.includes(application)
+        )
+      );
+    }
 
-  if (projects.isLoading) {
-    return <div>Loading...</div>;
-  }
+    // Filter by years
+    if (filterItem.years.length > 0) {
+      filtered = filtered.filter((project) =>
+        filterItem.years.includes(project.year?.toString() || "")
+      );
+    }
 
-  if (projects.isError) {
-    return <div>Error: {projects.error.message}</div>;
-  }
+    // Filter by project name (search)
+    if (filterItem.projectName) {
+      filtered = filtered.filter((project) =>
+        project.name
+          ?.toLowerCase()
+          .includes(filterItem.projectName.toLowerCase())
+      );
+    }
+
+    setProjectsToShow(filtered);
+    setCurrentPage(1); // Reset to first page when filters change
+  }, [filterItem, projects]);
+
+  // Pagination calculations
+  const totalPages = Math.ceil(projectsToShow.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentProjects = projectsToShow.slice(startIndex, endIndex);
+
+  // Generate page numbers to display
+  const getPageNumbers = () => {
+    const pages = [];
+    const maxPagesToShow = 5;
+
+    if (totalPages <= maxPagesToShow) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      if (currentPage <= 3) {
+        for (let i = 1; i <= 4; i++) {
+          pages.push(i);
+        }
+        pages.push("...");
+        pages.push(totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        pages.push(1);
+        pages.push("...");
+        for (let i = totalPages - 3; i <= totalPages; i++) {
+          pages.push(i);
+        }
+      } else {
+        pages.push(1);
+        pages.push("...");
+        pages.push(currentPage - 1);
+        pages.push(currentPage);
+        pages.push(currentPage + 1);
+        pages.push("...");
+        pages.push(totalPages);
+      }
+    }
+    return pages;
+  };
 
   return (
-    <div className="py-8">
-      <div className="container mx-auto sm:px-6 lg:px-8 flex flex-col items-center mt-8">
-        <h2 className="uppercase py-1 text-2xl font-medium mb-4 border-y border-y-black">
-          Project References
-        </h2>
-        <p>
-          Discover our exterior completed projects, spanning residential and
-          architectural spaces, featuring renowned locations like SMU, Mandai,
-          SOTA, and Artyzen.
-        </p>
+    <div className="py-12 bg-gradient-to-b from-gray-50 to-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+        <div className="text-center max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+            Project References
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-gray-700 to-gray-800 mx-auto mb-6 rounded-full"></div>
+          <p className="text-base md:text-lg text-gray-600 leading-relaxed">
+            Discover our exterior completed projects, spanning residential and
+            architectural spaces, featuring renowned locations like SMU, Mandai,
+            SOTA, and Artyzen.
+          </p>
+        </div>
       </div>
 
-      <div className="container mx-auto sm:px-6 lg:px-8 mt-8">
-        <input
-          type="text"
-          placeholder="Search by project name"
-          className="block w-full px-4 py-2 mt-8 border border-black"
-          onChange={handle}
-          name="projectName"
-        />
-      </div>
-
-      <div className="container mx-auto sm:px-6 lg:px-8 mt-8">
-        <h3 className="font-medium uppercase mb-4">Filter</h3>
-        <div className="space-y-2 lg:grid lg:grid-cols-4 lg:gap-x-2 lg:space-y-0">
-          <div className="p-4 border border-black">
-            <h4 className="font-medium uppercase mb-2">Sector of services</h4>
-            <ul className="space-y-1">
-              <li className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  value={"Residential"}
-                  onChange={handle}
-                />
-                <span>Residential</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <input type="checkbox" value={"Commercial"} onChange={handle} />
-                <span>Commercial</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  value={"Governmental"}
-                  onChange={handle}
-                />
-                <span>Governmental</span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="p-4 border border-black">
-            <h4 className="font-medium uppercase mb-2">Products</h4>
-
-            <ul className="space-y-1">
-              {distinctProducts?.map((product: string) => {
-                return (
-                  <li key={product}>
-                    <label
-                      className="flex items-center gap-2"
-                      htmlFor={product}
-                    >
-                      <input
-                        id={product}
-                        type="checkbox"
-                        name="product"
-                        value={product}
-                        onChange={handle}
-                      />
-                      <span>{product}</span>
-                    </label>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          <div className="p-4 border border-black">
-            <h4 className="font-medium uppercase mb-2">Applications</h4>
-
-            <ul className="space-y-1">
-              {distinctApplications?.map((app: string) => {
-                return (
-                  <li key={app}>
-                    <label className="flex items-center gap-2" htmlFor={app}>
-                      <input
-                        id={app}
-                        type="checkbox"
-                        name="application"
-                        value={app}
-                        onChange={handle}
-                      />
-                      <span>{app}</span>
-                    </label>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          <div className="p-4 border border-black">
-            <h4 className="font-medium uppercase mb-2">Years</h4>
-            <ul className="space-y-1">
-              {distinctYears?.map((year: number) => {
-                return (
-                  <li key={year}>
-                    <label
-                      className="flex items-center gap-2"
-                      htmlFor={year.toString()}
-                    >
-                      <input
-                        id={year.toString()}
-                        type="checkbox"
-                        name="year"
-                        value={year.toString()}
-                        onChange={handle}
-                      />
-                      <span>{year}</span>
-                    </label>
-                  </li>
-                );
-              })}
-            </ul>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+        <div className="max-w-2xl mx-auto">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search by project name..."
+              className="block w-full px-6 py-4 pl-12 text-gray-900 bg-white border-2 border-gray-300 rounded-xl shadow-sm focus:border-black-500 focus:ring-2 focus:ring-black-200 transition-all duration-200 placeholder:text-gray-400"
+              onChange={handle}
+              name="projectName"
+              value={filterItem.projectName}
+            />
+            <svg
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
           </div>
         </div>
+      </div>
 
-        {/* Project Reference Card */}
-        <div className="grid grid-cols-1 gap-4 mt-8 md:grid-cols-2 lg:grid-cols-3">
-          {projectsToShow
-            ?.slice(0, numberToShow)
-            .map((project: Project, index) => {
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+        <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
+          <div className="flex items-center gap-3">
+            <svg
+              className="w-6 h-6 text-black-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+              />
+            </svg>
+            <h3 className="text-2xl font-bold text-gray-900">Filters</h3>
+            {activeFiltersCount > 0 && (
+              <span className="inline-flex items-center justify-center px-3 py-1 text-xs font-bold leading-none text-white bg-gradient-to-r from-gray-700 to-gray-900 rounded-full">
+                {activeFiltersCount}
+              </span>
+            )}
+          </div>
+          <div className="flex items-center gap-3">
+            {activeFiltersCount > 0 && (
+              <button
+                onClick={clearAllFilters}
+                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-600 bg-red-50 border-2 border-red-200 rounded-lg hover:bg-red-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-500"
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+                <span>Clear All</span>
+              </button>
+            )}
+            <button
+              onClick={() => setFiltersCollapsed(!filtersCollapsed)}
+              className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black-500"
+              aria-expanded={!filtersCollapsed}
+              aria-label={
+                filtersCollapsed ? "Expand filters" : "Collapse filters"
+              }
+            >
+              {filtersCollapsed ? (
+                <>
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                  <span>Show Filters</span>
+                </>
+              ) : (
+                <>
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 15l7-7 7 7"
+                    />
+                  </svg>
+                  <span>Hide Filters</span>
+                </>
+              )}
+            </button>
+          </div>
+          {!filtersCollapsed && (
+            <div className="space-y-4 lg:grid lg:grid-cols-4 lg:gap-4 lg:space-y-0 transition-all duration-300">
+              <div className="p-5 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
+                <h4 className="font-semibold text-sm uppercase mb-4 text-gray-700 tracking-wide border-b border-gray-200 pb-2">
+                  Sector of Services
+                </h4>
+                <ul className="space-y-2.5">
+                  {services.map((sector: string) => {
+                    return (
+                      <li key={sector}>
+                        <label
+                          className="flex items-center gap-3 group cursor-pointer"
+                          htmlFor={sector}
+                        >
+                          <input
+                            id={sector}
+                            type="checkbox"
+                            name="sector"
+                            value={sector}
+                            onChange={handle}
+                            checked={filterItem.sectors.includes(sector)}
+                            className="w-4 h-4 text-black-600 border-gray-300 rounded focus:ring-2 focus:ring-black-500 cursor-pointer"
+                          />
+                          <span className="text-sm text-gray-700 group-hover:text-gray-900">
+                            {sector}
+                          </span>
+                        </label>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+
+              <div className="p-5 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
+                <h4 className="font-semibold text-sm uppercase mb-4 text-gray-700 tracking-wide border-b border-gray-200 pb-2">
+                  Products
+                </h4>
+
+                <ul className="space-y-2.5">
+                  {distinctProducts?.map((product: string) => {
+                    return (
+                      <li key={product}>
+                        <label
+                          className="flex items-center gap-3 group cursor-pointer"
+                          htmlFor={product}
+                        >
+                          <input
+                            id={product}
+                            type="checkbox"
+                            name="product"
+                            value={product}
+                            onChange={handle}
+                            checked={filterItem.products.includes(product)}
+                            className="w-4 h-4 text-black-600 border-gray-300 rounded focus:ring-2 focus:ring-black-500 cursor-pointer"
+                          />
+                          <span className="text-sm text-gray-700 group-hover:text-gray-900">
+                            {product}
+                          </span>
+                        </label>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+
+              <div className="p-5 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
+                <h4 className="font-semibold text-sm uppercase mb-4 text-gray-700 tracking-wide border-b border-gray-200 pb-2">
+                  Applications
+                </h4>
+
+                <ul className="space-y-2.5">
+                  {distinctApplications?.map((app: string) => {
+                    return (
+                      <li key={app}>
+                        <label
+                          className="flex items-center gap-3 group cursor-pointer"
+                          htmlFor={app}
+                        >
+                          <input
+                            id={app}
+                            type="checkbox"
+                            name="application"
+                            value={app}
+                            onChange={handle}
+                            checked={filterItem.applications.includes(app)}
+                            className="w-4 h-4 text-black-600 border-gray-300 rounded focus:ring-2 focus:ring-black-500 cursor-pointer"
+                          />
+                          <span className="text-sm text-gray-700 group-hover:text-gray-900">
+                            {app}
+                          </span>
+                        </label>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+
+              <div className="p-5 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
+                <h4 className="font-semibold text-sm uppercase mb-4 text-gray-700 tracking-wide border-b border-gray-200 pb-2">
+                  Years
+                </h4>
+                <ul className="space-y-2.5">
+                  {distinctYears?.map((year: string) => {
+                    return (
+                      <li key={year}>
+                        <label
+                          className="flex items-center gap-3 group cursor-pointer"
+                          htmlFor={year.toString()}
+                        >
+                          <input
+                            id={year.toString()}
+                            type="checkbox"
+                            name="year"
+                            value={year.toString()}
+                            onChange={handle}
+                            checked={filterItem.years.includes(year.toString())}
+                            className="w-4 h-4 text-black-600 border-gray-300 rounded focus:ring-2 focus:ring-black-500 cursor-pointer"
+                          />
+                          <span className="text-sm text-gray-700 group-hover:text-gray-900">
+                            {year}
+                          </span>
+                        </label>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+          )}
+
+          {/* Active Filters Tags */}
+          {activeFiltersCount > 0 && (
+            <div className="mt-6 p-4 bg-gray-50 rounded-xl border border-gray-200">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-sm font-semibold text-gray-700">
+                  Active Filters:
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {filterItem.projectName && (
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-purple-300 text-purple-700 text-sm rounded-lg shadow-sm">
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                      />
+                    </svg>
+                    <span>Search: {filterItem.projectName}</span>
+                    <button
+                      onClick={() =>
+                        setFilterItem({ ...filterItem, projectName: "" })
+                      }
+                      className="hover:text-purple-900 transition-colors"
+                      aria-label="Remove search filter"
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  </span>
+                )}
+                {filterItem.sectors.map((sector) => (
+                  <span
+                    key={sector}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-blue-300 text-blue-700 text-sm rounded-lg shadow-sm"
+                  >
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                      />
+                    </svg>
+                    <span>{sector}</span>
+                    <button
+                      onClick={() =>
+                        setFilterItem({
+                          ...filterItem,
+                          sectors: filterItem.sectors.filter(
+                            (s) => s !== sector
+                          ),
+                        })
+                      }
+                      className="hover:text-blue-900 transition-colors"
+                      aria-label={`Remove ${sector} filter`}
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  </span>
+                ))}
+                {filterItem.products.map((product) => (
+                  <span
+                    key={product}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-green-300 text-green-700 text-sm rounded-lg shadow-sm"
+                  >
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                      />
+                    </svg>
+                    <span>{product}</span>
+                    <button
+                      onClick={() =>
+                        setFilterItem({
+                          ...filterItem,
+                          products: filterItem.products.filter(
+                            (p) => p !== product
+                          ),
+                        })
+                      }
+                      className="hover:text-green-900 transition-colors"
+                      aria-label={`Remove ${product} filter`}
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  </span>
+                ))}
+                {filterItem.applications.map((application) => (
+                  <span
+                    key={application}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-yellow-300 text-yellow-700 text-sm rounded-lg shadow-sm"
+                  >
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                    <span>{application}</span>
+                    <button
+                      onClick={() =>
+                        setFilterItem({
+                          ...filterItem,
+                          applications: filterItem.applications.filter(
+                            (a) => a !== application
+                          ),
+                        })
+                      }
+                      className="hover:text-yellow-900 transition-colors"
+                      aria-label={`Remove ${application} filter`}
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  </span>
+                ))}
+                {filterItem.years.map((year) => (
+                  <span
+                    key={year}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-red-300 text-red-700 text-sm rounded-lg shadow-sm"
+                  >
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
+                    </svg>
+                    <span>{year}</span>
+                    <button
+                      onClick={() =>
+                        setFilterItem({
+                          ...filterItem,
+                          years: filterItem.years.filter((y) => y !== year),
+                        })
+                      }
+                      className="hover:text-red-900 transition-colors"
+                      aria-label={`Remove ${year} filter`}
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Results Count Display */}
+          <div className="flex items-center justify-between mt-8 pt-6 border-t-2 border-gray-200">
+            <div className="flex items-center gap-3">
+              <svg
+                className="w-5 h-5 text-gray-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                />
+              </svg>
+              <p className="text-lg font-semibold text-gray-900">
+                {projectsToShow.length === 0 ? (
+                  <span className="text-red-600">No projects found</span>
+                ) : projectsToShow.length === 1 ? (
+                  <span>
+                    <span className="text-black-600">
+                      {projectsToShow.length}
+                    </span>{" "}
+                    project found
+                  </span>
+                ) : (
+                  <span>
+                    <span className="text-black-600">
+                      {projectsToShow.length}
+                    </span>{" "}
+                    projects found
+                  </span>
+                )}
+              </p>
+            </div>
+            {projectsToShow.length > 0 && (
+              <p className="text-sm text-gray-500">
+                Showing {startIndex + 1}-
+                {Math.min(endIndex, projectsToShow.length)} of{" "}
+                {projectsToShow.length}
+              </p>
+            )}
+          </div>
+
+          {/* Project Reference Card */}
+          <div className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 lg:grid-cols-3">
+            {currentProjects.map((project: Project, index) => {
               return <ProjectReferenceCard key={index} project={project} />;
             })}
-        </div>
-        <div className="flex justify-center items-center mt-8">
-          <button
-            onClick={() => setNumberToShow((prev) => prev + 6)}
-            className={cn(
-              "text-white px-4 py-2",
-              numberToShow >= projectsToShow.length ? "bg-gray-400" : "bg-black"
-            )}
-          >
-            Load More
-          </button>
+          </div>
+
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div className="flex flex-col items-center gap-4 mt-12">
+              <div className="flex items-center gap-2">
+                {/* Previous Button */}
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(1, prev - 1))
+                  }
+                  disabled={currentPage === 1}
+                  className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                  aria-label="Previous page"
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                </button>
+
+                {/* Page Numbers */}
+                <div className="flex items-center gap-1">
+                  {getPageNumbers().map((page, index) => {
+                    if (page === "...") {
+                      return (
+                        <span
+                          key={`ellipsis-${index}`}
+                          className="px-3 py-2 text-gray-500"
+                        >
+                          ...
+                        </span>
+                      );
+                    }
+                    return (
+                      <button
+                        key={page}
+                        onClick={() => setCurrentPage(page as number)}
+                        className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                          currentPage === page
+                            ? "bg-gradient-to-r from-gray-700 to-gray-900 text-white shadow-lg"
+                            : "text-gray-700 bg-white border-2 border-gray-300 hover:bg-gray-50"
+                        }`}
+                        aria-label={`Page ${page}`}
+                        aria-current={currentPage === page ? "page" : undefined}
+                      >
+                        {page}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Next Button */}
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(totalPages, prev + 1))
+                  }
+                  disabled={currentPage === totalPages}
+                  className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                  aria-label="Next page"
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Page Info Text */}
+              <p className="text-sm text-gray-500">
+                Page {currentPage} of {totalPages}
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>
