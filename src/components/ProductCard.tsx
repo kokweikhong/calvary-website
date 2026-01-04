@@ -10,9 +10,7 @@ type ProductCardProps = {
   data: Product;
 };
 
-const ProductCard: FC<ProductCardProps> = ({
-  data
-}) => {
+const ProductCard: FC<ProductCardProps> = ({ data }) => {
   return (
     <Link
       href={data.href}
@@ -40,7 +38,8 @@ const ProductCard: FC<ProductCardProps> = ({
             alt={data.title}
             width={100}
             height={100}
-            className="w-auto h-full object-fill"
+            style={{ width: "auto", height: "100%" }}
+            className="object-contain"
           />
         </div>
         <p className="mb-0 text-textDark tracking-[0.88px] leading-[26px]">

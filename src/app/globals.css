@@ -1,6 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 100 200 300 400 500 600 700 800 900;
+  font-display: swap;
+  src: url("/fonts/Montserrat.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Garamond";
+  font-style: normal;
+  font-weight: 100 200 300 400 500 600 700 800 900;
+  font-display: swap;
+  src: url("/fonts/EB_Garamond.ttf") format("truetype");
+}
+
+@theme {
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-garamond: "Garamond", serif;
+}
 
 @layer components {
   .container-cp {
@@ -73,12 +92,8 @@
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-
   body {
-    @apply bg-background text-foreground font-montserrat;
+    @apply font-montserrat;
   }
 
   h1 {

@@ -1,270 +1,317 @@
-import { Popover, Transition } from "@headlessui/react";
+"use client";
+
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { Fragment } from "react";
-import { CountrySwitch, LinkItem } from "./Menu";
+import { useState, useRef, useEffect } from "react";
 import { navLinks } from "@/constants/nav-links";
-
-const popoverButtonNames = ["Products", "About Us", "Blog", "Projects"];
-
-const COUNTRY = process.env.NEXT_PUBLIC_COUNTRY || "Singapore";
+import { CountrySwitch } from "./CountrySwitch";
+import { getCountry } from "@/lib/env";
 
 const DesktopMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const country = getCountry();
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("keydown", handleEscape);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [isOpen]);
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
-      <Popover.Group className="hidden lg:flex lg:gap-x-12">
-        <Popover className="flex items-center justify-center">
-          {({ close }) => (
-            <>
-              <Popover.Button className="flex items-center justify-center gap-x-8 text-sm font-semibold leading-6 text-gray-900 focus:outline-none">
-                {popoverButtonNames.map((name, index) => (
-                  <Fragment key={index}>
-                    <span>{name}</span>
-                    <ChevronDownIcon
-                      className="h-5 w-5 flex-none text-gray-400"
-                      aria-hidden="true"
-                    />
-                  </Fragment>
-                ))}
-              </Popover.Button>
+      <div className="hidden lg:flex lg:gap-x-12" ref={menuRef}>
+        <button
+          type="button"
+          onClick={() => setIsOpen(!isOpen)}
+          className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700 focus:outline-none transition-colors"
+          aria-expanded={isOpen}
+          aria-haspopup="true"
+        >
+          <span>Products</span>
+          <ChevronDownIcon
+            className={`h-5 w-5 flex-none text-gray-400 transition-transform duration-200 ${
+              isOpen ? "rotate-180" : ""
+            }`}
+            aria-hidden="true"
+          />
+        </button>
 
-              <Transition
-                as={Fragment}
-                enter="transition ease-out duration-200"
-                enterFrom="opacity-0 -translate-y-1"
-                enterTo="opacity-100 translate-y-0"
-                leave="transition ease-in duration-150"
-                leaveFrom="opacity-100 translate-y-0"
-                leaveTo="opacity-0 -translate-y-1"
-              >
-                <Popover.Panel className="absolute inset-x-0 top-0 -z-10 bg-white pt-14 shadow-lg ring-1 ring-gray-900/5">
-                  <div className="mx-auto grid max-w-7xl grid-cols-4 gap-x-4 px-6 py-10 lg:px-8 xl:gap-x-8">
-                    <div>
+        {/* About Us */}
+        <Link
+          href={navLinks.aboutUs}
+          className="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700 focus:outline-none transition-colors"
+        >
+          About Us
+        </Link>
+
+        {/* Blog */}
+        <Link
+          href={navLinks.blog}
+          className="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700 focus:outline-none transition-colors"
+        >
+          Blog
+        </Link>
+
+        {/* Project References */}
+        <Link
+          href={navLinks.projects}
+          className="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700 focus:outline-none transition-colors"
+        >
+          Project References
+        </Link>
+
+        {/* Dropdown Panel */}
+        <div
+          className={`absolute inset-x-0 top-0 -z-10 bg-gradient-to-b from-white to-gray-50 pt-14 shadow-2xl ring-1 ring-gray-900/10 transition-all duration-300 ${
+            isOpen
+              ? "opacity-100 translate-y-0 pointer-events-auto"
+              : "opacity-0 -translate-y-1 pointer-events-none"
+          }`}
+        >
+          <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+            <div className="grid grid-cols-3 gap-8 divide-x divide-gray-200">
+              {/* Interior Column */}
+              <div className="pr-8">
+                <Link
+                  href={navLinks.interior}
+                  onClick={handleClose}
+                  className="group mb-8 block"
+                >
+                  <h3 className="text-xl font-bold text-gray-900 border-b-2 border-transparent group-hover:border-[#805C00] pb-2 transition-all duration-200 inline-block">
+                    Interior
+                  </h3>
+                </Link>
+                <ul className="space-y-3">
+                  <li>
+                    <Link
+                      href={navLinks.champaca}
+                      onClick={handleClose}
+                      className="group block p-3 rounded-lg hover:bg-white hover:shadow-md transition-all duration-200"
+                    >
+                      <h4 className="font-semibold text-sm text-[#805C00] group-hover:text-[#6b4d00] mb-1 transition-colors">
+                        Interior Flooring
+                      </h4>
+                      <span className="text-xs text-gray-600 group-hover:text-gray-900">
+                        Champaca Wood
+                      </span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={navLinks.kandinsky}
+                      onClick={handleClose}
+                      className="group block p-3 rounded-lg hover:bg-white hover:shadow-md transition-all duration-200"
+                    >
+                      <h4 className="font-semibold text-sm text-[#805C00] group-hover:text-[#6b4d00] mb-1 transition-colors">
+                        Engineered Flooring
+                      </h4>
+                      <span className="text-xs text-gray-600 group-hover:text-gray-900">
+                        KANDINSKY®
+                      </span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={navLinks.woodAndTimber}
+                      onClick={handleClose}
+                      className="group block p-3 rounded-lg hover:bg-white hover:shadow-md transition-all duration-200"
+                    >
+                      <h4 className="font-semibold text-sm text-[#805C00] group-hover:text-[#6b4d00] mb-1 transition-colors">
+                        Solid Timber Flooring
+                      </h4>
+                      <span className="text-xs text-gray-600 group-hover:text-gray-900">
+                        Wood and Timber
+                      </span>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Exterior Column */}
+              <div className="px-8">
+                <Link
+                  href={navLinks.exterior}
+                  onClick={handleClose}
+                  className="group mb-8 block"
+                >
+                  <h3 className="text-xl font-bold text-gray-900 border-b-2 border-transparent group-hover:border-[#805C00] pb-2 transition-all duration-200 inline-block">
+                    Exterior
+                  </h3>
+                </Link>
+                <ul className="space-y-3">
+                  <li>
+                    <Link
+                      href={navLinks.calvaryComposite}
+                      onClick={handleClose}
+                      className="group block p-3 rounded-lg hover:bg-white hover:shadow-md transition-all duration-200"
+                    >
+                      <h4 className="font-semibold text-sm text-[#805C00] group-hover:text-[#6b4d00] mb-1 transition-colors">
+                        Decking and Outdoor
+                      </h4>
+                      <span className="text-xs text-gray-600 group-hover:text-gray-900">
+                        Calvary Composite | Ez-Rail®
+                      </span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={navLinks.accoya}
+                      onClick={handleClose}
+                      className="group block p-3 rounded-lg hover:bg-white hover:shadow-md transition-all duration-200"
+                    >
+                      <h4 className="font-semibold text-sm text-[#805C00] group-hover:text-[#6b4d00] mb-1 transition-colors">
+                        Acetylated Timber
+                      </h4>
+                      <span className="text-xs text-gray-600 group-hover:text-gray-900">
+                        Accoya®
+                      </span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={navLinks.woodAndTimber}
+                      onClick={handleClose}
+                      className="group block p-3 rounded-lg hover:bg-white hover:shadow-md transition-all duration-200"
+                    >
+                      <h4 className="font-semibold text-sm text-[#805C00] group-hover:text-[#6b4d00] mb-1 transition-colors">
+                        Solid Wood
+                      </h4>
+                      <span className="text-xs text-gray-600 group-hover:text-gray-900">
+                        Wood and Timber
+                      </span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={navLinks.onewood}
+                      onClick={handleClose}
+                      className="group block p-3 rounded-lg hover:bg-white hover:shadow-md transition-all duration-200"
+                    >
+                      <h4 className="font-semibold text-sm text-[#805C00] group-hover:text-[#6b4d00] mb-1 transition-colors">
+                        Reconstituted Timber
+                      </h4>
+                      <span className="text-xs text-gray-600 group-hover:text-gray-900">
+                        OneWood
+                      </span>
+                    </Link>
+                  </li>
+
+                  {country === "Singapore" && (
+                    <li>
                       <Link
-                        href={navLinks.interior}
-                        onClick={() => close()}
-                        className="flex items-center hover:text-gray-800 hover:bg-gray-200 focus:outline-none"
+                        href={navLinks.dasso}
+                        onClick={handleClose}
+                        className="group block p-3 rounded-lg hover:bg-white hover:shadow-md transition-all duration-200"
                       >
-                        <h3 className="hidden lg:block font-semibold text-lg mb-6 p-2">
-                          Interior
-                        </h3>
+                        <h4 className="font-semibold text-sm text-[#805C00] group-hover:text-[#6b4d00] mb-1 transition-colors">
+                          Reconstituted Bamboo
+                        </h4>
+                        <span className="text-xs text-gray-600 group-hover:text-gray-900">
+                          dassoCTECH®
+                        </span>
                       </Link>
-                      <div>
-                        <ul className="space-y-4 [&_h4]:text-[#805C00]">
-                          <LinkItem>
-                            <Link
-                              href={navLinks.champaca}
-                              onClick={() => close()}
-                            >
-                              <h4 className="font-semibold text-base mb-1">
-                                Interior Flooring
-                              </h4>
-                              <span>{`Champaca Wood`}</span>
-                            </Link>
-                          </LinkItem>
-                          <LinkItem>
-                            <Link
-                              href={navLinks.kandinsky}
-                              onClick={() => close()}
-                            >
-                              <h4 className="font-semibold text-base mb-1">
-                                Engineered Flooring
-                              </h4>
-                              <span>{`KANDINSKY®`}</span>
-                            </Link>
-                          </LinkItem>
-                          <LinkItem>
-                            <Link
-                              href={navLinks.woodAndTimber}
-                              onClick={() => close()}
-                            >
-                              <h4 className="font-semibold text-base mb-1">
-                                Solid Timber Flooring
-                              </h4>
-                              <span>Wood and Timber</span>
-                            </Link>
-                          </LinkItem>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div>
+                    </li>
+                  )}
+                  {country === "Malaysia" && (
+                    <li>
                       <Link
-                        href={navLinks.exterior}
-                        onClick={() => close()}
-                        className="flex items-center hover:text-gray-800 hover:bg-gray-200 focus:outline-none"
+                        href={navLinks.moso}
+                        onClick={handleClose}
+                        className="group block p-3 rounded-lg hover:bg-white hover:shadow-md transition-all duration-200"
                       >
-                        <h3 className="hidden lg:block font-semibold text-lg mb-6 p-2">
-                          Exterior
-                        </h3>
+                        <h4 className="font-semibold text-sm text-[#805C00] group-hover:text-[#6b4d00] mb-1 transition-colors">
+                          Reconstituted Bamboo
+                        </h4>
+                        <span className="text-xs text-gray-600 group-hover:text-gray-900">
+                          MOSO®
+                        </span>
                       </Link>
-                      <div>
-                        <ul className="space-y-4 [&_h4]:text-[#805C00]">
-                          <LinkItem>
-                            <Link
-                              href={navLinks.calvaryComposite}
-                              onClick={() => close()}
-                            >
-                              <h4 className="font-semibold text-base mb-1">
-                                Decking and Outdoor
-                              </h4>
-                              <span>{`Calvary Composite | Ez-Rail® `}</span>
-                            </Link>
-                          </LinkItem>
-                          <LinkItem>
-                            <Link
-                              href={navLinks.accoya}
-                              onClick={() => close()}
-                            >
-                              <h4 className="font-semibold text-base mb-1">
-                                {`Acetylated Timber`}
-                              </h4>
-                              <span>{`Accoya®`}</span>
-                            </Link>
-                          </LinkItem>
-                          <LinkItem>
-                            <Link
-                              href={navLinks.woodAndTimber}
-                              onClick={() => close()}
-                            >
-                              <h4 className="font-semibold text-base mb-1">
-                                {`Solid Wood`}
-                              </h4>
-                              <span>{`Wood and Timber`}</span>
-                            </Link>
-                          </LinkItem>
-                          <LinkItem>
-                            <Link
-                              href={navLinks.onewood}
-                              onClick={() => close()}
-                            >
-                              <h4 className="font-semibold text-base mb-1">
-                                {`Reconstituted Timber`}
-                              </h4>
-                              <span>{`OneWood`}</span>
-                            </Link>
-                          </LinkItem>
+                    </li>
+                  )}
+                </ul>
+              </div>
 
-                          {COUNTRY === "Singapore" && (
-                            <LinkItem>
-                              <Link
-                                href={navLinks.dasso}
-                                onClick={() => close()}
-                              >
-                                <h4 className="font-semibold text-base mb-1">
-                                  {`Reconstituted Bamboo`}
-                                </h4>
-                                <span>{`dassoCTECH®`}</span>
-                              </Link>
-                            </LinkItem>
-                          )}
-                          {COUNTRY === "Malaysia" && (
-                            <LinkItem>
-                              <Link
-                                href={navLinks.moso}
-                                onClick={() => close()}
-                              >
-                                <h4 className="font-semibold text-base mb-1">
-                                  {`Reconstituted Bamboo`}
-                                </h4>
-                                <span>{`MOSO®`}</span>
-                              </Link>
-                            </LinkItem>
-                          )}
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div>
-                      <Link
-                        href={navLinks.maintenance}
-                        onClick={() => close()}
-                        className="flex items-center hover:text-gray-800 hover:bg-gray-200 focus:outline-none"
-                      >
-                        <h3 className="hidden lg:block font-semibold text-lg mb-6 p-2">
-                          Maintenance
-                        </h3>
-                      </Link>
-                      <div>
-                        <ul className="space-y-4 [&_h4]:text-[#805C00]">
-                          <LinkItem>
-                            <Link href={navLinks.osmo} onClick={() => close()}>
-                              <h4 className="font-semibold text-base mb-1">
-                                Coating
-                              </h4>
-                              <span>{`OSMO®`}</span>
-                            </Link>
-                          </LinkItem>
-                          <LinkItem>
-                            <Link href={navLinks.silverwood} onClick={() => close()}>
-                              <h4 className="font-semibold text-base mb-1">
-                                {`Revitalisation Coating`}
-                              </h4>
-                              <span>{`Silverwood`}</span>
-                            </Link>
-                          </LinkItem>
-                          <LinkItem>
-                            <Link
-                              href={navLinks.sandAndVanish}
-                              onClick={() => close()}
-                            >
-                              <h4 className="font-semibold text-base mb-1 !text-black">
-                                {`Sand & Vanish | Restoration`}
-                              </h4>
-                            </Link>
-                          </LinkItem>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div>
-                      <ul className="space-y-4">
-                        <LinkItem>
-                          <Link href={navLinks.aboutUs} onClick={() => close()}>
-                            <h4 className="font-semibold text-base mb-1 !text-black">
-                              About Us
-                            </h4>
-                          </Link>
-                        </LinkItem>
-                        <LinkItem>
-                          <Link href={navLinks.blog} onClick={() => close()}>
-                            <h4 className="font-semibold text-base mb-1 !text-black">
-                              Blog
-                            </h4>
-                          </Link>
-                        </LinkItem>
-                        <LinkItem>
-                          <Link
-                            href={navLinks.projects}
-                            onClick={() => close()}
-                          >
-                            <h4 className="font-semibold text-base mb-1 !text-black">
-                              {`Project References`}
-                            </h4>
-                          </Link>
-                        </LinkItem>
-                        <LinkItem>
-                          <Link
-                            href={navLinks.contactUs}
-                            onClick={() => close()}
-                          >
-                            <h4 className="font-semibold text-base mb-1 !text-black">
-                              {`Contact Us`}
-                            </h4>
-                          </Link>
-                        </LinkItem>
-                        <div className="p-2">
-                          <CountrySwitch />
-                        </div>
-                      </ul>
-                    </div>
-                  </div>
-                </Popover.Panel>
-              </Transition>
-            </>
-          )}
-        </Popover>
-      </Popover.Group>
+              {/* Maintenance Column */}
+              <div className="pl-8">
+                <Link
+                  href={navLinks.maintenance}
+                  onClick={handleClose}
+                  className="group mb-8 block"
+                >
+                  <h3 className="text-xl font-bold text-gray-900 border-b-2 border-transparent group-hover:border-[#805C00] pb-2 transition-all duration-200 inline-block">
+                    Maintenance
+                  </h3>
+                </Link>
+                <ul className="space-y-3">
+                  <li>
+                    <Link
+                      href={navLinks.osmo}
+                      onClick={handleClose}
+                      className="group block p-3 rounded-lg hover:bg-white hover:shadow-md transition-all duration-200"
+                    >
+                      <h4 className="font-semibold text-sm text-[#805C00] group-hover:text-[#6b4d00] mb-1 transition-colors">
+                        Coating
+                      </h4>
+                      <span className="text-xs text-gray-600 group-hover:text-gray-900">
+                        OSMO®
+                      </span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={navLinks.silverwood}
+                      onClick={handleClose}
+                      className="group block p-3 rounded-lg hover:bg-white hover:shadow-md transition-all duration-200"
+                    >
+                      <h4 className="font-semibold text-sm text-[#805C00] group-hover:text-[#6b4d00] mb-1 transition-colors">
+                        Revitalisation Coating
+                      </h4>
+                      <span className="text-xs text-gray-600 group-hover:text-gray-900">
+                        Silverwood
+                      </span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href={navLinks.sandAndVanish}
+                      onClick={handleClose}
+                      className="group block p-3 rounded-lg hover:bg-white hover:shadow-md transition-all duration-200"
+                    >
+                      <h4 className="font-semibold text-sm text-gray-900 group-hover:text-[#6b4d00] mb-1 transition-colors">
+                        Sand & Vanish | Restoration
+                      </h4>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center">
         <Link

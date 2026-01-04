@@ -1,23 +1,15 @@
-"use client";
-
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ReactNode, useState, useRef, useEffect } from "react";
+import Link from "next/link";
+import { getCountry } from "@/lib/env";
+
 import myLogo from "@/../public/svgs/malaysia-round-icon.svg";
 import sgLogo from "@/../public/svgs/singapore-round-icon.svg";
-
-const COUNTRY = process.env.NEXT_PUBLIC_COUNTRY || "Singapore";
-
-export const LinkItem = ({ children }: { children: ReactNode }) => {
-  return (
-    <li className="hover:bg-gray-100 hover:font-bold transition-all duration-300 ease-in-out p-2 rounded-md">
-      {children}
-    </li>
-  );
-};
 
 export const CountrySwitch = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const country = getCountry();
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -58,9 +50,9 @@ export const CountrySwitch = () => {
         aria-label="Switch country"
       >
         <Image
-          src={COUNTRY === "Malaysia" ? myLogo : sgLogo}
+          src={country === "Malaysia" ? myLogo : sgLogo}
           alt={
-            COUNTRY === "Malaysia"
+            country === "Malaysia"
               ? "Calvary Carpentry Sdn Bhd"
               : "Calvary Carpentry Pte Ltd"
           }
@@ -74,7 +66,7 @@ export const CountrySwitch = () => {
         <div className="absolute right-0 top-full mt-2 bg-white rounded-lg shadow-lg ring-1 ring-gray-900/5 z-50 animate-in fade-in-0 zoom-in-95 duration-200">
           <a
             href={
-              COUNTRY === "Malaysia"
+              country === "Malaysia"
                 ? "https://calvarycarpentry.com"
                 : "https://calvarycarpentry.com.my"
             }
@@ -82,9 +74,9 @@ export const CountrySwitch = () => {
             onClick={() => setIsOpen(false)}
           >
             <Image
-              src={COUNTRY === "Malaysia" ? sgLogo : myLogo}
+              src={country === "Malaysia" ? sgLogo : myLogo}
               alt={
-                COUNTRY === "Malaysia"
+                country === "Malaysia"
                   ? "Calvary Carpentry Pte Ltd"
                   : "Calvary Carpentry Sdn Bhd"
               }
@@ -93,7 +85,7 @@ export const CountrySwitch = () => {
             />
             {/* width based on country */}
             <span className="whitespace-nowrap w-24 text-center">
-              {COUNTRY === "Malaysia" ? "Singapore" : "Malaysia"}
+              {country === "Malaysia" ? "Singapore" : "Malaysia"}
             </span>
           </a>
         </div>

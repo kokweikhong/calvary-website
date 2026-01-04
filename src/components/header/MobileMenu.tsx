@@ -1,13 +1,13 @@
-import { Dialog, Disclosure } from "@headlessui/react";
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import calvaryLogo from "@/../public/black_horizontal_logo.svg";
-import { ChevronDownIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { CountrySwitch, LinkItem } from "./Menu";
-import { cn } from "@/lib/utils";
+import { XMarkIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import { useState, useEffect } from "react";
 import { navLinks } from "@/constants/nav-links";
-
-const COUNTRY = process.env.NEXT_PUBLIC_COUNTRY || "Singapore";
+import { CountrySwitch } from "./CountrySwitch";
+import { getCountry } from "@/lib/env";
 
 type MobileMenuProps = {
   mobileMenuOpen: boolean;
@@ -15,317 +15,351 @@ type MobileMenuProps = {
 };
 
 const MobileMenu = (props: MobileMenuProps) => {
+  const [openSection, setOpenSection] = useState<string | null>(null);
+  const country = getCountry();
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (props.mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [props.mobileMenuOpen]);
+
+  const handleClose = () => {
+    props.setMobileMenuOpen(false);
+    setOpenSection(null);
+  };
+
+  const toggleSection = (section: string) => {
+    setOpenSection(openSection === section ? null : section);
+  };
+
+  if (!props.mobileMenuOpen) return null;
+
   return (
-    <Dialog
-      as="div"
-      className="lg:hidden"
-      open={props.mobileMenuOpen}
-      onClose={props.setMobileMenuOpen}
-    >
-      <div className="fixed inset-0 z-10" />
-      <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Calvary Carpentry</span>
-            <Image
-              className="h-12 w-auto"
-              src={calvaryLogo}
-              alt="Calvary Carpentry Sdn Bhd"
-              priority
-            />
-          </Link>
-          <button
-            type="button"
-            className="-m-2.5 rounded-md p-2.5 text-gray-700"
-            onClick={() => props.setMobileMenuOpen(false)}
-          >
-            <span className="sr-only">Close menu</span>
-            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-          </button>
-        </div>
-        <div className="mt-6 flow-root">
-          <div className="-my-6 divide-y divide-gray-500/10">
-            <div className="space-y-2 py-6">
-              <Disclosure as="div" className="-mx-3">
-                {({ open }) => (
-                  <>
-                    <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50">
-                      Interior
-                      <ChevronDownIcon
-                        className={cn(
-                          open ? "rotate-180" : "",
-                          "h-5 w-5 flex-none"
-                        )}
-                        aria-hidden="true"
-                      />
-                    </Disclosure.Button>
-                    <Disclosure.Panel className="mt-2 space-y-2">
-                      <ul className="space-y-4 [&_h4]:text-[#805C00]">
-                        <LinkItem>
-                          <Link
-                            href={navLinks.interior}
-                            onClick={() => props.setMobileMenuOpen(false)}
-                          >
-                            <h4 className="font-semibold text-base mb-1">
-                              Interior
-                            </h4>
-                          </Link>
-                        </LinkItem>
-                        <LinkItem>
+    <>
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 bg-black/50 z-40 lg:hidden transition-opacity duration-300"
+        onClick={handleClose}
+        aria-hidden="true"
+      />
+
+      {/* Slide-in Panel */}
+      <div
+        className={`fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden overflow-y-auto ${
+          props.mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <div className="flex flex-col h-full">
+          {/* Header */}
+          <div className="flex items-center justify-between p-6 border-b border-gray-200">
+            <Link href="/" onClick={handleClose} className="-m-1.5 p-1.5">
+              <span className="sr-only">Calvary Carpentry</span>
+              <Image
+                src={calvaryLogo}
+                alt="Calvary Carpentry Sdn Bhd"
+                width={200}
+                height={48}
+                style={{ width: "auto", height: "3rem" }}
+                className="h-12"
+              />
+            </Link>
+            <button
+              type="button"
+              className="-m-2.5 rounded-md p-2.5 text-gray-700 hover:bg-gray-100 transition-colors"
+              onClick={handleClose}
+            >
+              <span className="sr-only">Close menu</span>
+              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
+
+          {/* Menu Content */}
+          <div className="flex-1 overflow-y-auto px-6 py-6">
+            <nav className="space-y-2">
+              {/* Products Accordion */}
+              <div className="border-b border-gray-200 pb-2">
+                <button
+                  type="button"
+                  onClick={() => toggleSection("products")}
+                  className="flex w-full items-center justify-between py-3 text-base font-semibold text-gray-900 hover:text-[#805C00] transition-colors"
+                >
+                  <span>Products</span>
+                  <ChevronDownIcon
+                    className={`h-5 w-5 transition-transform duration-200 ${
+                      openSection === "products" ? "rotate-180" : ""
+                    }`}
+                    aria-hidden="true"
+                  />
+                </button>
+
+                {/* Products Submenu */}
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    openSection === "products"
+                      ? "max-h-[1000px] opacity-100"
+                      : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <div className="pl-4 space-y-6 py-4">
+                    {/* Interior Section */}
+                    <div>
+                      <Link
+                        href={navLinks.interior}
+                        onClick={handleClose}
+                        className="block text-sm font-bold text-gray-900 mb-3 hover:text-[#805C00] transition-colors"
+                      >
+                        Interior
+                      </Link>
+                      <ul className="space-y-3 ml-3">
+                        <li>
                           <Link
                             href={navLinks.champaca}
-                            onClick={() => props.setMobileMenuOpen(false)}
+                            onClick={handleClose}
+                            className="block text-sm hover:bg-gray-50 p-2 rounded-md transition-colors"
                           >
-                            <h4 className="font-semibold text-base mb-1">
+                            <div className="font-medium text-[#805C00]">
                               Interior Flooring
-                            </h4>
-                            <span>{`Champaca Wood`}</span>
+                            </div>
+                            <div className="text-xs text-gray-600">
+                              Champaca Wood
+                            </div>
                           </Link>
-                        </LinkItem>
-                        <LinkItem>
+                        </li>
+                        <li>
                           <Link
                             href={navLinks.kandinsky}
-                            onClick={() => props.setMobileMenuOpen(false)}
+                            onClick={handleClose}
+                            className="block text-sm hover:bg-gray-50 p-2 rounded-md transition-colors"
                           >
-                            <h4 className="font-semibold text-base mb-1">
+                            <div className="font-medium text-[#805C00]">
                               Engineered Flooring
-                            </h4>
-                            <span>{`KANDINSKY®`}</span>
+                            </div>
+                            <div className="text-xs text-gray-600">
+                              KANDINSKY®
+                            </div>
                           </Link>
-                        </LinkItem>
-                        <LinkItem>
+                        </li>
+                        <li>
                           <Link
                             href={navLinks.woodAndTimber}
-                            onClick={() => props.setMobileMenuOpen(false)}
+                            onClick={handleClose}
+                            className="block text-sm hover:bg-gray-50 p-2 rounded-md transition-colors"
                           >
-                            <h4 className="font-semibold text-base mb-1">
+                            <div className="font-medium text-[#805C00]">
                               Solid Timber Flooring
-                            </h4>
-                            <span>Wood and Timber</span>
+                            </div>
+                            <div className="text-xs text-gray-600">
+                              Wood and Timber
+                            </div>
                           </Link>
-                        </LinkItem>
+                        </li>
                       </ul>
-                    </Disclosure.Panel>
-                  </>
-                )}
-              </Disclosure>
+                    </div>
 
-              <Disclosure as="div" className="-mx-3">
-                {({ open }) => (
-                  <>
-                    <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50">
-                      Exterior
-                      <ChevronDownIcon
-                        className={cn(
-                          open ? "rotate-180" : "",
-                          "h-5 w-5 flex-none"
-                        )}
-                        aria-hidden="true"
-                      />
-                    </Disclosure.Button>
-                    <Disclosure.Panel className="mt-2 space-y-2">
-                      <ul className="space-y-4 [&_h4]:text-[#805C00]">
-                        <LinkItem>
-                          <Link
-                            href={navLinks.exterior}
-                            onClick={() => props.setMobileMenuOpen(false)}
-                          >
-                            <h4 className="font-semibold text-base mb-1">
-                              Exterior
-                            </h4>
-                          </Link>
-                        </LinkItem>
-                        <LinkItem>
+                    {/* Exterior Section */}
+                    <div>
+                      <Link
+                        href={navLinks.exterior}
+                        onClick={handleClose}
+                        className="block text-sm font-bold text-gray-900 mb-3 hover:text-[#805C00] transition-colors"
+                      >
+                        Exterior
+                      </Link>
+                      <ul className="space-y-3 ml-3">
+                        <li>
                           <Link
                             href={navLinks.calvaryComposite}
-                            onClick={() => props.setMobileMenuOpen(false)}
+                            onClick={handleClose}
+                            className="block text-sm hover:bg-gray-50 p-2 rounded-md transition-colors"
                           >
-                            <h4 className="font-semibold text-base mb-1">
+                            <div className="font-medium text-[#805C00]">
                               Decking and Outdoor
-                            </h4>
-                            <span>{`Calvary Composite | Ez-Rail® `}</span>
+                            </div>
+                            <div className="text-xs text-gray-600">
+                              Calvary Composite | Ez-Rail®
+                            </div>
                           </Link>
-                        </LinkItem>
-                        <LinkItem>
+                        </li>
+                        <li>
                           <Link
                             href={navLinks.accoya}
-                            onClick={() => props.setMobileMenuOpen(false)}
+                            onClick={handleClose}
+                            className="block text-sm hover:bg-gray-50 p-2 rounded-md transition-colors"
                           >
-                            <h4 className="font-semibold text-base mb-1">
-                              {`Acetylated Timber`}
-                            </h4>
-                            <span>{`Accoya®`}</span>
+                            <div className="font-medium text-[#805C00]">
+                              Acetylated Timber
+                            </div>
+                            <div className="text-xs text-gray-600">Accoya®</div>
                           </Link>
-                        </LinkItem>
-                        <LinkItem>
+                        </li>
+                        <li>
                           <Link
                             href={navLinks.woodAndTimber}
-                            onClick={() => props.setMobileMenuOpen(false)}
+                            onClick={handleClose}
+                            className="block text-sm hover:bg-gray-50 p-2 rounded-md transition-colors"
                           >
-                            <h4 className="font-semibold text-base mb-1">
-                              {`Solid Wood`}
-                            </h4>
-                            <span>{`Wood and Timber`}</span>
+                            <div className="font-medium text-[#805C00]">
+                              Solid Wood
+                            </div>
+                            <div className="text-xs text-gray-600">
+                              Wood and Timber
+                            </div>
                           </Link>
-                        </LinkItem>
-                        <LinkItem>
+                        </li>
+                        <li>
                           <Link
                             href={navLinks.onewood}
-                            onClick={() => props.setMobileMenuOpen(false)}
+                            onClick={handleClose}
+                            className="block text-sm hover:bg-gray-50 p-2 rounded-md transition-colors"
                           >
-                            <h4 className="font-semibold text-base mb-1">
-                              {`Reconstituted Timber`}
-                            </h4>
-                            <span>{`OneWood`}</span>
+                            <div className="font-medium text-[#805C00]">
+                              Reconstituted Timber
+                            </div>
+                            <div className="text-xs text-gray-600">OneWood</div>
                           </Link>
-                        </LinkItem>
-                        {COUNTRY === "Singapore" && (
-                          <LinkItem>
+                        </li>
+
+                        {country === "Singapore" && (
+                          <li>
                             <Link
                               href={navLinks.dasso}
-                              onClick={() => props.setMobileMenuOpen(false)}
+                              onClick={handleClose}
+                              className="block text-sm hover:bg-gray-50 p-2 rounded-md transition-colors"
                             >
-                              <h4 className="font-semibold text-base mb-1">
-                                {`Reconstituted Bamboo`}
-                              </h4>
-                              <span>{`dassoCTECH®`}</span>
+                              <div className="font-medium text-[#805C00]">
+                                Reconstituted Bamboo
+                              </div>
+                              <div className="text-xs text-gray-600">
+                                dassoCTECH®
+                              </div>
                             </Link>
-                          </LinkItem>
+                          </li>
                         )}
-                        {COUNTRY === "Malaysia" && (
-                          <LinkItem>
+                        {country === "Malaysia" && (
+                          <li>
                             <Link
                               href={navLinks.moso}
-                              onClick={() => props.setMobileMenuOpen(false)}
+                              onClick={handleClose}
+                              className="block text-sm hover:bg-gray-50 p-2 rounded-md transition-colors"
                             >
-                              <h4 className="font-semibold text-base mb-1">
-                                {`Reconstituted Bamboo`}
-                              </h4>
-                              <span>{`MOSO®`}</span>
+                              <div className="font-medium text-[#805C00]">
+                                Reconstituted Bamboo
+                              </div>
+                              <div className="text-xs text-gray-600">MOSO®</div>
                             </Link>
-                          </LinkItem>
+                          </li>
                         )}
                       </ul>
-                    </Disclosure.Panel>
-                  </>
-                )}
-              </Disclosure>
+                    </div>
 
-              <Disclosure as="div" className="-mx-3">
-                {({ open }) => (
-                  <>
-                    <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50">
-                      Maintenance
-                      <ChevronDownIcon
-                        className={cn(
-                          open ? "rotate-180" : "",
-                          "h-5 w-5 flex-none"
-                        )}
-                        aria-hidden="true"
-                      />
-                    </Disclosure.Button>
-                    <Disclosure.Panel className="mt-2 space-y-2">
-                      <ul className="space-y-4 [&_h4]:text-[#805C00]">
-                        <LinkItem>
-                          <Link
-                            href={navLinks.maintenance}
-                            onClick={() => props.setMobileMenuOpen(false)}
-                          >
-                            <h4 className="font-semibold text-base mb-1">
-                              Maintenance
-                            </h4>
-                          </Link>
-                        </LinkItem>
-                        <LinkItem>
+                    {/* Maintenance Section */}
+                    <div>
+                      <Link
+                        href={navLinks.maintenance}
+                        onClick={handleClose}
+                        className="block text-sm font-bold text-gray-900 mb-3 hover:text-[#805C00] transition-colors"
+                      >
+                        Maintenance
+                      </Link>
+                      <ul className="space-y-3 ml-3">
+                        <li>
                           <Link
                             href={navLinks.osmo}
-                            onClick={() => props.setMobileMenuOpen(false)}
+                            onClick={handleClose}
+                            className="block text-sm hover:bg-gray-50 p-2 rounded-md transition-colors"
                           >
-                            <h4 className="font-semibold text-base mb-1">
+                            <div className="font-medium text-[#805C00]">
                               Coating
-                            </h4>
-                            <span>{`OSMO®`}</span>
+                            </div>
+                            <div className="text-xs text-gray-600">OSMO®</div>
                           </Link>
-                        </LinkItem>
-                        <LinkItem>
+                        </li>
+                        <li>
                           <Link
                             href={navLinks.silverwood}
-                            onClick={() => props.setMobileMenuOpen(false)}
+                            onClick={handleClose}
+                            className="block text-sm hover:bg-gray-50 p-2 rounded-md transition-colors"
                           >
-                            <h4 className="font-semibold text-base mb-1">
-                              {`Revitalisation Coating`}
-                            </h4>
-                            <span>{`Silverwood`}</span>
+                            <div className="font-medium text-[#805C00]">
+                              Revitalisation Coating
+                            </div>
+                            <div className="text-xs text-gray-600">
+                              Silverwood
+                            </div>
                           </Link>
-                        </LinkItem>
-                        <LinkItem>
+                        </li>
+                        <li>
                           <Link
                             href={navLinks.sandAndVanish}
-                            onClick={() => props.setMobileMenuOpen(false)}
+                            onClick={handleClose}
+                            className="block text-sm hover:bg-gray-50 p-2 rounded-md transition-colors"
                           >
-                            <h4 className="font-semibold text-base mb-1 !text-black">
-                              {`Sand & Vanish | Restoration`}
-                            </h4>
+                            <div className="font-medium text-gray-900">
+                              Sand & Vanish | Restoration
+                            </div>
                           </Link>
-                        </LinkItem>
+                        </li>
                       </ul>
-                    </Disclosure.Panel>
-                  </>
-                )}
-              </Disclosure>
-
-              <div className="[&_li]:!px-0">
-                <ul className="space-y-4">
-                  <LinkItem>
-                    <Link
-                      href={navLinks.aboutUs}
-                      onClick={() => props.setMobileMenuOpen(false)}
-                    >
-                      <h4 className="font-semibold text-base mb-1 !text-black">
-                        About Us
-                      </h4>
-                    </Link>
-                  </LinkItem>
-                  <LinkItem>
-                    <Link
-                      href={navLinks.blog}
-                      onClick={() => props.setMobileMenuOpen(false)}
-                    >
-                      <h4 className="font-semibold text-base mb-1 !text-black">
-                        Blog
-                      </h4>
-                    </Link>
-                  </LinkItem>
-                  <LinkItem>
-                    <Link
-                      href={navLinks.projects}
-                      onClick={() => props.setMobileMenuOpen(false)}
-                    >
-                      <h4 className="font-semibold text-base mb-1 !text-black">
-                        {`Project References`}
-                      </h4>
-                    </Link>
-                  </LinkItem>
-                  <LinkItem>
-                    <Link
-                      href={navLinks.contactUs}
-                      onClick={() => props.setMobileMenuOpen(false)}
-                    >
-                      <h4 className="font-semibold text-base mb-1 !text-black">
-                        {`Contact Us`}
-                      </h4>
-                    </Link>
-                  </LinkItem>
-                  <div className="p-2">
-                    <CountrySwitch />
+                    </div>
                   </div>
-                </ul>
+                </div>
               </div>
+
+              {/* Other Menu Items */}
+              <Link
+                href={navLinks.aboutUs}
+                onClick={handleClose}
+                className="block py-3 text-base font-semibold text-gray-900 hover:text-[#805C00] transition-colors border-b border-gray-200"
+              >
+                About Us
+              </Link>
+
+              <Link
+                href={navLinks.blog}
+                onClick={handleClose}
+                className="block py-3 text-base font-semibold text-gray-900 hover:text-[#805C00] transition-colors border-b border-gray-200"
+              >
+                Blog
+              </Link>
+
+              <Link
+                href={navLinks.projects}
+                onClick={handleClose}
+                className="block py-3 text-base font-semibold text-gray-900 hover:text-[#805C00] transition-colors border-b border-gray-200"
+              >
+                Project References
+              </Link>
+
+              <Link
+                href={navLinks.contactUs}
+                onClick={handleClose}
+                className="block py-3 text-base font-semibold text-gray-900 hover:text-[#805C00] transition-colors border-b border-gray-200"
+              >
+                Contact Us
+              </Link>
+            </nav>
+          </div>
+
+          {/* Footer with Country Switch */}
+          <div className="border-t border-gray-200 p-6">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium text-gray-700">
+                Switch Country
+              </span>
+              <CountrySwitch />
             </div>
           </div>
         </div>
-      </Dialog.Panel>
-    </Dialog>
+      </div>
+    </>
   );
 };
 

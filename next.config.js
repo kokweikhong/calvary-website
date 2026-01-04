@@ -19,6 +19,7 @@ const nextConfig = {
       },
     ],
   },
+  turbopack: {},
 };
 
 const withMDX = require("@next/mdx")({
