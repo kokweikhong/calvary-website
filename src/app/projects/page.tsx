@@ -337,13 +337,13 @@ export default function Page() {
   };
 
   return (
-    <div className="py-12 bg-gradient-to-b from-gray-50 to-white">
+    <div className="py-12 bg-linear-to-b from-gray-50 to-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-8">
         <div className="text-center max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-linear-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
             Project References
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-gray-700 to-gray-800 mx-auto mb-6 rounded-full"></div>
+          <div className="w-24 h-1 bg-linear-to-r from-gray-700 to-gray-800 mx-auto mb-6 rounded-full"></div>
           <p className="text-base md:text-lg text-gray-600 leading-relaxed">
             Discover our exterior completed projects, spanning residential and
             architectural spaces, featuring renowned locations like SMU, Mandai,
@@ -401,7 +401,7 @@ export default function Page() {
               Filters
             </h3>
             {activeFiltersCount > 0 && (
-              <span className="inline-flex items-center justify-center px-2.5 py-0.5 sm:px-3 sm:py-1 text-xs font-bold leading-none text-white bg-gradient-to-r from-gray-700 to-gray-900 rounded-full">
+              <span className="inline-flex items-center justify-center px-2.5 py-0.5 sm:px-3 sm:py-1 text-xs font-bold leading-none text-white bg-linear-to-r from-gray-700 to-gray-900 rounded-full">
                 {activeFiltersCount}
               </span>
             )}
@@ -624,7 +624,7 @@ export default function Page() {
                 {filterItem.projectName && (
                   <span className="inline-flex items-center gap-1.5 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 bg-white border border-purple-300 text-purple-700 text-xs sm:text-sm rounded-lg shadow-sm">
                     <svg
-                      className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"
+                      className="w-3 h-3 sm:w-4 sm:h-4 shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -666,7 +666,7 @@ export default function Page() {
                     className="inline-flex items-center gap-1.5 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 bg-white border border-blue-300 text-blue-700 text-xs sm:text-sm rounded-lg shadow-sm"
                   >
                     <svg
-                      className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"
+                      className="w-3 h-3 sm:w-4 sm:h-4 shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -713,7 +713,7 @@ export default function Page() {
                     className="inline-flex items-center gap-1.5 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 bg-white border border-green-300 text-green-700 text-xs sm:text-sm rounded-lg shadow-sm"
                   >
                     <svg
-                      className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"
+                      className="w-3 h-3 sm:w-4 sm:h-4 shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -760,7 +760,7 @@ export default function Page() {
                     className="inline-flex items-center gap-1.5 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 bg-white border border-yellow-300 text-yellow-700 text-xs sm:text-sm rounded-lg shadow-sm"
                   >
                     <svg
-                      className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"
+                      className="w-3 h-3 sm:w-4 sm:h-4 shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -807,7 +807,7 @@ export default function Page() {
                     className="inline-flex items-center gap-1.5 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 bg-white border border-red-300 text-red-700 text-xs sm:text-sm rounded-lg shadow-sm"
                   >
                     <svg
-                      className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0"
+                      className="w-3 h-3 sm:w-4 sm:h-4 shrink-0"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -855,7 +855,7 @@ export default function Page() {
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 py-4 sm:py-6 border-t-2 border-gray-200">
           <div className="flex items-center gap-2 sm:gap-3">
             <svg
-              className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 flex-shrink-0"
+              className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 shrink-0"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -907,7 +907,7 @@ export default function Page() {
                   key={index}
                   className="h-full w-full bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 animate-pulse"
                 >
-                  <div className="w-full aspect-[4/3] sm:aspect-[3/4] bg-gray-200"></div>
+                  <div className="w-full aspect-4/3 sm:aspect-3/4 bg-gray-200"></div>
                   <div className="p-4 sm:p-6 space-y-3">
                     <div className="h-6 bg-gray-200 rounded"></div>
                     <div className="h-4 bg-gray-200 rounded w-3/4"></div>
@@ -965,7 +965,7 @@ export default function Page() {
                       onClick={() => setCurrentPage(page as number)}
                       className={`px-2.5 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium rounded-lg cursor-pointer transition-all duration-200 ${
                         currentPage === page
-                          ? "bg-gradient-to-r from-gray-700 to-gray-900 text-white shadow-lg"
+                          ? "bg-linear-to-r from-gray-700 to-gray-900 text-white shadow-lg"
                           : "text-gray-700 bg-white border-2 border-gray-300 hover:bg-gray-50"
                       }`}
                       aria-label={`Page ${page}`}
