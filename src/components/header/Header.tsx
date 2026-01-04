@@ -24,16 +24,15 @@ const Header = () => {
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"
       >
-        <div className="flex lg:flex-1">
+        <div className="flex lg:flex-1 h-12 w-auto">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Calvary Carpentry Sdn Bhd</span>
             <Image
-              className="h-12"
               src={calvaryLogo}
               alt="Calvary Carpentry Sdn Bhd"
               width={200}
               height={48}
-              style={{ width: "auto", height: "3rem" }}
+              className="w-auto h-full"
             />
           </Link>
         </div>

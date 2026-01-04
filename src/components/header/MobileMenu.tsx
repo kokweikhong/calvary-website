@@ -67,8 +67,7 @@ const MobileMenu = (props: MobileMenuProps) => {
                 alt="Calvary Carpentry Sdn Bhd"
                 width={200}
                 height={48}
-                style={{ width: "auto", height: "3rem" }}
-                className="h-12"
+                className="h-12 w-auto"
               />
             </Link>
             <button

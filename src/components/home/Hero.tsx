@@ -7,31 +7,41 @@ const heroBgLandscape = `${ASSETS_URL}/websites/videos/homepage_landscape.MP4`;
 
 const Hero = () => {
   return (
-    <section className="relative h-screen">
+    <section className="relative h-screen overflow-hidden">
       {/* Video Background */}
       <video
-        className="w-full h-full object-cover md:hidden"
+        className="absolute inset-0 w-full h-full object-cover md:hidden"
         autoPlay
         muted
         loop
-        onCanPlay={(e) => (e.currentTarget.playbackRate = 0.5)}
+        playsInline
+        preload="metadata"
+        onLoadedMetadata={(e) => {
+          e.currentTarget.playbackRate = 0.5;
+        }}
       >
         <source src={heroBgPortrait} type="video/mp4" />
-        Your browser does not support the video tag.
       </video>
       <video
-        className="w-full h-full object-cover hidden md:block"
+        className="absolute inset-0 w-full h-full object-cover hidden md:block"
         autoPlay
         muted
         loop
-        onCanPlay={(e) => (e.currentTarget.playbackRate = 0.5)}
+        playsInline
+        preload="metadata"
+        onLoadedMetadata={(e) => {
+          e.currentTarget.playbackRate = 0.5;
+        }}
       >
+        <source src={heroBgLandscape} type="video/mp4" />
+      </video>
+      <video>
         <source src={heroBgLandscape} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
       {/* Overlay Content */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white">
+      <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/50 text-white">
         <h1 className="text-4xl font-bold mb-4 text-center">
           Premium Timber Artistry
         </h1>

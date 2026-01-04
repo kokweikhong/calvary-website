@@ -1,12 +1,7 @@
 "use client";
 
-import { FC } from "react";
-import "swiper/css";
-import { Autoplay } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { FC, useEffect, useRef, useState } from "react";
 import { getAllClients } from "./svg/clients";
-
-// const clients = [client1, client2, client3, client4, client5, client6, client7];
 
 type ClientsSliderProps = {
   backgroundColor?: string;
@@ -15,37 +10,75 @@ type ClientsSliderProps = {
 
 const ClientsSlider: FC<ClientsSliderProps> = ({
   backgroundColor = "black",
-  iconColor = "white",
+  iconColor = "#000000",
 }) => {
   const clients = getAllClients({
     height: "38",
     fill: iconColor,
   });
+
+  // Duplicate clients for seamless loop
+  const duplicatedClients = [...clients, ...clients];
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    let scrollPosition = 0;
+    const scrollSpeed = 1; // pixels per frame
+    const containerWidth = scrollContainer.scrollWidth / 2; // Half width since duplicated
+
+    const scroll = () => {
+      scrollPosition += scrollSpeed;
+
+      // Reset to beginning when we've scrolled past first set
+      if (scrollPosition >= containerWidth) {
+        scrollPosition = 0;
+      }
+
+      scrollContainer.scrollLeft = scrollPosition;
+      requestAnimationFrame(scroll);
+    };
+
+    const animationId = requestAnimationFrame(scroll);
+
+    // Pause on hover
+    const handleMouseEnter = () => {
+      cancelAnimationFrame(animationId);
+    };
+
+    const handleMouseLeave = () => {
+      requestAnimationFrame(scroll);
+    };
+
+    scrollContainer.addEventListener("mouseenter", handleMouseEnter);
+    scrollContainer.addEventListener("mouseleave", handleMouseLeave);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      scrollContainer.removeEventListener("mouseenter", handleMouseEnter);
+      scrollContainer.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
+
   return (
-    <div>
-      <Swiper
-        modules={[Autoplay]}
-        spaceBetween={50}
-        slidesPerView={5}
-        autoplay={{
-          delay: 2000,
-          disableOnInteraction: false,
-        }}
-        loop={true}
-        // onSlideChange={() => console.log("slide change")}
-        // onSwiper={(swiper) => console.log(swiper)}
-        style={{ backgroundColor: backgroundColor }}
-        className="!p-4"
+    <div className="w-full overflow-hidden p-4 bg-black">
+      <div
+        ref={scrollRef}
+        className="flex gap-12 overflow-x-hidden bg-none"
+        style={{ scrollBehavior: "auto" }}
       >
-        {clients.map((client, index) => (
-          <SwiperSlide key={`client-${index}`}>
-            <div className="h-[38px] w-auto relative">
-              {client}
-              {/* <Image src={client} alt="client" fill className="w-full h-full" /> */}
-            </div>
-          </SwiperSlide>
+        {duplicatedClients.map((client, index) => (
+          <div
+            key={`client-${index}`}
+            className="flex-shrink-0 h-[38px] w-auto flex items-center justify-center"
+            style={{ minWidth: "150px" }}
+          >
+            {client}
+          </div>
         ))}
-      </Swiper>
+      </div>
     </div>
   );
 };
