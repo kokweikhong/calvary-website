@@ -86,7 +86,7 @@ const DesktopMenu = () => {
 
         {/* Dropdown Panel */}
         <div
-          className={`absolute inset-x-0 top-0 -z-10 bg-gradient-to-b from-white to-gray-50 pt-14 shadow-2xl ring-1 ring-gray-900/10 transition-all duration-300 ${
+          className={`absolute inset-x-0 top-0 -z-10 bg-linear-to-b from-white to-gray-50 pt-14 shadow-2xl ring-1 ring-gray-900/10 transition-all duration-300 ${
             isOpen
               ? "opacity-100 translate-y-0 pointer-events-auto"
               : "opacity-0 -translate-y-1 pointer-events-none"
