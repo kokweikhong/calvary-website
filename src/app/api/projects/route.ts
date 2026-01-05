@@ -18,6 +18,13 @@ export async function GET(request: NextRequest) {
   const limitParam = searchParams.get("limit");
   const offsetParam = searchParams.get("offset");
 
+  // Get filter parameters
+  const productsParam = searchParams.get("products");
+  const sectorsParam = searchParams.get("sectors");
+  const applicationsParam = searchParams.get("applications");
+  const yearsParam = searchParams.get("years");
+  const projectNameParam = searchParams.get("projectName");
+
   console.log("API Projects Country Param:", countryParam);
 
   const file = await fs.readFile(
@@ -35,6 +42,47 @@ export async function GET(request: NextRequest) {
       (project) => project.country === country
     );
   }
+
+  // Apply filters
+  if (sectorsParam) {
+    const sectors = sectorsParam.split(",");
+    filteredData = filteredData.filter((project) =>
+      project.sectors?.some((sector) => sectors.includes(sector))
+    );
+  }
+
+  if (productsParam) {
+    const products = productsParam.split(",");
+    filteredData = filteredData.filter((project) =>
+      project.products.some((product) => products.includes(product))
+    );
+  }
+
+  if (applicationsParam) {
+    const applications = applicationsParam.split(",");
+    filteredData = filteredData.filter((project) =>
+      project.applications?.some((application) =>
+        applications.includes(application)
+      )
+    );
+  }
+
+  if (yearsParam) {
+    const years = yearsParam.split(",");
+    filteredData = filteredData.filter((project) =>
+      years.includes(project.year?.toString() || "")
+    );
+  }
+
+  if (projectNameParam) {
+    filteredData = filteredData.filter((project) =>
+      project.name?.toLowerCase().includes(projectNameParam.toLowerCase())
+    );
+  }
+
+  // Store total filtered count before pagination
+  const totalFilteredCount = filteredData.length;
+
   // apply limit and offset if provided
   const offset = offsetParam ? parseInt(offsetParam) : 0;
   const limit = limitParam ? parseInt(limitParam) : filteredData.length;
@@ -45,6 +93,6 @@ export async function GET(request: NextRequest) {
 
   return NextResponse.json({
     data: filteredData,
-    length: filteredData.length,
+    length: totalFilteredCount,
   } as ProjectsResponse);
 }

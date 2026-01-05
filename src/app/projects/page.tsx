@@ -11,19 +11,42 @@ import { getCountryEnv } from "@/lib/env";
 
 async function getProjects(
   limit?: number,
-  offset?: number
+  offset?: number,
+  filters?: FilterItem
 ): Promise<{
   data: Project[];
   length: number;
 }> {
   const country = getCountryEnv();
   const countryShort = country === "Malaysia" ? "my" : "sg";
-  const res = await fetch(
-    "/api/projects?country=" +
-      countryShort +
-      (limit ? "&limit=" + limit : "") +
-      (offset ? "&offset=" + offset : "")
-  );
+
+  // Build query parameters
+  const params = new URLSearchParams();
+  params.append("country", countryShort);
+
+  if (limit) params.append("limit", limit.toString());
+  if (offset) params.append("offset", offset.toString());
+
+  // Add filter parameters
+  if (filters) {
+    if (filters.products.length > 0) {
+      params.append("products", filters.products.join(","));
+    }
+    if (filters.sectors.length > 0) {
+      params.append("sectors", filters.sectors.join(","));
+    }
+    if (filters.applications.length > 0) {
+      params.append("applications", filters.applications.join(","));
+    }
+    if (filters.years.length > 0) {
+      params.append("years", filters.years.join(","));
+    }
+    if (filters.projectName) {
+      params.append("projectName", filters.projectName);
+    }
+  }
+
+  const res = await fetch("/api/projects?" + params.toString());
   const data = await res.json();
   return data;
 }
@@ -53,7 +76,8 @@ type FilterItem = {
 };
 
 export default function Page() {
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [allProjects, setAllProjects] = useState<Project[]>([]); // For filter options
+  const [projects, setProjects] = useState<Project[]>([]); // Filtered results
   const [totalCount, setTotalCount] = useState(0);
   const [filterItem, setFilterItem] = useState<FilterItem>({
     products: [],
@@ -62,7 +86,6 @@ export default function Page() {
     years: [],
     projectName: "",
   });
-  const [projectsToShow, setProjectsToShow] = useState<Project[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [filtersCollapsed, setFiltersCollapsed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -85,15 +108,27 @@ export default function Page() {
     (filterItem.projectName ? 1 : 0);
 
   // Clear all filters function
-  const clearAllFilters = () => {
-    setFilterItem({
+  const clearAllFilters = async () => {
+    setIsLoading(true);
+    const emptyFilters = {
       products: [],
       sectors: [],
       applications: [],
       years: [],
       projectName: "",
-    });
-    setCurrentPage(1);
+    };
+    try {
+      const res = await getProjects(undefined, undefined, emptyFilters);
+      setProjects(res.data);
+      setTotalCount(res.length);
+      setFilterItem(emptyFilters);
+      setTempFilterItem(emptyFilters);
+      setCurrentPage(1);
+    } catch (error) {
+      console.error("Failed to fetch projects:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // Open modal and sync temp filters with current filters
@@ -103,10 +138,20 @@ export default function Page() {
   };
 
   // Apply filters from modal
-  const applyFilters = () => {
-    setFilterItem({ ...tempFilterItem });
+  const applyFilters = async () => {
+    setIsLoading(true);
     setIsFilterModalOpen(false);
-    setCurrentPage(1);
+    try {
+      const res = await getProjects(undefined, undefined, tempFilterItem);
+      setProjects(res.data);
+      setTotalCount(res.length);
+      setFilterItem({ ...tempFilterItem });
+      setCurrentPage(1);
+    } catch (error) {
+      console.error("Failed to fetch filtered projects:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // Cancel filter changes
@@ -174,11 +219,11 @@ export default function Page() {
     async function fetchData() {
       setIsLoading(true);
       try {
-        // Fetch all projects for filtering (no limit)
+        // Fetch all projects for filter options
         const res = await getProjects();
+        setAllProjects(res.data);
         setProjects(res.data);
         setTotalCount(res.length);
-        setProjectsToShow(res.data);
       } catch (error) {
         console.error("Failed to fetch projects:", error);
       } finally {
@@ -218,8 +263,8 @@ export default function Page() {
 
   const services = ["Residential", "Commercial", "Governmental"];
 
-  // create distinctProducts array from projects and sort alphabetically
-  const distinctProducts = projects
+  // create distinctProducts array from allProjects and sort alphabetically
+  const distinctProducts = allProjects
     ?.reduce((acc: string[], project: Project) => {
       project.products.forEach((product) => {
         if (!acc.includes(product)) {
@@ -230,12 +275,11 @@ export default function Page() {
     }, [] as string[])
     ?.sort((a, b) => a.localeCompare(b));
 
-  // create distinctApplications array from projects and ignore blank applications and sort alphabetically
-  const distinctApplications = projects
+  // create distinctApplications array from allProjects and ignore blank applications and sort alphabetically
+  const distinctApplications = allProjects
     ?.reduce((acc: string[], project: Project) => {
       project.applications?.forEach((application) => {
         if (!acc.includes(application) && application !== "") {
-          // Corrected the condition here
           acc.push(application);
         }
       });
@@ -243,8 +287,8 @@ export default function Page() {
     }, [] as string[])
     ?.sort((a, b) => a.localeCompare(b));
 
-  // create distinctYears array from projects and ignore blank years and sort descending
-  const distinctYears = projects
+  // create distinctYears array from allProjects and ignore blank years and sort descending
+  const distinctYears = allProjects
     ?.reduce((acc: string[], project: Project) => {
       if (project.year && !acc.includes(project.year.toString())) {
         acc.push(project.year.toString());
@@ -328,60 +372,11 @@ export default function Page() {
     }
   }, [currentPage]);
 
-  // Filter projects based on filterItem
-  useEffect(() => {
-    let filtered = projects;
-
-    // Filter by sectors
-    if (filterItem.sectors.length > 0) {
-      filtered = filtered.filter((project) =>
-        project.sectors?.some((sector) => filterItem.sectors.includes(sector))
-      );
-    }
-
-    // Filter by products
-    if (filterItem.products.length > 0) {
-      filtered = filtered.filter((project) =>
-        project.products.some((product) =>
-          filterItem.products.includes(product)
-        )
-      );
-    }
-
-    // Filter by applications
-    if (filterItem.applications.length > 0) {
-      filtered = filtered.filter((project) =>
-        project.applications?.some((application) =>
-          filterItem.applications.includes(application)
-        )
-      );
-    }
-
-    // Filter by years
-    if (filterItem.years.length > 0) {
-      filtered = filtered.filter((project) =>
-        filterItem.years.includes(project.year?.toString() || "")
-      );
-    }
-
-    // Filter by project name (search)
-    if (filterItem.projectName) {
-      filtered = filtered.filter((project) =>
-        project.name
-          ?.toLowerCase()
-          .includes(filterItem.projectName.toLowerCase())
-      );
-    }
-
-    setProjectsToShow(filtered);
-    setCurrentPage(1); // Reset to first page when filters change
-  }, [filterItem, projects]);
-
-  // Pagination calculations
-  const totalPages = Math.ceil(projectsToShow.length / itemsPerPage);
+  // Pagination calculations (now using server-filtered projects)
+  const totalPages = Math.ceil(projects.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentProjects = projectsToShow.slice(startIndex, endIndex);
+  const currentProjects = projects.slice(startIndex, endIndex);
 
   // Generate page numbers to display
   const getPageNumbers = () => {
@@ -436,28 +431,81 @@ export default function Page() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12">
         <div className="max-w-2xl mx-auto">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search by project name..."
-              className="block w-full px-6 py-4 pl-12 text-gray-900 bg-white border-2 border-gray-300 rounded-xl shadow-sm focus:border-black-500 focus:ring-2 focus:ring-black-200 transition-all duration-200 placeholder:text-gray-400"
-              onChange={handle}
-              name="projectName"
-              value={filterItem.projectName}
-            />
-            <svg
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          <div className="flex gap-3">
+            <div className="relative flex-1">
+              <input
+                type="text"
+                placeholder="Search by project name..."
+                className="block w-full px-6 py-4 pl-12 text-gray-900 bg-white border-2 border-gray-300 rounded-xl shadow-sm focus:border-black-500 focus:ring-2 focus:ring-black-200 transition-all duration-200 placeholder:text-gray-400"
+                onChange={(e) => {
+                  setTempFilterItem((prev) => ({
+                    ...prev,
+                    projectName: e.target.value,
+                  }));
+                }}
+                onKeyDown={async (e) => {
+                  if (e.key === "Enter") {
+                    setIsLoading(true);
+                    try {
+                      const res = await getProjects(
+                        undefined,
+                        undefined,
+                        tempFilterItem
+                      );
+                      setProjects(res.data);
+                      setTotalCount(res.length);
+                      setFilterItem({ ...tempFilterItem });
+                      setCurrentPage(1);
+                    } catch (error) {
+                      console.error(
+                        "Failed to fetch filtered projects:",
+                        error
+                      );
+                    } finally {
+                      setIsLoading(false);
+                    }
+                  }
+                }}
+                name="projectName"
+                value={tempFilterItem.projectName}
               />
-            </svg>
+              <svg
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </div>
+            <button
+              onClick={async () => {
+                setIsLoading(true);
+                try {
+                  const res = await getProjects(
+                    undefined,
+                    undefined,
+                    tempFilterItem
+                  );
+                  setProjects(res.data);
+                  setTotalCount(res.length);
+                  setFilterItem({ ...tempFilterItem });
+                  setCurrentPage(1);
+                } catch (error) {
+                  console.error("Failed to fetch filtered projects:", error);
+                } finally {
+                  setIsLoading(false);
+                }
+              }}
+              className="px-6 py-4 text-sm font-medium text-white bg-gray-700 hover:bg-gray-800 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 whitespace-nowrap cursor-pointer shadow-sm"
+            >
+              Search
+            </button>
           </div>
         </div>
       </div>
@@ -1017,30 +1065,27 @@ export default function Page() {
             <p className="text-base sm:text-lg font-semibold text-gray-900">
               {isLoading ? (
                 <span className="text-gray-500">Loading projects...</span>
-              ) : projectsToShow.length === 0 ? (
+              ) : projects.length === 0 ? (
                 <span className="text-red-600">No projects found</span>
-              ) : projectsToShow.length === 1 ? (
+              ) : projects.length === 1 ? (
                 <span>
-                  <span className="text-black-600">
-                    {projectsToShow.length}
-                  </span>{" "}
+                  <span className="text-black-600">{projects.length}</span>{" "}
                   project found
                 </span>
               ) : (
                 <span>
                   <span className="text-gray-900 font-bold">
-                    {projectsToShow.length}
+                    {projects.length}
                   </span>{" "}
                   projects found
                 </span>
               )}
             </p>
           </div>
-          {projectsToShow.length > 0 && (
+          {projects.length > 0 && (
             <p className="text-xs sm:text-sm text-gray-500">
-              Showing {startIndex + 1}-
-              {Math.min(endIndex, projectsToShow.length)} of{" "}
-              {projectsToShow.length}
+              Showing {startIndex + 1}-{Math.min(endIndex, projects.length)} of{" "}
+              {projects.length}
             </p>
           )}
         </div>
