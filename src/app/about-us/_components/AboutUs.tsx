@@ -43,15 +43,15 @@ const AboutUs = () => {
   return (
     <div
       id="about-us"
-      className="container-cp flex flex-col items-center justify-center space-y-8"
+      className="container-cp flex flex-col items-center justify-center space-y-8 sm:space-y-12 py-8 sm:py-12"
     >
-      <div className="text-center border-y border-black py-2">
-        <h2 className="uppercase text-2xl font-montserrat tracking-wider">
+      <div className="text-center border-y-2 border-black py-3 sm:py-4 px-4">
+        <h2 className="uppercase text-xl sm:text-2xl md:text-3xl font-montserrat tracking-wider font-semibold">
           About Us
         </h2>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-4 sm:space-y-6 text-sm sm:text-base text-gray-700 leading-relaxed max-w-3xl">
         <p>{`
           Avant-Garde woodworkers and visionaries forged from humble beginnings, Calvary is the timber expert for the next generation of property owners.
         `}</p>
@@ -60,24 +60,24 @@ const AboutUs = () => {
         `}</p>
       </div>
 
-      <div className="text-[#805C00] w-full space-y-2">
-        <div className="flex space-x-2 items-center justify-start">
-          <ArrowRightWithTail className="text-[#805C00]" />
-          <h3 className="text-lg">Flooring, decking, cladding, soffit.</h3>
+      <div className="text-[#805C00] w-full space-y-3 sm:space-y-4 max-w-2xl">
+        <div className="flex space-x-3 sm:space-x-4 items-start">
+          <ArrowRightWithTail className="text-[#805C00] flex-shrink-0 mt-1" />
+          <h3 className="text-base sm:text-lg font-medium">Flooring, decking, cladding, soffit.</h3>
         </div>
-        <div className="flex space-x-2 items-center justify-start">
-          <ArrowRightWithTail className="text-[#805C00]" />
-          <h3 className="text-lg">Stairs, rails, trellis, screens.</h3>
+        <div className="flex space-x-3 sm:space-x-4 items-start">
+          <ArrowRightWithTail className="text-[#805C00] flex-shrink-0 mt-1" />
+          <h3 className="text-base sm:text-lg font-medium">Stairs, rails, trellis, screens.</h3>
         </div>
-        <div className="flex space-x-2 items-center justify-start">
-          <ArrowRightWithTail className="text-[#805C00]" />
-          <h3 className="text-lg">Residential, commercial, government.</h3>
+        <div className="flex space-x-3 sm:space-x-4 items-start">
+          <ArrowRightWithTail className="text-[#805C00] flex-shrink-0 mt-1" />
+          <h3 className="text-base sm:text-lg font-medium">Residential, commercial, government.</h3>
         </div>
       </div>
 
-      <div className="w-full flex flex-col space-y-8 items-start justify-center">
-        <div className="text-center border-y border-black py-2 mx-auto">
-          <h2 className="uppercase text-2xl font-montserrat tracking-wider">
+      <div className="w-full flex flex-col space-y-6 sm:space-y-8 items-start justify-center">
+        <div className="text-center border-y-2 border-black py-3 sm:py-4 mx-auto px-4">
+          <h2 className="uppercase text-xl sm:text-2xl md:text-3xl font-montserrat tracking-wider font-semibold">
             Timeline
           </h2>
         </div>
@@ -85,52 +85,52 @@ const AboutUs = () => {
       </div>
 
       {/* images */}
-      <div>
-        <div className="grid grid-cols-2 gap-2 md:grid-cols-[2fr_1fr] md:grid-rows-2 md:max-h-[800px]">
-          <div className="relative h-[300px] col-span-full sm:h-[400px] md:h-full md:col-span-1 md:row-span-full">
+      <div className="w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:grid-cols-[2fr_1fr] md:grid-rows-2 md:max-h-[800px]">
+          <div className="relative h-[250px] sm:h-[300px] md:h-full md:col-span-1 md:row-span-full rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
             <Image
               src={feature1ImgUrl}
               alt="Second Nature House"
-              width={400}
-              height={300}
+              width={800}
+              height={600}
               priority
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
             />
           </div>
-          <div className="relative h-[300px] md:h-full">
+          <div className="relative h-[250px] sm:h-[300px] md:h-full rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
             <Image
               src={feature2ImgUrl}
               alt="Woodland"
-              width={400}
-              height={300}
+              width={800}
+              height={600}
               priority
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
             />
           </div>
-          <div className="relative h-[300px] md:h-full">
+          <div className="relative h-[250px] sm:h-[300px] md:h-full rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
             <Image
               src={feature3ImgUrl}
               alt="Vizionaire"
-              width={400}
-              height={300}
+              width={800}
+              height={600}
               priority
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
             />
           </div>
         </div>
       </div>
 
       {/* certificate */}
-      <div className="flex flex-wrap gap-4 items-center justify-center">
+      <div className="flex flex-wrap gap-4 sm:gap-6 items-center justify-center pt-4">
         {certifications.map((cert, idx) => (
-          <div key={idx} className="relative h-12 w-auto">
+          <div key={idx} className="relative h-10 sm:h-12 md:h-14 w-auto grayscale hover:grayscale-0 transition-all duration-300">
             <Image
               src={`${ASSETS_URL}/websites/about-us/certifications/${cert}`}
               alt="Certification"
-              width={48}
-              height={48}
+              width={56}
+              height={56}
               priority
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           </div>
         ))}

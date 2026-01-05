@@ -4,7 +4,9 @@ export const deckingAndOutdoorDescription = `Calvary Composite, ${
   country === "Singapore" ? "dassoCTECH" : "MOSO"
 }, Accoya, Timber`;
 
-export const footerCopyrightContent = `©2024 Calvary Carpentry ${
+const currentYear = new Date().getFullYear();
+
+export const footerCopyrightContent = `©${currentYear} Calvary Carpentry ${
   country === "Singapore" ? "Pte Ltd" : "Sdn. Bhd."
 } All Rights Reserved.`;
 
