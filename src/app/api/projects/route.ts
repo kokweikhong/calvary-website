@@ -45,24 +45,29 @@ export async function GET(request: NextRequest) {
 
   // Apply filters
   if (sectorsParam) {
-    const sectors = sectorsParam.split(",");
+    const sectors = sectorsParam.split(",").map((s) => s.toLowerCase());
     filteredData = filteredData.filter((project) =>
-      project.sectors?.some((sector) => sectors.includes(sector))
+      // to lowercase for comparison and contains
+      project.sectors.some((sector) => sectors.includes(sector.toLowerCase()))
     );
   }
 
   if (productsParam) {
-    const products = productsParam.split(",");
+    const products = productsParam.split(",").map((p) => p.toLowerCase());
     filteredData = filteredData.filter((project) =>
-      project.products.some((product) => products.includes(product))
+      project.products.some((product) =>
+        products.includes(product.toLowerCase())
+      )
     );
   }
 
   if (applicationsParam) {
-    const applications = applicationsParam.split(",");
+    const applications = applicationsParam
+      .split(",")
+      .map((a) => a.toLowerCase());
     filteredData = filteredData.filter((project) =>
       project.applications?.some((application) =>
-        applications.includes(application)
+        applications.includes(application.toLowerCase())
       )
     );
   }
