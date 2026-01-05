@@ -25,13 +25,15 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className="[&>div]:mt-4 scroll-smooth">
+    <div className="scroll-smooth">
       <Hero />
-      <EZRail />
-      <ColourSwatch />
-      <KeyFeatures />
-      <Downloads />
-      <ViewProjects />
+      <div className="space-y-12 sm:space-y-16 md:space-y-20">
+        <EZRail />
+        <ColourSwatch />
+        <KeyFeatures />
+        <Downloads />
+        <ViewProjects />
+      </div>
     </div>
   );
 }

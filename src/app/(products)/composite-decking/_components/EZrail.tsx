@@ -4,20 +4,53 @@ import Image from "next/image";
 const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
 const ezrailBannerURL = `${ASSETS_URL}/websites/composite-decking/ezrail-banner.png`;
 
-const features: { name: string; iconURL: string; }[] = [
+const features: { name: string; iconURL: string }[] = [
   // { name: "", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/easy-to-maintain.svg` },
-  { name: "Hidden Joist", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/hidden-joist.svg` },
-  { name: "Low Thermal Conductivity", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/low-thermal-conductivity.svg` },
-  { name: "R11 Anti-Slip", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/r11-anti-slip.svg` },
-  { name: "Fire rated (Class 2)", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/fire-rated-class-2.svg` },
-  { name: "SGS Certified", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/sgs-certified.svg` },
-  { name: "Replaceable", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/replaceable.svg` },
-  { name: "EZRAIL Compatible", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/compatible.svg` },
-  { name: "Easy Removal", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/removal.svg` },
-  { name: "10 Years Warrantry", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/10_years_limited_warranty.svg` },
-  { name: "STATS", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/stats.svg` },
-  { name: "SGBC Certified", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/sgbc_2_ticks.svg` },
-]
+  {
+    name: "Hidden Joist",
+    iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/hidden-joist.svg`,
+  },
+  {
+    name: "Low Thermal Conductivity",
+    iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/low-thermal-conductivity.svg`,
+  },
+  {
+    name: "R11 Anti-Slip",
+    iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/r11-anti-slip.svg`,
+  },
+  {
+    name: "Fire rated (Class 2)",
+    iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/fire-rated-class-2.svg`,
+  },
+  {
+    name: "SGS Certified",
+    iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/sgs-certified.svg`,
+  },
+  {
+    name: "Replaceable",
+    iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/replaceable.svg`,
+  },
+  {
+    name: "EZRAIL Compatible",
+    iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/compatible.svg`,
+  },
+  {
+    name: "Easy Removal",
+    iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/removal.svg`,
+  },
+  {
+    name: "10 Years Warrantry",
+    iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/10_years_limited_warranty.svg`,
+  },
+  {
+    name: "STATS",
+    iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/stats.svg`,
+  },
+  {
+    name: "SGBC Certified",
+    iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/sgbc_2_ticks.svg`,
+  },
+];
 
 const ezrailCompatibleURL = `${ASSETS_URL}/websites/composite-decking/feature-icons/ezrail-compatible.svg`;
 
@@ -25,18 +58,28 @@ const ezrailBlueIconURL = `${ASSETS_URL}/websites/composite-decking/ezrail-blue-
 
 const ezrailCompositeDissectionURL = `${ASSETS_URL}/websites/composite-decking/ezrail-calvary-composite-dissection.jpg`;
 
-const profiles: { name: string; iconURL: string; }[] = [
-  { name: `2 x 0.5"`, iconURL: `${ASSETS_URL}/websites/composite-decking/profiles/40.png` },
-  { name: `2 x 1"`, iconURL: `${ASSETS_URL}/websites/composite-decking/profiles/50-60.png` },
-  { name: `2 x 2"`, iconURL: `${ASSETS_URL}/websites/composite-decking/profiles/80.png` },
-]
+const profiles: { name: string; iconURL: string }[] = [
+  {
+    name: `2 x 0.5"`,
+    iconURL: `${ASSETS_URL}/websites/composite-decking/profiles/40.png`,
+  },
+  {
+    name: `2 x 1"`,
+    iconURL: `${ASSETS_URL}/websites/composite-decking/profiles/50-60.png`,
+  },
+  {
+    name: `2 x 2"`,
+    iconURL: `${ASSETS_URL}/websites/composite-decking/profiles/80.png`,
+  },
+];
 
 const EZRail = () => {
   return (
     <div id="explore" className="space-y-4 mt-4">
-
       <div className="container mx-auto sm:px-6 lg:px-8 space-y-4">
-        <h2 className="text-lg font-medium text-center">#1 Removable Decking in Singapore</h2>
+        <h2 className="text-lg font-medium text-center">
+          #1 Removable Decking in Singapore
+        </h2>
 
         <div className="flex flex-col items-center justify-center space-y-2">
           <div className="w-full h-full">
@@ -49,7 +92,9 @@ const EZRail = () => {
               allowFullScreen
             ></iframe>
           </div>
-          <span className="capitalize text-sm">patented technology by calvary Carpentry</span>
+          <span className="capitalize text-sm">
+            patented technology by calvary Carpentry
+          </span>
         </div>
         <div className="space-y-4">
           <p>{`
@@ -65,39 +110,52 @@ const EZRail = () => {
         `}</p>
         </div>
 
-        <div className="flex flex-col justify-center items-center space-y-4">
-          <div className="border border-black text-center p-2">
-            <h3 className="font-medium text-lg">Decking Made Simple</h3>
-            <h4>#1 Removable Decking in Singapore</h4>
+        <div className="flex flex-col justify-center items-center space-y-6 sm:space-y-8">
+          <div className="border-2 border-gray-800 text-center p-4 sm:p-6 rounded-xl bg-white shadow-md">
+            <h3 className="font-semibold text-lg sm:text-xl">
+              Decking Made Simple
+            </h3>
+            <h4 className="text-sm sm:text-base text-gray-600 mt-1">
+              #1 Removable Decking in Singapore
+            </h4>
           </div>
 
-          <div className="flex flex-wrap gap-4 justify-center items-start">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 sm:gap-6">
             {features.map((feature, index) => (
-              <div key={index} className="flex flex-col items-center justify-center space-y-2 w-1/5 text-center">
-                <div>
+              <div
+                key={index}
+                className="flex flex-col items-center justify-start space-y-2 text-center group"
+              >
+                <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center">
                   <Image
                     src={feature.iconURL}
                     alt={feature.name}
-                    width={50}
-                    height={50}
-                    className="w-full h-full object-cover"
+                    width={80}
+                    height={80}
+                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-200"
                     priority
                   />
                 </div>
                 {feature.name.includes("EZRAIL") ? (
-                  <div className="w-auto h-full">
-                    <Image
-                      src={ezrailCompatibleURL}
-                      alt={feature.name}
-                      width={50}
-                      height={50}
-                      priority
-                      className="w-3/4 h-full object-cover mx-auto"
-                    />
-                    <span className="text-xs justify-self-start md:text-sm">Compatible</span>
+                  <div className="w-full">
+                    <div className="w-3/4 mx-auto">
+                      <Image
+                        src={ezrailCompatibleURL}
+                        alt={feature.name}
+                        width={80}
+                        height={80}
+                        priority
+                        className="w-full h-auto object-contain"
+                      />
+                    </div>
+                    <span className="text-xs sm:text-sm mt-1 block">
+                      Compatible
+                    </span>
                   </div>
                 ) : (
-                  <span className="text-xs justify-self-start md:text-sm">{feature.name}</span>
+                  <span className="text-xs sm:text-sm leading-tight">
+                    {feature.name}
+                  </span>
                 )}
               </div>
             ))}
@@ -105,101 +163,134 @@ const EZRail = () => {
         </div>
       </div>
 
-      <div className="bg-calvaryComposite py-8">
-        <div className="space-y-4 text-white md:grid md:grid-cols-2 md:grid-rows-2 container mx-auto sm:px-6 lg:px-8">
+      <div className="bg-calvarycomposite py-8 sm:py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-[300px,1fr] lg:grid-cols-[350px,1fr] gap-6 md:gap-8 items-center text-center">
+            {/* Icon Section */}
+            <div className="flex justify-center items-center md:justify-start mx-auto">
+              <div className="w-auto h-48 md:w-72 md:h-72 lg:w-80 lg:h-80">
+                <Image
+                  src={ezrailBlueIconURL}
+                  alt="EZ-rail® Removable Decking Clip System"
+                  width={350}
+                  height={350}
+                  priority
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </div>
 
-          <div className="w-1/2 mx-auto md:h-full md:w-auto md:row-span-full">
-            <Image
-              src={ezrailBlueIconURL}
-              alt="EZ-rail® Removable Decking Clip System"
-              width={500}
-              height={500}
-              priority
-              className="w-full h-full object-cover"
-            />
-          </div>
+            {/* Content Section */}
+            <div className="space-y-6 sm:space-y-8">
+              <div className="space-y-4 text-sm sm:text-base leading-relaxed text-white">
+                <p>{`
+                  EZ-rail® removable decking clip system is compatible with 
+                  Calvary Composite, Accoya Decking, and Reconstituted Composite decking.
+                `}</p>
+                <p className="font-medium">Click to check them out:</p>
+              </div>
 
-          <div className="flex flex-col justify-around space-y-8">
-            <p>{`
-                EZ-rail® removable decking clip system is compatible with 
-                Calvary Composite, Accoya Decking, and Reconstituted Composite decking.
-              `}</p>
-
-            <p>Click to check them out:</p>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-2 col-span-full md:col-span-1 text-center md:justify-start">
-            <h4 className="bg-white rounded-full p-2">
-              <Link href={"/accoya"} className="text-calvaryComposite uppercase font-medium text-sm">Accoya Decking</Link>
-            </h4>
-            <h4 className="bg-white rounded-full p-2">
-              <span className="text-calvaryComposite uppercase font-medium text-sm">Calvary Composite Decking</span>
-            </h4>
-            <h4 className="bg-white rounded-full p-2">
-              <span className="text-calvaryComposite uppercase font-medium text-sm">Reconstituted Composite decking</span>
-            </h4>
-            <h4 className="bg-white rounded-full p-2">
-              <Link href={"/onewood"} className="text-calvaryComposite uppercase font-medium text-sm">OneWood decking</Link>
-            </h4>
+              {/* Links Section */}
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 justify-center">
+                <Link
+                  href={"/accoya"}
+                  className="group bg-white rounded-full px-4 py-2 shadow-md hover:shadow-xl hover:scale-105 hover:bg-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-calvarycomposite"
+                >
+                  <span className="text-calvarycomposite uppercase font-semibold text-xs sm:text-sm whitespace-nowrap">
+                    Accoya Decking
+                  </span>
+                </Link>
+                <Link
+                  href={"/calvary-composite"}
+                  className="group bg-white rounded-full px-4 py-2 shadow-md hover:shadow-xl hover:scale-105 hover:bg-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-calvarycomposite"
+                >
+                  <span className="text-calvarycomposite uppercase font-semibold text-xs sm:text-sm whitespace-nowrap">
+                    Calvary Composite
+                  </span>
+                </Link>
+                <Link
+                  href={"/onewood"}
+                  className="group bg-white rounded-full px-4 py-2 shadow-md hover:shadow-xl hover:scale-105 hover:bg-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-calvarycomposite"
+                >
+                  <span className="text-calvarycomposite uppercase font-semibold text-xs sm:text-sm whitespace-nowrap">
+                    Reconstituted Composite
+                  </span>
+                </Link>
+                <Link
+                  href={"/onewood"}
+                  className="group bg-white rounded-full px-4 py-2 shadow-md hover:shadow-xl hover:scale-105 hover:bg-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-calvarycomposite"
+                >
+                  <span className="text-calvarycomposite uppercase font-semibold text-xs sm:text-sm whitespace-nowrap">
+                    OneWood Decking
+                  </span>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
 
-      <div className="space-y-4">
-        <div className="space-y-4 container mx-auto sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto h-auto">
+      <div className="py-8 sm:py-12 space-y-8 sm:space-y-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+          <div className="max-w-3xl mx-auto rounded-xl overflow-hidden shadow-lg">
             <Image
               src={ezrailCompositeDissectionURL}
               alt="EZ-rail® Removable Decking Clip System"
               width={1920}
               height={1080}
               priority
-              className="w-full h-full object-cover"
+              className="w-full h-auto object-cover"
             />
           </div>
-          <h3 className="font-medium text-xl uppercase">
-            <span
-              className="border-b-2 border-black pb-2 leading-10"
-            >
+          <h3 className="font-semibold text-lg sm:text-xl md:text-2xl uppercase">
+            <span className="border-b-2 border-calvarycomposite pb-2 inline-block">
               {`Ensured Flushed design for the smallest* drop`}
             </span>
           </h3>
 
-          <p>{`Minimum drop of 40MM* to construct:`}</p>
-          <p>We have a wide range of aluminium runners.</p>
-          <p className="pl-4">{`- 40 MM Drop`}</p>
-          <p className="pl-4">{`- 50 - 60 MM Drop`}</p>
-          <p className="pl-4">{`- 80 MM Drop`}</p>
+          <div className="space-y-3 text-sm sm:text-base text-gray-700">
+            <p>{`Minimum drop of 40MM* to construct:`}</p>
+            <p>We have a wide range of aluminium runners.</p>
+            <div className="pl-6 space-y-1">
+              <p>{`- 40 MM Drop`}</p>
+              <p>{`- 50 - 60 MM Drop`}</p>
+              <p>{`- 80 MM Drop`}</p>
+            </div>
 
-          <p>{`
+            <p>{`
             For drops more than 100 mm, we will adjust accordingly 
             (double bracing method aluminium and pedestals if needed)
           `}</p>
-
+          </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-2">
-          {profiles.map((profile, index) => (
-            <div key={index} className="flex flex-col items-center justify-center">
-              <div>
-                <Image
-                  src={profile.iconURL}
-                  alt={profile.name}
-                  width={500}
-                  height={500}
-                  priority
-                  className="w-full h-full object-cover"
-                />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+            {profiles.map((profile, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center justify-center p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200"
+              >
+                <div className="w-full aspect-square mb-3">
+                  <Image
+                    src={profile.iconURL}
+                    alt={profile.name}
+                    width={300}
+                    height={300}
+                    priority
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <span className="text-center text-sm sm:text-base font-medium text-gray-800">
+                  {profile.name}
+                </span>
               </div>
-              <span>{profile.name}</span>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-
     </div>
   );
-}
+};
 
 export default EZRail;

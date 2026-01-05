@@ -19,6 +19,8 @@
 @theme {
   --font-montserrat: "Montserrat", sans-serif;
   --font-garamond: "Garamond", serif;
+
+  --color-calvarycomposite: #577aba;
 }
 
 @layer components {
