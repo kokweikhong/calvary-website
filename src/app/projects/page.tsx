@@ -66,6 +66,14 @@ export default function Page() {
   const [currentPage, setCurrentPage] = useState(1);
   const [filtersCollapsed, setFiltersCollapsed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [tempFilterItem, setTempFilterItem] = useState<FilterItem>({
+    products: [],
+    sectors: [],
+    applications: [],
+    years: [],
+    projectName: "",
+  });
   const itemsPerPage = 9;
 
   // Calculate active filters count
@@ -86,6 +94,80 @@ export default function Page() {
       projectName: "",
     });
     setCurrentPage(1);
+  };
+
+  // Open modal and sync temp filters with current filters
+  const openFilterModal = () => {
+    setTempFilterItem({ ...filterItem });
+    setIsFilterModalOpen(true);
+  };
+
+  // Apply filters from modal
+  const applyFilters = () => {
+    setFilterItem({ ...tempFilterItem });
+    setIsFilterModalOpen(false);
+    setCurrentPage(1);
+  };
+
+  // Cancel filter changes
+  const cancelFilters = () => {
+    setIsFilterModalOpen(false);
+  };
+
+  // Handle temp filter changes in modal
+  const handleTempFilter = (e: any) => {
+    const { name, value, checked } = e.target;
+    if (name === "product") {
+      if (checked) {
+        setTempFilterItem((prev) => ({
+          ...prev,
+          products: [...prev.products, value],
+        }));
+      } else {
+        setTempFilterItem((prev) => ({
+          ...prev,
+          products: prev.products.filter((product) => product !== value),
+        }));
+      }
+    } else if (name === "sector") {
+      if (checked) {
+        setTempFilterItem((prev) => ({
+          ...prev,
+          sectors: [...prev.sectors, value],
+        }));
+      } else {
+        setTempFilterItem((prev) => ({
+          ...prev,
+          sectors: prev.sectors.filter((sector) => sector !== value),
+        }));
+      }
+    } else if (name === "application") {
+      if (checked) {
+        setTempFilterItem((prev) => ({
+          ...prev,
+          applications: [...prev.applications, value],
+        }));
+      } else {
+        setTempFilterItem((prev) => ({
+          ...prev,
+          applications: prev.applications.filter(
+            (application) => application !== value
+          ),
+        }));
+      }
+    } else if (name === "year") {
+      if (checked) {
+        setTempFilterItem((prev) => ({
+          ...prev,
+          years: [...prev.years, value],
+        }));
+      } else {
+        setTempFilterItem((prev) => ({
+          ...prev,
+          years: prev.years.filter((year) => year !== value),
+        }));
+      }
+    }
   };
 
   useEffect(() => {
@@ -406,7 +488,7 @@ export default function Page() {
               </span>
             )}
           </div>
-          <div className="flex items-center gap-2 sm:gap-3l">
+          <div className="flex items-center gap-2 sm:gap-3">
             {activeFiltersCount > 0 && (
               <button
                 onClick={clearAllFilters}
@@ -430,182 +512,247 @@ export default function Page() {
               </button>
             )}
             <button
-              onClick={() => setFiltersCollapsed(!filtersCollapsed)}
-              className="flex items-center gap-1.5 sm:gap-2 px-3 py-2 sm:px-4 text-xs sm:text-sm font-medium text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500"
-              aria-expanded={!filtersCollapsed}
-              aria-label={
-                filtersCollapsed ? "Expand filters" : "Collapse filters"
-              }
+              onClick={openFilterModal}
+              className="flex items-center gap-1.5 sm:gap-2 px-3 py-2 sm:px-4 text-xs sm:text-sm font-medium text-white bg-gray-700 hover:bg-gray-800 border-2 border-gray-700 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500"
+              aria-label="Open filters"
             >
-              {filtersCollapsed ? (
-                <>
-                  <svg
-                    className="w-3.5 h-3.5 sm:w-4 sm:h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                  <span className="hidden sm:inline">Show Filters</span>
-                  <span className="sm:hidden">Show</span>
-                </>
-              ) : (
-                <>
-                  <svg
-                    className="w-3.5 h-3.5 sm:w-4 sm:h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 15l7-7 7 7"
-                    />
-                  </svg>
-                  <span className="hidden sm:inline">Hide Filters</span>
-                  <span className="sm:hidden">Hide</span>
-                </>
-              )}
+              <svg
+                className="w-3.5 h-3.5 sm:w-4 sm:h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                />
+              </svg>
+              <span className="hidden sm:inline">Open Filters</span>
+              <span className="sm:hidden">Filters</span>
             </button>
           </div>
         </div>
 
-        {/* Filter Panels */}
-        {!filtersCollapsed && (
-          <div className="mb-6 w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              <div className="p-4 sm:p-5 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
-                <h4 className="font-semibold text-xs sm:text-sm uppercase mb-3 sm:mb-4 text-gray-700 tracking-wide border-b border-gray-200 pb-2">
-                  Sector of Services
-                </h4>
-                <ul className="flex flex-col gap-3">
-                  {services.map((sector: string) => {
-                    return (
-                      <li key={sector}>
-                        <label
-                          className="flex items-center gap-3 group cursor-pointer"
-                          htmlFor={sector}
-                        >
-                          <input
-                            id={sector}
-                            type="checkbox"
-                            name="sector"
-                            value={sector}
-                            onChange={handle}
-                            checked={filterItem.sectors.includes(sector)}
-                            className="w-4 h-4 text-black-600 border-gray-300 rounded focus:ring-2 focus:ring-black-500 cursor-pointer"
-                          />
-                          <span className="text-sm text-gray-700 group-hover:text-gray-900">
-                            {sector}
-                          </span>
-                        </label>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
+        {/* Filter Modal */}
+        {isFilterModalOpen && (
+          <div
+            className="fixed inset-0 z-50 overflow-y-auto"
+            aria-labelledby="modal-title"
+            role="dialog"
+            aria-modal="true"
+          >
+            <div className="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+              {/* Background overlay */}
+              <div
+                className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+                aria-hidden="true"
+                onClick={cancelFilters}
+              ></div>
 
-              <div className="p-4 sm:p-5 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
-                <h4 className="font-semibold text-xs sm:text-sm uppercase mb-3 sm:mb-4 text-gray-700 tracking-wide border-b border-gray-200 pb-2">
-                  Products
-                </h4>
+              {/* Center modal */}
+              <span
+                className="hidden sm:inline-block sm:align-middle sm:h-screen"
+                aria-hidden="true"
+              >
+                &#8203;
+              </span>
 
-                <ul className="flex flex-col gap-3">
-                  {distinctProducts?.map((product: string) => {
-                    return (
-                      <li key={product}>
-                        <label
-                          className="flex items-center gap-3 group cursor-pointer"
-                          htmlFor={product}
-                        >
-                          <input
-                            id={product}
-                            type="checkbox"
-                            name="product"
-                            value={product}
-                            onChange={handle}
-                            checked={filterItem.products.includes(product)}
-                            className="w-4 h-4 text-black-600 border-gray-300 rounded focus:ring-2 focus:ring-black-500 cursor-pointer"
-                          />
-                          <span className="text-sm text-gray-700 group-hover:text-gray-900">
-                            {product}
-                          </span>
-                        </label>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
+              {/* Modal panel */}
+              <div className="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-5xl sm:w-full relative z-10">
+                {/* Modal Header */}
+                <div className="bg-gray-50 px-6 py-4 border-b border-gray-200">
+                  <div className="flex items-center justify-between">
+                    <h3
+                      className="text-xl font-bold text-gray-900 flex items-center gap-3"
+                      id="modal-title"
+                    >
+                      <svg
+                        className="w-6 h-6 text-gray-700"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                        />
+                      </svg>
+                      Filter Projects
+                    </h3>
+                    <button
+                      onClick={cancelFilters}
+                      className="text-gray-400 hover:text-gray-600 transition-colors"
+                      aria-label="Close modal"
+                    >
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
 
-              <div className="p-4 sm:p-5 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
-                <h4 className="font-semibold text-xs sm:text-sm uppercase mb-3 sm:mb-4 text-gray-700 tracking-wide border-b border-gray-200 pb-2">
-                  Applications
-                </h4>
+                {/* Modal Body */}
+                <div className="bg-white px-6 py-6 max-h-[60vh] overflow-y-auto">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Sector of Services */}
+                    <div className="p-5 bg-gray-50 border-2 border-gray-200 rounded-xl">
+                      <h4 className="font-semibold text-sm uppercase mb-4 text-gray-700 tracking-wide border-b border-gray-300 pb-2">
+                        Sector of Services
+                      </h4>
+                      <ul className="flex flex-col gap-3 max-h-60 overflow-y-auto">
+                        {services.map((sector: string) => (
+                          <li key={sector}>
+                            <label
+                              className="flex items-center gap-3 group cursor-pointer"
+                              htmlFor={`modal-${sector}`}
+                            >
+                              <input
+                                id={`modal-${sector}`}
+                                type="checkbox"
+                                name="sector"
+                                value={sector}
+                                onChange={handleTempFilter}
+                                checked={tempFilterItem.sectors.includes(
+                                  sector
+                                )}
+                                className="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-2 focus:ring-gray-500 cursor-pointer"
+                              />
+                              <span className="text-sm text-gray-700 group-hover:text-gray-900">
+                                {sector}
+                              </span>
+                            </label>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                <ul className="flex flex-col gap-3">
-                  {distinctApplications?.map((app: string) => {
-                    return (
-                      <li key={app}>
-                        <label
-                          className="flex items-center gap-3 group cursor-pointer"
-                          htmlFor={app}
-                        >
-                          <input
-                            id={app}
-                            type="checkbox"
-                            name="application"
-                            value={app}
-                            onChange={handle}
-                            checked={filterItem.applications.includes(app)}
-                            className="w-4 h-4 text-black-600 border-gray-300 rounded focus:ring-2 focus:ring-black-500 cursor-pointer"
-                          />
-                          <span className="text-sm text-gray-700 group-hover:text-gray-900">
-                            {app}
-                          </span>
-                        </label>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
+                    {/* Products */}
+                    <div className="p-5 bg-gray-50 border-2 border-gray-200 rounded-xl">
+                      <h4 className="font-semibold text-sm uppercase mb-4 text-gray-700 tracking-wide border-b border-gray-300 pb-2">
+                        Products
+                      </h4>
+                      <ul className="flex flex-col gap-3 max-h-60 overflow-y-auto">
+                        {distinctProducts?.map((product: string) => (
+                          <li key={product}>
+                            <label
+                              className="flex items-center gap-3 group cursor-pointer"
+                              htmlFor={`modal-${product}`}
+                            >
+                              <input
+                                id={`modal-${product}`}
+                                type="checkbox"
+                                name="product"
+                                value={product}
+                                onChange={handleTempFilter}
+                                checked={tempFilterItem.products.includes(
+                                  product
+                                )}
+                                className="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-2 focus:ring-gray-500 cursor-pointer"
+                              />
+                              <span className="text-sm text-gray-700 group-hover:text-gray-900">
+                                {product}
+                              </span>
+                            </label>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-              <div className="p-4 sm:p-5 bg-white border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
-                <h4 className="font-semibold text-xs sm:text-sm uppercase mb-3 sm:mb-4 text-gray-700 tracking-wide border-b border-gray-200 pb-2">
-                  Years
-                </h4>
-                <ul className="flex flex-col gap-3">
-                  {distinctYears?.map((year: string) => {
-                    return (
-                      <li key={year}>
-                        <label
-                          className="flex items-center gap-3 group cursor-pointer"
-                          htmlFor={year.toString()}
-                        >
-                          <input
-                            id={year.toString()}
-                            type="checkbox"
-                            name="year"
-                            value={year.toString()}
-                            onChange={handle}
-                            checked={filterItem.years.includes(year.toString())}
-                            className="w-4 h-4 text-black-600 border-gray-300 rounded focus:ring-2 focus:ring-black-500 cursor-pointer"
-                          />
-                          <span className="text-sm text-gray-700 group-hover:text-gray-900">
-                            {year}
-                          </span>
-                        </label>
-                      </li>
-                    );
-                  })}
-                </ul>
+                    {/* Applications */}
+                    <div className="p-5 bg-gray-50 border-2 border-gray-200 rounded-xl">
+                      <h4 className="font-semibold text-sm uppercase mb-4 text-gray-700 tracking-wide border-b border-gray-300 pb-2">
+                        Applications
+                      </h4>
+                      <ul className="flex flex-col gap-3 max-h-60 overflow-y-auto">
+                        {distinctApplications?.map((app: string) => (
+                          <li key={app}>
+                            <label
+                              className="flex items-center gap-3 group cursor-pointer"
+                              htmlFor={`modal-${app}`}
+                            >
+                              <input
+                                id={`modal-${app}`}
+                                type="checkbox"
+                                name="application"
+                                value={app}
+                                onChange={handleTempFilter}
+                                checked={tempFilterItem.applications.includes(
+                                  app
+                                )}
+                                className="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-2 focus:ring-gray-500 cursor-pointer"
+                              />
+                              <span className="text-sm text-gray-700 group-hover:text-gray-900">
+                                {app}
+                              </span>
+                            </label>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Years */}
+                    <div className="p-5 bg-gray-50 border-2 border-gray-200 rounded-xl">
+                      <h4 className="font-semibold text-sm uppercase mb-4 text-gray-700 tracking-wide border-b border-gray-300 pb-2">
+                        Years
+                      </h4>
+                      <ul className="flex flex-col gap-3 max-h-60 overflow-y-auto">
+                        {distinctYears?.map((year: string) => (
+                          <li key={year}>
+                            <label
+                              className="flex items-center gap-3 group cursor-pointer"
+                              htmlFor={`modal-${year}`}
+                            >
+                              <input
+                                id={`modal-${year}`}
+                                type="checkbox"
+                                name="year"
+                                value={year.toString()}
+                                onChange={handleTempFilter}
+                                checked={tempFilterItem.years.includes(
+                                  year.toString()
+                                )}
+                                className="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-2 focus:ring-gray-500 cursor-pointer"
+                              />
+                              <span className="text-sm text-gray-700 group-hover:text-gray-900">
+                                {year}
+                              </span>
+                            </label>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Modal Footer */}
+                <div className="bg-gray-50 px-6 py-4 border-t border-gray-200 flex items-center justify-end gap-3">
+                  <button
+                    onClick={cancelFilters}
+                    className="px-5 py-2.5 text-sm font-medium text-gray-700 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-100 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={applyFilters}
+                    className="px-5 py-2.5 text-sm font-medium text-white bg-gray-700 hover:bg-gray-800 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 shadow-sm"
+                  >
+                    Apply Filters
+                  </button>
+                </div>
               </div>
             </div>
           </div>
