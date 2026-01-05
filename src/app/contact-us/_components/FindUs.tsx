@@ -42,7 +42,7 @@ const locations: Location[] = [
     email: "msia@calvarycarpentry.com",
     googleMapsLink: "https://goo.gl/maps/K6zyFdLAvhHq3PZdm",
     googleMapsEmbed:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.9509505477447!2d101.58361831475779!3d3.112761997634586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4c3f7f7f7f7f%3A0x7f7f7f7f7f7f7f7f!2s8%2C%20Jalan%20TS%206%2F9!5e0!3m2!1sen!2smy!4v1234567890123!5m2!1sen!2smy",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.1940179889675!2d101.59704067497076!3d3.042610996933223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4dad4e6cb449%3A0x3ecd4cb4158247a5!2sCalvary%20Carpentry%20Malaysia!5e0!3m2!1sen!2ssg!4v1767604568345!5m2!1sen!2ssg",
   },
   // {
   //   name: "KLCC Office",
