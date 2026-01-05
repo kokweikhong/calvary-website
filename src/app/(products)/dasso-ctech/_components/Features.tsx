@@ -84,48 +84,53 @@ const applications: Application[] = [
 const Features = () => {
   return (
     <section>
-      <div className="w-full py-4 bg-dasso text-white mb-4">
-        <h2 className="uppercase text-center w-full text-2xl font-medium">
+      <div className="w-full py-4 sm:py-6 bg-dasso text-white mb-4">
+        <h2 className="uppercase text-center w-full text-xl sm:text-2xl font-semibold px-4">
           dasso ctech KEY FEATURES
         </h2>
       </div>
 
-      <div className="container-cp space-y-4">
-        <p>
+      <div className="container-cp space-y-6 sm:space-y-8">
+        <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
           {`Dasso CTECH is a type of decking material that is made from bamboo, which is a highly sustainable and renewable resource. The material is created using a process called compression molding, which makes it highly durable and resistant to weather, mould, soft rot, and insects.`}
         </p>
 
-        <div className="flex flex-col items-center justify-center gap-y-1">
+        <div className="flex flex-col items-center justify-center gap-y-2">
           <Link
             href={"#"}
-            className="bg-dasso text-white uppercase font-medium rounded-md py-2 px-4"
+            className="bg-dasso text-white uppercase font-medium rounded-lg py-2.5 px-6 hover:bg-dasso/90 hover:shadow-lg transition-all duration-200 text-sm sm:text-base"
           >
             Check out dasso ctech
           </Link>
-          <span className="text-sm text-dasso uppercase">
+          <span className="text-xs sm:text-sm text-dasso uppercase font-medium">
             dasso ctech products
           </span>
         </div>
 
-        <div className="grid grid-cols-3 gap-4 text-center">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 text-center">
           {features.map((feature, index) => (
-            <div key={index} className="flex flex-col items-center gap-y-4">
-              <div>
+            <div
+              key={index}
+              className="flex flex-col items-center gap-y-3 sm:gap-y-4 p-3 sm:p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+            >
+              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center">
                 <Image
                   src={feature.image}
                   alt={feature.title}
                   width={96}
                   height={96}
-                  className="w-24 h-24"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <div className="flex flex-col items-center gap-y-2">
-                <h4 className="text-base font-medium">{feature.title}</h4>
+                <h4 className="text-sm sm:text-base font-semibold">
+                  {feature.title}
+                </h4>
                 <ul className="flex flex-col gap-y-1 list-disc">
                   {feature.description.map((desc, index) => (
                     <li
                       key={index}
-                      className="text-sm text-gray-700 list-inside"
+                      className="text-xs sm:text-sm text-gray-700 list-inside"
                     >
                       {desc}
                     </li>
@@ -137,60 +142,64 @@ const Features = () => {
         </div>
       </div>
 
-      <div className="bg-dasso text-white py-8 mt-4">
-        <div className="container-cp">
-          <div className="flex gap-x-4 items-center justify-center mb-4">
-            <div>
+      <div className="bg-dasso text-white py-8 sm:py-12 mt-4">
+        <div className="container-cp space-y-6">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-x-6 items-center justify-center">
+            <div className="flex-shrink-0">
               <Image
                 src={warrantySvg}
                 alt={"warranty"}
                 width={96}
                 height={96}
-                className="w-24 h-24"
+                className="w-20 h-20 sm:w-24 sm:h-24"
               />
             </div>
-            <div className="flex flex-col gap-y-2">
-              <h3 className="text-2xl font-medium">Warranty</h3>
-              <p>25 years for Commercial and residential</p>
+            <div className="flex flex-col gap-y-2 text-center sm:text-left">
+              <h3 className="text-xl sm:text-2xl font-semibold">Warranty</h3>
+              <p className="text-sm sm:text-base">
+                25 years for Commercial and residential
+              </p>
             </div>
           </div>
-          <p>
-            {`Our Dasso CTECH decking products come with a 25-year warranty that covers defects in manufacturing, such as cracking, splitting, warping, and rotting.  While we are confident in the superior performance of our decking products, we understand that unexpected issues can arise. We offer this warranty to guarantee our commitment to providing a high-quality product. If you have any questions about our warranty, please don't hesitate to contact us.`}
+          <p className="text-sm sm:text-base leading-relaxed">
+            {`Our Dasso CTECH decking products come with a 25-year warranty that covers defects in manufacturing, such as cracking, splitting, warping, and rotting. While we are confident in the superior performance of our decking products, we understand that unexpected issues can arise. We offer this warranty to guarantee our commitment to providing a high-quality product. If you have any questions about our warranty, please don't hesitate to contact us.`}
           </p>
         </div>
       </div>
 
-      <div className="container-cp flex flex-col gap-4 py-4 lg:grid lg:grid-cols-3">
+      <div className="container-cp grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-8">
         {applications.map((application, index) => (
           <div
             key={index}
-            className="gap-x-2 grid grid-cols-[1fr_1fr] lg:grid-cols-1"
+            className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
           >
-            <div className="h-auto w-full">
+            <div className="w-full aspect-video">
               <Image
                 src={application.image}
                 alt={application.name}
                 width={400}
-                height={200}
+                height={300}
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="flex flex-col gap-y-2">
-              <div className="flex items-center gap-x-4">
-                <div className="w-auto h-16">
+            <div className="p-4 sm:p-5 space-y-3">
+              <div className="flex items-center gap-x-3 sm:gap-x-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0">
                   <Image
                     src={application.icon}
                     alt={application.name}
-                    width={80}
-                    height={80}
-                    className="w-full h-full object-cover"
+                    width={56}
+                    height={56}
+                    className="w-full h-full object-contain"
                   />
                 </div>
-                <h3 className="text-2xl font-medium">{application.name}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold">
+                  {application.name}
+                </h3>
               </div>
-              <ul className="list-disc">
-                <li className="list-inside">{application.description}</li>
-              </ul>
+              <p className="text-sm sm:text-base text-gray-600">
+                {application.description}
+              </p>
             </div>
           </div>
         ))}

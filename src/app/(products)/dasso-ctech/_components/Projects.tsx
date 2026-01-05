@@ -5,26 +5,32 @@ import { useQuery } from "@tanstack/react-query";
 import myImageLoader from "@/lib/imageLoader";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { getProjects } from "@/lib/project";
 
-async function getProjects(): Promise<Project[]> {
-  const response = await fetch(`/api/projects`);
-  const data = (await response.json()) as Project[];
-  const filteredData = data.filter((project) =>
-    project.products.includes("dassoCTECH"),
-  );
+// async function getProjects(): Promise<Project[]> {
+//   const response = await fetch(`/api/projects`);
+//   const data = (await response.json()) as Project[];
+//   const filteredData = data.filter((project) =>
+//     project.products.includes("dassoCTECH"),
+//   );
 
-  return filteredData;
-}
+//   return filteredData;
+// }
 
 const Projects = () => {
   const [numberToLoad, setNumberToLoad] = useState(6);
+  const [projects, setProjects] = useState<Project[] | null>(null);
 
-  const { data: projects } = useQuery<Project[]>({
-    queryKey: ["projects"],
-    queryFn: getProjects,
-  });
+  // Fetch projects on component mount
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const allProjects = await getProjects(undefined, ["dassoCTECH"]);
+      setProjects(allProjects);
+    };
+    fetchProjects();
+  }, []);
 
   return (
     <div className="bg-gray-200 py-8">
@@ -89,7 +95,7 @@ const Projects = () => {
           className={cn(
             "text-white uppercase font-medium rounded-md py-2 px-4",
             !projects?.length ? "bg-gray-300" : "bg-dasso",
-            numberToLoad >= projects?.length! ? "bg-gray-300" : "bg-dasso",
+            numberToLoad >= projects?.length! ? "bg-gray-300" : "bg-dasso"
           )}
         >
           Load More

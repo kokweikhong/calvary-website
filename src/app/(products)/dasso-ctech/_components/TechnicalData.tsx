@@ -96,52 +96,54 @@ const dassoPDFSvg =
 const TechnicalData = () => {
   return (
     <section className="!mt-0">
-      <div className="py-4 bg-dasso text-white">
-        <h2 className="text-2xl font-medium text-center uppercase">Download</h2>
+      <div className="py-4 sm:py-6 bg-dasso text-white">
+        <h2 className="text-xl sm:text-2xl font-semibold text-center uppercase px-4">
+          Download
+        </h2>
       </div>
 
-      <div>
-        <div className="flex flex-col justify-center py-4 gap-y-4">
+      <div className="container-cp py-6 sm:py-8">
+        <div className="flex flex-col gap-4 max-w-2xl mx-auto">
           <a
             href={dassoDeckingBrochure}
             target="_blank"
-            className="flex gap-x-2 py-2 px-4 mx-2 border-b border-b-black"
+            className="group flex items-center justify-between gap-x-3 py-3 px-4 sm:px-6 border-2 border-gray-200 rounded-lg hover:border-dasso hover:shadow-lg transition-all duration-200"
           >
-            <span className="uppercase">{`dasso® ctech decking Brochure`}</span>
+            <span className="uppercase text-sm sm:text-base font-medium group-hover:text-dasso transition-colors">{`dasso® ctech decking Brochure`}</span>
             <Image
               src={dassoPDFSvg}
-              alt="dasso decking brochure"
-              width={20}
-              height={20}
-              className="w-5 h-5"
+              alt="PDF download"
+              width={24}
+              height={24}
+              className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0"
             />
           </a>
 
           <a
             href={dassoWarrantyBrochure}
             target="_blank"
-            className="flex gap-x-2 py-2 px-4 mx-2 border-b border-b-black"
+            className="group flex items-center justify-between gap-x-3 py-3 px-4 sm:px-6 border-2 border-gray-200 rounded-lg hover:border-dasso hover:shadow-lg transition-all duration-200"
           >
-            <span className="uppercase">{`dasso® ctech warranty Brochure`}</span>
+            <span className="uppercase text-sm sm:text-base font-medium group-hover:text-dasso transition-colors">{`dasso® ctech warranty Brochure`}</span>
             <Image
               src={dassoPDFSvg}
-              alt="dasso warranty brochure"
-              width={20}
-              height={20}
-              className="w-5 h-5"
+              alt="PDF download"
+              width={24}
+              height={24}
+              className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0"
             />
           </a>
         </div>
       </div>
 
-      <div className="py-4 bg-dasso text-white">
-        <h2 className="text-2xl font-medium text-center uppercase">
+      <div className="py-4 sm:py-6 bg-dasso text-white">
+        <h2 className="text-xl sm:text-2xl font-semibold text-center uppercase px-4">
           Technical Data
         </h2>
       </div>
-      <div className="container-cp py-4">
+      <div className="container-cp py-6 sm:py-8">
         <div>
-          <ul className="space-y-4 lg:grid lg:grid-cols-2">
+          <ul className="space-y-4 sm:space-y-6 md:grid md:grid-cols-2 md:gap-6 md:space-y-0">
             {technicalData.map((data, index) => (
               <li key={index} className="py-2">
                 <h3 className="text-lg font-medium">{data.title}</h3>
