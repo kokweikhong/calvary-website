@@ -19,7 +19,7 @@ const Hero = () => {
         <div className="absolute top-0 left-0 w-full h-full bg-black/50"></div>
       </div>
 
-      <div className="text-white h-full flex flex-col items-center justify-center space-y-6 sm:space-y-8 max-w-xl mx-auto px-4 sm:px-6 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+      <div className="text-white h-full flex flex-col items-center justify-center space-y-6 sm:space-y-8 max-w-xl mx-auto px-4 sm:px-6 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-1">
         <div className="flex justify-center items-center space-x-3 sm:space-x-4">
           <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20">
             <Image
