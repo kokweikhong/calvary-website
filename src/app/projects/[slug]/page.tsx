@@ -1,10 +1,10 @@
 "use client";
 
 import { Project } from "@/interfaces/project";
-import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import { use } from "react";
+import { use, useEffect, useState } from "react";
 import { getWebsiteAssetsURLEnv } from "@/lib/env";
+import LoadingState from "@/components/LoadingState";
 
 const ASSET_URL = getWebsiteAssetsURLEnv();
 
@@ -20,23 +20,21 @@ export default function Page({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = use(params);
-  const { data: project, isLoading } = useQuery({
-    queryKey: ["project", slug],
-    queryFn: () => getProject(slug),
-    retry: 1,
-  });
+  const [project, setProject] = useState<Project | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(true);
+    async function fetchProject() {
+      const data = await getProject(slug);
+      setProject(data);
+      setIsLoading(false);
+    }
+    fetchProject();
+  }, [slug]);
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-linear-to-b from-gray-50 to-white">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-16 h-16 border-4 border-gray-300 border-t-gray-900 rounded-full animate-spin"></div>
-          <h2 className="text-center text-xl sm:text-2xl font-semibold text-gray-700">
-            Loading project details...
-          </h2>
-        </div>
-      </div>
-    );
+    return <LoadingState />;
   }
 
   if (!project) {

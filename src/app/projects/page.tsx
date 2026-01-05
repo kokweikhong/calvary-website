@@ -1,13 +1,10 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
 import ProjectReferenceCard from "@/components/projects/ProjectReferenceCard";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Project } from "@/interfaces/project";
 import { cn } from "@/lib/utils";
 import { getCountryEnv } from "@/lib/env";
-// import { getProjects } from "@/lib/project";
-// import data from "@/data/projects.json";
 
 async function getProjects(
   limit?: number,
@@ -253,13 +250,6 @@ export default function Page() {
       }
     }
   }, []);
-
-  // const projects = useQuery({
-  //   queryKey: ["projects"],
-  //   queryFn: getProjects,
-  // });
-
-  // const projects: Project[] = data as unknown as Project[];
 
   const services = ["Residential", "Commercial", "Governmental"];
 

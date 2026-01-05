@@ -7,9 +7,7 @@ import ServiceHero from "@/components/ServiceHero";
 import ServiceProductSlider from "@/components/ServiceProductSlider";
 import ServiceProjects from "@/components/ServiceProjects";
 import { Product } from "@/interfaces/product";
-import { useQuery } from "@tanstack/react-query";
 import { use, useEffect, useState } from "react";
-import { getProjects } from "@/lib/project";
 import LoadingState from "@/components/LoadingState";
 
 async function getProductsByService(service: string): Promise<Product[]> {

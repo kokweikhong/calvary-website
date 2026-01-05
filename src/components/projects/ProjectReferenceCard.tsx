@@ -2,18 +2,8 @@
 
 import { Project } from "@/interfaces/project";
 import Image from "next/image";
-import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import myImageLoader from "@/lib/imageLoader";
-
-async function getAllFilesFromFolder(folder: string) {
-  // parse the folder string to url friendly string
-  const folderEncode = encodeURIComponent(folder);
-
-  const response = await fetch(`/api/projects/folder/${folderEncode}`);
-  const data = await response.json();
-  return data;
-}
 
 const ProjectReferenceCard = ({ project }: { project: Project }) => {
   const thumbnail = project.images?.[0];

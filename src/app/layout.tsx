@@ -4,7 +4,6 @@ import Header from "@/components/header/Header";
 import ScrollToTop from "@/components/ScrollToTop";
 import { garamond, montserrat } from "@/lib/fonts";
 import type { Metadata } from "next";
-import QueryProvider from "@/components/QueryProvider";
 import "./globals.css";
 import Script from "next/script";
 import GtmScript from "@/components/gtm-script";
@@ -67,24 +66,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-W623VHBX');`,
         }}
       /> */}
-      <QueryProvider>
-        <body className="font-montserrat bg-white text-gray-900 antialiased">
-          <Header />
-          <main>{children}</main>
-          <Footer />
-          {/* <GtmScript /> */}
-          {/* <noscript
+      <body className="font-montserrat bg-white text-gray-900 antialiased">
+        <Header />
+        <main>{children}</main>
+        <Footer />
+        {/* <GtmScript /> */}
+        {/* <noscript
             dangerouslySetInnerHTML={{
               __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W623VHBX" height="0" width="0" style="display:none;visibility:hidden" />`,
             }}
           /> */}
-          <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-2">
-            <WhatsappFloating />
-            <ScrollToTop />
-          </div>
-          <CookieBanner />
-        </body>
-      </QueryProvider>
+        <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-2">
+          <WhatsappFloating />
+          <ScrollToTop />
+        </div>
+        <CookieBanner />
+      </body>
       <Suspense fallback={null}>
         <GoogleAnalytics GA_MEASUREMENT_ID={GA_MEASUREMENT_ID} />
       </Suspense>

@@ -1,23 +1,43 @@
 "use client";
 
 import ProductCard from "@/components/ProductCard";
-import { useQuery } from "@tanstack/react-query";
 import { Product } from "@/interfaces/product";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 import { deckingAndOutdoorDescription } from "@/constants/misc";
+import { useEffect, useState } from "react";
+import LoadingState from "@/components/LoadingState";
+
+async function getProducts(): Promise<Product[]> {
+  const res = await fetch("/api/products");
+  const data: Product[] = await res.json();
+  return data;
+}
 
 const Products = () => {
-  const products = useQuery({
-    queryKey: ["products"],
-    queryFn: async () => {
-      const res = await fetch("/api/products");
-      const data: Product[] = await res.json();
-      const filteredData = data.filter(
-        (product) => !product.services.includes("maintenance")
-      );
-      return filteredData;
-    },
-  });
+  const [products, setProducts] = useState<Product[] | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(true);
+    async function fetchProducts() {
+      const data = await getProducts();
+      setProducts(data);
+      setIsLoading(false);
+    }
+    fetchProducts();
+  }, []);
+
+  if (isLoading) {
+    return <LoadingState />;
+  }
+
+  if (!products) {
+    return (
+      <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 text-center mt-16">
+        No products found.
+      </div>
+    );
+  }
 
   return (
     <section className="section white">
@@ -53,7 +73,7 @@ const Products = () => {
       <div className="container mx-auto sm:px-6 lg:px-8">
         <div className="row">
           <div className="grid grid-cols-12 auto-rows-fr gap-6">
-            {products.data?.map((product) => (
+            {products.map((product) => (
               <div
                 key={product.title}
                 className="lg:col-span-4 md:col-span-6 col-span-full h-full"
