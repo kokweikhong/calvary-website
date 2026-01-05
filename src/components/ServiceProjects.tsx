@@ -3,36 +3,48 @@
 import { Project } from "@/interfaces/project";
 import ProjectReferenceCard from "./ProjectReferenceCard";
 import { cn } from "@/lib/utils";
-import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getProjects } from "@/lib/project";
+import LoadingState from "./LoadingState";
 
 type ServiceProjectsProps = {
   service: string;
 };
 
-async function getProjectsByService(service: string) {
-  const res = await fetch(`/api/projects/`);
-  const data: Project[] = await res.json();
-  const filteredData = data.filter((project) =>
-    project.services?.includes(service)
-  );
-  return filteredData;
-}
-
 const ServiceProjects = ({ service }: ServiceProjectsProps) => {
   const [numberToShow, setNumberToShow] = useState(7);
+  const [projects, setProjects] = useState<Project[] | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const { data: projects, isLoading } = useQuery({
-    queryKey: ["projects", service],
-    queryFn: () => getProjectsByService(service),
-  });
+  useEffect(() => {
+    setIsLoading(true);
+    async function fetchProjects() {
+      const data = await getProjects(
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        [service],
+        numberToShow,
+        0
+      );
+      setProjects(data);
+      setIsLoading(false);
+    }
+    fetchProjects();
+  }, [service, numberToShow]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingState />;
   }
 
   if (!projects) {
-    return <div>Loading...</div>;
+    return (
+      <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 text-center mt-16">
+        No projects found for this service.
+      </div>
+    );
   }
 
   return (
@@ -51,33 +63,26 @@ const ServiceProjects = ({ service }: ServiceProjectsProps) => {
         </p>
       </div>
       <div className="grid grid-cols-1 gap-1 mt-8 md:grid-cols-3">
-        {projects && projects.length > 0 ? (
+        {projects &&
+          projects.length > 0 &&
           projects?.slice(0, numberToShow).map((project, index) => {
             return (
               <div
                 key={`${project.name}-${index}`}
                 className={cn(
-                  "h-[350px]",
-                  index === 0
-                    ? "col-span-full md:h-[400px] lg:h-[500px]"
-                    : "col-span-1"
+                  "h-87.5",
+                  index === 0 ? "col-span-full md:h-100 lg:h-125" : "col-span-1"
                 )}
               >
                 <ProjectReferenceCard project={project as any} />
               </div>
             );
-          })
-        ) : (
-          <div className="text-center italic">No projects found</div>
-        )}
+          })}
       </div>
       <div className="flex justify-center items-center mt-8">
         <button
           onClick={() => setNumberToShow((prev) => prev + 6)}
-          className={cn(
-            "text-white px-4 py-2",
-            numberToShow >= projects.length ? "bg-gray-400" : "bg-black"
-          )}
+          className="rounded-md bg-calvarycomposite px-4 py-2 text-white hover:bg-calvarycomposite/80 transition cursor-pointer"
         >
           Load More
         </button>

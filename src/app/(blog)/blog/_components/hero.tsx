@@ -35,7 +35,7 @@ const Hero = () => {
             priority
             className="object-cover w-full h-full"
           />
-          <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50" />
+          <div className="absolute top-0 left-0 w-full h-full bg-black/50" />
         </div>
 
         <div className="text-white flex flex-col gap-y-4 items-center z-10 max-w-3xl">
@@ -59,7 +59,7 @@ const Hero = () => {
         </div>
       </div>
       {/* sliding word with tailwindcss */}
-      <div className="w-full inline-flex flex-nowrap overflow-hidden bg-black !mt-0 py-4">
+      <div className="w-full inline-flex flex-nowrap overflow-hidden bg-black mt-0! py-4">
         <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 animate-infinite-scroll">
           {slidingWords.map((word, index) => (
             <li key={index} className="text-white text-nowrap">

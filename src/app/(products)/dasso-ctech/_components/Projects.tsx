@@ -1,23 +1,14 @@
 "use client";
 
 import { Project } from "@/interfaces/project";
-import { useQuery } from "@tanstack/react-query";
-import myImageLoader from "@/lib/imageLoader";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { getProjects } from "@/lib/project";
+import { getWebsiteAssetsURLEnv } from "@/lib/env";
 
-// async function getProjects(): Promise<Project[]> {
-//   const response = await fetch(`/api/projects`);
-//   const data = (await response.json()) as Project[];
-//   const filteredData = data.filter((project) =>
-//     project.products.includes("dassoCTECH"),
-//   );
-
-//   return filteredData;
-// }
+const ASSET_URL = getWebsiteAssetsURLEnv();
 
 const Projects = () => {
   const [numberToLoad, setNumberToLoad] = useState(6);
@@ -48,8 +39,11 @@ const Projects = () => {
               <div className="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-96">
                 {project.images && project.images.at(1) && (
                   <Image
-                    loader={myImageLoader}
-                    src={project.images.at(1)?.replaceAll(" ", "%20") ?? ""}
+                    src={
+                      ASSET_URL +
+                      "/" +
+                      project.images.at(1)?.replaceAll(" ", "%20")
+                    }
                     alt={project.name}
                     width={300}
                     height={300}

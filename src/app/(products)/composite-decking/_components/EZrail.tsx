@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getCountryEnv } from "@/lib/env";
 
 const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
 const ezrailBannerURL = `${ASSETS_URL}/websites/composite-decking/ezrail-banner.png`;
+const country = getCountryEnv();
 
 const features: { name: string; iconURL: string }[] = [
   // { name: "", iconURL: `${ASSETS_URL}/websites/composite-decking/feature-icons/easy-to-maintain.svg` },
@@ -201,29 +203,23 @@ const EZRail = () => {
                   </span>
                 </Link>
                 <Link
-                  href={"/calvary-composite"}
-                  className="group bg-white rounded-full px-4 py-2 shadow-md hover:shadow-xl hover:scale-105 hover:bg-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-calvarycomposite"
-                >
-                  <span className="text-calvarycomposite uppercase font-semibold text-xs sm:text-sm whitespace-nowrap">
-                    Calvary Composite
-                  </span>
-                </Link>
-                <Link
                   href={"/onewood"}
                   className="group bg-white rounded-full px-4 py-2 shadow-md hover:shadow-xl hover:scale-105 hover:bg-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-calvarycomposite"
                 >
                   <span className="text-calvarycomposite uppercase font-semibold text-xs sm:text-sm whitespace-nowrap">
-                    Reconstituted Composite
+                    OneWood
                   </span>
                 </Link>
-                <Link
-                  href={"/onewood"}
-                  className="group bg-white rounded-full px-4 py-2 shadow-md hover:shadow-xl hover:scale-105 hover:bg-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-calvarycomposite"
-                >
-                  <span className="text-calvarycomposite uppercase font-semibold text-xs sm:text-sm whitespace-nowrap">
-                    OneWood Decking
-                  </span>
-                </Link>
+                {country === "Singapore" && (
+                  <Link
+                    href={"/dasso-ctech"}
+                    className="group bg-white rounded-full px-4 py-2 shadow-md hover:shadow-xl hover:scale-105 hover:bg-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-calvarycomposite"
+                  >
+                    <span className="text-calvarycomposite uppercase font-semibold text-xs sm:text-sm whitespace-nowrap">
+                      dasso Bamboo
+                    </span>
+                  </Link>
+                )}
               </div>
             </div>
           </div>

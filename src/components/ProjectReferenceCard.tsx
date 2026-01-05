@@ -1,43 +1,55 @@
 "use client";
 
-// import { getAllFilesFromFolder } from "@/actions/dospace";
 import { Project } from "@/interfaces/project";
-import projectImageLoader from "@/lib/projectImageLoader";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { getWebsiteAssetsURLEnv } from "@/lib/env";
 
-// async function getAllFilesFromFolder(folder: string) {
-//   // parse the folder string to url friendly string
-//   const folderEncode = encodeURIComponent(folder);
-//   const response = await fetch(
-//     `${process.env.LOCAL_API_URL}/api/projects/folder/${folderEncode}`
-//   );
-//   const data = await response.json();
-//   return data;
-// }
+const ASSET_URL = getWebsiteAssetsURLEnv();
 
-const ProjectReferenceCard = ({ project }: { project: Project }) => {
-  // const doSpaceEndpoint = process.env.DO_SPACES_ENDPOINT;
-  // const projectFiles = await getAllFilesFromFolder(`${project.image_path}`);
+const ProjectReferenceCard = ({
+  project,
+  onImageLoad,
+}: {
+  project: Project;
+  onImageLoad?: () => void;
+}) => {
   const thumbnail = project.images?.at(1);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+    onImageLoad?.();
+  };
 
   return (
     <div className="w-full h-full relative">
-      <Link href={`/projects/${project.id}`} className="absolute inset-0 z-10">
+      <Link href={`/projects/${project.url}`} className="absolute inset-0 z-10">
         <div className="relative h-full w-full">
+          {/* Loading placeholder */}
+          {!imageLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+              <div className="h-12 w-12 animate-spin rounded-full border-4 border-gray-200 border-t-calvarycomposite"></div>
+            </div>
+          )}
+
           {thumbnail && (
             <Image
-              loader={projectImageLoader}
               // src={`${doSpaceEndpoint}/${thumbnail}`}
-              src={thumbnail.replaceAll(" ", "%20")}
+              // src={thumbnail.replaceAll(" ", "%20")}
+              src={ASSET_URL + "/" + thumbnail.replaceAll(" ", "%20")}
               alt={project.name}
               placeholder="blur"
-              blurDataURL={"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNcWA8AAccBIgbXS5wAAAAASUVORK5CYII="}
+              blurDataURL={
+                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNcWA8AAccBIgbXS5wAAAAASUVORK5CYII="
+              }
               // priority
               width={300}
               height={300}
               sizes="(max-width: 767px) 100vw, (max-width: 991px) 50vw, 33vw"
               className="w-full h-full object-cover"
+              onLoad={handleImageLoad}
             />
           )}
           <div className="bg-black/50 absolute inset-0 flex items-center justify-center"></div>
@@ -45,8 +57,9 @@ const ProjectReferenceCard = ({ project }: { project: Project }) => {
         <div className="absolute inset-0 flex flex-col items-start justify-between text-white p-8 w-full">
           <div>
             <h3 className="capitalize font-semibold text-xl">{project.name}</h3>
-            <h4 className="uppercase text-sm font-light">{`${project.year} - ${project.sectors ?? "N/A"
-              }`}</h4>
+            <h4 className="uppercase text-sm font-light">{`${project.year} - ${
+              project.sectors ?? "N/A"
+            }`}</h4>
           </div>
 
           <div className="flex flex-col items-start justify-between gap-4 w-full">
@@ -66,14 +79,6 @@ const ProjectReferenceCard = ({ project }: { project: Project }) => {
                   );
                 })}
               </div>
-              {/*
-            <Link
-              href={`/projects/${project.id}`}
-              className="text-white text-nowrap border border-white px-2 py-1 text-center"
-            >
-              View Project
-            </Link>
-            */}
             </div>
           </div>
         </div>

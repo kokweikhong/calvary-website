@@ -68,7 +68,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         }}
       /> */}
       <QueryProvider>
-        <body className={montserrat.className}>
+        <body className="font-montserrat bg-white text-gray-900 antialiased">
           <Header />
           <main>{children}</main>
           <Footer />

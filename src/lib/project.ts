@@ -7,6 +7,7 @@ export async function getProjects(
   applications?: string[],
   years?: string[],
   projectName?: string,
+  services?: string[],
   limit?: number,
   offset?: number
 ): Promise<Project[]> {
@@ -21,6 +22,7 @@ export async function getProjects(
         ...(applications ? { applications: applications.join(",") } : {}),
         ...(years ? { years: years.join(",") } : {}),
         ...(projectName ? { projectName } : {}),
+        ...(services ? { services: services.join(",") } : {}),
         ...(limit ? { limit: limit.toString() } : {}),
         ...(offset ? { offset: offset.toString() } : {}),
       }).toString()

@@ -1,9 +1,6 @@
 "use client";
 
 import { FC } from "react";
-import "swiper/css";
-import { Autoplay } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 type ServiceProductSliderProps = {
   products: string[];
@@ -16,34 +13,58 @@ const ServiceProductSlider: FC<ServiceProductSliderProps> = ({
   backgroundColor = "black",
   textColor = "white",
 }) => {
+  // Duplicate products array multiple times for seamless loop
+  const duplicatedProducts = Array.from({ length: 3 }, () => products).flat();
+
   return (
-    <div>
-      <Swiper
-        modules={[Autoplay]}
-        spaceBetween={50}
-        slidesPerView={products.length}
-        autoplay={{
-          delay: 1000,
-          disableOnInteraction: false,
-        }}
-        loop={true}
-        // onSlideChange={() => console.log("slide change")}
-        // onSwiper={(swiper) => console.log(swiper)}
-        style={{ backgroundColor: backgroundColor }}
-        className="!p-4"
-      >
-        {Array.from({ length: 10 }, () => products)
-          .flat()
-          .map((product, index) => (
-            <SwiperSlide
-              key={`product-${index}`}
+    <div style={{ backgroundColor }} className="overflow-hidden py-4">
+      <div className="relative flex">
+        {/* First set of products */}
+        <div className="flex animate-scroll-left gap-12 whitespace-nowrap">
+          {duplicatedProducts.map((product, index) => (
+            <span
+              key={`product-1-${index}`}
               style={{ color: textColor }}
-              className="!w-auto whitespace-nowrap"
+              className="text-lg font-medium"
             >
-              <span>{product}</span>
-            </SwiperSlide>
+              {product}
+            </span>
           ))}
-      </Swiper>
+        </div>
+
+        {/* Second set for seamless loop */}
+        <div className="flex animate-scroll-left gap-12 whitespace-nowrap">
+          {duplicatedProducts.map((product, index) => (
+            <span
+              key={`product-2-${index}`}
+              style={{ color: textColor }}
+              className="text-lg font-medium"
+            >
+              {product}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes scroll-left {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        .animate-scroll-left {
+          animation: scroll-left 20s linear infinite;
+        }
+
+        /* Pause animation on hover */
+        .animate-scroll-left:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </div>
   );
 };

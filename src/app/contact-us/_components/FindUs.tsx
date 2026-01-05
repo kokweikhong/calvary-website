@@ -4,22 +4,30 @@ type Location = {
   whatsapp?: string;
   phone?: string;
   email?: string;
+  googleMapsLink?: string;
+  googleMapsEmbed?: string;
 };
 
 const locations: Location[] = [
-  // {
-  //   name: "Showroom",
-  //   address: ["Marina square #03-207", "Singapore 039594"],
-  //   whatsapp: "+65 8893 0429",
-  //   phone: "+65 6910 6069",
-  //   email: "sales@k-floors.com",
-  // },
+  {
+    name: "Showroom",
+    address: ["66 Kampung Bugis, Level 7", "Singapore 338987"],
+    whatsapp: "+65 8776 7837",
+    phone: "+65 6684 4012",
+    email: "sales@calvarycarpentry.com",
+    googleMapsLink: "https://goo.gl/maps/oFlyl78SvBgulWVIL",
+    googleMapsEmbed:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.792506074923!2d103.86284731475398!3d1.2966294990632108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da19a3c0f9804f%3A0x3b1c3e3f9f9f9f9f!2s66%20Kampong%20Bugis!5e0!3m2!1sen!2ssg!4v1234567890123!5m2!1sen!2ssg",
+  },
   {
     name: "Singapore HQ",
     address: ["66 Kampung Bugis, Level 7", "Singapore 338987"],
     whatsapp: "+65 8776 7837",
     phone: "+65 6684 4012",
     email: "sales@calvarycarpentry.com",
+    googleMapsLink: "https://goo.gl/maps/oFlyl78SvBgulWVIL",
+    googleMapsEmbed:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.792506074923!2d103.86284731475398!3d1.2966294990632108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da19a3c0f9804f%3A0x3b1c3e3f9f9f9f9f!2s66%20Kampong%20Bugis!5e0!3m2!1sen!2ssg!4v1234567890123!5m2!1sen!2ssg",
   },
   {
     name: "Calvary Carpentry Sdn Bhd",
@@ -32,6 +40,9 @@ const locations: Location[] = [
     whatsapp: "+60 13-300 1091",
     phone: "+60 13-300 1091",
     email: "msia@calvarycarpentry.com",
+    googleMapsLink: "https://goo.gl/maps/K6zyFdLAvhHq3PZdm",
+    googleMapsEmbed:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.9509505477447!2d101.58361831475779!3d3.112761997634586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4c3f7f7f7f7f%3A0x7f7f7f7f7f7f7f7f!2s8%2C%20Jalan%20TS%206%2F9!5e0!3m2!1sen!2smy!4v1234567890123!5m2!1sen!2smy",
   },
   // {
   //   name: "KLCC Office",
@@ -63,13 +74,14 @@ const FindUs = () => {
         {locations.map((location, index) => (
           <div
             key={index}
-            className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 sm:p-8 border border-gray-100"
+            className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
           >
-            <div className="md:grid md:grid-cols-[1fr_2fr] md:gap-6 space-y-3 md:space-y-0">
-              <h3 className="text-lg sm:text-xl font-semibold text-[#137765]">
-                {location.name}
-              </h3>
-              <div className="space-y-3 sm:space-y-4">
+            <div className="md:grid md:grid-cols-2 md:gap-0">
+              {/* Location Details */}
+              <div className="p-6 sm:p-8 space-y-3 sm:space-y-4">
+                <h3 className="text-lg sm:text-xl font-semibold text-[#137765]">
+                  {location.name}
+                </h3>
                 <div className="text-sm sm:text-base text-gray-700 leading-relaxed">
                   {location.address.map((line, index) => (
                     <p key={index}>{line}</p>
@@ -86,6 +98,8 @@ const FindUs = () => {
                           /[^0-9]/g,
                           ""
                         )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-[#137765] hover:underline"
                       >
                         {location.whatsapp}
@@ -114,8 +128,44 @@ const FindUs = () => {
                       </a>
                     </p>
                   )}
+                  {location.googleMapsLink && (
+                    <div className="pt-2">
+                      <a
+                        href={location.googleMapsLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center space-x-2 text-[#137765] hover:text-[#0f5d4e] font-medium transition-colors"
+                      >
+                        <svg
+                          className="w-4 h-4 sm:w-5 sm:h-5"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                        </svg>
+                        <span>Open in Google Maps</span>
+                      </a>
+                    </div>
+                  )}
                 </div>
               </div>
+
+              {/* Google Maps Embed */}
+              {location.googleMapsEmbed && (
+                <div className="h-64 md:h-full min-h-75 bg-gray-100">
+                  <iframe
+                    src={location.googleMapsEmbed}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={`Map of ${location.name}`}
+                    className="w-full h-full"
+                  />
+                </div>
+              )}
             </div>
           </div>
         ))}

@@ -3,8 +3,6 @@ import { promises as fs } from "fs";
 import { Project } from "@/interfaces/project";
 // import { NextApiRequest, NextApiResponse } from "next";
 
-const country = process.env.NEXT_PUBLIC_COUNTRY || "Singapore";
-
 type ProjectsResponse = {
   data: Project[];
   length: number;
@@ -14,7 +12,8 @@ export async function GET(request: NextRequest) {
   // get param from url for country filter
   // limit and offset also
   const searchParams = request.nextUrl.searchParams;
-  const countryParam = searchParams.get("country");
+  const countryParam =
+    process.env.NEXT_PUBLIC_COUNTRY === "Malaysia" ? "my" : "sg";
   const limitParam = searchParams.get("limit");
   const offsetParam = searchParams.get("offset");
 
@@ -92,9 +91,10 @@ export async function GET(request: NextRequest) {
   const offset = offsetParam ? parseInt(offsetParam) : 0;
   const limit = limitParam ? parseInt(limitParam) : filteredData.length;
 
-  filteredData = filteredData.slice(offset, offset + limit);
+  // sort by year descending
+  filteredData.sort((a, b) => (b.year || 0) - (a.year || 0));
 
-  console.log("API Projects Returned Length:", filteredData.length);
+  filteredData = filteredData.slice(offset, offset + limit);
 
   return NextResponse.json({
     data: filteredData,

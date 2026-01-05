@@ -155,7 +155,7 @@ const ViewProjects = () => {
         {projects.length > numberOfProjects && (
           <button
             onClick={() => setNumberOfProjects(numberOfProjects + 3)}
-            className="bg-calvarycomposite text-white px-6 py-3 rounded-lg hover:bg-calvarycomposite/90 hover:shadow-lg transition-all duration-300 font-medium text-sm sm:text-base"
+            className="bg-calvarycomposite text-white px-6 py-3 rounded-lg hover:bg-calvarycomposite/90 hover:shadow-lg transition-all duration-300 font-medium text-sm sm:text-base cursor-pointer"
           >
             Load More Projects
           </button>

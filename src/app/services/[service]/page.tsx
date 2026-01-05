@@ -8,11 +8,14 @@ import ServiceProductSlider from "@/components/ServiceProductSlider";
 import ServiceProjects from "@/components/ServiceProjects";
 import { Product } from "@/interfaces/product";
 import { useQuery } from "@tanstack/react-query";
-import { use } from "react";
+import { use, useEffect, useState } from "react";
+import { getProjects } from "@/lib/project";
+import LoadingState from "@/components/LoadingState";
 
-async function getProductsByService(service: string) {
+async function getProductsByService(service: string): Promise<Product[]> {
   const res = await fetch(`/api/products/services/${service}`);
   const data: Product[] = await res.json();
+  console.log("Fetched products by service:", data);
   return data;
 }
 
@@ -27,22 +30,35 @@ export default function Page({
 }: {
   params: Promise<{ service: string }>;
 }) {
-  const { service } = use(params);
-  const { data: products, isLoading } = useQuery({
-    queryKey: ["service", service],
-    queryFn: () => getProductsByService(service),
-    enabled: !!service,
-  });
+  const service = use(params).service;
+  const [products, setProducts] = useState<Product[] | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(true);
+    async function fetchProducts() {
+      const data = await getProductsByService(service);
+      console.log("Service in useEffect:", service);
+      console.log("Data in useEffect:", data);
+      setProducts(data);
+      setIsLoading(false);
+    }
+    fetchProducts();
+  }, [service]);
 
   const categories =
     serviceCategories[service as keyof typeof serviceCategories];
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingState />;
   }
 
   if (!products) {
-    return <div>Loading...</div>;
+    return (
+      <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 text-center mt-16">
+        No products found for this service.
+      </div>
+    );
   }
 
   return (

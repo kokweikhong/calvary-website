@@ -7,13 +7,15 @@ import Link from "next/link";
 export default async function Page() {
   const posts = await getPosts();
   return (
-    <div className="space-y-8">
+    <div>
       <Hero />
-      <FeatureArticles />
+      <div className="mt-8">
+        <FeatureArticles />
+      </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 container-cp py-4 mt-4">
         {posts
           .sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
           )
           .map((post) => (
             <article
@@ -45,7 +47,7 @@ export default async function Page() {
                     height={400}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 rounded-lg" />
+                  <div className="absolute top-0 left-0 w-full h-full bg-black/50 rounded-lg" />
                 </div>
               )}
             </article>

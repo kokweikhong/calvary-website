@@ -1,10 +1,12 @@
 "use client";
 
 import { Project } from "@/interfaces/project";
-import myImageLoader from "@/lib/imageLoader";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { use } from "react";
+import { getWebsiteAssetsURLEnv } from "@/lib/env";
+
+const ASSET_URL = getWebsiteAssetsURLEnv();
 
 async function getProject(slug: string) {
   const res = await fetch(`/api/projects/${slug}`);
@@ -330,8 +332,7 @@ export default function Page({
                   className="group relative aspect-4/3 rounded-xl overflow-hidden bg-gray-100 shadow-md hover:shadow-2xl transition-all duration-300"
                 >
                   <Image
-                    loader={myImageLoader}
-                    src={image.replaceAll(" ", "%20")}
+                    src={ASSET_URL + "/" + image.replaceAll(" ", "%20")}
                     alt={
                       project.name
                         ? `${project.name}-${index + 1}`

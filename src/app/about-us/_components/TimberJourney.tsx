@@ -1,26 +1,23 @@
 import Image from "next/image";
 
 const ASSETS_URL = process.env.NEXT_PUBLIC_WEBSITE_ASSETS_URL;
-const journeys: { title: string; description: string; imgUrl: string }[] = [
+const journeys: {
+  title: string;
+  description: string;
+  imgUrl: string;
+  youtubeUrl?: string;
+}[] = [
   {
     title: "Production & Material: Uncle Ho",
     description: "Production",
     imgUrl: `${ASSETS_URL}/websites/about-us/production-material-uncle-ho.jpg`,
+    youtubeUrl: "https://www.youtube.com/embed/5n321uCH400",
   },
   {
     title: "Managing Projects & Sites: Raziq",
     description: "Project Manager",
     imgUrl: `${ASSETS_URL}/websites/about-us/managing-projects-sites-raziq.jpg`,
-  },
-  {
-    title: "Sales & Market: Irene",
-    description: "Sales Manager",
-    imgUrl: `${ASSETS_URL}/websites/about-us/sales-market-irene.jpg`,
-  },
-  {
-    title: "Research & Development: Sheng Chuan",
-    description: "Project QAQC",
-    imgUrl: `${ASSETS_URL}/websites/about-us/research-development-sheng-chuan.jpg`,
+    youtubeUrl: "https://www.youtube.com/embed/lQiJsOi7etQ",
   },
 ];
 
@@ -52,15 +49,25 @@ const TimberJourney = () => {
                 {journey.description}
               </p>
             </div>
-            <div className="aspect-video w-full overflow-hidden">
-              <Image
-                src={journey.imgUrl}
-                alt={journey.title}
-                width={600}
-                height={400}
-                priority
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+            <div className="aspect-video w-full overflow-hidden bg-black">
+              {journey.youtubeUrl ? (
+                <iframe
+                  src={journey.youtubeUrl}
+                  title={journey.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
+              ) : (
+                <Image
+                  src={journey.imgUrl}
+                  alt={journey.title}
+                  width={600}
+                  height={400}
+                  priority
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              )}
             </div>
           </div>
         ))}
