@@ -9,7 +9,7 @@ const AboutApplications = () => {
     <div className="space-y-16 sm:space-y-20 py-8">
       {dassoApplications.map((app) => (
         <div key={app.name} className="space-y-6 sm:space-y-8">
-          <div className="w-full bg-gradient-to-r from-dasso to-dasso/90 text-white text-center py-6 sm:py-8 shadow-lg">
+          <div className="w-full bg-linear-to-r from-dasso to-dasso/90 text-white text-center py-6 sm:py-8 shadow-lg">
             <h2 className="uppercase text-xl sm:text-2xl md:text-3xl font-bold px-4 tracking-wide">{`About ${app.name}`}</h2>
           </div>
 
@@ -53,7 +53,7 @@ const AboutApplications = () => {
               </div>
             </div>
 
-            <div className="w-full bg-gradient-to-b from-gray-50 to-white rounded-2xl p-6 sm:p-8 shadow-lg">
+            <div className="w-full bg-linear-to-b from-gray-50 to-white rounded-2xl p-6 sm:p-8 shadow-lg">
               <ImageSlider data={app.patterns} className="h-16 sm:h-20" />
             </div>
           </div>
@@ -98,7 +98,7 @@ const AboutApplications = () => {
           </div>
 
           <div className="container-cp overflow-x-auto">
-            <table className="w-full min-w-[500px] border-collapse shadow-md rounded-lg overflow-hidden">
+            <table className="w-full min-w-125 border-collapse shadow-md rounded-lg overflow-hidden">
               <thead>
                 <tr>
                   <th className="uppercase bg-dasso text-white py-3 sm:py-4 px-4 text-left text-sm sm:text-base font-semibold w-3/5">

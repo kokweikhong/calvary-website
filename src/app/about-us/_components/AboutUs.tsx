@@ -62,19 +62,19 @@ const AboutUs = () => {
 
       <div className="text-[#805C00] w-full space-y-3 sm:space-y-4 max-w-2xl">
         <div className="flex space-x-3 sm:space-x-4 items-start">
-          <ArrowRightWithTail className="text-[#805C00] flex-shrink-0 mt-1" />
+          <ArrowRightWithTail className="text-[#805C00] shrink-0 mt-1" />
           <h3 className="text-base sm:text-lg font-medium">
             Flooring, decking, cladding, soffit.
           </h3>
         </div>
         <div className="flex space-x-3 sm:space-x-4 items-start">
-          <ArrowRightWithTail className="text-[#805C00] flex-shrink-0 mt-1" />
+          <ArrowRightWithTail className="text-[#805C00] shrink-0 mt-1" />
           <h3 className="text-base sm:text-lg font-medium">
             Stairs, rails, trellis, screens.
           </h3>
         </div>
         <div className="flex space-x-3 sm:space-x-4 items-start">
-          <ArrowRightWithTail className="text-[#805C00] flex-shrink-0 mt-1" />
+          <ArrowRightWithTail className="text-[#805C00] shrink-0 mt-1" />
           <h3 className="text-base sm:text-lg font-medium">
             Residential, commercial, government.
           </h3>
@@ -92,8 +92,8 @@ const AboutUs = () => {
 
       {/* images */}
       <div className="w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:grid-cols-[2fr_1fr] md:grid-rows-2 md:max-h-[800px]">
-          <div className="relative h-[250px] sm:h-[300px] md:h-full md:col-span-1 md:row-span-full rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:grid-cols-[2fr_1fr] md:grid-rows-2 md:max-h-200">
+          <div className="relative h-62.5 sm:h-75 md:h-full md:col-span-1 md:row-span-full rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
             <Image
               src={feature1ImgUrl}
               alt="Second Nature House"
@@ -103,7 +103,7 @@ const AboutUs = () => {
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
             />
           </div>
-          <div className="relative h-[250px] sm:h-[300px] md:h-full rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+          <div className="relative h-62.5 sm:h-75 md:h-full rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
             <Image
               src={feature2ImgUrl}
               alt="Woodland"
@@ -113,7 +113,7 @@ const AboutUs = () => {
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
             />
           </div>
-          <div className="relative h-[250px] sm:h-[300px] md:h-full rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
+          <div className="relative h-62.5 sm:h-75 md:h-full rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
             <Image
               src={feature3ImgUrl}
               alt="Vizionaire"

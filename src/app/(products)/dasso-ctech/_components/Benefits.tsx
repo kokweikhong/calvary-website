@@ -82,7 +82,7 @@ const Benefits = (props: BenefitsProps) => {
           {props.data.map((item, index) => (
             <div
               key={index}
-              className="flex-shrink-0 text-center"
+              className="shrink-0 text-center"
               style={{
                 width: `calc((100% - ${
                   (slidesPerView - 1) * (slidesPerView >= 4 ? 2 : 1.5)

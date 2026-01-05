@@ -146,7 +146,7 @@ const Features = () => {
       <div className="bg-dasso text-white py-8 sm:py-12 mt-4">
         <div className="container-cp space-y-6">
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-x-6 items-center justify-center">
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <Image
                 src={warrantySvg}
                 alt={"warranty"}
@@ -185,7 +185,7 @@ const Features = () => {
             </div>
             <div className="p-4 sm:p-5 space-y-3">
               <div className="flex items-center gap-x-3 sm:gap-x-4">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0">
                   <Image
                     src={application.icon}
                     alt={application.name}

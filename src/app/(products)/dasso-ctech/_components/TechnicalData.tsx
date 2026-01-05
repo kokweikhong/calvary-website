@@ -97,7 +97,7 @@ const dassoPDFSvg = ASSETS_URL + "/websites/products/dasso/dassoPDF.svg";
 
 const TechnicalData = () => {
   return (
-    <section className="!mt-0">
+    <section className="mt-0!">
       <div className="py-4 sm:py-6 bg-dasso text-white">
         <h2 className="text-xl sm:text-2xl font-semibold text-center uppercase px-4">
           Download
@@ -117,7 +117,7 @@ const TechnicalData = () => {
               alt="PDF download"
               width={24}
               height={24}
-              className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0"
+              className="w-5 h-5 sm:w-6 sm:h-6 shrink-0"
             />
           </a>
 
@@ -132,7 +132,7 @@ const TechnicalData = () => {
               alt="PDF download"
               width={24}
               height={24}
-              className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0"
+              className="w-5 h-5 sm:w-6 sm:h-6 shrink-0"
             />
           </a>
         </div>

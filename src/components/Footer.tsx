@@ -70,11 +70,11 @@ const contacts: Contact[] = [
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1F2126] py-[70px] sm:px-6 lg:px-8">
+    <footer className="bg-[#1F2126] px-6 py-17.5 sm:px-6 lg:px-8">
       <Toaster />
       <div className="text-white my-6 lg:grid lg:grid-cols-3 lg:gap-4 mx-auto max-w-7xl sm:px-6 lg:px-8 container">
-        <div className="space-y-[30px] lg:col-span-full">
-          <div className="h-[40px] w-[120px] relative">
+        <div className="space-y-7.5 lg:col-span-full">
+          <div className="h-10 w-30 relative">
             <Image
               src={horiLogo}
               alt="calvary carpentry sdn bhd"
@@ -86,18 +86,18 @@ const Footer = () => {
           <p>{footerCompanyDescription}</p>
         </div>
 
-        <div className="mt-[30px] lg:col-span-1">
-          <div className="text-center py-4 border-b border-b-white">
+        <div className="mt-7.5 lg:col-span-1">
+          <div className="text-center py-4 border-b border-b-white mb-4">
             <h3 className="font-medium text-lg uppercase">Contact Us</h3>
           </div>
-          <div className="flex flex-wrap gap-4 mt-[10px] justify-evenly">
+          <div className="flex flex-wrap gap-4 mt-2.5 justify-evenly">
             {contacts.map((contact) => (
               <a
                 key={contact.alt}
                 href={contact.href}
                 className="inline-block mr-4"
               >
-                <div className="h-[48px] w-[48px] relative">
+                <div className="h-12 w-12 relative">
                   <Image
                     src={contact.image}
                     alt={contact.alt}
@@ -110,14 +110,14 @@ const Footer = () => {
           </div>
         </div>
 
-        <div id="contact-us-footer" className="mt-[30px] lg:col-span-2">
-          <div className="text-center py-4 border-b border-b-white">
+        <div id="contact-us-footer" className="mt-7.5 lg:col-span-2">
+          <div className="text-center py-4 border-b border-b-white mb-4">
             <h3 className="font-medium text-lg uppercase">Enquiry Form</h3>
           </div>
           <EnquiryForm />
         </div>
 
-        <div className="mt-[30px] lg:col-span-full lg:grid lg:grid-cols-2">
+        <div className="mt-7.5 lg:col-span-full lg:grid lg:grid-cols-2">
           <div className="text-center py-4 border-b border-b-white lg:col-span-full">
             <h3 className="font-medium text-lg uppercase">Location</h3>
           </div>
@@ -128,7 +128,7 @@ const Footer = () => {
             <p>47510 Subang Jaya, Selangor, Malaysia</p>
             <div>
               <div className="flex gap-2 items-center">
-                <div className="h-[20px] w-[20px] relative">
+                <div className="h-5 w-5 relative">
                   <Image
                     src={email}
                     alt="email"
@@ -141,7 +141,7 @@ const Footer = () => {
             </div>
             <div>
               <div className="flex gap-2 items-center">
-                <div className="h-[20px] w-[20px] relative">
+                <div className="h-5 w-5 relative">
                   <Image
                     src={phoneNumber}
                     alt="phone number"
@@ -159,7 +159,7 @@ const Footer = () => {
             <p>66 Kampung Bugis, level 7, Singapore 338987</p>
             <div>
               <div className="flex gap-2 items-center">
-                <div className="h-[20px] w-[20px] relative">
+                <div className="h-5 w-5 relative">
                   <Image
                     src={email}
                     alt="email"
@@ -172,7 +172,7 @@ const Footer = () => {
             </div>
             <div>
               <div className="flex gap-2 items-center">
-                <div className="h-[20px] w-[20px] relative">
+                <div className="h-5 w-5 relative">
                   <Image
                     src={phoneNumber}
                     alt="phone number"
@@ -186,7 +186,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-[30px] lg:col-span-full">
+        <div className="mt-7.5 lg:col-span-full">
           <div className="text-center py-4 border-b border-b-white">
             <h3 className="font-medium text-lg uppercase">Support</h3>
           </div>

@@ -35,7 +35,7 @@ const FeatureWeathering = () => {
                   blurDataURL={`data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23E5E7EB'/%3E%3C/svg%3E`}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-4">
                   <span className="text-white font-semibold text-sm sm:text-base">
                     Before
                   </span>
@@ -53,7 +53,7 @@ const FeatureWeathering = () => {
                   blurDataURL={`data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23E5E7EB'/%3E%3C/svg%3E`}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/70 to-transparent p-4">
                   <span className="text-white font-semibold text-sm sm:text-base">
                     After
                   </span>
@@ -63,7 +63,7 @@ const FeatureWeathering = () => {
           </div>
         </div>
 
-        <div className="bg-gradient-to-b from-gray-100 to-gray-50 py-8 sm:py-12">
+        <div className="bg-linear-to-b from-gray-100 to-gray-50 py-8 sm:py-12">
           <div className="space-y-6 sm:space-y-8">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center px-4 text-dasso">
               Weathering Process

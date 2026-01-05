@@ -130,7 +130,7 @@ const EnquiryForm = () => {
         <div className="w-full pt-2">
           <button
             type="submit"
-            className="w-full sm:w-auto sm:min-w-[200px] mx-auto block rounded-lg bg-[#137765] px-6 py-3 font-semibold text-white shadow-md hover:bg-[#0f5f51] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#137765] focus:ring-offset-2 transition-all duration-300 text-sm sm:text-base"
+            className="w-full sm:w-auto sm:min-w-50 mx-auto block rounded-lg bg-[#137765] px-6 py-3 font-semibold text-white shadow-md hover:bg-[#0f5f51] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#137765] focus:ring-offset-2 transition-all duration-300 text-sm sm:text-base cursor-pointer"
           >
             Send Enquiry
           </button>

@@ -71,7 +71,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="w-full inline-flex flex-nowrap overflow-hidden bg-black !mt-0 py-4">
+      <div className="w-full inline-flex flex-nowrap overflow-hidden bg-black mt-0! py-4">
         <ul className="flex items-center justify-center md:justify-start [&_li]:mx-8 animate-infinite-scroll">
           {slidingWords.map((word, index) => (
             <li key={index} className="text-white text-nowrap">

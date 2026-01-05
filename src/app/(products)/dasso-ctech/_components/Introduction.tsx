@@ -43,7 +43,7 @@ const Introduction = () => {
 
         <div className="flex flex-wrap items-center justify-center sm:justify-between gap-4 sm:gap-6 pt-4">
           {certImages.map((cert, index) => (
-            <div key={index} className="flex-shrink-0">
+            <div key={index} className="shrink-0">
               <Image
                 src={cert}
                 alt="Certification"
