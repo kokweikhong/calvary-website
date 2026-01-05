@@ -1,29 +1,29 @@
-import { promises as fs } from "fs";
 import { Project } from "@/interfaces/project";
+import { getCountryEnv } from "./env";
 
-const country = process.env.NEXT_PUBLIC_COUNTRY || "Singapore";
-export async function getProjects(): Promise<Project[]> {
-  const file = await fs.readFile(
-    process.cwd() + "/src/data/projects.json",
-    "utf-8"
-  );
-  const data: Project[] = JSON.parse(file);
-  const filteredData = data.filter((project) =>
-    project.countries.includes(country === "Singapore" ? "sg" : "my")
-  );
-  return filteredData;
-}
-
-export async function getProjectBySlug(slug: string): Promise<Project | null> {
-  const file = await fs.readFile(
-    process.cwd() + "/src/data/projects.json",
-    "utf-8"
-  );
-  const data: Project[] = JSON.parse(file);
-  const project = data
-    .filter((project) =>
-      project.countries.includes(country === "Singapore" ? "sg" : "my")
-    )
-    .find((project) => project.url.includes(slug));
-  return project || null;
+export async function getProjects(
+  sectors?: string[],
+  products?: string[],
+  applications?: string[],
+  years?: string[],
+  projectName?: string,
+  limit?: number,
+  offset?: number
+): Promise<Project[]> {
+  const country = getCountryEnv();
+  const countryParam = country === "my" ? "Malaysia" : "Singapore";
+  const data = await fetch(
+    `/api/projects?` +
+      new URLSearchParams({
+        country: countryParam,
+        ...(sectors ? { sectors: sectors.join(",") } : {}),
+        ...(products ? { products: products.join(",") } : {}),
+        ...(applications ? { applications: applications.join(",") } : {}),
+        ...(years ? { years: years.join(",") } : {}),
+        ...(projectName ? { projectName } : {}),
+        ...(limit ? { limit: limit.toString() } : {}),
+        ...(offset ? { offset: offset.toString() } : {}),
+      }).toString()
+  ).then((res) => res.json());
+  return data.data as Project[];
 }
