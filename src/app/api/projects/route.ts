@@ -33,12 +33,10 @@ export async function GET(request: NextRequest) {
   const data = JSON.parse(file) as Project[];
   let filteredData = data;
 
-  const country = countryParam === "my" ? "Malaysia" : "Singapore";
-
   // filter by country if countryParam is provided
   if (countryParam) {
-    filteredData = filteredData.filter(
-      (project) => project.country === country
+    filteredData = filteredData.filter((project) =>
+      project.countries?.includes(countryParam)
     );
   }
 
