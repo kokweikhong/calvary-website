@@ -57,7 +57,7 @@ const Modal = ({
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between rounded-t-lg flex-shrink-0">
+          <div className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between rounded-t-lg shrink-0">
             <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
             <button
               type="button"
@@ -96,12 +96,27 @@ export default function Catalogue() {
     imageSrc: "",
   });
 
+  // Track which pattern items are toggled (for mobile tap)
+  const [toggledItems, setToggledItems] = useState<Set<string>>(new Set());
+
   const openModal = (title: string, imageSrc: string) => {
     setModalState({ isOpen: true, title, imageSrc });
   };
 
   const closeModal = () => {
     setModalState({ isOpen: false, title: "", imageSrc: "" });
+  };
+
+  const handlePatternItemClick = (itemId: string) => {
+    setToggledItems((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(itemId)) {
+        newSet.delete(itemId);
+      } else {
+        newSet.add(itemId);
+      }
+      return newSet;
+    });
   };
   return (
     <div id="champaca-catalogue" className="mt-4">
@@ -132,43 +147,57 @@ export default function Catalogue() {
                   {pattern.title}
                 </h3>
                 <div className="flex flex-wrap items-start gap-x-2 gap-y-4 max-w-sm 450px:grid 450px:grid-cols-4 450px:max-w-max">
-                  {pattern.items.map((item, index) => (
-                    <div
-                      key={index}
-                      className={cn(
-                        "flex flex-col items-center justify-center gap-y-2 w-20 450px:w-full h-full cursor-pointer",
-                        item.activeImg && "group"
-                      )}
-                    >
-                      <div className="w-full h-full relative">
-                        <Image
-                          src={item.img}
-                          alt="Main Image"
-                          width={400}
-                          height={400}
-                          priority
-                          className={cn(
-                            "w-full h-full object-cover",
-                            item.activeImg &&
-                              "group-hover:opacity-0 transition-opacity"
-                          )}
-                        />
-                        {item.activeImg && (
+                  {pattern.items.map((item, itemIndex) => {
+                    const itemId = `pattern-${index}-${itemIndex}`;
+                    const isToggled = toggledItems.has(itemId);
+
+                    return (
+                      <div
+                        key={itemIndex}
+                        className={cn(
+                          "flex flex-col items-center justify-center gap-y-2 w-20 450px:w-full h-full cursor-pointer",
+                          item.activeImg && "group"
+                        )}
+                        onClick={() =>
+                          item.activeImg && handlePatternItemClick(itemId)
+                        }
+                      >
+                        <div className="w-full h-full relative">
                           <Image
-                            src={item.activeImg}
+                            src={item.img}
                             alt="Main Image"
                             width={400}
                             height={400}
                             priority
-                            className="w-full h-full object-cover absolute top-0 left-0 opacity-0 transition-opacity group-hover:opacity-100"
+                            className={cn(
+                              "w-full h-full object-cover",
+                              item.activeImg &&
+                                "md:group-hover:opacity-0 transition-opacity",
+                              // For mobile: toggle on tap
+                              item.activeImg && isToggled && "opacity-0"
+                            )}
                           />
-                        )}
+                          {item.activeImg && (
+                            <Image
+                              src={item.activeImg}
+                              alt="Main Image"
+                              width={400}
+                              height={400}
+                              priority
+                              className={cn(
+                                "w-full h-full object-cover absolute top-0 left-0 opacity-0 transition-opacity md:group-hover:opacity-100",
+                                // For mobile: show when toggled
+                                isToggled && "opacity-100"
+                              )}
+                            />
+                          )}
+                        </div>
+                        <p className="text-center text-xs md:text-sm">
+                          {item.title}
+                        </p>
                       </div>
-                      <p className="text-center text-xs md:text-sm">
-                        {item.title}
-                      </p>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             ))}

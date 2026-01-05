@@ -10,16 +10,6 @@ type Location = {
 
 const locations: Location[] = [
   {
-    name: "Showroom",
-    address: ["66 Kampung Bugis, Level 7", "Singapore 338987"],
-    whatsapp: "+65 8776 7837",
-    phone: "+65 6684 4012",
-    email: "sales@calvarycarpentry.com",
-    googleMapsLink: "https://goo.gl/maps/oFlyl78SvBgulWVIL",
-    googleMapsEmbed:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.781846744271!2d103.86355277496567!3d1.3060192986815888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da14605351fdf9%3A0x15649a8976605ec0!2sCalvary%20Carpentry%20Pte%20Ltd%20%7C%20Timber%20Specialist!5e0!3m2!1sen!2ssg!4v1767604298422!5m2!1sen!2ssg",
-  },
-  {
     name: "Singapore HQ",
     address: ["66 Kampung Bugis, Level 7", "Singapore 338987"],
     whatsapp: "+65 8776 7837",

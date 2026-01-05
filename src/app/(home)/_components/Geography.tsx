@@ -12,20 +12,21 @@ type Location = {
 
 const locations: Location[] = [
   {
-    title: "KLCC Office",
+    title: "KL Office",
     description:
       "Colony Vipod KLCC, 6, Jalan Kia Peng, Kuala Lumpur, 50450 Kuala Lumpur, Wilayah Persekutuan Kuala Lumpur",
     icon: msiaIcon,
   },
   {
-    title: "Warehouse",
+    title: "Calvary Carpentry Sdn Bhd",
     description:
-      "8, Jalan TS 6/9, Taman Perindustrian Subang, 47510 Subang Jaya, Selangor, Malaysia",
+      "Level 2, 8, Jalan TS 6/9, Taman Perindustrian Subang, 47510 Subang Jaya, Selangor, Malaysia",
     icon: msiaIcon,
   },
   {
-    title: "Singapore HQ",
-    description: "66 Kampung Bugis, Level 7, Singapore 338987",
+    title: "Warehouse",
+    description:
+      "Level 1, 54 Senoko Rd, East Industrial Estate, Singapore 758118",
     icon: sporeIcon,
   },
   {

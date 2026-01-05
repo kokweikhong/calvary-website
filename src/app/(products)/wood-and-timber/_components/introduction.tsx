@@ -78,10 +78,10 @@ const Introduction = () => {
             </Link>
 
             <Link
-              href="#"
+              href="/onewood"
               className="text-[#577ABA] bg-white rounded-full px-4 py-2 border border-[#577ABA] hover:bg-[#577ABA] hover:text-white transition-colors duration-300"
             >
-              Reconstituted Composite Decking
+              One Wood
             </Link>
           </div>
         </div>
@@ -117,10 +117,10 @@ const Introduction = () => {
             Accoya decking
           </Link>
           <Link
-            href={`#`}
+            href={`/onewood`}
             className="block text-sm tracking-wider bg-black text-white rounded-full px-4 py-2 text-center uppercase"
           >
-            Reconstituted Composite timber
+            One Wood
           </Link>
           <Link
             href={`#novawood`}
@@ -133,7 +133,7 @@ const Introduction = () => {
               href={`/dasso-ctech`}
               className="block text-sm tracking-wider bg-black text-white rounded-full px-4 py-2 text-center uppercase"
             >
-              dassoCTECH
+              dasso Bamboo
             </Link>
           )}
           {COUNTRY === "Malaysia" && (
