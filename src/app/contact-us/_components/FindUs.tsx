@@ -46,32 +46,75 @@ const locations: Location[] = [
 
 const FindUs = () => {
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 container-cp">
-      <div className="py-2 border-y border-black mx-auto">
-        <h2 className="text-2xl font-montserrat uppercase">find us</h2>
+    <div className="flex flex-col items-center justify-center space-y-6 sm:space-y-8 container-cp py-8 sm:py-12">
+      <div className="py-3 sm:py-4 border-y-2 border-black px-4">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-montserrat uppercase tracking-wider font-semibold">
+          find us
+        </h2>
       </div>
 
-      <div>
-        <p>We are available in Singapore and Malaysia!</p>
+      <div className="text-center">
+        <p className="text-sm sm:text-base text-gray-700">
+          We are available in Singapore and Malaysia!
+        </p>
       </div>
 
-      <div className="self-start w-full md:self-center md:mx-auto">
+      <div className="w-full max-w-5xl space-y-4 sm:space-y-6">
         {locations.map((location, index) => (
           <div
             key={index}
-            className="mt-4 md:grid md:grid-cols-[1fr_2fr] md:items-start"
+            className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 sm:p-8 border border-gray-100"
           >
-            <h3 className="text-lg font-semibold underline">{location.name}</h3>
-            <div>
-              <div className="mt-2">
-                {location.address.map((line, index) => (
-                  <p key={index}>{line}</p>
-                ))}
-              </div>
-              <div className="mt-2">
-                {location.whatsapp && <p>Whatsapp: {location.whatsapp}</p>}
-                {location.phone && <p>Phone: {location.phone}</p>}
-                {location.email && <p>Email: {location.email}</p>}
+            <div className="md:grid md:grid-cols-[1fr_2fr] md:gap-6 space-y-3 md:space-y-0">
+              <h3 className="text-lg sm:text-xl font-semibold text-[#137765]">
+                {location.name}
+              </h3>
+              <div className="space-y-3 sm:space-y-4">
+                <div className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                  {location.address.map((line, index) => (
+                    <p key={index}>{line}</p>
+                  ))}
+                </div>
+                <div className="space-y-1 text-sm sm:text-base">
+                  {location.whatsapp && (
+                    <p className="flex items-center space-x-2">
+                      <span className="font-medium text-gray-700">
+                        Whatsapp:
+                      </span>
+                      <a
+                        href={`https://wa.me/${location.whatsapp.replace(
+                          /[^0-9]/g,
+                          ""
+                        )}`}
+                        className="text-[#137765] hover:underline"
+                      >
+                        {location.whatsapp}
+                      </a>
+                    </p>
+                  )}
+                  {location.phone && (
+                    <p className="flex items-center space-x-2">
+                      <span className="font-medium text-gray-700">Phone:</span>
+                      <a
+                        href={`tel:${location.phone.replace(/[^0-9+]/g, "")}`}
+                        className="text-[#137765] hover:underline"
+                      >
+                        {location.phone}
+                      </a>
+                    </p>
+                  )}
+                  {location.email && (
+                    <p className="flex items-center space-x-2">
+                      <span className="font-medium text-gray-700">Email:</span>
+                      <a
+                        href={`mailto:${location.email}`}
+                        className="text-[#137765] hover:underline break-all"
+                      >
+                        {location.email}
+                      </a>
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
           </div>

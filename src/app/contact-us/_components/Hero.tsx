@@ -16,23 +16,23 @@ const Hero = () => {
           objectPosition="center"
         />
       </div>
-      <div className="flex flex-col items-center justify-center space-y-8 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <h1 className="text-4xl tracking-wider font-bold">Contact Us</h1>
-        <h2 className="text-2xl font-montserrat">
+      <div className="flex flex-col items-center justify-center space-y-6 sm:space-y-8 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-4 max-w-4xl w-full">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-wider font-bold text-center">
+          Contact Us
+        </h1>
+        <h2 className="text-lg sm:text-xl md:text-2xl font-montserrat text-center">
           We are always here for you.
         </h2>
 
-        <div className="flex flex-col items-center justify-center space-y-1">
+        <div className="flex flex-col items-center justify-center space-y-2 sm:space-y-3">
           <a
             href="#contact-form"
-            className="border border-white bg-transparent text-white hover:bg-white hover:text-black px-4 py-2 transition duration-300 ease-in-out"
+            className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-black px-6 py-2.5 rounded-lg hover:shadow-2xl transition-all duration-300 font-medium text-sm sm:text-base"
           >
             Contact Form
           </a>
-          <p>{`We've Got Wood For You`}</p>
+          <p className="text-xs sm:text-sm">{`We've Got Wood For You`}</p>
         </div>
-
-        <div></div>
       </div>
     </div>
   );

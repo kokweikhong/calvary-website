@@ -17,19 +17,19 @@ const certifications = [
 
 const Certifications = () => {
   return (
-    <div className="py-8">
-      <div className="flex flex-wrap justify-center items-center gap-8">
+    <div className="container-cp py-8 sm:py-12">
+      <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-10">
         {certifications.map((certification, index) => (
           <div
             key={index}
-            className="flex justify-center items-center h-[50px] w-auto"
+            className="flex justify-center items-center h-10 sm:h-12 md:h-14 w-auto grayscale hover:grayscale-0 transition-all duration-300 hover:scale-110"
           >
             <Image
               src={certification}
               alt="Certification"
-              width={50}
-              height={50}
-              className="w-full h-full object-cover"
+              width={56}
+              height={56}
+              className="w-full h-full object-contain"
             />
           </div>
         ))}

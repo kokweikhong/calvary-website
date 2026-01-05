@@ -22,7 +22,11 @@ async function sendEmail(data: EnquiryFormProps) {
   return response.json();
 }
 
-const EnquiryForm = () => {
+type Props = {
+  color?: "white" | "gray";
+};
+
+const EnquiryForm = ({ color = "white" }: Props) => {
   const {
     register,
     handleSubmit,
@@ -47,14 +51,14 @@ const EnquiryForm = () => {
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-white mb-1.5"
+            className={`block text-sm font-medium text-${color} mb-1.5`}
           >
             Name <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
             id="name"
-            className="block w-full rounded-lg border-2 border-gray-300 px-4 py-2.5 text-white placeholder:text-gray-400 focus:border-[#137765] focus:ring-2 focus:ring-[#137765]/20 focus:outline-none transition-all duration-200 sm:text-sm"
+            className={`block w-full rounded-lg border-2 border-gray-300 px-4 py-2.5 text-${color} placeholder:text-gray-400 focus:border-[#137765] focus:ring-2 focus:ring-[#137765]/20 focus:outline-none transition-all duration-200 sm:text-sm`}
             placeholder="Enter your full name"
             {...register("name", { required: true })}
           />
@@ -67,14 +71,14 @@ const EnquiryForm = () => {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-white mb-1.5"
+            className={`block text-sm font-medium text-${color} mb-1.5`}
           >
             Email <span className="text-red-500">*</span>
           </label>
           <input
             type="email"
             id="email"
-            className="block w-full rounded-lg border-2 border-gray-300 px-4 py-2.5 text-white placeholder:text-gray-400 focus:border-[#137765] focus:ring-2 focus:ring-[#137765]/20 focus:outline-none transition-all duration-200 sm:text-sm"
+            className={`block w-full rounded-lg border-2 border-gray-300 px-4 py-2.5 text-${color} placeholder:text-gray-400 focus:border-[#137765] focus:ring-2 focus:ring-[#137765]/20 focus:outline-none transition-all duration-200 sm:text-sm`}
             placeholder="your.email@example.com"
             {...register("email", { required: true })}
           />
@@ -88,14 +92,14 @@ const EnquiryForm = () => {
         <div>
           <label
             htmlFor="contact"
-            className="block text-sm font-medium text-white mb-1.5"
+            className={`block text-sm font-medium text-${color} mb-1.5`}
           >
             Contact Number <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
             id="contact"
-            className="block w-full rounded-lg border-2 border-gray-300 px-4 py-2.5 text-white placeholder:text-gray-400 focus:border-[#137765] focus:ring-2 focus:ring-[#137765]/20 focus:outline-none transition-all duration-200 sm:text-sm"
+            className={`block w-full rounded-lg border-2 border-gray-300 px-4 py-2.5 text-${color} placeholder:text-gray-400 focus:border-[#137765] focus:ring-2 focus:ring-[#137765]/20 focus:outline-none transition-all duration-200 sm:text-sm`}
             placeholder="+65 1234 5678"
             {...register("contact", { required: true })}
           />
@@ -109,14 +113,14 @@ const EnquiryForm = () => {
         <div>
           <label
             htmlFor="comments"
-            className="block text-sm font-medium text-white mb-1.5"
+            className={`block text-sm font-medium text-${color} mb-1.5`}
           >
             Your Enquiry <span className="text-red-500">*</span>
           </label>
           <textarea
             rows={5}
             id="comments"
-            className="block w-full rounded-lg border-2 border-gray-300 px-4 py-2.5 text-white placeholder:text-gray-400 focus:border-[#137765] focus:ring-2 focus:ring-[#137765]/20 focus:outline-none transition-all duration-200 sm:text-sm resize-none"
+            className={`block w-full rounded-lg border-2 border-gray-300 px-4 py-2.5 text-${color} placeholder:text-gray-400 focus:border-[#137765] focus:ring-2 focus:ring-[#137765]/20 focus:outline-none transition-all duration-200 sm:text-sm resize-none`}
             defaultValue={""}
             placeholder="Tell us about your project or inquiry..."
             {...register("comments", { required: true })}
