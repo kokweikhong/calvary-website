@@ -1,12 +1,12 @@
 import ClientsSlider from "@/components/ClientsSlider";
-import Accdrediations from "@/components/home/Accdrediations";
-import Distributor from "@/components/home/Distributor";
-import Features from "@/components/home/Features";
-import Geography from "@/components/home/Geography";
-import Hero from "@/components/home/Hero";
-import Products from "@/components/home/Products";
-import Services from "@/components/home/Services";
-import Testimonials from "@/components/home/Testimonials";
+import Accdrediations from "./_components/Accdrediations";
+import Distributor from "./_components/Distributor";
+import Features from "./_components/Features";
+import Geography from "./_components/Geography";
+import Hero from "./_components/Hero";
+import Products from "./_components/Products";
+import Services from "./_components/Services";
+import Testimonials from "./_components/Testimonials";
 import OurTeam from "@/components/OurTeam";
 import { Metadata } from "next";
 

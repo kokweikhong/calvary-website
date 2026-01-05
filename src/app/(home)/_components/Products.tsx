@@ -1,6 +1,6 @@
 "use client";
 
-import ProductCard from "../ProductCard";
+import ProductCard from "@/components/ProductCard";
 import { useQuery } from "@tanstack/react-query";
 import { Product } from "@/interfaces/product";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
