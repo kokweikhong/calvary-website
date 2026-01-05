@@ -30,7 +30,7 @@ const config = {
         osmo: "#33A949",
         calvaryComposite: "#577ABA",
         // dasso: "#899F3E",
-        moso: "#4CA829",
+        // moso: "#4CA829",
         headingDark: "#1F2128",
         textDark: "#606060",
         accoya: "#33A949",

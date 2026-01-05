@@ -17,7 +17,7 @@ const Hero = () => {
           priority
           className="w-full h-full object-cover"
         />
-        <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-black/50"></div>
       </div>
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center space-y-4 justify-center w-full px-5">
         <div className="w-full h-auto max-w-xs">

@@ -8,9 +8,18 @@ const mosoWeathering = getMosoImageUrl("moso-weathering.jpg");
 const mosoDryAndWetCond = getMosoImageUrl("dry-and-wet-condition.jpg");
 
 const downloads = [
-  { title: "MOSO® Maintenance guide", url: "https://assets.calvarycarpentry.com/websites/moso/downloads/MOSO%20Maintanance-sikken.pdf" },
-  { title: "MOSO® warranty Brochure", url: "https://assets.calvarycarpentry.com/websites/moso/downloads/EN_Bamboo_Decking_warranty_LQ.pdf" },
-  { title: "MOSO® Accreditations", url: "https://assets.calvarycarpentry.com/websites/moso/downloads/MOSO%20Xtreme%20decking-test%20result.pdf" },
+  {
+    title: "MOSO® Maintenance guide",
+    url: "https://assets.calvarycarpentry.com/websites/moso/downloads/MOSO%20Maintanance-sikken.pdf",
+  },
+  {
+    title: "MOSO® warranty Brochure",
+    url: "https://assets.calvarycarpentry.com/websites/moso/downloads/EN_Bamboo_Decking_warranty_LQ.pdf",
+  },
+  {
+    title: "MOSO® Accreditations",
+    url: "https://assets.calvarycarpentry.com/websites/moso/downloads/MOSO%20Xtreme%20decking-test%20result.pdf",
+  },
 ];
 
 const bimFiles = [
@@ -95,10 +104,10 @@ const TechnicalData = () => {
               </div>
             </div>
             <p className="text-center md:col-span-full">
-              Maintaining MOSO® Bamboo X-treme® Decking is similar to caring
-              for other tropical woods. Water-based finish oils provide
-              excellent protection. Exposure to weather elements may lead to
-              surface weathering, causing greying and the appearance of
+              Maintaining MOSO® Bamboo X-treme® Decking is similar to caring for
+              other tropical woods. Water-based finish oils provide excellent
+              protection. Exposure to weather elements may lead to surface
+              weathering, causing greying and the appearance of
               cracks/splinters. Regular maintenance with decking finish helps
               minimise these effects.
             </p>
