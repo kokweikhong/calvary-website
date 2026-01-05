@@ -50,22 +50,24 @@ const Hero = () => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="space-y-8 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
-          <h1 className="font-bold text-4xl">About Us</h1>
+        <div className="space-y-6 sm:space-y-8 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center px-4 max-w-4xl w-full">
+          <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+            About Us
+          </h1>
           <div>
-            <p>
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
               {`Crafting Excellence in Timber: Discover Calvary Carpentry's Expert Woodworkers`}
             </p>
           </div>
 
-          <div className="flex flex-col space-y-1 items-center justify-center">
+          <div className="flex flex-col space-y-2 sm:space-y-3 items-center justify-center">
             <a
               href="#about-us"
-              className="bg-transparent border-2 border-white text-white py-2 px-4 hover:bg-white hover:text-black transition-all duration-300"
+              className="bg-transparent border-2 border-white text-white py-2.5 px-6 rounded-lg hover:bg-white hover:text-black hover:shadow-2xl transition-all duration-300 font-medium text-sm sm:text-base"
             >
               Explore Timber
             </a>
-            <span>{`We’ve Got Wood for you`}</span>
+            <span className="text-xs sm:text-sm">{`We've Got Wood for you`}</span>
           </div>
         </div>
       </div>

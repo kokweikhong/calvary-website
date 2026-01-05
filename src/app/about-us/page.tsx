@@ -5,7 +5,7 @@ import TimberJourney from "./_components/TimberJourney";
 
 export default function Page() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-0">
       <Hero />
       <AboutUs />
       <FeaturedArticles />

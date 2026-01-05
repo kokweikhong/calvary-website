@@ -26,36 +26,40 @@ const journeys: { title: string; description: string; imgUrl: string }[] = [
 
 const TimberJourney = () => {
   return (
-    <div className="container-cp flex flex-col space-y-4 justify-center items-center">
-      <div className="flex items-center justify-center py-2 border-y border-black">
-        <h2 className="uppercase text-2xl font-montserrat tracking-wider">
+    <div className="container-cp flex flex-col space-y-6 sm:space-y-8 justify-center items-center py-8 sm:py-12">
+      <div className="flex items-center justify-center py-3 sm:py-4 border-y-2 border-black px-4">
+        <h2 className="uppercase text-xl sm:text-2xl md:text-3xl font-montserrat tracking-wider font-semibold">
           Timber Journey
         </h2>
       </div>
-      <div>
-        <p>{`
+      <div className="max-w-3xl">
+        <p className="text-sm sm:text-base text-gray-700 leading-relaxed text-center">{`
           From research and development, material profiling, and project site management to the frontline of sales, meet our skilled artisans who meet high architectural requirements and demands with expertise.
         `}</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full">
         {journeys.map((journey, idx) => (
           <div
             key={idx}
-            className="h-full pt-2 border-t border-black space-y-1 mb-4 flex flex-col"
+            className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
           >
-            <div className="">
-              <h3 className="text-lg font-montserrat">{journey.title}</h3>
-              <p className="text-sm">{journey.description}</p>
+            <div className="p-4 sm:p-6 space-y-2 border-b-2 border-gray-100">
+              <h3 className="text-base sm:text-lg md:text-xl font-montserrat font-semibold text-gray-800">
+                {journey.title}
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 font-medium uppercase tracking-wide">
+                {journey.description}
+              </p>
             </div>
-            <div className="h-[300px] w-full self-end justify-self-end">
+            <div className="aspect-video w-full overflow-hidden">
               <Image
                 src={journey.imgUrl}
                 alt={journey.title}
-                width={400}
-                height={300}
+                width={600}
+                height={400}
                 priority
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
             </div>
           </div>

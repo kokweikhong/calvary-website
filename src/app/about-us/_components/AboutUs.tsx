@@ -63,15 +63,21 @@ const AboutUs = () => {
       <div className="text-[#805C00] w-full space-y-3 sm:space-y-4 max-w-2xl">
         <div className="flex space-x-3 sm:space-x-4 items-start">
           <ArrowRightWithTail className="text-[#805C00] flex-shrink-0 mt-1" />
-          <h3 className="text-base sm:text-lg font-medium">Flooring, decking, cladding, soffit.</h3>
+          <h3 className="text-base sm:text-lg font-medium">
+            Flooring, decking, cladding, soffit.
+          </h3>
         </div>
         <div className="flex space-x-3 sm:space-x-4 items-start">
           <ArrowRightWithTail className="text-[#805C00] flex-shrink-0 mt-1" />
-          <h3 className="text-base sm:text-lg font-medium">Stairs, rails, trellis, screens.</h3>
+          <h3 className="text-base sm:text-lg font-medium">
+            Stairs, rails, trellis, screens.
+          </h3>
         </div>
         <div className="flex space-x-3 sm:space-x-4 items-start">
           <ArrowRightWithTail className="text-[#805C00] flex-shrink-0 mt-1" />
-          <h3 className="text-base sm:text-lg font-medium">Residential, commercial, government.</h3>
+          <h3 className="text-base sm:text-lg font-medium">
+            Residential, commercial, government.
+          </h3>
         </div>
       </div>
 
@@ -123,7 +129,10 @@ const AboutUs = () => {
       {/* certificate */}
       <div className="flex flex-wrap gap-4 sm:gap-6 items-center justify-center pt-4">
         {certifications.map((cert, idx) => (
-          <div key={idx} className="relative h-10 sm:h-12 md:h-14 w-auto grayscale hover:grayscale-0 transition-all duration-300">
+          <div
+            key={idx}
+            className="relative h-10 sm:h-12 md:h-14 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+          >
             <Image
               src={`${ASSETS_URL}/websites/about-us/certifications/${cert}`}
               alt="Certification"
