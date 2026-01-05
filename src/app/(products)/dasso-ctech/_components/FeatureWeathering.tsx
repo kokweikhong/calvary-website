@@ -1,17 +1,19 @@
 import Image from "next/image";
+import { getWebsiteAssetsURLEnv } from "@/lib/env";
 
+const ASSETS_URL = getWebsiteAssetsURLEnv();
 const airportBeforeImage =
-  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/weathering/%20Madrid%20Barajas%20Airport1.jpeg";
+  ASSETS_URL +
+  "/websites/products/dasso/weathering/%20Madrid%20Barajas%20Airport1.jpeg";
 const airportAfterImage =
-  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/weathering/%20Madrid%20Barajas%20Airportafter.jpeg";
+  ASSETS_URL +
+  "/websites/products/dasso/weathering/%20Madrid%20Barajas%20Airportafter.jpeg";
 
-const newImage =
-  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/weathering/New.jpg";
+const newImage = ASSETS_URL + "/websites/products/dasso/weathering/New.jpg";
 const fadingImage =
-  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/weathering/Fading.jpg";
+  ASSETS_URL + "/websites/products/dasso/weathering/Fading.jpg";
 const afterMaintenanceImage =
-  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/weathering/After%20maintance.jpg";
-
+  ASSETS_URL + "/websites/products/dasso/weathering/After%20maintance.jpg";
 const FeatureWeathering = () => {
   return (
     <div className="py-8 sm:py-12 space-y-8 sm:space-y-12">

@@ -1,6 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import FeatureWeathering from "./FeatureWeathering";
+import { getWebsiteAssetsURLEnv } from "@/lib/env";
+
+const ASSETS_URL = getWebsiteAssetsURLEnv();
 
 type Feature = {
   title: string;
@@ -13,42 +16,43 @@ const features: Feature[] = [
     title: "Termite Resistance",
     description: ["DC D (EN117)", "Class 1 (AS 5604)"],
     image:
-      "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/benefits/Termite%20Resistance.svg",
+      ASSETS_URL + "/websites/products/dasso/benefits/Termite%20Resistance.svg",
   },
   {
     title: "Biological Durability",
     description: ["Class 1 (EN 350:2016)"],
     image:
-      "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/benefits/Biological%20durability.svg",
+      ASSETS_URL +
+      "/websites/products/dasso/benefits/Biological%20durability.svg",
   },
   {
     title: "Carbon Footprint",
     description: ["-2.1 KG CO2 EQ"],
     image:
-      "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/benefits/Carbon%20footprint.svg",
+      ASSETS_URL + "/websites/products/dasso/benefits/Carbon%20footprint.svg",
   },
   {
     title: "Fire Resistance",
     description: ["B, s1, d0 (EN 13501-1)"],
     image:
-      "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/benefits/Fire%20Resistance.svg",
+      ASSETS_URL + "/websites/products/dasso/benefits/Fire%20Resistance.svg",
   },
   {
     title: "Mould Resistance",
     description: ["Class 0 (EN ISO 846)"],
     image:
-      "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/benefits/Mould%20Resistance.svg",
+      ASSETS_URL + "/websites/products/dasso/benefits/Mould%20Resistance.svg",
   },
   {
     title: "Release of Formaldehyde",
     description: ["E1 (0.17mg/L) (GB/T17657-2013)"],
     image:
-      "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/benefits/Release%20of%20formaldehyde.svg",
+      ASSETS_URL +
+      "/websites/products/dasso/benefits/Release%20of%20formaldehyde.svg",
   },
 ];
 
-const warrantySvg =
-  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/warrantry.svg";
+const warrantySvg = ASSETS_URL + "/websites/products/dasso/warrantry.svg";
 
 type Application = {
   name: string;
@@ -61,23 +65,20 @@ const applications: Application[] = [
   {
     name: "Decking",
     description: "Superior choice for all exterior decking applications",
-    icon: "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/decking/icon-decking.svg",
-    image:
-      "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/decking/bg-decking2.jpg",
+    icon: ASSETS_URL + "/websites/products/dasso/decking/icon-decking.svg",
+    image: ASSETS_URL + "/websites/products/dasso/decking/bg-decking2.jpg",
   },
   {
     name: "Cladding",
     description: "Best for commercial exterior cladding",
-    icon: "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/cladding/icon-cladding.svg",
-    image:
-      "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/cladding/bg-cladding2.jpg",
+    icon: ASSETS_URL + "/websites/products/dasso/cladding/icon-cladding.svg",
+    image: ASSETS_URL + "/websites/products/dasso/cladding/bg-cladding2.jpg",
   },
   {
     name: "Soffit",
     description: "Designed for interior and exterior use",
-    icon: "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/soffit/icon-soffit.svg",
-    image:
-      "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/soffit/bg-soffit2.jpg",
+    icon: ASSETS_URL + "/websites/products/dasso/soffit/icon-soffit.svg",
+    image: ASSETS_URL + "/websites/products/dasso/soffit/bg-soffit2.jpg",
   },
 ];
 

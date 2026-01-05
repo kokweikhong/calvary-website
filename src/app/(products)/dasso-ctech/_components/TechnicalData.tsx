@@ -1,4 +1,7 @@
 import Image from "next/image";
+import { getWebsiteAssetsURLEnv } from "@/lib/env";
+
+const ASSETS_URL = getWebsiteAssetsURLEnv();
 
 type TechnicalData = {
   title: string;
@@ -86,12 +89,11 @@ const technicalData: TechnicalData[] = [
 ];
 
 const dassoDeckingBrochure =
-  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/dassoctech%20decking.pdf";
+  ASSETS_URL + "/websites/products/dasso/dassoctech%20decking.pdf";
 const dassoWarrantyBrochure =
-  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/8Warranty_dassoXTR&dassoCTECH).pdf";
+  ASSETS_URL + "/websites/products/dasso/8Warranty_dassoXTR&dassoCTECH).pdf";
 
-const dassoPDFSvg =
-  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/dassoPDF.svg";
+const dassoPDFSvg = ASSETS_URL + "/websites/products/dasso/dassoPDF.svg";
 
 const TechnicalData = () => {
   return (

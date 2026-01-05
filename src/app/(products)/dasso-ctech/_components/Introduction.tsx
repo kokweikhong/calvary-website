@@ -1,14 +1,17 @@
 import Image from "next/image";
+import { getWebsiteAssetsURLEnv } from "@/lib/env";
+
+const ASSETS_URL = getWebsiteAssetsURLEnv();
 
 const introductionImage =
-  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/Dasso%20Ctech%20.png";
+  ASSETS_URL + "/websites/products/dasso/Dasso%20Ctech%20.png";
 
 const certImages = [
-  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/FSC.svg",
-  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/icces.svg",
-  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/mpa.svg",
-  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/eph.svg",
-  "https://calvarycarpentry-cloud-storage.sgp1.cdn.digitaloceanspaces.com/websites/products/dasso/element-cert-sg.svg",
+  ASSETS_URL + "/websites/products/dasso/FSC.svg",
+  ASSETS_URL + "/websites/products/dasso/icces.svg",
+  ASSETS_URL + "/websites/products/dasso/mpa.svg",
+  ASSETS_URL + "/websites/products/dasso/eph.svg",
+  ASSETS_URL + "/websites/products/dasso/element-cert-sg.svg",
 ];
 
 const Introduction = () => {
