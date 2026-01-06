@@ -42,10 +42,19 @@ const Products = () => {
   return (
     <section className="section white">
       <div className="row">
-        <div className="border bg-transparent p-6 text-center">
-          <h2 className="uppercase text-headingDark font-semibold text-xl">
-            Product
-          </h2>
+        {/* Section Header */}
+        <div className="relative mb-12">
+          <div className="py-6 border-y-2 border-gray-200 w-full text-center relative overflow-hidden">
+            {/* Background Decoration */}
+            <div className="absolute inset-0 bg-linear-to-r from-transparent via-green-50/30 to-transparent"></div>
+
+            <h2 className="relative text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-wider text-gray-900">
+              Our Products
+            </h2>
+
+            {/* Decorative Line */}
+            <div className="w-24 h-1 bg-linear-to-r from-green-500 to-blue-600 mx-auto mt-4"></div>
+          </div>
         </div>
         <div className="container mx-auto sm:px-6 lg:px-8 my-6">
           <h3 className="mb-4">

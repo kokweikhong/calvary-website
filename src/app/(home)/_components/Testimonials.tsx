@@ -1,5 +1,6 @@
-import Image from "next/image";
+"use client";
 
+import Image from "next/image";
 import verticalLogo from "@/../public/black_vertical_logo.png";
 import google from "@/../public/images/home/google.png";
 import star from "@/../public/images/home/star.svg";
@@ -34,154 +35,239 @@ const reviews: Review[] = [
 
 const Testimonials = () => {
   return (
-    <section className="mt-[50px]">
-      <div className="flex flex-col items-center justify-center space-y-8">
-        <div className="flex items-center w-full justify-center">
-          <span className="text-[20px] font-semibold text-gray-500 mr-[10px]">
-            powered by
-          </span>
-          <div className="h-[50px] w-[90px] relative">
-            <Image
-              src={google}
-              alt="google"
-              fill
-              className="w-full h-full object-contain"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          </div>
+    <section className="py-12 sm:py-16 lg:py-20 bg-linear-to-b from-gray-50 to-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            Customer Reviews
+          </h2>
+          <div className="w-24 h-1 bg-linear-to-r from-green-500 to-blue-600 mx-auto mb-6"></div>
+          <p className="text-gray-600 max-w-2xl mx-auto text-base sm:text-lg">
+            See what our satisfied customers have to say about us
+          </p>
         </div>
 
-        <div className="flex items-center justify-center">
-          <div className="mr-10 rounded-full shadow-lg border-2 bg-white relative w-[90px] h-[90px]">
-            <Image
-              src={verticalLogo}
-              alt="logo"
-              fill
-              className="w-full h-full object-contain"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          </div>
-          <div>
-            <h2 className="text-[20px] font-bold text-headingDark">
-              Calvary Carpentry
-            </h2>
-            <p className="underline">157 Google reviews</p>
-            <div>
-              <div className="flex items-center gap-1">
-                <div className="h-[20px] w-[20px] relative">
+        {/* Business Info Card */}
+        <div
+          className="max-w-2xl mx-auto mb-12 sm:mb-16"
+          style={{ animation: "fadeInUp 0.6s ease-out both" }}
+        >
+          <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 border border-gray-100 hover:shadow-2xl transition-all duration-500">
+            {/* Powered by Google */}
+            <div className="flex items-center justify-center gap-2 mb-6 pb-6 border-b border-gray-100">
+              <span className="text-sm sm:text-base font-medium text-gray-500">
+                Verified reviews powered by
+              </span>
+              <div className="relative h-8 sm:h-10 w-16 sm:w-20">
+                <Image
+                  src={google}
+                  alt="Google"
+                  fill
+                  className="w-full h-full object-contain"
+                  sizes="100px"
+                />
+              </div>
+            </div>
+
+            {/* Business Rating */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
+              {/* Logo */}
+              <div className="relative">
+                <div className="absolute -inset-1 bg-linear-to-br from-green-500 to-blue-600 rounded-full opacity-20 blur-md"></div>
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full shadow-xl border-4 border-white bg-white overflow-hidden">
                   <Image
-                    src={star}
-                    alt="star"
+                    src={verticalLogo}
+                    alt="Calvary Carpentry Logo"
                     fill
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain p-2"
+                    sizes="100px"
                   />
                 </div>
-                <div className="h-[20px] w-[20px] relative">
-                  <Image
-                    src={star}
-                    alt="star"
-                    fill
-                    className="w-full h-full object-cover"
-                  />
+              </div>
+
+              {/* Rating Info */}
+              <div className="text-center sm:text-left">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
+                  Calvary Carpentry
+                </h3>
+
+                {/* Stars */}
+                <div className="flex items-center justify-center sm:justify-start gap-1 mb-2">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <div key={i} className="relative w-5 h-5 sm:w-6 sm:h-6">
+                      <Image
+                        src={star}
+                        alt="Star"
+                        fill
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                  ))}
+                  {/* <div className="relative w-5 h-5 sm:w-6 sm:h-6">
+                    <Image
+                      src={starGray}
+                      alt="Star"
+                      fill
+                      className="w-full h-full object-contain"
+                    />
+                  </div> */}
+                  <span className="ml-2 text-xl sm:text-2xl font-bold text-gray-900">
+                    4.9
+                  </span>
                 </div>
-                <div className="h-[20px] w-[20px] relative">
-                  <Image
-                    src={star}
-                    alt="star"
-                    fill
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="h-[20px] w-[20px] relative">
-                  <Image
-                    src={star}
-                    alt="star"
-                    fill
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="h-[20px] w-[20px] relative">
-                  <Image
-                    src={starGray}
-                    alt="star"
-                    fill
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <p>5.0</p>
+
+                {/* Review Count */}
+                <a
+                  href="#reviews"
+                  className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-300 group"
+                >
+                  <span className="underline">198 Google reviews</span>
+                  <svg
+                    className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
         </div>
 
-        <div>
-          <a href="#" className="underline">
-            Show More
+        {/* Reviews Grid */}
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto"
+          id="reviews"
+        >
+          {reviews.map((review, index) => (
+            <article
+              key={`review-${index}`}
+              className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-6 sm:p-8 border border-gray-100 hover:border-green-500/30 flex flex-col hover:-translate-y-2"
+              style={{
+                animation: `fadeInUp 0.6s ease-out ${0.2 + index * 0.15}s both`,
+              }}
+            >
+              {/* Decorative Quote */}
+              <div className="absolute top-6 right-6 text-6xl sm:text-7xl text-gray-100 font-serif leading-none select-none">
+                "
+              </div>
+
+              {/* Reviewer Header */}
+              <div className="flex items-start gap-4 mb-6 relative z-10">
+                {/* Google Icon */}
+                <div className="shrink-0 relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gray-50 flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-110 transition-all duration-500 border border-gray-200">
+                  <div className="relative w-8 h-8 sm:w-10 sm:h-10">
+                    <Image
+                      src={review.image}
+                      alt="Google"
+                      fill
+                      className="w-full h-full object-contain"
+                      sizes="50px"
+                    />
+                  </div>
+                </div>
+
+                {/* Reviewer Info */}
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-1 group-hover:text-green-700 transition-colors duration-300">
+                    {review.name}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-500 mb-3">
+                    {review.subcontent}
+                  </p>
+
+                  {/* Stars */}
+                  <div className="flex items-center gap-1">
+                    {[...Array(review.stars)].map((_, i) => (
+                      <div
+                        key={`filled-${i}`}
+                        className="relative w-4 h-4 sm:w-5 sm:h-5"
+                      >
+                        <Image
+                          src={star}
+                          alt="Star"
+                          fill
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    ))}
+                    {[...Array(5 - review.stars)].map((_, i) => (
+                      <div
+                        key={`empty-${i}`}
+                        className="relative w-4 h-4 sm:w-5 sm:h-5"
+                      >
+                        <Image
+                          src={starGray}
+                          alt="Star"
+                          fill
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Review Content */}
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed flex-1 relative z-10">
+                {review.content.length > 280
+                  ? `${review.content.substring(0, 280)}...`
+                  : review.content}
+              </p>
+
+              {/* Bottom Accent */}
+              <div className="h-1 bg-linear-to-r from-green-500 to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left mt-6 rounded-full"></div>
+            </article>
+          ))}
+        </div>
+
+        {/* Show More Button */}
+        <div className="text-center mt-10 sm:mt-12">
+          <a
+            href="https://www.google.com/search?q=calvary+carpentry"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white hover:bg-linear-to-r hover:from-green-500 hover:to-blue-600 text-gray-900 hover:text-white font-semibold rounded-full shadow-lg hover:shadow-2xl transition-all duration-500 border-2 border-gray-200 hover:border-transparent group"
+          >
+            <span>View All Reviews</span>
+            <svg
+              className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
           </a>
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-6 justify-center mt-[50px]">
-        {reviews.map((review, index) => (
-          <div
-            key={`review-${index}`}
-            className="border p-8 rounded-md shadow-md w-[400px] max-w-[400px] flex flex-col items-start justify-center space-y-4"
-          >
-            <div className="flex items-center justify-center">
-              <div className="h-[50px] w-[50px] relative">
-                <Image
-                  src={review.image}
-                  alt="google"
-                  fill
-                  className="w-full h-full object-contain"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              </div>
-              <div className="flex flex-col items-start justify-center ml-4">
-                <h3 className="text-[16px] font-bold text-headingDark">
-                  {review.name}
-                </h3>
-                <p className="text-[14px] text-gray-500">{review.subcontent}</p>
-
-                <div className="flex items-center gap-1">
-                  {[...Array(review.stars)].map((_, index) => (
-                    <div
-                      key={`star-${index}`}
-                      className="h-[20px] w-[20px] relative"
-                    >
-                      <Image
-                        src={star}
-                        alt="star"
-                        fill
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ))}
-                  {[...Array(5 - review.stars)].map((_, index) => (
-                    <div
-                      key={`star-${index}`}
-                      className="h-[20px] w-[20px] relative"
-                    >
-                      <Image
-                        src={starGray}
-                        alt="star"
-                        fill
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            {/* set content max length and with ... */}
-            <p className="text-[14px] text-headingDark">
-              {review.content.length > 200
-                ? `${review.content.substring(0, 200)}...`
-                : review.content}
-            </p>
-          </div>
-        ))}
-      </div>
+      {/* CSS Animation */}
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </section>
   );
 };

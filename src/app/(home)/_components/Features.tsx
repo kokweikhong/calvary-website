@@ -116,10 +116,10 @@ const Features = () => {
         {duplicatedFeatures.map((feature, index) => (
           <div
             key={`feature-${index}`}
-            className="relative flex-shrink-0"
+            className="relative shrink-0"
             style={{ width: `${slideWidth}%` }}
           >
-            <div className="h-[200px] md:h-[250px] w-full relative">
+            <div className="h-50 md:h-62.5 w-full relative">
               <Image
                 src={feature.image}
                 alt={feature.title}
@@ -136,7 +136,7 @@ const Features = () => {
                   <p className="text-[12px] mr-4 opacity-0 md:opacity-100">
                     {feature.description}
                   </p>
-                  <span className="w-0 h-0 border-t-[20px] border-t-transparent border-l-[35px] border-l-white border-b-[20px] border-b-transparent"></span>
+                  <span className="w-0 h-0 border-t-20 border-t-transparent border-l-35 border-l-white border-b-20 border-b-transparent"></span>
                 </div>
               </div>
             </div>

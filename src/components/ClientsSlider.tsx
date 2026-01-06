@@ -72,7 +72,7 @@ const ClientsSlider: FC<ClientsSliderProps> = ({
         {duplicatedClients.map((client, index) => (
           <div
             key={`client-${index}`}
-            className="flex-shrink-0 h-[38px] w-auto flex items-center justify-center"
+            className="shrink-0 h-9.5 w-auto flex items-center justify-center"
             style={{ minWidth: "150px" }}
           >
             {client}
