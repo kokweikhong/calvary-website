@@ -19,7 +19,7 @@ const Header = () => {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 isolate z-10 bg-white">
+    <header className="sticky top-0 isolate z-50 bg-white">
       <nav
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"

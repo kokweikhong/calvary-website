@@ -17,7 +17,7 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
         {/* Image Container with Overlay */}
         <div className="relative w-full h-56 sm:h-64 overflow-hidden bg-gray-100">
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+          <div className="absolute inset-0 bg-linear-to-t from-black/40 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
 
           {/* Zoom Effect on Image */}
           <div className="w-full h-full transform group-hover:scale-110 transition-transform duration-700 ease-out">
@@ -33,13 +33,13 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
           </div>
 
           {/* Accent Corner */}
-          <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-green-500/20 to-blue-500/20 transform translate-x-8 -translate-y-8 rotate-45 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500"></div>
+          <div className="absolute top-0 right-0 w-16 h-16 bg-linear-to-br from-green-500/20 to-blue-500/20 transform translate-x-8 -translate-y-8 rotate-45 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500"></div>
         </div>
 
         {/* Content Card with Elevated Design */}
         <div className="relative flex-1 bg-white -mt-8 mx-4 sm:mx-6 rounded-t-2xl shadow-xl z-20 p-6 sm:p-8 group-hover:-mt-12 transition-all duration-500 ease-out border border-gray-100 group-hover:border-green-500/30">
           {/* Top Accent Line */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 via-blue-500 to-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-t-2xl"></div>
+          <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-green-500 via-blue-500 to-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center rounded-t-2xl"></div>
 
           {/* Title */}
           <h3 className="text-lg sm:text-xl font-bold uppercase tracking-wider text-gray-900 mb-6 group-hover:text-green-700 transition-colors duration-300">
@@ -86,7 +86,7 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
         </div>
 
         {/* Bottom Shine Effect */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       </article>
     </Link>
   );
