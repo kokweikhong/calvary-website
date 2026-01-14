@@ -30,11 +30,13 @@ export default async function Page(props: {
 
       <div
         className={cn(
-          "prose lg:prose-xl prose-headings:mt-8 prose-headings:font-semibold prose-headings:text-black prose-h1:text-5xl prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-lg",
+          "prose lg:prose-xl prose-headings:mt-8 prose-headings:font-semibold prose-headings:text-black prose-h1:text-5xl prose-h2:text-4xl prose-h3:text-3xl prose-h4:text-2xl prose-h5:text-xl prose-h6:text-lg flex flex-col space-y-6",
           "mx-auto"
         )}
       >
-        <Post>{post.body}</Post>
+        <div className={`${post.slug}`} id="post-content">
+          <Post>{post.body}</Post>
+        </div>
       </div>
     </div>
   );

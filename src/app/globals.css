@@ -109,6 +109,39 @@
   h2 {
     @apply font-garamond;
   }
+  #post-content {
+    @apply flex flex-col space-y-6 leading-7 text-gray-800;
+    h2 {
+      @apply font-semibold text-3xl font-montserrat;
+    }
+    h3 {
+      @apply font-semibold text-2xl;
+    }
+    p:has(> em) {
+      @apply text-center;
+    }
+
+    em {
+      @apply text-gray-600 italic text-sm;
+    }
+
+    li {
+      @apply list-disc list-inside;
+    }
+
+    blockquote {
+      @apply border-l-4 border-gray-300 pl-4 italic text-gray-700;
+
+      > p {
+        @apply text-left;
+      }
+    }
+  }
+  .calvary-carpentry-sustainability-report-2025 {
+    a {
+      @apply text-blue-600 underline font-medium;
+    }
+  }
 }
 
 /* Custom scrollbar styles */

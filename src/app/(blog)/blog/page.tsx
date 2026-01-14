@@ -17,9 +17,9 @@ export default async function Page() {
           .sort(
             (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
           )
-          .map((post) => (
+          .map((post, index) => (
             <article
-              key={post.slug}
+              key={index}
               className="relative p-4 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition duration-100 ease-in-out h-64"
             >
               <Link
