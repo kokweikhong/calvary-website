@@ -9,7 +9,7 @@ import { getCountryEnv } from "@/lib/env";
 async function getProjects(
   limit?: number,
   offset?: number,
-  filters?: FilterItem
+  filters?: FilterItem,
 ): Promise<{
   data: Project[];
   length: number;
@@ -193,7 +193,7 @@ export default function Page() {
         setTempFilterItem((prev) => ({
           ...prev,
           applications: prev.applications.filter(
-            (application) => application !== value
+            (application) => application !== value,
           ),
         }));
       }
@@ -324,7 +324,7 @@ export default function Page() {
         setFilterItem((prev) => ({
           ...prev,
           applications: prev.applications.filter(
-            (application) => application !== value
+            (application) => application !== value,
           ),
         }));
       }
@@ -361,6 +361,23 @@ export default function Page() {
       localStorage.setItem("projectsCurrentPage", currentPage.toString());
     }
   }, [currentPage]);
+
+  useEffect(() => {
+    // Prevent fetching on initial mount if you want, or always fetch on filter change
+    setIsLoading(true);
+    getProjects(undefined, undefined, filterItem)
+      .then((res) => {
+        setProjects(res.data);
+        setTotalCount(res.length);
+        setCurrentPage(1);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch filtered projects:", error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [filterItem]);
 
   // Pagination calculations (now using server-filtered projects)
   const totalPages = Math.ceil(projects.length / itemsPerPage);
@@ -440,7 +457,7 @@ export default function Page() {
                       const res = await getProjects(
                         undefined,
                         undefined,
-                        tempFilterItem
+                        tempFilterItem,
                       );
                       setProjects(res.data);
                       setTotalCount(res.length);
@@ -449,7 +466,7 @@ export default function Page() {
                     } catch (error) {
                       console.error(
                         "Failed to fetch filtered projects:",
-                        error
+                        error,
                       );
                     } finally {
                       setIsLoading(false);
@@ -480,7 +497,7 @@ export default function Page() {
                   const res = await getProjects(
                     undefined,
                     undefined,
-                    tempFilterItem
+                    tempFilterItem,
                   );
                   setProjects(res.data);
                   setTotalCount(res.length);
@@ -665,7 +682,7 @@ export default function Page() {
                                 value={sector}
                                 onChange={handleTempFilter}
                                 checked={tempFilterItem.sectors.includes(
-                                  sector
+                                  sector,
                                 )}
                                 className="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-2 focus:ring-gray-500 cursor-pointer"
                               />
@@ -697,7 +714,7 @@ export default function Page() {
                                 value={product}
                                 onChange={handleTempFilter}
                                 checked={tempFilterItem.products.includes(
-                                  product
+                                  product,
                                 )}
                                 className="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-2 focus:ring-gray-500 cursor-pointer"
                               />
@@ -729,7 +746,7 @@ export default function Page() {
                                 value={app}
                                 onChange={handleTempFilter}
                                 checked={tempFilterItem.applications.includes(
-                                  app
+                                  app,
                                 )}
                                 className="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-2 focus:ring-gray-500 cursor-pointer"
                               />
@@ -761,7 +778,7 @@ export default function Page() {
                                 value={year.toString()}
                                 onChange={handleTempFilter}
                                 checked={tempFilterItem.years.includes(
-                                  year.toString()
+                                  year.toString(),
                                 )}
                                 className="w-4 h-4 text-gray-600 border-gray-300 rounded focus:ring-2 focus:ring-gray-500 cursor-pointer"
                               />
@@ -869,7 +886,7 @@ export default function Page() {
                         setFilterItem({
                           ...filterItem,
                           sectors: filterItem.sectors.filter(
-                            (s) => s !== sector
+                            (s) => s !== sector,
                           ),
                         })
                       }
@@ -916,7 +933,7 @@ export default function Page() {
                         setFilterItem({
                           ...filterItem,
                           products: filterItem.products.filter(
-                            (p) => p !== product
+                            (p) => p !== product,
                           ),
                         })
                       }
@@ -963,7 +980,7 @@ export default function Page() {
                         setFilterItem({
                           ...filterItem,
                           applications: filterItem.applications.filter(
-                            (a) => a !== application
+                            (a) => a !== application,
                           ),
                         })
                       }
