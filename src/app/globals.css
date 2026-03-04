@@ -142,6 +142,14 @@
       @apply text-blue-600 underline font-medium;
     }
   }
+  .top-5-architecture-trends-2026 {
+    a {
+      @apply text-blue-600 underline font-medium;
+    }
+    h4 {
+      @apply font-semibold;
+    }
+  }
 }
 
 /* Custom scrollbar styles */
